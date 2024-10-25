@@ -6,13 +6,40 @@
     <title>Sistema Integrado Promosalud</title>
   </head>
   <body>
-    <header style="background-color: blue">
-      <a href="cites.html"
-        ><img
-          src="/icon/Citas_icono.png"
-          alt="agendamiento de citas"
-        />agendamiento de citas</a
-      >
+    <header style="background-color: black">
+      <nav>
+        <ul>
+          <li>
+            <a href="cites.html">
+              <img
+                src="/icon/Citas_icono.png"
+                alt="agendamiento de citas"
+              />agendamiento de citas</a
+            >
+          </li>
+          <li>
+            <a href="agenda.html">
+              <img src="/icon/Control_agenda.png" alt="agenda" />
+              Control de agenda</a
+            >
+          </li>
+          <li>
+            <a href="informes.html"
+              ><img src="/icon/informes_salud.png" alt="informes" />Informes</a
+            >
+          </li>
+          <li>
+            <label for="">buscar:</label>
+            <input type="text" name="buscador" id="buscador" />
+          </li>
+          <li>
+            <!-- Buscar como desclegar una ventanita -->
+            <button type="button" onclick="buscar()">
+              <img src="/icon/Configuracion.png" alt="configuracion" />
+            </button>
+          </li>
+        </ul>
+      </nav>
     </header>
   </body>
 </html>
