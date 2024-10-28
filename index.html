@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema Integrado Promosalud</title>
+    <link rel="stylesheet" href="/bootstrap-5.3.3-dist/css/bootstrap.css" />
   </head>
   <body>
-    <header style="background-color: black">
+    <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <header class="bg-primary">
       <nav>
         <ul>
           <li>
@@ -41,7 +43,7 @@
           </li>
           <li style="background-color: white">
             <!-- Buscar como desplegar una ventanita y incorporar el icono de la lupa en el input -->
-            <button type="button" id="buscar"></button>
+            <button type="button" id="buscar">Buscar</button>
             <img src="/icon/lupa.svg" alt="buscar" width="50" height="50" />
           </li>
           <li>
@@ -50,5 +52,20 @@
         </ul>
       </nav>
     </header>
+    <main>
+      <section id="segundo_header">
+        <img
+          src="/icon/logoPromosalud-removebg-preview 2.svg"
+          alt="logo"
+          width="253"
+          height="142"
+        />
+        <ul>
+          <li>
+            <a href="inicio.html">Inicio</a>
+          </li>
+        </ul>
+      </section>
+    </main>
   </body>
 </html>
