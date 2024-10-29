@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!--data-bs-theme="dark" or data-bs-theme="light" modo oscuro o claro -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sistema Integrado Promosalud</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.css"
-    />
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css" />
   </head>
   <body>
     <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-    <header class="bg-primary bg-gradient text-white">
+    <header class="bg-primary">
       <nav>
         <ul>
           <li>
             <a href="cites.html" class="text-white">
               <img
-                src="/icon/🦆 icon _document_.svg"
+                src="/icon/🦆 icon _book_.svg"
                 alt="agendamiento de citas"
                 width="50"
                 height="50"
@@ -26,13 +22,8 @@
             >
           </li>
           <li>
-            <a href="agenda.html" class="text-white">
-              <img
-                src="/icon/🦆 icon _book_.svg"
-                alt="agenda"
-                width="50"
-                height="50"
-              />
+            <a href="agenda.html"  class="text-white">
+              <img src="/icon/🦆 icon _document_.svg" alt="agenda" width="50" height="50" />
               Control de agenda</a
             >
           </li>
@@ -47,7 +38,7 @@
             >
           </li>
           <li>
-            <label for="">buscar:</label>
+            <label for="buscar">buscar:</label>
             <input type="text" name="buscador" id="buscador" />
           </li>
           <li style="background-color: white">
@@ -61,7 +52,6 @@
         </ul>
       </nav>
     </header>
-    <main>
       <section id="segundo_header">
         <img
           src="/icon/logoPromosalud-removebg-preview 2.svg"
@@ -113,6 +103,77 @@
           </li>
         </ul>
       </section>
+    <section>
+      <img src="/icon/pacienteatendido.svg">
+    </section>
+    <section>
+      <form action="login.php">
+        <label for="document">Selecciona el tipo de documento</label>
+        <select name="document" id="document">
+          <option value="cedula_de_ciudadania">Cedula de ciudadania</option>
+          <option value="cedula_extranjera">Cedula extranjera</option>
+          <option value="permiso_temporal_de_trabajo">Permiso temporal de trabajo</option>
+          <option value="NIT">NIT</option>
+          <option value="tarjeta_de_identidad">Tarjeta de identidad</option>
+          <option value="pasaporte">Pasaporte</option>
+          <option value="registro_civil">Registro civil</option>
+          <option value="carne_diplomatico">Carne diplomatico</option>
+          <option value="certificado_nacido_vivo">Certificado nacido vivo</option>
+        </select>
+        <label for="numero_de_documento">Ingrese el numero de documento</label>
+        <input type="number">
+        <label for="contraseña">Contraseña</label>
+        <input type="password">
+        <a href="recuperarcontraseña.html">¿Olvidaste la contraseña?</a>
+        <a href="registrate.html">Registrate</a>
+      <button type="submit">Entrar</button>
+      </form>
+
+    </section>
     </main>
+    <article>
+      <h2>Servicios</h2>
+      <section>
+      <img src="/icon/estetoscopio.svg" alt="estetoscopio">
+        <h3>Medicina laboral y del trabajo</h3>
+        <p>Ofrecemos evaluación de riesgos laborales, exámenes médicos ocupacionales, programas de prevención de enfermedades laborales y asesoramiento sobre hábitos saludables en el trabajo</p>
+      </section>
+      <section>
+        <img src="/icon/seguridad-en-el-trabajo 1.svg">
+        <h3>Sistema de gestion ST-SST</h3>
+        <p>
+          Brindamos asesoría en la implementación y mantenimiento del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST),ayudando a las empresas a cumplir con sus obligaciones legales y a promover un entornolaboral seguro.
+        </p>
+      </section>
+      <section>
+        <img src="/icon/pensando 1.svg" alt="pensamiento">
+        <h3>Psicologia y Psicometria</h3>
+        <p>
+          Evaluación psicológica, intervenciónen casos de estrés laboral, apoyo emocional y orientación en conflictoslaborales, programas de bienestar emocional en el trabajo.
+        </p>
+      </section>
+      <section>
+        <img src="/icon/examenes-de-salud 1.svg" alt="examenes">
+        <h3>Examenes paraclinicos</h3>
+        <p>
+          Ofrecemos una amplia gama deexámenes paraclínicos especializados para evaluar la salud y el bienestar de los trabajadores en entornos laborales.
+        </p>
+      </section>
+      <section>
+        <img src="/icon/telemedicina 1.svg" alt="telemedicina">
+        <h3>Telemedicina</h3>
+        <p>
+          Nuestros servicios de telemedicina incluyen consulta médica virtual, teleorientación,teleapoyo, telemedicina interactiva
+        </p>
+      </section>
+      <section>
+        <img src="/icon/microscopio 1.svg">
+        <h3>Laboratorio</h3>
+        <p>
+          Nuestro laboratorio clínico ofreceuna amplia gama de pruebas para evaluar la salud de los trabajadores en entornos laborales.
+        </p>
+      </section>
+        
+    </article>
   </body>
 </html>
