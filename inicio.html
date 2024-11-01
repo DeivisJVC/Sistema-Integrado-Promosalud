@@ -79,7 +79,8 @@
             <a href="contactanos.html">Contactanos</a>
           </li>
           <li>
-            <a href="">
+            <a href=""
+              ><!-- Enlace a la pagina de Facebook -->
               <img
                 src="/icon/facebook.svg"
                 alt="facebook"
@@ -90,6 +91,7 @@
           </li>
           <li>
             <a href="">
+              <!-- Enlace a la pagina de Instagram -->
               <img
                 src="/icon/instagram 1.svg"
                 alt="instagram"
@@ -99,6 +101,7 @@
             </a>
           </li>
           <li>
+            <!-- Enlace a la pagina de Twitter -->
             <a href=""
               ><img
                 src="/icon/twitter.svg"
@@ -113,7 +116,7 @@
         <img src="/icon/pacienteatendido.svg" />
       </section>
       <section>
-        <form action="login.php">
+        <form action="login.php" method="post">
           <label for="document">Selecciona el tipo de documento</label>
           <select name="document" id="document">
             <option value="cedula_de_ciudadania">Cedula de ciudadania</option>
@@ -133,10 +136,10 @@
           <label for="numero_de_documento"
             >Ingrese el numero de documento</label
           >
-          <input type="number" />
+          <input type="numero_de_documento" />
           <label for="contraseña">Contraseña</label>
-          <input type="password" />
-          <a href="recuperarcontraseña.html">¿Olvidaste la contraseña?</a>
+          <input type="password" id="contraseña" />
+          <a href="recuperar_contraseña.html">¿Olvidaste la contraseña?</a>
           <a href="registrate.html">Registrate</a>
           <button type="submit">Entrar</button>
         </form>
