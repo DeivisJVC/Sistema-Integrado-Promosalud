@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Citas</title>
+    <title>Agendar cita</title>
     <link rel="stylesheet" href="/scss/custom.css" />
   </head>
-
   <body>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/js/darkmode.js"></script>
     <header class="bg-primary">
       <nav>
         <ul>
@@ -47,20 +48,46 @@
         </form>
       </section>
     </header>
-    <main class="bg-secundario">
-      <nav class="text-black">
-        <ul>
-          <li>
-            <a href="Agendar_cita.html">Agendar cita</a>
-          </li>
-          <li>
-            <a href="Consultar_cita.html">Consultar cita</a>
-          </li>
-          <li>
-            <a href="Contactanos.html">Contáctanos</a>
-          </li>
-        </ul>
-      </nav>
+    <main>
+      <section id="header_secundario">
+        <!-- Debe aparcer con sombreado la seccion donde se encuentra el usuario -->
+        <nav class="container-sm bg-body-tertiary rounded">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="agendar_cita.html"
+                >Agendar cita</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="Consultar_cita.html"
+                >Consultar cita</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="Contactanos.html"
+                >Contáctanos</a
+              >
+            </li>
+            <li>
+              <button class="btn btn-dark ms-2" onclick="toggleDarkMode()">
+                Modo Oscuro
+              </button>
+              <button class="btn btn-dark ms-2" onclick="toggleDarkMode()">
+                Modo Claro
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </section>
     </main>
   </body>
 </html>

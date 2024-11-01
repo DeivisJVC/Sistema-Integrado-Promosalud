@@ -8,51 +8,92 @@
     <link rel="stylesheet" href="/scss/custom.css" />
   </head>
   <body>
-    <script src="/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-    <header class="bg-primary">
-      <nav>
-        <ul>
-          <li>
-            <a href="citas.html" class="text-white">
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="/js/darkmode.js"></script>
+    <header class="bg-primary rounded">
+      <!--Arreglar el breakpoint del breakpoint--->
+      <nav class="navbar justify-content-xxl-evenly">
+        <ul class="nav">
+          <li class="nav-item">
+            <!---Separr los icon de las letras-->
+            <a
+              href="agendar_cita.html"
+              class="nav-link text-white"
+              aria-current="page"
+            >
               <img
+                class=""
                 src="/icon/🦆 icon _book_.svg"
                 alt="agendamiento de citas"
-                width="50"
-                height="50"
-              />agendamiento de citas</a
+                width="40"
+                height="40"
+              />Agendamiento de citas</a
             >
           </li>
-          <li>
-            <a href="agenda.html" class="text-white">
+          <li class="nav-item">
+            <a
+              class="nav-link text-white active"
+              aria-current="page"
+              href="agenda.html"
+              class="text-white"
+            >
               <img
                 src="/icon/🦆 icon _document_.svg"
                 alt="agenda"
-                width="50"
-                height="50"
+                width="40"
+                height="40"
               />
               Control de agenda</a
             >
           </li>
-          <li>
-            <a href="informes.html" class="text-white"
+          <li class="nav-item">
+            <a
+              class="nav-link text-white active"
+              aria-current="page"
+              href="informes.html"
+              class="text-white"
               ><img
                 src="/icon/🦆 icon _file_.svg"
                 alt="informes"
-                width="50"
-                height="50"
+                width="40"
+                height="40"
               />Informes</a
             >
           </li>
-          <li>
-            <input type="text" name="buscador" id="buscador" />
+          <li class="nav-item align-content-center">
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-success text-white" type="submit">
+                Buscar
+              </button>
+            </form>
           </li>
-          <li style="background-color: white">
-            <!-- Buscar como desplegar una ventanita y incorporar el icono de la lupa en el input -->
-            <button type="button" id="buscar">Buscar</button>
-            <img src="/icon/lupa.svg" alt="buscar" width="50" height="50" />
-          </li>
-          <li>
-            <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
+          <li class="dropdown">
+            <button
+              class="btn btn-secondary"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">Configuración</a></li>
+              <li>
+                <button class="btn btn-dark ms-2" onclick="toggleDarkMode()">
+                  Modo Oscuro
+                </button>
+                <button class="btn btn-dark ms-2" onclick="toggleDarkMode()">
+                  Modo Claro
+                </button>
+              </li>
+            </ul>
           </li>
         </ul>
       </nav>
