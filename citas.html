@@ -6,16 +6,18 @@
     <title>Citas</title>
     <link rel="stylesheet" href="/scss/custom.css" />
   </head>
+
   <body>
     <header class="bg-primary">
       <nav>
         <ul>
           <li>
-            <a href="inicio.html"
-              ><img
+            <a href="inicio.html">
+              <img
                 src="/icon/logo_blanco_promosalud.svg"
                 alt="logo promosalud"
-            /></a>
+              />
+            </a>
           </li>
           <li>
             <input type="text" name="buscador" id="buscador" />
@@ -34,31 +36,30 @@
         <img src="/icon/notificacion-numero.svg" alt="notificacion_numero" />
         <!--Recuerda incorporar el menu desplegable con las opciones-->
         <form action="login.php">
-          <label for="menu"><img src="/icon/menu-rayas.svg" alt="menu-rayas"></label>
+          <label for="menu">
+            <img src="/icon/menu-rayas.svg" alt="menu-rayas" />
+          </label>
           <select name="menu" id="menu">
             <option value="Perfil">Perfil</option>
-            <option value="Configuracion">Configuracion</option>
-            <option value="Cerrar_sesion">
-              Cerrar sesion
-            </option>
-            </form>
+            <option value="Configuracion">Configuración</option>
+            <option value="Cerrar_sesion">Cerrar sesión</option>
+          </select>
+        </form>
       </section>
     </header>
-    <main>
-      <nav>
+
+    <!-- verificar que pasa aca porque no aparece en la pagina -->
+    <main class="bg-secundario">
+      <nav class="text-black">
         <ul>
           <li>
             <a href="Agendar_cita.html">Agendar cita</a>
           </li>
-        </ul>
-        <ul>
           <li>
             <a href="Consultar_cita.html">Consultar cita</a>
           </li>
-        </ul>
-        <ul>
           <li>
-            <a href="Contactanos.html">Contactanos</a>
+            <a href="Contactanos.html">Contáctanos</a>
           </li>
         </ul>
       </nav>
