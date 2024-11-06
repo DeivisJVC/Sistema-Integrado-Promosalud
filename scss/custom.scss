@@ -1,9 +1,13 @@
+// Create your own map
+
 $primary: #0f3b6f;
 $danger: #ff0000;
+$tertiary: #5694dc;
 
 $theme-colors: (
   "primary": $primary,
   "danger": $danger,
+  "tertiary": $tertiary,
 );
 .bg-dark {
   background-color: #121212;

@@ -1,1 +1,7 @@
-
+body {
+  padding-top: 100px;
+}
+#formulario-inicio {
+  width: 800px;
+  height: 500px;
+}

@@ -1,189 +1,105 @@
 <!DOCTYPE html>
 <html lang="es">
-  <!-- data-bs-theme="dark" -->
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistema Integrado Promosalud</title>
-    <link rel="stylesheet" href="/scss/custom.css" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <body>
-    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="/js/darkmode.js"></script>
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-      <symbol id="circle-half" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
-      </symbol>
+<!-- data-bs-theme="dark" -->
 
-      <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-        <path
-          d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
-        />
-        <path
-          d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
-        />
-      </symbol>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistema Integrado Promosalud</title>
+  <link rel="stylesheet" href="/scss/custom.css" />
+  <link rel="stylesheet" href="/style.css" />
+  <style> body { padding-top: 70px; /* Ajustar según la altura de tu header */ } #formulario-inicio { background-color: #f8f9fa; /* Color de fondo claro */ border-radius: 10px; padding: 30px; max-width: 600px; /* Máximo ancho del formulario */ } .img-fluid { max-width: 50%; /* Ajuste de la imagen */ height: auto; } .formulario-container { display: flex; justify-content: center; align-items: center; gap: 50px; /* Espacio entre la imagen y el formulario */ margin-top: 50px; /* Espacio superior */ } </style>
+</head>
 
-      <symbol id="sun-fill" viewBox="0 0 16 16">
-        <path
-          d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-        />
-      </symbol>
-    </svg>
-    <header class="bg-primary rounded">
-      <!--Arreglar el breakpoint del breakpoint--->
-      <nav class="navbar navbar-expand-lg py-3">
-        <ul class="nav container-fluid justify-content-xxl-evenly" >
-          <li class="nav-item">
-            <!---Separr los icon de las letras-->
-            <a
-              href="agendar_cita.html"
-              class="nav-link text-white"
-              aria-current="page"
-            >
-              <img
-                class="me-2"
-                src="/icon/🦆 icon _book_.svg"
-                alt="agendamiento de citas"
-                width="40"
-                height="40"
-              />Agendamiento de citas</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link text-white active"
-              aria-current="page"
-              href="agenda.html"
-              class="text-white"
-            >
-              <img
-                class="me-2"
-                src="/icon/🦆 icon _document_.svg"
-                alt="agenda"
-                width="40"
-                height="40"
-              />
-              Control de agenda</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link text-white active"
-              aria-current="page"
-              href="informes.html"
-              class="text-white"
-              ><img
-                class="me-2"
-                src="/icon/🦆 icon _file_.svg"
-                alt="informes"
-                width="40"
-                height="40"
-              />Informes</a
-            >
-          </li>
-          <li class="nav-item align-content-center">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-outline-success text-white" type="submit">
-                Buscar
-              </button>
-            </form>
-          </li>
-          <li class="dropdown">
-            <button
-              class="btn btn-secondary"
-              type="button"
-              id="dropdownMenuButton"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">Configuración</a></li>
-              <li>
-                <p class="dropdown-item">Perfil</p>
-              </li>
-            </ul>
-            <li class="nav-item align-content-center">
-              <ul class="navbar-nav mb-2 mb-lg-0">
+<body>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/js/darkmode.js"></script>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+    </symbol>
+
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+    </symbol>
+
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+    </symbol>
+  </svg>
+  <header class="bg-primary rounded fixed-top">
+    <nav class="navbar navbar-expand-lg py-3">
+      <ul class="nav container-fluid justify-content-xxl-evenly">
+        <li class="nav-item">
+          <!--Separar los iconos de las letras-->
+          <a href="agendar_cita.html" class="nav-link text-white" aria-current="page">
+            <img class="me-2" src="/icon/🦆 icon _book_.svg" alt="agendamiento de citas" width="40" height="40" />
+            Agendamiento de citas
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active" aria-current="page" href="agenda.html">
+            <img class="me-2" src="/icon/🦆 icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
+            agenda
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white active" aria-current="page" href="informes.html">
+            <img class="me-2" src="/icon/🦆 icon _file_.svg" alt="informes" width="40" height="40" /> Informes
+          </a>
+        </li>
+        <li class="nav-item align-content-center">
+          <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success text-white" type="submit">Buscar</button>
+          </form>
+        </li>
+        <li class="dropdown">
+          <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" href="#">Configuración</a></li>
+            <li>
+              <p class="dropdown-item">Perfil</p>
+            </li>
+          </ul>
+        <li class="nav-item align-content-center">
+          <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item dropdown w-25" data-bs-theme="light">
-              <button
-                class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                id="bd-theme"
-                type="button"
-                aria-expanded="false"
-                data-bs-toggle="dropdown"
-                data-bs-display="static"
-              >
-                <svg
-                  class="bi my-1 theme-icon-active"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                >
+              <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
                   <use href="#circle-half"></use>
                 </svg>
                 <span class="d-lg-none ms-2">Toggle theme</span>
               </button>
-
-              <ul
-                class="dropdown-menu dropdown-menu-end px-1"
-                aria-labelledby="bd-theme"
-              >
+              <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme">
                 <li>
-                  <button
-                    type="button"
-                    class="dropdown-item d-flex align-items-center"
-                    data-bs-theme-value="light"
-                  >
-                    <svg
-                      class="bi me-2 opacity-50 theme-icon"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                    >
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
                       <use href="#sun-fill"></use>
                     </svg>
                     Light
                   </button>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    class="dropdown-item d-flex align-items-center"
-                    data-bs-theme-value="dark"
-                  >
-                    <svg
-                      class="bi me-2 opacity-50 theme-icon"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                    >
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
                       <use href="#moon-stars-fill"></use>
                     </svg>
                     Dark
                   </button>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    class="dropdown-item d-flex align-items-center active"
-                    data-bs-theme-value="auto"
-                  >
-                    <svg
-                      class="bi me-2 opacity-50 theme-icon"
-                      width="16"
-                      height="16"
-                      fill="currentColor"
-                    >
+                  <button type="button" class="dropdown-item d-flex align-items-center active"
+                    data-bs-theme-value="auto">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
                       <use href="#circle-half"></use>
                     </svg>
                     Auto
@@ -192,250 +108,225 @@
               </ul>
             </li>
           </ul>
+        </li>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="">
+  <section id="segundo_header" class="navbar navbar-expand-lg py-3">
+    <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
+    <ul class="nav container-fluid justify-content-xxl-evenly">
+      <li>
+        <a class="nav-link active fs-5 text-black" aria-current="page" href="inicio.html">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active fs-5 text-black" href="sobre_nosotros.html">Sobre nosotros </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active fs-5 text-black text-capitalize" href="donde_estamos.html">Donde estamos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active fs-5 text-black" href="contactanos.html">Contactanos</a>
+      </li>
+      <li class="nav-item">
+        <a href=""><!-- Enlace a la pagina de Facebook -->
+          <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
+        </a>
+      </li>
+      <li>
+        <a href="">
+          <!-- Enlace a la pagina de Instagram -->
+          <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
+        </a>
+      </li>
+      <li>
+        <!-- Enlace a la pagina de Twitter -->
+        <a href=""><img src="/icon/twitter.svg" alt="twitter" width="50" height="50" /></a>
+      </li>
+    </ul>
+  </section>
+  <section class="d-flex justify-content-center align-items-center mt-5 " style="gap: 200px;">
+    <img src="/icon/pacienteatendido.svg" alt="Paciente Atendido" >
+    <section id="formulario-inicio" class="container row justify-content-center bg-tertiary rounded p-5">
+        <div class="col-12">
+          <form class="p-4 p-md-5  rounded-3 text-white text-capitalize ">
+            <div class="form-group mb-3">
+              <label for="documentType" class="form-label">Tipo de documento</label>
+              <select class="form-control" id="documentType">
+                <option>Cédula de ciudadanía</option>
+                <option>Cédula extranjera</option>
+                <option>Permiso temporal de trabajo</option>
+                <option>NIT</option>
+                <option>Tarjeta de identidad</option>
+                <option>Pasaporte</option>
+                <option>Registro civil</option>
+                <option>Carné diplomático</option>
+                <option>Certificado nacido vivo</option>
+              </select>
+            </div>
+            <div class="form-group mb-3">
+              <label for="documentNumber" class="form-label">Número de documento</label>
+              <input type="text" class="form-control" id="documentNumber">
+            </div>
+            <div class="form-group mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <div class="form-group mb-4 d-flex justify-content-evenly">
+              <a href="recuperar_contraseña.html">¿Olvidaste la contraseña?</a>
+              <a href="registrate.html">Registrate</a>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+            </div>
+          </form>
+        </div>
+    </section>
+  </section>
+</main>
+
+  <article class="container ms-4 py-5">
+    <h2>Servicios</h2>
+    <section>
+      <img src="/icon/estetoscopio.svg" alt="estetoscopio" />
+      <h3>Medicina laboral y del trabajo</h3>
+      <p>
+        Ofrecemos evaluación de riesgos laborales, exámenes médicos
+        ocupacionales, programas de prevención de enfermedades laborales y
+        asesoramiento sobre hábitos saludables en el trabajo
+      </p>
+    </section>
+    <section>
+      <img src="/icon/seguridad-en-el-trabajo 1.svg" />
+      <h3>Sistema de gestion ST-SST</h3>
+      <p>
+        Brindamos asesoría en la implementación y mantenimiento del Sistema de
+        Gestión de Seguridad y Salud en el Trabajo (SG-SST),ayudando a las
+        empresas a cumplir con sus obligaciones legales y a promover un
+        entornolaboral seguro.
+      </p>
+    </section>
+    <section>
+      <img src="/icon/pensando 1.svg" alt="pensamiento" />
+      <h3>Psicologia y Psicometria</h3>
+      <p>
+        Evaluación psicológica, intervenciónen casos de estrés laboral, apoyo
+        emocional y orientación en conflictoslaborales, programas de bienestar
+        emocional en el trabajo.
+      </p>
+    </section>
+    <section>
+      <img src="/icon/examenes-de-salud 1.svg" alt="examenes" />
+      <h3>Examenes paraclinicos</h3>
+      <p>
+        Ofrecemos una amplia gama deexámenes paraclínicos especializados para
+        evaluar la salud y el bienestar de los trabajadores en entornos
+        laborales.
+      </p>
+    </section>
+    <section>
+      <img src="/icon/telemedicina 1.svg" alt="telemedicina" />
+      <h3>Telemedicina</h3>
+      <p>
+        Nuestros servicios de telemedicina incluyen consulta médica virtual,
+        teleorientación,teleapoyo, telemedicina interactiva
+      </p>
+    </section>
+    <section>
+      <img src="/icon/microscopio 1.svg" />
+      <h3>Laboratorio</h3>
+      <p>
+        Nuestro laboratorio clínico ofreceuna amplia gama de pruebas para
+        evaluar la salud de los trabajadores en entornos laborales.
+      </p>
+    </section>
+  </article>
+  <footer class="sticky-footer text-white">
+    <article class="containter my-auto">
+      <section>
+        <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
+        <p>
+          Somos líderes en el Magdalena, y contamos con una red de prestadores
+          de servicios a nivel regional y nacional
+        </p>
+        <img src="/icon/Direccion_footer.svg" alt="Direccion_footer" />
+        <p>
+          Cra. 11 #18-90 Barrio Territorial, Centro Médico Pablo Garcia
+          InfanteSanta Marta, Magdalena, Colombia
+        </p>
+        <img src="/icon/Correo_footer1.svg" alt="Correo_footer" />
+        <p>Pomosalud@promosalud.org</p>
+        <img src="/icon/Telefono_footer.svg" alt="Telefono_footer" />
+        <p>4233421 - 4214882 - 4309810 - 4202158</p>
+        <img src="/icon/calendario_footer.svg" alt="calendario" />
+        <p>Citas:3042195411</p>
+      </section>
+      <section>
+        <h4>Servicios</h4>
+        <nav>
+          <!--Falta crear los index de estas secciones -->
+          <ul>
+            <li>
+              <a href="Medicina_Laboral_y_Trabajo.html" class="text-white">Medicina Laboral y del trabajo</a>
             </li>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="segundo_header">
-        <img
-          src="/icon/logoPromosalud-removebg-preview 2.svg"
-          alt="logo"
-          width="253"
-          height="142"
-        />
-        <ul>
-          <li>
-            <a href="inicio.html">Inicio</a>
-          </li>
-          <li>
-            <a href="sobre_nosotros.html">Sobre nosotros </a>
-          </li>
-          <li>
-            <a href="donde_estamos.html">Donde estamos</a>
-          </li>
-          <li>
-            <a href="contactanos.html">Contactanos</a>
-          </li>
-          <li>
-            <a href=""
-              ><!-- Enlace a la pagina de Facebook -->
-              <img
-                src="/icon/facebook.svg"
-                alt="facebook"
-                width="50"
-                height="50"
-              />
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <!-- Enlace a la pagina de Instagram -->
-              <img
-                src="/icon/instagram 1.svg"
-                alt="instagram"
-                width="50"
-                height="50"
-              />
-            </a>
-          </li>
-          <li>
-            <!-- Enlace a la pagina de Twitter -->
-            <a href=""
-              ><img
-                src="/icon/twitter.svg"
-                alt="twitter"
-                width="50"
-                height="50"
-            /></a>
-          </li>
-        </ul>
+            <li>
+              <a href="Sistema_Gestion.html" class="text-white">Sistema de gestion SG-SST</a>
+            </li>
+            <li>
+              <a href="Psicologia_psicometria.html" class="text-white">Psicologia y psicometria</a>
+            </li>
+            <li>
+              <a href="Laboratorio.html" class="text-white">Laboratorio</a>
+            </li>
+            <li>
+              <a href="Examenes_paraclinicos.html" class="text-white">Examenes Paraclinicos</a>
+            </li>
+            <li>
+              <a href="Telemedicina.html" class="text-white">Telemedicina</a>
+            </li>
+          </ul>
+        </nav>
       </section>
       <section>
-        <img src="/icon/pacienteatendido.svg" />
-      </section>
-      <section>
-        <form action="login.php" method="post">
-          <label for="document">Selecciona el tipo de documento</label>
-          <select name="document" id="document">
-            <option value="cedula_de_ciudadania">Cedula de ciudadania</option>
-            <option value="cedula_extranjera">Cedula extranjera</option>
-            <option value="permiso_temporal_de_trabajo">
-              Permiso temporal de trabajo
-            </option>
-            <option value="NIT">NIT</option>
-            <option value="tarjeta_de_identidad">Tarjeta de identidad</option>
-            <option value="pasaporte">Pasaporte</option>
-            <option value="registro_civil">Registro civil</option>
-            <option value="carne_diplomatico">Carne diplomatico</option>
-            <option value="certificado_nacido_vivo">
-              Certificado nacido vivo
-            </option>
-          </select>
-          <label for="numero_de_documento"
-            >Ingrese el numero de documento</label
-          >
-          <input type="numero_de_documento" />
-          <label for="contraseña">Contraseña</label>
-          <input type="password" id="contraseña" />
-          <a href="recuperar_contraseña.html">¿Olvidaste la contraseña?</a>
-          <a href="registrate.html">Registrate</a>
-          <button type="submit">Entrar</button>
-        </form>
-      </section>
-    </main>
-    <article>
-      <h2>Servicios</h2>
-      <section>
-        <img src="/icon/estetoscopio.svg" alt="estetoscopio" />
-        <h3>Medicina laboral y del trabajo</h3>
+        <h4>Cobertura Nacional</h4>
         <p>
-          Ofrecemos evaluación de riesgos laborales, exámenes médicos
-          ocupacionales, programas de prevención de enfermedades laborales y
-          asesoramiento sobre hábitos saludables en el trabajo
+          Somos parte de la RED DE PRESTADORES de servicios en salud
+          ocupacional y a través de nuestros proveedores aliados atendemos a
+          nivel regional y nacional
         </p>
       </section>
-      <section>
-        <img src="/icon/seguridad-en-el-trabajo 1.svg" />
-        <h3>Sistema de gestion ST-SST</h3>
-        <p>
-          Brindamos asesoría en la implementación y mantenimiento del Sistema de
-          Gestión de Seguridad y Salud en el Trabajo (SG-SST),ayudando a las
-          empresas a cumplir con sus obligaciones legales y a promover un
-          entornolaboral seguro.
-        </p>
-      </section>
-      <section>
-        <img src="/icon/pensando 1.svg" alt="pensamiento" />
-        <h3>Psicologia y Psicometria</h3>
-        <p>
-          Evaluación psicológica, intervenciónen casos de estrés laboral, apoyo
-          emocional y orientación en conflictoslaborales, programas de bienestar
-          emocional en el trabajo.
-        </p>
-      </section>
-      <section>
-        <img src="/icon/examenes-de-salud 1.svg" alt="examenes" />
-        <h3>Examenes paraclinicos</h3>
-        <p>
-          Ofrecemos una amplia gama deexámenes paraclínicos especializados para
-          evaluar la salud y el bienestar de los trabajadores en entornos
-          laborales.
-        </p>
-      </section>
-      <section>
-        <img src="/icon/telemedicina 1.svg" alt="telemedicina" />
-        <h3>Telemedicina</h3>
-        <p>
-          Nuestros servicios de telemedicina incluyen consulta médica virtual,
-          teleorientación,teleapoyo, telemedicina interactiva
-        </p>
-      </section>
-      <section>
-        <img src="/icon/microscopio 1.svg" />
-        <h3>Laboratorio</h3>
-        <p>
-          Nuestro laboratorio clínico ofreceuna amplia gama de pruebas para
-          evaluar la salud de los trabajadores en entornos laborales.
-        </p>
+      <section id="Carrusel_img">
+        <!-- Recordar como hacer un corrusel de imagenes en el footer -->
+        <img src="" alt="" />
       </section>
     </article>
-    <footer class="bg-primary text-white">
-      <article>
-        <section>
-          <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
-          <p>
-            Somos líderes en el Magdalena, y contamos con una red de prestadores
-            de servicios a nivel regional y nacional
-          </p>
-          <img src="/icon/Direccion_footer.svg" alt="Direccion_footer" />
-          <p>
-            Cra. 11 #18-90 Barrio Territorial, Centro Médico Pablo Garcia
-            InfanteSanta Marta, Magdalena, Colombia
-          </p>
-          <img src="/icon/Correo_footer1.svg" alt="Correo_footer" />
-          <p>Pomosalud@promosalud.org</p>
-          <img src="/icon/Telefono_footer.svg" alt="Telefono_footer" />
-          <p>4233421 - 4214882 - 4309810 - 4202158</p>
-          <img src="/icon/calendario_footer.svg" alt="calendario" />
-          <p>Citas:3042195411</p>
-        </section>
-        <section>
-          <h4>Servicios</h4>
-          <nav>
-            <!--Falta crear los index de estas secciones -->
-            <ul>
-              <li>
-                <a href="Medicina_Laboral_y_Trabajo.html" class="text-white"
-                  >Medicina Laboral y del trabajo</a
-                >
-              </li>
-              <li>
-                <a href="Sistema_Gestion.html" class="text-white"
-                  >Sistema de gestion SG-SST</a
-                >
-              </li>
-              <li>
-                <a href="Psicologia_psicometria.html" class="text-white"
-                  >Psicologia y psicometria</a
-                >
-              </li>
-              <li>
-                <a href="Laboratorio.html" class="text-white">Laboratorio</a>
-              </li>
-              <li>
-                <a href="Examenes_paraclinicos.html" class="text-white"
-                  >Examenes Paraclinicos</a
-                >
-              </li>
-              <li>
-                <a href="Telemedicina.html" class="text-white">Telemedicina</a>
-              </li>
-            </ul>
-          </nav>
-        </section>
-        <section>
-          <h4>Cobertura Nacional</h4>
-          <p>
-            Somos parte de la RED DE PRESTADORES de servicios en salud
-            ocupacional y a través de nuestros proveedores aliados atendemos a
-            nivel regional y nacional
-          </p>
-        </section>
-        <section id="Carrusel_img">
-          <!-- Recordar como hacer un corrusel de imagenes en el footer -->
-          <img src="" alt="" />
-        </section>
-      </article>
-      <article>
-        <section>
-          <p>
-            © Copyright 2024. Todos Los Derechos Reservados Por
-            SistemaInegradoPromosalud.com
-          </p>
-          <nav>
-            <ul>
-              <li>
-                <a href="inicio.html" class="text-white">Inicio</a>
-              </li>
-              <li>
-                <a href="sobre_nosotros.html" class="text-white"
-                  >Sobre nosotros
-                </a>
-              </li>
-              <li>
-                <a href="donde_estamos.html" class="text-white"
-                  >Donde estamos</a
-                >
-              </li>
-              <li>
-                <a href="contactanos.html" class="text-white">Contactanos</a>
-              </li>
-            </ul>
-          </nav>
-        </section>
-      </article>
-    </footer>
-  </body>
+    <article>
+      <section>
+        <p>
+          © Copyright 2024. Todos Los Derechos Reservados Por
+          SistemaInegradoPromosalud.com
+        </p>
+        <nav>
+          <ul>
+            <li>
+              <a href="inicio.html" class="text-white">Inicio</a>
+            </li>
+            <li>
+              <a href="sobre_nosotros.html" class="text-white">Sobre nosotros
+              </a>
+            </li>
+            <li>
+              <a href="donde_estamos.html" class="text-white">Donde estamos</a>
+            </li>
+            <li>
+              <a href="contactanos.html" class="text-white">Contactanos</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </article>
+  </footer>
+</body>
+
 </html>
