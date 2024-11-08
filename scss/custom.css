@@ -1,12 +1,4 @@
 @charset "UTF-8";
-.bg-dark {
-  background-color: #121212;
-}
-
-.text-light {
-  color: #ffffff;
-}
-
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -11502,4 +11494,25 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+body {
+  padding-top: 70px;
+  /* Ajustar según la altura de tu header */
+}
+
+#formulario-inicio {
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  /* Máximo ancho del formulario */
+}
+
+.img-fluid {
+  max-width: 70%;
+  /* Ajuste de la imagen */
+  height: auto;
+}
+
+.custom-opacity {
+  background-color: rgba(123, 123, 123, 0.1);
 }/*# sourceMappingURL=custom.css.map */

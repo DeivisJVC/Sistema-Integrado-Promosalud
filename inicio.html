@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema Integrado Promosalud</title>
   <link rel="stylesheet" href="/scss/custom.css" />
-  <link rel="stylesheet" href="/style.css" />
-  <style> body { padding-top: 70px; /* Ajustar según la altura de tu header */ } #formulario-inicio { background-color: #f8f9fa; /* Color de fondo claro */ border-radius: 10px; padding: 30px; max-width: 600px; /* Máximo ancho del formulario */ } .img-fluid { max-width: 50%; /* Ajuste de la imagen */ height: auto; } .formulario-container { display: flex; justify-content: center; align-items: center; gap: 50px; /* Espacio entre la imagen y el formulario */ margin-top: 50px; /* Espacio superior */ } </style>
 </head>
 
 <body>
@@ -114,43 +112,44 @@
     </nav>
   </header>
   <main class="">
-  <section id="segundo_header" class="navbar navbar-expand-lg py-3">
-    <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
-    <ul class="nav container-fluid justify-content-xxl-evenly">
-      <li>
-        <a class="nav-link active fs-5 text-black" aria-current="page" href="inicio.html">Inicio</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active fs-5 text-black" href="sobre_nosotros.html">Sobre nosotros </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active fs-5 text-black text-capitalize" href="donde_estamos.html">Donde estamos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active fs-5 text-black" href="contactanos.html">Contactanos</a>
-      </li>
-      <li class="nav-item">
-        <a href=""><!-- Enlace a la pagina de Facebook -->
-          <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <!-- Enlace a la pagina de Instagram -->
-          <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
-        </a>
-      </li>
-      <li>
-        <!-- Enlace a la pagina de Twitter -->
-        <a href=""><img src="/icon/twitter.svg" alt="twitter" width="50" height="50" /></a>
-      </li>
-    </ul>
-  </section>
-  <section class="d-flex justify-content-center align-items-center mt-5 " style="gap: 200px;">
-    <img src="/icon/pacienteatendido.svg" alt="Paciente Atendido" >
-    <section id="formulario-inicio" class="container row justify-content-center bg-tertiary rounded p-5">
+    <section id="segundo_header" class="navbar navbar-expand-lg py-3 mt-4">
+      <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
+      <ul class="nav container-fluid justify-content-xxl-evenly">
+        <li>
+          <a class="nav-link active fs-5 text-black" aria-current="page" href="inicio.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fs-5 text-black" href="sobre_nosotros.html">Sobre nosotros </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fs-5 text-black text-capitalize" href="donde_estamos.html">Donde estamos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active fs-5 text-black" href="contactanos.html">Contactanos</a>
+        </li>
+        <li class="nav-item">
+          <a href=""><!-- Enlace a la pagina de Facebook -->
+            <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
+          </a>
+        </li>
+        <li>
+          <a href="">
+            <!-- Enlace a la pagina de Instagram -->
+            <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
+          </a>
+        </li>
+        <li>
+          <!-- Enlace a la pagina de Twitter -->
+          <a href=""><img src="/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
+        </li>
+      </ul>
+    </section>
+     <section class="d-flex justify-content-center align-items-center mt-5  flex-wrap" style="gap: 200px;">
+      <img src="/icon/pacienteatendido.svg" alt="Paciente Atendido" class="img-fluid">
+      <section id="formulario-inicio"
+        class="container col-12 col-md-8 col-lg-6 row justify-content-center bg-tertiary rounded-5">
         <div class="col-12">
-          <form class="p-4 p-md-5  rounded-3 text-white text-capitalize ">
+          <form class="p-5 p-md-5  rounded-3  text-capitalize">
             <div class="form-group mb-3">
               <label for="documentType" class="form-label">Tipo de documento</label>
               <select class="form-control" id="documentType">
@@ -167,82 +166,83 @@
             </div>
             <div class="form-group mb-3">
               <label for="documentNumber" class="form-label">Número de documento</label>
-              <input type="text" class="form-control" id="documentNumber">
+              <input type="text" class="form-control" id="documentNumber" placeholder="Ingresa el Documento">
             </div>
             <div class="form-group mb-3">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password">
+              <input type="password" class="form-control" id="password" placeholder="Ingresa la Contraseña">
             </div>
-            <div class="form-group mb-4 d-flex justify-content-evenly">
+            <div class="form-group mb-4 d-flex justify-content-between">
               <a href="recuperar_contraseña.html">¿Olvidaste la contraseña?</a>
               <a href="registrate.html">Registrate</a>
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+              <button type="submit" class="btn btn-primary rounded-4">Entrar</button>
             </div>
           </form>
         </div>
-    </section>
-  </section>
-</main>
-
-  <article class="container ms-4 py-5">
-    <h2>Servicios</h2>
-    <section>
-      <img src="/icon/estetoscopio.svg" alt="estetoscopio" />
-      <h3>Medicina laboral y del trabajo</h3>
-      <p>
+      </section>
+    </section> 
+  </main>
+ <article id="servicios" class="custom-opacity container-fluid text-black mt-5">
+  <h2 class="text-center p-4">Servicios</h2>
+  <div class="row">
+    <section class="d-grid col-12 col-md-6 col-lg-4  mb-4">
+      <img src="/icon/estetoscopio.svg" alt="estetoscopio" class="" />
+      <h3 class="">Medicina laboral y del trabajo</h3>
+      <p class="">
         Ofrecemos evaluación de riesgos laborales, exámenes médicos
         ocupacionales, programas de prevención de enfermedades laborales y
-        asesoramiento sobre hábitos saludables en el trabajo
+        asesoramiento sobre hábitos saludables en el trabajo.
       </p>
     </section>
-    <section>
-      <img src="/icon/seguridad-en-el-trabajo 1.svg" />
-      <h3>Sistema de gestion ST-SST</h3>
+    <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
+      <img src="/icon/seguridad-en-el-trabajo 1.svg" class="mb-3" />
+      <h3>Sistema de gestión ST-SST</h3>
       <p>
         Brindamos asesoría en la implementación y mantenimiento del Sistema de
-        Gestión de Seguridad y Salud en el Trabajo (SG-SST),ayudando a las
-        empresas a cumplir con sus obligaciones legales y a promover un
-        entornolaboral seguro.
+        Gestión de Seguridad y Salud en el Trabajo (SG-SST), ayudando a las
+        empresas a cumplir con sus obligaciones legales y a promover un entorno
+        laboral seguro.
       </p>
     </section>
-    <section>
-      <img src="/icon/pensando 1.svg" alt="pensamiento" />
-      <h3>Psicologia y Psicometria</h3>
+    <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
+      <img src="/icon/pensando 1.svg" alt="pensamiento" class="mb-3" />
+      <h3>Psicología y Psicometría</h3>
       <p>
-        Evaluación psicológica, intervenciónen casos de estrés laboral, apoyo
-        emocional y orientación en conflictoslaborales, programas de bienestar
+        Evaluación psicológica, intervención en casos de estrés laboral, apoyo
+        emocional y orientación en conflictos laborales, programas de bienestar
         emocional en el trabajo.
       </p>
     </section>
-    <section>
-      <img src="/icon/examenes-de-salud 1.svg" alt="examenes" />
-      <h3>Examenes paraclinicos</h3>
+    <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
+      <img src="/icon/examenes-de-salud 1.svg" alt="examenes" class="mb-3" />
+      <h3>Exámenes paraclínicos</h3>
       <p>
-        Ofrecemos una amplia gama deexámenes paraclínicos especializados para
-        evaluar la salud y el bienestar de los trabajadores en entornos
-        laborales.
+        Ofrecemos una amplia gama de exámenes paraclínicos especializados para
+        evaluar la salud y el bienestar de los trabajadores en entornos laborales.
       </p>
     </section>
-    <section>
-      <img src="/icon/telemedicina 1.svg" alt="telemedicina" />
+    <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
+      <img src="/icon/telemedicina 1.svg" alt="telemedicina" class="mb-3" />
       <h3>Telemedicina</h3>
       <p>
         Nuestros servicios de telemedicina incluyen consulta médica virtual,
-        teleorientación,teleapoyo, telemedicina interactiva
+        teleorientación, teleapoyo, telemedicina interactiva.
       </p>
     </section>
-    <section>
-      <img src="/icon/microscopio 1.svg" />
+    <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
+      <img src="/icon/microscopio 1.svg" class="mb-3" />
       <h3>Laboratorio</h3>
       <p>
-        Nuestro laboratorio clínico ofreceuna amplia gama de pruebas para
+        Nuestro laboratorio clínico ofrece una amplia gama de pruebas para
         evaluar la salud de los trabajadores en entornos laborales.
       </p>
     </section>
-  </article>
-  <footer class="sticky-footer text-white">
+  </div>
+</article>
+
+  <footer class="bg-primary text-white py-1">
     <article class="containter my-auto">
       <section>
         <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
