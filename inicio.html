@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema Integrado Promosalud</title>
   <link rel="stylesheet" href="/scss/custom.css" />
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -35,19 +36,19 @@
         <li class="nav-item">
           <!--Separar los iconos de las letras-->
           <a href="agendar_cita.html" class="nav-link text-white" aria-current="page">
-            <img class="me-2" src="/icon/🦆 icon _book_.svg" alt="agendamiento de citas" width="40" height="40" />
+            <img class="me-2" src="/icon/icon _book.svg" alt="agendamiento de citas" width="40" height="40" />
             Agendamiento de citas
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white active" aria-current="page" href="agenda.html">
-            <img class="me-2" src="/icon/🦆 icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
+            <img class="me-2" src="/icon/icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
             agenda
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white active" aria-current="page" href="informes.html">
-            <img class="me-2" src="/icon/🦆 icon _file_.svg" alt="informes" width="40" height="40" /> Informes
+            <img class="me-2" src="/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
           </a>
         </li>
         <li class="nav-item align-content-center">
@@ -64,7 +65,7 @@
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Configuración</a></li>
             <li>
-              <p class="dropdown-item">Perfil</p>
+                  <li><a class="dropdown-item" href="#">Perfil</a></li>
             </li>
           </ul>
         <li class="nav-item align-content-center">
@@ -111,36 +112,36 @@
       </ul>
     </nav>
   </header>
-  <main class="">
-    <section id="segundo_header" class="navbar navbar-expand-lg py-3 mt-4">
-      <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
-      <ul class="nav container-fluid justify-content-xxl-evenly">
+  <main class="m-5">
+    <section class="navbar navbar-expand-lg py-3 mt-4">
+      <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142"/>
+      <ul id="segundo_header" class="nav container-fluid justify-content-xxl-evenly">
         <li>
-          <a class="nav-link active fs-5 text-black" aria-current="page" href="inicio.html">Inicio</a>
+          <a  id="segundo_header"  class="nav-link active fs-5 " aria-current="page" href="inicio.html">Inicio</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fs-5 text-black" href="sobre_nosotros.html">Sobre nosotros </a>
+          <a  id="segundo_header"  class="nav-link active fs-5 " href="sobre_nosotros.html">Sobre nosotros </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fs-5 text-black text-capitalize" href="donde_estamos.html">Donde estamos</a>
+          <a  id="segundo_header"  class="nav-link active fs-5 text-capitalize" href="donde_estamos.html">Donde estamos</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active fs-5 text-black" href="contactanos.html">Contactanos</a>
+          <a id="segundo_header"  class="nav-link active fs-5" href="contactanos.html">Contactanos</a>
         </li>
         <li class="nav-item">
-          <a href=""><!-- Enlace a la pagina de Facebook -->
+          <a   id="segundo_header"  href=""><!-- Enlace a la pagina de Facebook -->
             <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
           </a>
         </li>
         <li>
-          <a href="">
+          <a  id="segundo_header"  href="">
             <!-- Enlace a la pagina de Instagram -->
             <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
           </a>
         </li>
         <li>
           <!-- Enlace a la pagina de Twitter -->
-          <a href=""><img src="/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
+          <a  id="segundo_header"  href=""><img src="/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
         </li>
       </ul>
     </section>
@@ -184,9 +185,9 @@
       </section>
     </section> 
   </main>
- <article id="servicios" class="custom-opacity container-fluid text-black mt-5">
+ <article id="servicios" class="custom-opacity container-xxl text-black mt-5  rounded-5">
   <h2 class="text-center p-4">Servicios</h2>
-  <div class="row">
+  <div class="row text-center m-4">
     <section class="d-grid col-12 col-md-6 col-lg-4  mb-4">
       <img src="/icon/estetoscopio.svg" alt="estetoscopio" class="" />
       <h3 class="">Medicina laboral y del trabajo</h3>
@@ -302,7 +303,7 @@
       </section>
     </article>
     <article>
-      <section>
+      <section class="footer-2">
         <p>
           © Copyright 2024. Todos Los Derechos Reservados Por
           SistemaInegradoPromosalud.com

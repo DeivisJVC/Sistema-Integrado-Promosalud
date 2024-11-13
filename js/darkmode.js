@@ -3,33 +3,46 @@
  * Copyright 2011-2022 The Bootstrap Authors
  * Licensed under the Creative Commons Attribution 3.0 Unported License.
  */
-
 (() => {
   "use strict";
 
   const storedTheme = localStorage.getItem("theme");
 
   const getPreferredTheme = () => {
-    if (storedTheme) {
-      return storedTheme;
-    }
-
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+    return (
+      storedTheme ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+    );
   };
 
-  const setTheme = function (theme) {
-    if (
-      theme === "auto" &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-    ) {
-      document.documentElement.setAttribute("data-bs-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-bs-theme", theme);
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute("data-bs-theme", theme);
+
+    const segundo_header = document.getElementById("segundo_header");
+    const servicios = document.getElementById("servicios");
+
+    if (segundo_header && servicios) {
+      const navLinks = segundo_header.querySelectorAll(".nav-link");
+
+      if (theme === "dark") {
+        segundo_header.classList.add("text-white");
+        servicios.classList.add("text-white");
+
+        // Aplicar color blanco a los nav-link en tema oscuro
+        navLinks.forEach((link) => link.classList.add("text-white"));
+      } else {
+        segundo_header.classList.remove("text-white");
+        servicios.classList.remove("text-white");
+
+        // Remover color blanco de los nav-link en tema claro
+        navLinks.forEach((link) => link.classList.remove("text-white"));
+      }
     }
   };
 
+  // Establecer el tema preferido
   setTheme(getPreferredTheme());
 
   const showActiveTheme = (theme) => {
@@ -52,7 +65,7 @@
   window
     .matchMedia("(prefers-color-scheme: dark)")
     .addEventListener("change", () => {
-      if (storedTheme !== "light" || storedTheme !== "dark") {
+      if (!storedTheme) {
         setTheme(getPreferredTheme());
       }
     });
