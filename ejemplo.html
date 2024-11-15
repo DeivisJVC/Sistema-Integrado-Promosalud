@@ -1,44 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="/scss/custom.css" />
-    <link rel="stylesheet" href="/style.css" />
-  </head>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/js/darkmode.js"></script>
-  <body>
-    <div class="accordion" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-expanded="true"
-            aria-controls="collapseOne"
-          >
-            Perfil
-          </button>
-        </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse show"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body">
-            <strong>This is the first item's accordion body.</strong> It is
-            shown by default, until the collapse plugin adds the appropriate
-            classes that we use to style each element. These classes control the
-            overall appearance, as well as the showing and hiding via CSS
-            transitions. You can modify any of this with custom CSS or
-            overriding our default variables. It's also worth noting that just
-            about any HTML can go within the <code>.accordion-body</code>,
-            though the transition does limit overflow.
-          </div>
-        </div>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador de Agenda</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Administrador de Agenda de Pacientes</h1>
+
+    <!-- Panel de Control -->
+    <div class="card mb-4">
+      <div class="card-header">
+        <h3>Panel de Control</h3>
       </div>
+      <div class="card-body">
+        <button class="btn btn-primary" onclick="downloadAgenda()">Descargar Agenda</button>
+      </div>
+    </div>
+
+    <!-- Tabla de Agenda -->
+    <div class="card">
+      <div class="card-header">
+        <h3>Agenda de Pacientes</h3>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Nombre del Paciente</th>
+              <th>Doctor</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Aquí se rellenarían las filas con datos de la agenda -->
+            <tr>
+              <td>15/11/2024</td>
+              <td>10:00 AM</td>
+              <td>Juan Pérez</td>
+              <td>Dra. Gómez</td>
+              <td><button class="btn btn-sm btn-info">Ver</button></td>
+            </tr>
+            <!-- Más filas según los datos disponibles -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    function downloadAgenda() {
+      // Lógica para descargar la agenda
+      alert('Descargando agenda...');
+    }
+  </script>
+</body>
+
 </html>
