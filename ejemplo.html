@@ -4,65 +4,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administrador de Agenda</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Validación de Formulario</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-  <div class="container mt-5">
-    <h1 class="text-center mb-4">Administrador de Agenda de Pacientes</h1>
+  <section>
+    <form id="registroForm" class="row g-4 needs-validation" novalidate>
+      <div class="col-md-6">
+        <label for="primerNombre" class="form-label">Primer Nombre*</label>
+        <input type="text" id="primerNombre" class="form-control" placeholder="Primer nombre" required />
+        <div class="valid-feedback">Excelente!</div>
+        <div class="invalid-feedback">Por favor, ingrese tu primer nombre.</div>
+      </div>
+      <!-- Otros campos aquí -->
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Registrarse</button>
+      </div>
+    </form>
+  </section>
 
-    <!-- Panel de Control -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h3>Panel de Control</h3>
-      </div>
-      <div class="card-body">
-        <button class="btn btn-primary" onclick="downloadAgenda()">Descargar Agenda</button>
-      </div>
-    </div>
-
-    <!-- Tabla de Agenda -->
-    <div class="card">
-      <div class="card-header">
-        <h3>Agenda de Pacientes</h3>
-      </div>
-      <div class="card-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Hora</th>
-              <th>Nombre del Paciente</th>
-              <th>Doctor</th>
-              <th>Acciones</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Aquí se rellenarían las filas con datos de la agenda -->
-            <tr>
-              <td>15/11/2024</td>
-              <td>10:00 AM</td>
-              <td>Juan Pérez</td>
-              <td>Dra. Gómez</td>
-              <td><button class="btn btn-sm btn-info">Ver</button></td>
-            </tr>
-            <!-- Más filas según los datos disponibles -->
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-  <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
-
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    function downloadAgenda() {
-      // Lógica para descargar la agenda
-      alert('Descargando agenda...');
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    });
   </script>
 </body>
 

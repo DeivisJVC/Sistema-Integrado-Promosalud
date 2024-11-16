@@ -27,6 +27,13 @@ body {
     0.1
   ); //fondo para el article de lo servicios
 }
+
+#header_registro {
+  background: white;
+}
+#body_registro {
+  padding-top: 0px;
+}
 header {
   background: linear-gradient(to right, #0f3b6f, #1d72d4);
 }
