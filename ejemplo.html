@@ -4,39 +4,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Validación de Formulario</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Limpiar Checkboxes</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
-  <section>
-    <form id="registroForm" class="row g-4 needs-validation" novalidate>
-      <div class="col-md-6">
-        <label for="primerNombre" class="form-label">Primer Nombre*</label>
-        <input type="text" id="primerNombre" class="form-control" placeholder="Primer nombre" required />
-        <div class="valid-feedback">Excelente!</div>
-        <div class="invalid-feedback">Por favor, ingrese tu primer nombre.</div>
+  <div class="container my-4">
+    <section class="card">
+      <div class="card-header">
+        <h3>Lista de Pacientes</h3>
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-primary" id="filter_button" onclick="filterAgenda()">Filtrar</button>
+          <button class="btn btn-secondary" onclick="clearCheckboxes()">Limpiar Checkboxes</button>
+        </div>
       </div>
-      <!-- Otros campos aquí -->
-      <div class="col-12">
-        <button class="btn btn-primary" type="submit">Registrarse</button>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="patient_table" class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" id="select_all" class="form-check-input"></th>
+                <th>Nombre del Paciente</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" class="form-check-input select-patient"></td>
+                <td>Juan Pérez</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" class="form-check-input select-patient"></td>
+                <td>María López</td>
+              </tr>
+              <!-- Agregar más datos según la base de datos -->
+            </tbody>
+          </table>
+        </div>
       </div>
-    </form>
-  </section>
+    </section>
+  </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const forms = document.querySelectorAll('.needs-validation');
-      Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          }
-          form.classList.add('was-validated');
-        }, false);
+    function filterAgenda() {
+      // Función de filtrado (puedes agregar tu lógica aquí)
+      console.log("Filtrar datos");
+    }
+
+    function clearCheckboxes() {
+      const checkboxes = document.querySelectorAll('.select-patient');
+      checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
       });
-    });
+      document.getElementById('select_all').checked = false; // Desmarcar el "select all" también
+    }
+
+    window.onload = function () {
+      document.getElementById('select_all').addEventListener('change', function () {
+        const checkboxes = document.querySelectorAll('.select-patient');
+        checkboxes.forEach(checkbox => {
+          checkbox.checked = this.checked;
+        });
+      });
+    }
   </script>
 </body>
 
