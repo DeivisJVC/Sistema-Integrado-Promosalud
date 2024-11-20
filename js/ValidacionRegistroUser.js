@@ -1,10 +1,9 @@
-//validacion de formulario
 document.addEventListener("DOMContentLoaded", function () {
   const forms = document.querySelectorAll(".needs-validation");
-  Array.from(forms).forEach((form) => {
+  Array.from(forms).forEach(function (form) {
     form.addEventListener(
       "submit",
-      (event) => {
+      function (event) {
         if (!form.checkValidity()) {
           event.preventDefault();
           event.stopPropagation();
@@ -15,3 +14,4 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   });
 });
+//validacion de campo

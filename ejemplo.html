@@ -4,68 +4,94 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Limpiar Checkboxes</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Generador de Informes de Salud</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="container my-4">
-    <section class="card">
-      <div class="card-header">
-        <h3>Lista de Pacientes</h3>
-        <div class="d-flex justify-content-between">
-          <button class="btn btn-primary" id="filter_button" onclick="filterAgenda()">Filtrar</button>
-          <button class="btn btn-secondary" onclick="clearCheckboxes()">Limpiar Checkboxes</button>
+  <section class="card p-4 my-4">
+    <h5 class="mb-3">Seleccionar rango de fechas</h5>
+    <form id="dateForm" class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-5">
+          <label for="empresa" class="form-label">Empresa</label>
+          <select class="form-select" id="empresa" required>
+            <option value="seleccion" class="form-select-option">Seleccione...</option>
+            <option value="1" class="form-select-option">Empresa 1</option>
+            <option value="2" class="form-select-option">Empresa 2</option>
+            <option value="3" class="form-select-option">Empresa 3</option>
+            <option value="4" class="form-select-option">Empresa 4</option>
+            <option value="5" class="form-select-option">Empresa 5</option>
+          </select>
+          <div class="valid-feedback">
+            ¡Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, seleccione una empresa.
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="startDate" class="form-label">Fecha de inicio</label>
+          <input type="date" class="form-control" id="startDate" required>
+          <div class="valid-feedback">
+            ¡Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese una fecha de inicio.
+          </div>
+        </div>
+        <div class="col-md-5">
+          <label for="endDate" class="form-label">Fecha de fin</label>
+          <input type="date" class="form-control" id="endDate" required>
+          <div class="valid-feedback">
+            ¡Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese una fecha de fin.
+          </div>
+        </div>
+        <div class="col-md-2 d-flex align-items-end">
+          <button type="submit" class="btn btn-primary w-100">Filtrar</button>
         </div>
       </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table id="patient_table" class="table table-striped">
-            <thead>
-              <tr>
-                <th><input type="checkbox" id="select_all" class="form-check-input"></th>
-                <th>Nombre del Paciente</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><input type="checkbox" class="form-check-input select-patient"></td>
-                <td>Juan Pérez</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="form-check-input select-patient"></td>
-                <td>María López</td>
-              </tr>
-              <!-- Agregar más datos según la base de datos -->
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-  </div>
+    </form>
+  </section>
 
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    function filterAgenda() {
-      // Función de filtrado (puedes agregar tu lógica aquí)
-      console.log("Filtrar datos");
-    }
+    (function () {
+      'use strict';
+      var form = document.getElementById('dateForm');
 
-    function clearCheckboxes() {
-      const checkboxes = document.querySelectorAll('.select-patient');
-      checkboxes.forEach(checkbox => {
-        checkbox.checked = false;
-      });
-      document.getElementById('select_all').checked = false; // Desmarcar el "select all" también
-    }
+      form.addEventListener('submit', function (event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
 
-    window.onload = function () {
-      document.getElementById('select_all').addEventListener('change', function () {
-        const checkboxes = document.querySelectorAll('.select-patient');
-        checkboxes.forEach(checkbox => {
-          checkbox.checked = this.checked;
-        });
+        var empresa = document.getElementById('empresa');
+        if (empresa.value === "seleccion") {
+          empresa.setCustomValidity('Seleccione una empresa válida');
+        } else {
+          empresa.setCustomValidity('');
+        }
+
+        form.classList.add('was-validated');
+      }, false);
+
+      document.getElementById('empresa').addEventListener('change', function () {
+        if (this.value === "seleccion") {
+          this.setCustomValidity('Seleccione una empresa válida');
+        } else {
+          this.setCustomValidity('');
+        }
+
+        this.classList.add('is-valid');
+        this.classList.remove('is-invalid');
       });
-    }
+    })();
   </script>
 </body>
 

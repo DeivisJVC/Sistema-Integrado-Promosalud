@@ -4,7 +4,20 @@ function normalizeText(text) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
+function clearCheckboxes() {
+  document
+    .querySelectorAll(".select-patient")
+    .forEach((checkbox) => (checkbox.checked = false));
+  document.getElementById("checkboxdescargar").checked = false;
 
+  document
+    .getElementById("checkboxdescargar")
+    .addEventListener("change", function () {
+      document
+        .querySelectorAll(".select-patient")
+        .forEach((checkbox) => (checkbox.checked = this.checked));
+    });
+}
 function filterAgenda() {
   const filterDate = document.getElementById("filter_date").value;
   const filterName = normalizeText(
@@ -61,6 +74,7 @@ function clearFilterAgenda() {
   document.getElementById("documentType").value = "";
   document.getElementById("filter_id").value = "";
   filterAgenda();
+  clearCheckboxes();
 }
 
 window.onload = filterAgenda;
