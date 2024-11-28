@@ -20,12 +20,7 @@ body {
   height: auto;
 }
 .custom-opacity {
-  background-color: rgba(
-    123,
-    123,
-    123,
-    0.1
-  ); //fondo para el article de lo servicios
+  background-color: rgba(123, 123, 123, 0.1);
 }
 
 #header_registro {

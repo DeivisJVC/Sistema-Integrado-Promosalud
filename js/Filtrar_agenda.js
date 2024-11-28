@@ -4,6 +4,7 @@ function normalizeText(text) {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
+
 function clearCheckboxes() {
   document
     .querySelectorAll(".select-patient")
@@ -18,6 +19,7 @@ function clearCheckboxes() {
         .forEach((checkbox) => (checkbox.checked = this.checked));
     });
 }
+
 function filterAgenda() {
   const filterDate = document.getElementById("filter_date").value;
   const filterName = normalizeText(
@@ -76,5 +78,3 @@ function clearFilterAgenda() {
   filterAgenda();
   clearCheckboxes();
 }
-
-window.onload = filterAgenda;

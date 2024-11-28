@@ -4,95 +4,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generador de Informes de Salud</title>
+  <title>Agenda de Pacientes</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <section class="card p-4 my-4">
-    <h5 class="mb-3">Seleccionar rango de fechas</h5>
-    <form id="dateForm" class="needs-validation" novalidate>
-      <div class="row">
-        <div class="col-md-5">
-          <label for="empresa" class="form-label">Empresa</label>
-          <select class="form-select" id="empresa" required>
-            <option value="seleccion" class="form-select-option">Seleccione...</option>
-            <option value="1" class="form-select-option">Empresa 1</option>
-            <option value="2" class="form-select-option">Empresa 2</option>
-            <option value="3" class="form-select-option">Empresa 3</option>
-            <option value="4" class="form-select-option">Empresa 4</option>
-            <option value="5" class="form-select-option">Empresa 5</option>
-          </select>
-          <div class="valid-feedback">
-            ¡Excelente!
-          </div>
-          <div class="invalid-feedback">
-            Por favor, seleccione una empresa.
-          </div>
-        </div>
-        <div class="col-md-5">
-          <label for="startDate" class="form-label">Fecha de inicio</label>
-          <input type="date" class="form-control" id="startDate" required>
-          <div class="valid-feedback">
-            ¡Excelente!
-          </div>
-          <div class="invalid-feedback">
-            Por favor, ingrese una fecha de inicio.
-          </div>
-        </div>
-        <div class="col-md-5">
-          <label for="endDate" class="form-label">Fecha de fin</label>
-          <input type="date" class="form-control" id="endDate" required>
-          <div class="valid-feedback">
-            ¡Excelente!
-          </div>
-          <div class="invalid-feedback">
-            Por favor, ingrese una fecha de fin.
-          </div>
-        </div>
-        <div class="col-md-2 d-flex align-items-end">
-          <button type="submit" class="btn btn-primary w-100">Filtrar</button>
-        </div>
+  <section class="card">
+    <div class="card-header">
+      <h3>Agenda de Pacientes</h3>
+      <div class="d-flex">
+        <input type="date" id="filter_date" class="form-control me-2" placeholder="Filtrar por Fecha">
+        <input type="text" id="filter_name" class="form-control me-2" placeholder="Filtrar Paciente">
+        <input type="text" id="filter_doctor" class="form-control me-2" placeholder="Filtrar por doctor">
+        <label for="documentType" class="form-label me-2">Seleccionar Documento</label>
+        <select class="form-select me-2" id="documentType">
+          <option selected class="form-select-option is-invalid">Seleccione...</option>
+          <option class="form-select-option" value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+          <option class="form-select-option" value="Cédula extranjera">Cédula extranjera</option>
+          <option class="form-select-option" value="Permiso temporal de trabajo">Permiso temporal de trabajo</option>
+          <option class="form-select-option" value="NIT">NIT</option>
+          <option class="form-select-option" value="Tarjeta de identidad">Tarjeta de identidad</option>
+          <option class="form-select-option" value="Pasaporte">Pasaporte</option>
+          <option class="form-select-option" value="Registro civil">Registro civil</option>
+          <option class="form-select-option" value="Carné diplomático">Carné diplomático</option>
+          <option class="form-select-option" value="Certificado nacido vivo">Certificado nacido vivo</option>
+        </select>
+        <input type="text" id="filter_id" class="form-control me-2" placeholder="Numero de Documento">
+        <button class="btn btn-primary me-2" onclick="filterAgenda()">Filtrar</button>
+        <button class="btn btn-secondary" onclick="clearFilterAgenda()">Limpiar</button>
       </div>
-    </form>
+    </div>
+    <div class="card-body">
+      <table id="patient_table" class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Nombre del Paciente</th>
+            <th>Doctor</th>
+            <th class="d-none">Tipo de Documento</th> <!-- Agregar clase d-none para ocultar -->
+            <th class="d-none">Número de Documento</th>
+            <th>Orden Adjunta</th>
+            <th>Seleccionar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-11-15</td>
+            <td>10:00 AM</td>
+            <td>Juan Pérez</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Cédula de ciudadanía</td>
+            <td class="d-none">123456</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input id="checkboxdescargar" type="checkbox" class="form-check-input select-patient p-2"></td>
+          </tr>
+          <tr>
+            <td>2024-11-15</td>
+            <td>11:00 AM</td>
+            <td>María López</td>
+            <td>Dr. Martínez</td>
+            <td class="d-none">Cédula extranjera</td>
+            <td class="d-none">789012</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2"></td>
+          </tr>
+          <tr>
+            <td>2024-11-16</td>
+            <td>09:00 AM</td>
+            <td>Carlos Ruiz</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Permiso temporal de trabajo</td>
+            <td class="d-none">1082998</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2"></td>
+          </tr>
+          <tr>
+            <td>2024-11-16</td>
+            <td>09:00 AM</td>
+            <td>Carlos Ruiz</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Cédula de ciudadanía</td>
+            <td class="d-none">123456789</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2"></td>
+          </tr>
+          <tr>
+            <td>2024-11-16</td>
+            <td>10:00 AM</td>
+            <td>Lucía Fernández</td>
+            <td>Dr. Pérez</td>
+            <td class="d-none">Pasaporte</td>
+            <td class="d-none">123456</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2"></td>
+          </tr>
+          <tr>
+            <td>2024-11-15</td>
+            <td>10:00 AM</td>
+            <td>Juan Pérez</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Cédula de ciudadanía</td>
+            <td class="d-none">123456</td> <!-- Valor de la cédula -->
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input id="checkboxdescargar" type="checkbox" class="form-check-input select-patient p-2 "></td>
+          </tr>
+          <tr>
+            <td>2024-11-15</td>
+            <td>11:00 AM</td>
+            <td>María López</td>
+            <td>Dr. Martínez</td>
+            <td class="d-none">Cédula extranjera</td>
+            <td class="d-none">789012</td> <!-- Valor del tipo de documento -->
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2"></td>
+          <tr>
+            <td>2024-11-16</td>
+            <td>09:00 AM</td>
+            <td>Carlos Ruiz</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Permiso temporal de trabajo</td>
+            <td class="d-none">1082998</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2 "></td>
+          </tr>
+          <tr>
+            <td>2024-11-16</td>
+            <td>09:00 AM</td>
+            <td>Carlos Ruiz</td>
+            <td>Dra. Gómez</td>
+            <td class="d-none">Cédula de ciudadanía</td>
+            <td class="d-none">123456789</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2 "></td>
+          </tr>
+          <tr>
+            <td>2024-11-16</td>
+            <td>10:00 AM</td>
+            <td>Lucía Fernández</td>
+            <td>Dr. Pérez</td>
+            <td class="d-none">Pasaporte</td>
+            <td class="d-none">123456</td>
+            <td><button class="btn btn-sm btn-info">Ver</button></td>
+            <td><input type="checkbox" class="form-check-input select-patient p-2 "></td>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script>
-    (function () {
-      'use strict';
-      var form = document.getElementById('dateForm');
+    function normalizeText(text) {
+      return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
 
-      form.addEventListener('submit', function (event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+    function clearCheckboxes() {
+      document.querySelectorAll(".select-patient").forEach((checkbox) => (checkbox.checked = false));
+      document.getElementById("checkboxdescargar").checked = false;
 
-        var empresa = document.getElementById('empresa');
-        if (empresa.value === "seleccion") {
-          empresa.setCustomValidity('Seleccione una empresa válida');
-        } else {
-          empresa.setCustomValidity('');
-        }
-
-        form.classList.add('was-validated');
-      }, false);
-
-      document.getElementById('empresa').addEventListener('change', function () {
-        if (this.value === "seleccion") {
-          this.setCustomValidity('Seleccione una empresa válida');
-        } else {
-          this.setCustomValidity('');
-        }
-
-        this.classList.add('is-valid');
-        this.classList.remove('is-invalid');
+      document.getElementById("checkboxdescargar").addEventListener("change", function () {
+        document.querySelectorAll(".select-patient").forEach((checkbox) => (checkbox.checked = this.checked));
       });
-    })();
+    }
+
+    function filterAgenda() {
+      const filterDate = document.getElementById("filter_date").value;
+      const filterName = normalizeText(document.getElementById("filter_name").value);
+      const filterDoctor = normalizeText(document.getElementById("filter_doctor").value);
+      const filterType_document = normalizeText(document.getElementById("documentType").value);
+      const filterId = normalizeText(document.getElementById("filter_id").value);
+      const table = document.getElementById("patient_table");
+      const tr = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < tr.length; i++) {
+        const tdDate = tr[i].getElementsByTagName("td")[0];
+        const tdName = tr[i].getElementsByTagName("td")[2];
+        const tdDoctor = tr[i].getElementsByTagName("td")[3];
+        const tdType_document = tr[i].getElementsByTagName("td")[4];
+        const tdId = tr[i].getElementsByTagName("td")[5];
+
+        if (tdDate && tdName && tdDoctor && tdId) {
+          const dateValue = tdDate.textContent || tdDate.innerText;
+          const nameValue = normalizeText(tdName.textContent || tdName.innerText);
+          const doctorValue = normalizeText(tdDoctor.textContent || tdDoctor.innerText);
+          const filterType_documentValue = normalizeText(tdType_document.textContent || tdType_document.innerText);
+          const idValue = normalizeText(tdId.textContent || tdId.innerText);
+
+          if (
+            (filterDate === "" || dateValue.indexOf(filterDate) > -1) &&
+            (filterName === "" || nameValue.indexOf(filterName) > -1) &&
+            (filterDoctor === "" || doctorValue.indexOf(filterDoctor) > -1) &&
+            (filterType_document === "" || filterType_documentValue.indexOf(filterType_document) > -1) &&
+            (filterId === "" || idValue.indexOf(filterId) > -1)
+          ) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        }
+      }
+    }
+
+    function clearFilterAgenda() {
+      document.getElementById("filter_date").value = "";
+      document.getElementById("filter_name").value = "";
+      document.getElementById("filter_doctor").value = "";
+      document.getElementById("documentType").value = "";
+      document.getElementById("filter_id").value = "";
+      filterAgenda();
+      clearCheckboxes();
+    }
+
+    window.onload = filterAgenda;
   </script>
 </body>
-
-</html>
