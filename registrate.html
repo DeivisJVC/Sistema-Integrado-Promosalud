@@ -62,8 +62,8 @@
     <section>
       <form action="" id="registroForm" class="row g-4 needs-validation" novalidate>
         <div class="col-md-6">
-          <label for="primerNombre" class="form-label">Primer Nombre*</label>
-          <input type="text" id="primerNombre" class="form-control" placeholder="Primer nombre" required />
+          <label for="primerNombre" class="form-label">Primer Nombre<span style="color: red;">*</span></label>
+          <input type="text" id="primerNombre" class="form-control" placeholder="Ingresa tu primer nombre" required />
           <div class="valid-feedback">
             Excelente!
           </div>
@@ -73,55 +73,117 @@
         </div>
         <div class="col-md-6">
           <label for="segundoNombre" class="form-label">Segundo Nombre</label>
-          <input type="text" id="segundoNombre" class="form-control" placeholder="Segundo nombre" />
+          <input type="text" id="segundoNombre" class="form-control" placeholder="Ingresa tu segundo nombre" />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="primerApellido" class="form-label">Primer Apellido<span style="color: red;">*</span></label>
+          <input type="text" id="primerApellido" class="form-control" placeholder="Ingresa tu primer apellido"
+            required />
           <div class="valid-feedback">
             Excelente!
           </div>
           <div class="invalid-feedback">
-            Por favor, ingrese tu segundo nombre.
+            Por favor, ingrese tu primer apellido.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="segundoApellido" class="form-label">Segundo Apellido</label>
+          <input type="text" id="segundoApellido" class="form-control" placeholder="Ingresa tu segundo apellido" />
+          <div class="valid-feedback">
+            Excelente!
           </div>
         </div>
 
         <div class="col-md-6">
-          <label for="primerApellido" class="form-label">Primer Apellido*</label>
-          <input type="text" id="primerApellido" class="form-control" placeholder="Primer apellido" required />
+          <label for="documentType" class="form-label">Tipo de Documento<span
+              style="color: red;">*</span></label></label>
+          <select class="form-control" id="documentType">
+            <option value="" selected>Selecciona tu tipo de documento</option>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ce">Cédula extranjera</option>
+            <option value="ptt">Permiso temporal de trabajo</option>
+            <option value="nit">NIT</option>
+            <option value="ti">Tarjeta de identidad</option>
+            <option value="pasaporte">Pasaporte</option>
+            <option value="rc">Registro civil</option>
+            <option value="cd">Carné diplomático</option>
+            <option value="cnv">Certificado nacido vivo</option>
+          </select>
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu tipo de documento.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="numeroDocumento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
+          <input type="text" id="numeroDocumento" class="form-control" placeholder="Ingresa tu número de documento"
+            required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu número de documento.
+          </div>
+        </div>
 
+        <div class="col-md-6">
+          <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
+          <input type="text" id="telefono" class="form-control" placeholder="Ingresa tu teléfono" required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu teléfono.
+          </div>
         </div>
         <div class="col-md-6">
-          <label for="segundoApellido" class="form-label">Segundo Apellido</label>
-          <input type="text" id="segundoApellido" class="form-control" placeholder="Segundo apellido" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="tipoDocumento" class="form-label">Tipo de Documento*</label>
-          <input type="text" id="tipoDocumento" class="form-control" required />
-        </div>
-        <div class="col-md-6">
-          <label for="numeroDocumento" class="form-label">Número de Documento*</label>
-          <input type="text" id="numeroDocumento" class="form-control" required />
-        </div>
-
-        <div class="col-md-6">
-          <label for="telefono" class="form-label">Teléfono*</label>
-          <input type="text" id="telefono" class="form-control" required />
-        </div>
-        <div class="col-md-6">
-          <label for="correoElectronico" class="form-label">Correo Electrónico*</label>
-          <input type="email" id="correoElectronico" class="form-control" required />
+          <label for="correoElectronico" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+          <input type="email" id="correoElectronico" class="form-control" placeholder="Ingresa tu correo electrónico"
+            required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu correo electrónico.
+          </div>
         </div>
 
         <div class="col-md-6">
-          <label for="edad" class="form-label">Edad*</label>
-          <input type="text" id="edad" class="form-control" required />
+          <label for="edad" class="form-label">Fecha de Nacimiento<span style="color: red;">*</span></label>
+          <input type="date" id="edad" class="form-control" placeholder="Ingresa tu edad" required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu edad.
+          </div>
         </div>
         <div class="col-md-6">
-          <label for="ciudad" class="form-label">Ciudad*</label>
-          <input type="text" id="ciudad" class="form-control" required />
+          <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
+          <input type="text" id="ciudad" class="form-control" placeholder="Ingresa tu ciudad" required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu ciudad.
+          </div>
         </div>
 
         <div class="col-6">
-          <label for="ocupacion" class="form-label">Ocupación*</label>
-          <input type="text" id="ocupacion" class="form-control" required />
+          <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
+          <input type="text" id="ocupacion" class="form-control" placeholder="Ingresa tu ocupación" required />
+          <div class="valid-feedback">
+            Excelente!
+          </div>
+          <div class="invalid-feedback">
+            Por favor, ingrese tu ocupación.
+          </div>
         </div>
         <div class="col-12">
           <button class="btn btn-primary" type="submit">Registrarse</button>

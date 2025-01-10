@@ -23,7 +23,7 @@
     <div class="flex-grow-1 d-flex justify-content-end me-5">
       <div class="position-relative">
         <input type="search" placeholder="Buscar..." class="form-control ps-4 pe-5" />
-        <svg class="position-absolute end-0 top-50 translate-middle-y text-muted" width="20" height="20"
+        <svg class="position-absolute end-0 top-50 translate-middle-y text-muted me-2" width="20" height="20"
           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
           stroke-linejoin="round">
           <circle cx="11" cy="11" r="8"></circle>
@@ -34,8 +34,14 @@
 
     <div class="d-flex align-items-center gap-3">
       <h5 class="mb-0">Digna Maria Romero Urbina</h5>
-      <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
-      <img src="/icon/notificacion-numero.svg" alt="notificacion_numero" class="h-6" />
+      <button type="button" class="btn bg-transparent position-relative">
+        <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
+        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+          5
+          <!--Investigar para cambiar este numero segun el numero de notificaciones del usuario-->
+          <span class="visually-hidden">Notificaciones</span>
+        </span>
+      </button>
     </div>
 
     <button id="menuBtn" class="btn text-white" data-bs-toggle="modal" data-bs-target="#profileModal">
@@ -77,33 +83,42 @@
   </div>
 
   <!-- Navigation Menu -->
-  <nav class="navigation-menu py-3 w-50 mx-auto my-5 shadow-sm">
-    <ul class="nav d-flex justify-content-center gap-4">
-      <li class="nav-item">
-        <a class="btn btn-primary nav-link text-white" href="#">Agendar Cita</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-outline-light nav-link text-white" href="#">Consultar citas</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-outline-light nav-link text-white" href="#">Contáctanos</a>
-      </li>
-    </ul>
-  </nav>
 
   <!-- Main Content -->
   <main class="container my-5">
-    <div class="row align-items-center">
-      <div class="col-12 col-md-6 mb-4 mb-md-0">
-        <img src="/imagenes/Medico-paciente-2 1.png" alt="Medico_atendiendo" class="img-fluid" />
+    <section class="container">
+      <div class="row" id="card-container">
+        <div class="col-12 col-md-6">
+          <img src="/imagenes/Medico-paciente-2 1.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
+        </div>
+        <div class="col-12 col-md-6 container_letras_main ">
+          <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...
+          </h2>
+          <p class="text-muted mb-4">Para trabajadores de empresas, podrás realizarte una serie de exámenes...</p>
+          <!-- Navigation Menu -->
+          <nav class=" mx-auto my-5">
+            <ul class="nav d-flex align-content-center gap-4">
+              <li class="nav-item">
+                <a class="btn btn-outline-primary  fs-5" href="#" aria-current="page">Agendar Cita</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-primary  fs-5" aria-current="page" href="/control_agenda.html">Consultar
+                  Citas</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-primary  fs-5" aria-current="page" href="#">Contáctanos</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
-      <div class="col-12 col-md-6">
-        <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...</h2>
-        <p class="text-muted mb-4">Para trabajadores de empresas, podrás realizarte una serie de exámenes...</p>
-        <button class="btn btn-primary mt-3">Agendar cita</button>
-      </div>
-    </div>
+    </section>
   </main>
+
+
+
+
+
 
 
   <!-- Novedades Services Grid -->
@@ -189,37 +204,37 @@
               <!-- Falta crear los index de estas secciones -->
               <ul class="nav container-fluid">
                 <li class="nav-item">
-                  <a href="Medicina_Laboral_y_Trabajo.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Medicina Laboral y del trabajo
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Sistema_Gestion.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Sistema de gestion SG-SST
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Psicologia_psicometria.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Psicologia y psicometria
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Laboratorio.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Laboratorio
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Examenes_paraclinicos.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Examenes Paraclinicos
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Telemedicina.html" class="text-white nav-link">
+                  <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
                     <img src="/icon/Vector.svg" alt="vector-icon">
                     Telemedicina
                   </a>
@@ -286,10 +301,7 @@
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="/js/darkmode.js"></script>
   <script src="/js/year.js"></script>
-
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/js/darkmode.js"></script>
-  <script src="/js/year.js"></script>
+  <script src="/js/edit_user.js"></script>
 </body>
 
 </html>

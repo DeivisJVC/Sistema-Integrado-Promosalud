@@ -23,6 +23,12 @@ body {
   background-color: rgba(123, 123, 123, 0.1);
 }
 
+.main_agendamiento {
+  padding-top: 60px;
+}
+.container_letras_main {
+  padding-top: 60px;
+}
 #header_registro {
   background: white;
 }
@@ -32,6 +38,7 @@ body {
 header {
   background: linear-gradient(to right, #0f3b6f, #1d72d4);
 }
+
 .footer-1 {
   background: linear-gradient(to right, #0f3b6f, #1d72d4);
 }
