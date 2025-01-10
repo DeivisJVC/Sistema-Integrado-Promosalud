@@ -45,3 +45,6 @@ header {
 .footer-2 {
   background: linear-gradient(to right, #051f3d, #0c52a3);
 }
+.asterisco {
+  color: red;
+}
