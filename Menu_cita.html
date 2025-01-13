@@ -11,34 +11,50 @@
 </head>
 
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+    </symbol>
+
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+    </symbol>
+
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+    </symbol>
+  </svg>
 
   <!-- Header -->
   <header class="bg-primary text-white py-3 d-flex align-items-center justify-content-between fixed-top">
     <div class="d-flex align-items-center gap-3">
       <a href="/inicio.html" class="d-flex align-items-center gap-3 ms-5">
-        <img src="/icon/logo_blanco_promosalud.svg" alt="HealthPortal Logo" class="h-25" />
+        <img src="/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
       </a>
     </div>
 
-    <div class="flex-grow-1 d-flex justify-content-end me-5">
-      <div class="position-relative">
-        <input type="search" placeholder="Buscar..." class="form-control ps-4 pe-5" />
-        <svg class="position-absolute end-0 top-50 translate-middle-y text-muted me-2" width="20" height="20"
-          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-      </div>
+    <nav class="flex-grow-1 d-flex justify-content-end me-5"></nav>
+    <div class="position-relative">
+      <input type="search" placeholder="Buscar..." class="form-control ps-4 pe-5" />
+      <svg class="position-absolute end-0 top-50 translate-middle-y text-muted me-2" width="20" height="20"
+        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
     </div>
+    </nav>
 
     <div class="d-flex align-items-center gap-3">
-      <h5 class="mb-0">Digna Maria Romero Urbina</h5>
+      <span class="mb-0">Digna Maria Romero Urbina</span>
       <button type="button" class="btn bg-transparent position-relative">
         <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
           5
-          <!--Investigar para cambiar este numero segun el numero de notificaciones del usuario-->
           <span class="visually-hidden">Notificaciones</span>
         </span>
       </button>
@@ -56,16 +72,16 @@
 
   <!-- Profile Modal -->
   <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-right modal-full-height">
       <div class="modal-content bg-primary text-white">
         <div class="modal-header">
           <h2 class="fs-4 modal-title" id="profileModalLabel">Perfil</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body modal_profile">
           <div class="d-flex flex-column align-items-center gap-3">
-            <div class="avatar">U</div>
             <div class="text-center w-100">
+
               <h3 class="fw-semibold">Nombre: John Doe</h3>
               <div class="mt-4">
                 <p>Apellidos: Smith</p>
@@ -74,13 +90,14 @@
                 <p>Teléfono: 123-456-7890</p>
                 <p>Dirección: Street 123</p>
               </div>
-              <a href="edit-profile.html" class="btn btn-dark w-100 mt-3">Editar</a>
+              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3">Editar</a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 
   <!-- Navigation Menu -->
 
@@ -89,7 +106,7 @@
     <section class="container">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6">
-          <img src="/imagenes/Medico-paciente-2 1.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
+          <img src="/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
         </div>
         <div class="col-12 col-md-6 container_letras_main ">
           <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...
@@ -99,14 +116,14 @@
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
               <li class="nav-item">
-                <a class="btn btn-outline-primary  fs-5" href="#" aria-current="page">Agendar Cita</a>
+                <a class="btn_link    fs-5" href="#" aria-current="page">Agendar Cita</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-outline-primary  fs-5" aria-current="page" href="/control_agenda.html">Consultar
+                <a class="btn_link    fs-5" aria-current="page" href="/control_agenda.html">Consultar
                   Citas</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-outline-primary  fs-5" aria-current="page" href="#">Contáctanos</a>
+                <a class="btn_link   fs-5" aria-current="page" href="#">Contáctanos</a>
               </li>
             </ul>
           </nav>
@@ -115,19 +132,13 @@
     </section>
   </main>
 
-
-
-
-
-
-
   <!-- Novedades Services Grid -->
   <section id="Novedades" class="container my-5">
     <h2 class="fs-3 fw-semibold mb-4">Novedades</h2>
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/imagenes/image 7.png" class="card-img-top" alt="Ortopedia">
+          <img src="/img/medico_revisando.png" class="card-img-top" alt="Ortopedia">
           <div class="card-body">
             <h5 class="card-title">Ortopedia</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -137,7 +148,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/imagenes/image 8.png" class="card-img-top" alt="Rayos X">
+          <img src="/img/rayosx.png" class="card-img-top" alt="Rayos X">
           <div class="card-body">
             <h5 class="card-title">Rayos X</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -147,7 +158,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/imagenes/image 11.png" class="card-img-top" alt="Presión">
+          <img src="/img/toma_presion.png" class="card-img-top" alt="Presión">
           <div class="card-body">
             <h5 class="card-title">Presión</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -157,7 +168,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/imagenes/image 12.png" class="card-img-top" alt="Examen de vista">
+          <img src="/img/examen_vista.png" class="card-img-top" alt="Examen de vista">
           <div class="card-body">
             <h5 class="card-title">Examen de vista</h5>
             <p class="card-text">Atiéndete con los mejores</p>

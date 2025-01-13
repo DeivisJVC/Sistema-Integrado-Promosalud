@@ -45,6 +45,74 @@ header {
 .footer-2 {
   background: linear-gradient(to right, #051f3d, #0c52a3);
 }
-.asterisco {
-  color: red;
+
+.modal-dialog-right {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  max-width: 30%; /* Puedes ajustar este valor según tus necesidades */
+  width: 100%;
+  margin: 0;
+}
+
+.modal-full-height {
+  height: 100vh;
+}
+
+.modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+.btn_link {
+  transition: all 0.3s ease-in-out;
+  font-family: "Dosis", sans-serif;
+  text-decoration: none;
+}
+
+.btn_link {
+  padding: 12px;
+  width: 150px;
+  height: 60px;
+  border-radius: 50px;
+  background-image: linear-gradient(to right, #0f3b6f, #1d72d4);
+  box-shadow: 0 20px 30px -6px rgba(0, 26, 173, 0.5);
+  outline: none;
+  cursor: pointer;
+  border: none;
+  font-size: 24px;
+  color: white;
+}
+
+.btn_link:hover {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
+.btn_link:active {
+  opacity: 0.5;
+}
+#header_registro {
+  background: linear-gradient(to right, #0f3b6f, #1d72d4);
+  padding: 20px 0;
+}
+
+#header_registro .nav-link {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+#header_registro .nav-link:hover {
+  color: #ffd700; /* Cambiar a dorado en hover */
+}
+
+.redes-sociales {
+  filter: brightness(0) invert(1); /* Para que los iconos de redes sociales sean visibles sobre el fondo oscuro */
+}
+
+#header_registro ul {
+  align-items: center;
+}
+.main-registration {
+  padding-top: 180px;
 }
