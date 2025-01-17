@@ -1,0 +1,56 @@
+/* Calendario */
+.calendar {
+  border-radius: 10px;
+  overflow: hidden;
+  position: absolute;
+  left: 100px;
+}
+.calendar-header {
+  color: indigo;
+  padding: 10px;
+  text-align: left;
+}
+.day {
+  height: 80px;
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  color: indigo;
+}
+.day-empty {
+  color: #adb5bd;
+}
+.day:hover {
+  background-color: #e7f3ff;
+  cursor: pointer;
+}
+.selected-day {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.container_card_datos_cita {
+  display: flex; /* Alinea el calendario y los botones horizontalmente */
+  gap: 20px;
+}
+
+.notificacion-img {
+  position: absolute;
+  left: 400px;
+}
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.step-completed {
+  display: none;
+}
+#calendarDays {
+  margin-bottom: -70px;
+}

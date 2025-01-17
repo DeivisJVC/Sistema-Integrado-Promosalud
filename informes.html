@@ -28,9 +28,15 @@
     </symbol>
   </svg>
 
-  <header class="bg-primary rounded fixed-top">
-    <nav class="navbar navbar-expand-lg py-3">
-      <ul class="nav container-fluid justify-content-xxl-evenly">
+  <!-- Header -->
+  <header class="text-white py-3  fixed-top ">
+    <nav class="nav navbar-expand-lg">
+      <ul class="nav container-fluid justify-content-between align-items-center">
+        <li class="nav-item">
+          <a href="/inicio.html" class="nav-link">
+            <img src="/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
+          </a>
+        </li>
         <li class="nav-item">
           <!--Separar los iconos de las letras-->
           <a href="Menu_cita.html" class="nav-link text-white" aria-current="page">
@@ -49,66 +55,110 @@
             <img class="me-2" src="/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
           </a>
         </li>
-        <li class="nav-item align-content-center">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-success text-white" type="submit">Buscar</button>
-          </form>
-        </li>
-        <li class="dropdown">
-          <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Configuración</a></li>
-            <li>
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
-        </li>
       </ul>
-      <li class="nav-item align-content-center">
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item dropdown w-25" data-bs-theme="light">
-            <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
-              <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
-                <use href="#circle-half"></use>
-              </svg>
-              <span class="d-lg-none ms-2">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#sun-fill"></use>
-                  </svg>
-                  Light
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#moon-stars-fill"></use>
-                  </svg>
-                  Dark
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#circle-half"></use>
-                  </svg>
-                  Auto
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      </li>
+      <ul class="nav container-fluid justify-content-end gap-5  align-items-center">
+        <li class="nav-item">
+          <div class="position-relative">
+            <input type="search" placeholder="Buscar..." class="form-control ps-4 pe-5" />
+            <svg class="position-absolute end-0 top-50 translate-middle-y text-muted me-2" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
+        </li>
+        <li class="nav-item align-content-center">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item dropdown w-25" data-bs-theme="light">
+              <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
+                  <use href="#circle-half"></use>
+                </svg>
+                <span class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#sun-fill"></use>
+                    </svg>
+                    Light
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#moon-stars-fill"></use>
+                    </svg>
+                    Dark
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active"
+                    data-bs-theme-value="auto">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#circle-half"></use>
+                    </svg>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <span class="mb-0">Digna Maria Romero Urbina</span>
+          <button type="button" class="btn bg-transparent position-relative">
+            <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              5
+              <span class="visually-hidden">Notificaciones</span>
+            </span>
+          </button>
+        </li>
+        <li class="nav-item">
+          <button id="menuBtn" class="btn text-white" data-bs-toggle="modal" data-bs-target="#profileModal">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </li>
       </ul>
     </nav>
   </header>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-right modal-full-height">
+      <div class="modal-content bg-primary text-white">
+        <div class="modal-header">
+          <h2 class="fs-4 modal-title" id="profileModalLabel">Perfil</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modal_profile">
+          <div class="d-flex flex-column align-items-center gap-3">
+            <div class="text-center w-100">
+
+              <h3 class="fw-semibold">Nombre: John Doe</h3>
+              <div class="mt-4">
+                <p>Apellidos: Smith</p>
+                <p>Empresa: Health Corp</p>
+                <p>Cargo: Patient</p>
+                <p>Teléfono: 123-456-7890</p>
+                <p>Dirección: Street 123</p>
+              </div>
+              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3">Editar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <main class="container-sm mt-5 pt-5 mb-5">
     <h1 class="text-center">Generador de Informes de Salud</h1>
     <!--Formulario para seleccionar la empresa-->
@@ -155,7 +205,7 @@
             </div>
           </div>
           <div class="col-md-2 d-flex align-items-end">
-            <button type="submit" class="btn btn-primary w-100">Filtrar</button>
+            <button type="submit" class="btn btn-primary w-100" onclick="filterpacient">Filtrar</button>
           </div>
         </div>
       </form>
