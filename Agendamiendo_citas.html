@@ -113,6 +113,34 @@
       </ul>
     </nav>
   </header>
+
+  <!-- Profile Modal -->
+  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-right modal-full-height">
+      <div class="modal-content bg-primary text-white">
+        <div class="modal-header">
+          <h2 class="fs-4 modal-title" id="profileModalLabel">Perfil</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modal_profile">
+          <div class="d-flex flex-column align-items-center gap-3">
+            <div class="text-center w-100">
+
+              <h3 class="fw-semibold">Nombre: John Doe</h3>
+              <div class="mt-4">
+                <p>Apellidos: Smith</p>
+                <p>Empresa: Health Corp</p>
+                <p>Cargo: Patient</p>
+                <p>Teléfono: 123-456-7890</p>
+                <p>Dirección: Street 123</p>
+              </div>
+              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3">Editar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <main class="container mt-5 mb-5 main_agendamiento">
     <h1 class="text-center mt-3">Agenda tu Cita</h1>
     <section class="container-fluid text-center mt-5">
@@ -179,17 +207,17 @@
             <div class="col-md-5 align-content-center">
               <div class="row my-5" id="selec">
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2">7:00 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">7:30 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">8:00 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">8:30 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">7:00 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">7:30 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">8:00 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">8:30 AM</button>
                 </div>
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2">9:00 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">9:30 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">10:00 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">10:30 AM</button>
-                  <button class="btn btn-primary w-100 mb-2">11:00 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">9:00 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">9:30 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">10:00 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">10:30 AM</button>
+                  <button class="btn btn-primary w-100 mb-2 time-btn">11:00 AM</button>
                 </div>
               </div>
             </div>
@@ -197,10 +225,10 @@
           <div class="col-md-3 align-content-center">
             <div class="card bg-primary ">
               <div class="card-body">
-                <h2 class="card-title text-white text-center " id="selected_year">año</h2>
+                <h2 class="card-title text-white text-center " id="selectedyear">año</h2>
                 <h2 class="card-title text-white text-center" id="selectedmonth">mes</h2>
-                <h4 class="card-text text-white text-center" id="selectedDay">Seleccione un día</h4>
-                <h4 class="card-text text-white text-center" id="selectedTime">Seleccione una hora</h4>
+                <h4 class="card-text text-white text-center" id="selectedDay">dia</h4>
+                <h4 class="card-text text-white text-center" id="selectedTime">Hora</h4>
               </div>
             </div>
           </div>
@@ -221,7 +249,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Estimado/a <span id="userNameText">[Nombre del usuario]</span>,</p>
+              <p>Estimado/a <span id="modaluserName">[Nombre del usuario]</span>,</p>
               <p>Su cita ha sido programada para el <span id="modalConfirmDay">[día]</span> del <span
                   id="modalConfirmMonth">[mes]</span> del <span id="modalConfirmYear">[año]</span> a las <span
                   id="modalConfirmTime">[hora]</span>.</p>

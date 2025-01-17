@@ -21,7 +21,7 @@ function renderCalendar() {
   const daysContainer = document.getElementById("calendarDays");
   const currentMonthText = document.getElementById("currentMonth");
   const selectedDate = document.getElementById("selectedmonth");
-  const selectedyear = document.getElementById("selected_year");
+  const selectedyear = document.getElementById("selectedyear");
   const modalConfirmMonth = document.getElementById("modalConfirmMonth");
   const modalConfirmYear = document.getElementById("modalConfirmYear");
   daysContainer.innerHTML = "";
@@ -29,6 +29,7 @@ function renderCalendar() {
   const month = currentDate.getMonth();
   const year = currentDate.getFullYear();
   currentMonthText.textContent = `${monthNames[month]} ${year}`;
+
   selectedDate.textContent = `${monthNames[month]}`;
   selectedyear.textContent = `${year}`;
   modalConfirmMonth.textContent = `${monthNames[month]}`;
@@ -80,6 +81,35 @@ function renderCalendar() {
   }
 }
 
+// Obtener los datos seleccionados;
+function Elegir_cita() {
+  // Suponiendo que ya tienes estas variables con los valores seleccionados
+  const selectedYear = document.getElementById("selectedyear").innerText;
+  const selectedMonth = document.getElementById("selectedmonth").innerText;
+  const selectedDay = document.getElementById("selectedDay").innerText;
+  const selectedTime = document.getElementById("selectedTime").innerText;
+  const userName = document.getElementById("userName").innerText;
+
+  // Actualizar los valores en el modal
+  document.getElementById("modalConfirmYear").innerText = selectedYear;
+  document.getElementById("modalConfirmMonth").innerText = selectedMonth;
+  document.getElementById("modalConfirmDay").innerText = selectedDay;
+  document.getElementById("modalConfirmTime").innerText = selectedTime;
+  document.getElementById("modaluserName").innerText = userName;
+
+  // Aquí puedes abrir el modal si no lo haces automáticamente con Bootstrap
+  const confirmationModal = new bootstrap.Modal(
+    document.getElementById("confirmationModal")
+  );
+  confirmationModal.show();
+}
+
+// const selectedDay_modal = document.getElementById("selectedDay").textContent;
+// const selectedTime_modal = document.getElementById("selectedTime").textContent;
+// // Actualizar los elementos de la modal con los datos seleccionados
+// document.getElementById("modalConfirmDay").innerText = selectedDay_modal;
+// document.getElementById("modalConfirmTime").innerText = selectedTime_modal;
+
 // Agregar los event listeners a los botones de tiempo
 document.querySelectorAll(".btn-primary").forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -91,22 +121,6 @@ document.getElementById("prevMonth").addEventListener("click", () => {
   currentDate.setMonth(currentDate.getMonth() - 1);
   renderCalendar();
 });
-
-// Llamar a la función para renderizar el calendario
-renderCalendar();
-
-// Obtener el nombre del usuario
-const userName = document.getElementById("userName").textContent;
-const userNameText = document.getElementById("userNameText");
-userNameText.textContent = `${userName}`;
-//falta el dia y la hora en la modal.
-const day = document.getElementById("selectedDay").textContent;
-const time = document.getElementById("selectedTime").textContent;
-const modalConfirmDay = document.getElementById("modalConfirmDay");
-const modalConfirmTime = document.getElementById("modalConfirmTime");
-//Sustituir el contenido de la modal por el contenido que esta en el cuadro al lado del calendario.
-modalConfirmDay.textContent = `${day}`;
-modalConfirmTime.textContent = `${time}`;
 
 // Agregar los event listeners a los botones de tiempo
 document.querySelectorAll(".btn-primary").forEach((button) => {
@@ -124,3 +138,6 @@ document.getElementById("nextMonth").addEventListener("click", () => {
   currentDate.setMonth(currentDate.getMonth() + 1);
   renderCalendar();
 });
+
+// Llamar a la función para renderizar el calendario
+renderCalendar();
