@@ -97,10 +97,19 @@
             Excelente!
           </div>
         </div>
-
         <div class="col-md-6">
-          <label for="tipoDocumento" class="form-label">Tipo de Documento<span style="color: red;">*</span></label>
-          <input type="text" id="tipoDocumento" class="form-control" placeholder="Tipo de documento" required />
+          <label for="tipoDocumento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
+          <select class="form-control" id="documentType" required>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ce">Cédula extranjera</option>
+            <option value="ptt">Permiso temporal de trabajo</option>
+            <option value="nit">NIT</option>
+            <option value="ti">Tarjeta de identidad</option>
+            <option value="passport">Pasaporte</option>
+            <option value="rc">Registro civil</option>
+            <option value="cd">Carné diplomático</option>
+            <option value="cnv">Certificado nacido vivo</option>
+          </select>
           <div class="valid-feedback">
             Excelente!
           </div>

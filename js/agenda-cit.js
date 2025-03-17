@@ -104,12 +104,6 @@ function Elegir_cita() {
   confirmationModal.show();
 }
 
-// const selectedDay_modal = document.getElementById("selectedDay").textContent;
-// const selectedTime_modal = document.getElementById("selectedTime").textContent;
-// // Actualizar los elementos de la modal con los datos seleccionados
-// document.getElementById("modalConfirmDay").innerText = selectedDay_modal;
-// document.getElementById("modalConfirmTime").innerText = selectedTime_modal;
-
 // Agregar los event listeners a los botones de tiempo
 document.querySelectorAll(".btn-primary").forEach((button) => {
   button.addEventListener("click", (e) => {
