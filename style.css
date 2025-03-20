@@ -116,3 +116,19 @@ header {
 .main-registration {
   padding-top: 180px;
 }
+.main-donde-estamos {
+  padding-top: 140px;
+  margin-bottom: 50px;
+}
+.main-sobre-nosotros {
+  padding-top: 100px;
+}
+
+.main-sobre-nosotros .container-img {
+  margin-left: 350px;
+}
+.title_sobre_nosotros {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #0f3b6f;
+}
