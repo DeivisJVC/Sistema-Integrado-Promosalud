@@ -1,0 +1,317 @@
+
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro de usuario</title>
+  <link rel="stylesheet" href="/scss/custom.css" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body id="body_registro">
+  <header id="header_registro" class="rounded fixed-top">
+    <nav class="navbar navbar-expand-lg">
+      <ul id="segundo_header" class="container-fluid nav justify-content-xxl-evenly">
+        <li class="nav-item">
+          <a href="inicio.html" class="nav-link">
+            <img src="/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="segundo_header" class="nav-link active fs-5" aria-current="page" href="inicio.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a id="segundo_header" class="nav-link active fs-5" href="sobre_nosotros.html">
+            <img src="/icon/" alt="">
+            Sobre nosotros
+          </a>
+        </li>
+        <li class="nav-item">
+          <a id="segundo_header" class="nav-link text-capitalize active fs-5" href="donde_estamos.html">Donde
+            estamos</a>
+        </li>
+        <li class="nav-item">
+          <a id="segundo_header" class="nav-link active fs-5" href="contactanos.html">Contactanos</a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
+            <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
+          </a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <a id="segundo_header" href="">
+            <!-- Enlace a la pagina de Instagram -->
+            <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
+          </a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <!-- Enlace a la pagina de Twitter -->
+          <a id="segundo_header" href=""><img src="/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container-sm main-registration mb-5">
+          <section class="text-center mb-5">
+            <h1 class="text-center">Registro de usuario</h1>
+            <p class="text-center">
+              Ingresa tus datos. Los campos marcados con asterisco son
+              obligatorios.
+            </p>
+          </section>
+      <section>
+        <form action="register.php" id="registroForm" class="g-4 row needs-validation" novalidate method="POST">
+          <div class="col-md-6">
+            <label for="primer_nombre" class="form-label">Primer Nombre<span style="color: red;">*</span></label>
+            <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" placeholder="Primer nombre" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su primer nombre.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
+            <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control" placeholder="Segundo nombre"  />
+            <div class="valid-feedback">Excelente!</div>
+          </div>
+          <div class="col-md-6">
+            <label for="primer_apellido" class="form-label">Primer Apellido<span style="color: red;">*</span></label>
+            <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" placeholder="Primer apellido" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su primer apellido.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
+            <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control" placeholder="Segundo apellido" required />
+            <div class="valid-feedback">Excelente!</div>
+          </div>
+          <div class="col-md-6">
+            <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
+            <select class="form-control" id="documentType" name="tipo_documento" required>
+              <option value="cc">Cédula de ciudadanía</option>
+              <option value="ce">Cédula extranjera</option>
+              <option value="ptt">Permiso temporal de trabajo</option>
+              <option value="nit">NIT</option>
+              <option value="ti">Tarjeta de identidad</option>
+              <option value="passport">Pasaporte</option>
+              <option value="rc">Registro civil</option>
+              <option value="cd">Carné diplomático</option>
+              <option value="cnv">Certificado nacido vivo</option>
+            </select>
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su tipo de documento.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
+            <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
+            <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su teléfono.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+            <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su correo electrónico.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="edad" class="form-label">Edad<span style="color: red;">*</span></label>
+            <input type="text" id="edad" name="edad" class="form-control" placeholder="Edad" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su edad.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
+            <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su ciudad.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="direccion" class="form-label">Direccion<span style="color: red;">*</span></label>
+            <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su direccion.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
+            <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ocupación" required />
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese su ocupación.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="empresa_name" class="form-label">Empresa<span style="color: red;">*</span></label>
+              <select class="form-control" id="empresa_name" name="nombre_empresa">
+                <select name="empresa_name" id="empresa_name" disabled="disabled">
+                     <?php
+                    include 'consult_company.php';
+                    ?> 
+                </select>
+            </select>
+            <div class="valid-feedback">Excelente!</div>
+            <div class="invalid-feedback">Por favor, ingrese la empresa en la que labora.</div>
+          </div> 
+          <div class="col-12">
+            <button class="btn btn-primary" type="submit" name="submit">Registrarse</button>
+          </div>
+        </form>
+      </section>
+  </main>
+
+  <footer class="container-fluid text-white footer-1">
+    <article class="container-fluid footer-1">
+      <article class="container-sm text-center text-md-start mt-4">
+        <div class="row">
+          <section class="col-lg-4 col-md-4 col-xl-3 mb-4 mx-auto">
+            <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
+            <p class="mb-4">
+              Somos líderes en el Magdalena, y contamos con una red de
+              prestadores de servicios a nivel regional y nacional
+            </p>
+            <p class="mb-4">
+              <img src="/icon/Direccion_footer.svg" alt="Direccion_footer" />
+              Cra. 11 #18-90 Barrio Territorial, Centro Médico Pablo Garcia
+              InfanteSanta Marta, Magdalena, Colombia
+            </p>
+            <p class="mb-4">
+              <img src="/icon/Correo_footer1.svg" alt="Correo_footer" />
+              Pomosalud@promosalud.org
+            </p>
+            <p class="mb-4">
+              <img src="/icon/Telefono_footer.svg" alt="Telefono_footer" />
+              4233421 - 4214882 - 4309810 - 4202158
+            </p>
+            <p class="text-start mb-4">
+              <img src="/icon/calendario_footer.svg" width="40px" alt="calendario" />
+              4233421 - 4214882 - 4309810 - 4202158 Citas: 304 219 5411
+            </p>
+          </section>
+          <section class="col-lg-4 col-md-4 col-xl-3 mb-4 mx-auto">
+            <h4 class="text-center">Servicios</h4>
+            <nav class="navbar-nav">
+              <!-- Falta crear los index de estas secciones -->
+              <ul class="container-fluid nav">
+                <li class="nav-item">
+                  <a href="Medicina_Laboral_y_Trabajo.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Medicina Laboral y del trabajo
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Sistema_Gestion.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Sistema de gestion SG-SST
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Psicologia_psicometria.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Psicologia y psicometria
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Laboratorio.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Laboratorio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Examenes_paraclinicos.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Examenes Paraclinicos
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="Telemedicina.html" class="nav-link text-white">
+                    <img src="/icon/Vector.svg" alt="vector-icon" />
+                    Telemedicina
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </section>
+          <section class="col-lg-4 col-md-1 col-xl-3 mb-4 mx-auto">
+            <h4>Cobertura Nacional</h4>
+            <p>
+              Somos parte de la RED DE PRESTADORES de servicios en salud
+              ocupacional y a través de nuestros proveedores aliados atendemos
+              a nivel regional y nacional
+            </p>
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                <div class="active carousel-item">
+                  <img src="/img/carrusel1.png" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="/img/carrusel2.png" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="/img/carrusel3.png" class="d-block w-100" alt="..." />
+                </div>
+                <div class="carousel-item">
+                  <img src="/img/carrusel4.png" class="d-block w-100" alt="..." />
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+    </article>
+    <article class="row footer-2">
+      <section class="col-md-6 col-sm-4 align-content-center text-center">
+        <p class="">
+          Copyright © <span id="year"></span>
+          Todos Los Derechos Reservados Por SistemaInegradoPromosalud.com
+        </p>
+      </section>
+      <section class="col-md-6 col-sm-3 align-content-center">
+        <nav class="navbar navbar-expand-lg justify-content-center py-3">
+          <ul class="nav">
+            <li class="nav-item">
+              <a href="inicio.html" class="nav-link text-white">Inicio</a>
+            </li>
+            <li>
+              <a href="sobre_nosotros.html" class="nav-link text-white">Sobre Nosotros
+              </a>
+            </li>
+            <li>
+              <a href="donde_estamos.html" class="nav-link text-white">Donde Estamos</a>
+            </li>
+            <li>
+              <a href="contactanos.html" class="nav-link text-white">Contactanos</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </article>
+  </footer>
+
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/js/darkmode.js"></script>
+  <script src="/js/year.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const forms = document.querySelectorAll(".needs-validation");
+  Array.from(forms).forEach(function (form) {
+    form.addEventListener(
+      "submit",
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add("was-validated");
+      },
+      false
+    );
+  });
+});
+//validacion de campo
+
+</script>
+</body>
+
+</html>

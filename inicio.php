@@ -179,7 +179,7 @@ require_once("db.php");
             </div>
             <div class="form-group mb-4 d-flex justify-content-between">
               <a href="recuperar_contraseña.html" class="text-white">¿Olvidaste la contraseña?</a>
-              <a href="registrate.html" class="text-white">Registrate</a>
+              <a href="registrate.php" class="text-white">Registrate</a>
             </div>
             <div class="d-grid">
               <button type="submit" class="btn btn-primary rounded-4">Entrar</button>
