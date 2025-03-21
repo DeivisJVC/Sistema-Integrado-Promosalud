@@ -18,14 +18,15 @@ if (isset($_POST['submit'])) {
   $ciudad = $_POST['ciudad'];
   $direccion = $_POST['direccion'];
   $ocupacion = $_POST['ocupacion'];
+  $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
   //$nombre_empresa = $_POST['nombre_empresa'];
 
   $conexion = mysqli_connect($servername, $username, $password, $dbname);
   if (!$conexion) {
     die("No se pudo conectar a la base de datos: " . mysqli_connect_error());
   }
-
-  $sql = "INSERT INTO paciente (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, edad, telefono, correo, tipo_documento, numero_documento, ciudad, direccion, ocupacion) VALUES ('$primer_nombre', '$segundo_nombre', '$primer_apellido', '$segundo_apellido', '$edad', '$telefono', '$correo', '$tipo_documento', '$numero_documento', '$ciudad', '$direccion', '$ocupacion')";
+ //agregar el nombre_empresa
+  $sql = "INSERT INTO paciente (primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, edad, telefono, correo, tipo_documento, numero_documento, ciudad, direccion, ocupacion, contraseña_confirmacion) VALUES ('$primer_nombre', '$segundo_nombre', '$primer_apellido', '$segundo_apellido', '$edad', '$telefono', '$correo', '$tipo_documento', '$numero_documento', '$ciudad', '$direccion', '$ocupacion', '$contraseña_confirmacion')";
 
   if (mysqli_query($conexion, $sql)) {
     echo "Se ha registrado correctamente.";
