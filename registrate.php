@@ -53,166 +53,146 @@
     </nav>
   </header>
     <main class="container-sm main-registration mb-5">
-          <section class="text-center mb-5">
+          <section class="text-center mb-5 ">
             <h1 class="text-center">Registro de usuario</h1>
-            <p class="text-center">
+            <p class="text-center mt-3">
               Ingresa tus datos. Los campos marcados con asterisco son
               obligatorios.
             </p>
           </section>
       <section>
-        <form action="register.php" id="multiStepForm" class=" needs-validation" novalidate method="POST">
+        <form action="register.php" id="multiStepForm" class="needs-validation" novalidate method="POST">
           <!-- Paso 1: Información Personal -->
-        <div class="step active justify-content-center align-content-center ">
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4 mb-3">
-              <label for="primer_nombre" class="form-label">Primer Nombre<span style="color: red;">*</span></label>
-              <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" placeholder="Primer nombre" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su primer nombre.</div>
-            </div>
-            <div class="col-md-4 mb-3">
-              <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-              <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control" placeholder="Segundo nombre" />
-              <div class="valid-feedback">Excelente!</div>
-            </div>
-          </div>
-          <div class="g-4 row justify-content-center">
-              <div class="col-md-4">
+          <div class="step active justify-content-center align-content-center">
+            <div class="row g-4 justify-content-center">
+              <div class="col-md-6">
+                <label for="primer_nombre" class="form-label">Primer Nombre<span style="color: red;">*</span></label>
+                <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" placeholder="Primer nombre" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su primer nombre.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
+                <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control" placeholder="Segundo nombre" />
+                <div class="valid-feedback">Excelente!</div>
+              </div>
+              <div class="col-md-6">
                 <label for="primer_apellido" class="form-label">Primer Apellido<span style="color: red;">*</span></label>
                 <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" placeholder="Primer apellido" required />
                 <div class="valid-feedback">Excelente!</div>
                 <div class="invalid-feedback">Por favor, ingrese su primer apellido.</div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control" placeholder="Segundo apellido" required />
+                <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control" placeholder="Segundo apellido" />
                 <div class="valid-feedback">Excelente!</div>
               </div>
+              <div class="col-md-6">
+                <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
+                <select class="form-control" id="documentType" name="tipo_documento" required>
+                  <option value="">Seleccione su tipo de documento</option>
+                  <option value="cc">Cédula de ciudadanía</option>
+                  <option value="ce">Cédula extranjera</option>
+                  <option value="ptt">Permiso temporal de trabajo</option>
+                  <option value="nit">NIT</option>
+                  <option value="ti">Tarjeta de identidad</option>
+                  <option value="passport">Pasaporte</option>
+                  <option value="rc">Registro civil</option>
+                  <option value="cd">Carné diplomático</option>
+                  <option value="cnv">Certificado nacido vivo</option>
+                </select>
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su tipo de documento.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
+                <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
+              </div>
             </div>
-          </div>
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
-              <select class="form-control" id="documentType" name="tipo_documento" required>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula extranjera</option>
-                <option value="ptt">Permiso temporal de trabajo</option>
-                <option value="nit">NIT</option>
-                <option value="ti">Tarjeta de identidad</option>
-                <option value="passport">Pasaporte</option>
-                <option value="rc">Registro civil</option>
-                <option value="cd">Carné diplomático</option>
-                <option value="cnv">Certificado nacido vivo</option>
-              </select>
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su tipo de documento.</div>
-            </div>
-            <div class="col-md-4">
-              <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
-              <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
-            </div>
-          </div>
             <div class="btn-container">
               <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
             </div>
           </div>
 
           <!-- Paso 2: Información de Contacto -->
-          
           <div class="step">
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
-              <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su teléfono.</div>
+            <div class="row g-4 justify-content-center">
+              <div class="col-md-6">
+                <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
+                <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su teléfono.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+                <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su correo electrónico.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="edad" class="form-label">Edad<span style="color: red;">*</span></label>
+                <input type="text" id="edad" name="edad" class="form-control" placeholder="Edad" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su edad.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
+                <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su ciudad.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="direccion" class="form-label">Direccion<span style="color: red;">*</span></label>
+                <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su direccion.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
+                <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ocupación" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su ocupación.</div>
+              </div>
             </div>
-            <div class="col-md-4">
-              <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
-              <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su correo electrónico.</div>
-            </div>
-          </div>
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <label for="edad" class="form-label">Edad<span style="color: red;">*</span></label>
-              <input type="text" id="edad" name="edad" class="form-control" placeholder="Edad" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su edad.</div>
-            </div>
-            <div class="col-md-4">
-              <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
-              <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su ciudad.</div>
-            </div>
-          </div>
-            <div class="btn-container">
-              <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
-              <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
-            </div>
-          </div>
-
-          <!-- Paso 3: Información Laboral -->
-          <div class="step">
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <label for="direccion" class="form-label">Direccion<span style="color: red;">*</span></label>
-              <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su direccion.</div>
-            </div>
-            <div class="col-md-4">
-              <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
-              <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ocupación" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su ocupación.</div>
-            </div>
-          </div>
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <label for="empresa_name" class="form-label">Empresa<span style="color: red;">*</span></label>
-              <select class="form-control" id="empresa_name" name="nombre_empresa">
-                <select name="empresa_name" id="empresa_name" disabled="disabled">
-                  <?php include 'consult_company.php'; ?>
+            <div class="col-md-6">
+                <label for="empresa_name" class="form-label">Empresa<span style="color: red;">*</span></label>
+                <select class="form-control" id="empresa_name" name="nombre_empresa">
+                  <select name="empresa_name" id="empresa_name" disabled="disabled">
+                    <?php include 'consult_company.php'; ?>
+                  </select>
                 </select>
-              </select>
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese la empresa en la que labora.</div>
-            </div>
-          </div>
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese la empresa en la que labora.</div>
+              </div>
             <div class="btn-container">
               <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
               <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
             </div>
           </div>
-
           <!-- Paso 4: Crear Contraseña -->
-          <div class="step">
-          <div class="g-4 row justify-content-center">
-            <div class="col-md-4">
-              <h4>Crear contraseña, su usuario es su numero de documento</h4>
-              <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
-              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
-            </div>
-            <div class="col-md-4">
-              <label for="password_confirmation" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
-              <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Confirmar contraseña" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
-            </div>
-          </div>
-            <div class="col-12">
-              <button class="btn btn-primary" type="submit" name="submit">Registrarse</button>
+          <div class="step ">
+
+               <h4 class="text-center">Crear contraseña, <b>su usuario es su numero de documento</b></h4>
+            <div class="row justify-content-center">
+              <div class="col-md-4 mb-3">
+                <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
+              </div>
+              <div class="col-md-4 mb-3 ">
+                <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
+                <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">las constraseñas no coninciden </div>
+                <!-- verificar que ambas contraseñas sean iguales -->
+              </div>
             </div>
             <div class="btn-container">
               <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
+              <button class="btn btn-primary" type="submit" name="submit">Registrarse</button>
             </div>
           </div>
         </form>

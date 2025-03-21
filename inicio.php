@@ -152,7 +152,7 @@
         <div class="col-12">
           <form class="p-5 p-md-5  rounded-3  text-capitalize" action="login.php" novalidate method="POST" id="login">
             <div class="form-group mb-3">
-              <label for="documentType" class="form-label">Tipo de documento</label>
+              <label for="tipo_documento" class="form-label">Tipo de documento</label>
               <select class="form-control" id="tipo_documento" name="tipo_documento">
                 <option value="cc">Cédula de ciudadanía</option>
                 <option value="ce">Cédula extranjera</option>
@@ -166,11 +166,11 @@
               </select>
             </div>
             <div class="form-group mb-3">
-              <label for="documentNumber" class="form-label">Número de documento</label>
+              <label for="numero_documento" class="form-label">Número de documento</label>
               <input type="text" class="form-control" id="numero_documento" placeholder="Ingresa el Documento" name="numero_documento">
             </div>
             <div class="form-group mb-3">
-              <label for="password" class="form-label">Contraseña</label>
+              <label for="contraseña" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
             <div class="form-group mb-4 d-flex justify-content-between">
@@ -178,7 +178,7 @@
               <a href="registrate.php" class="text-white">Registrate</a>
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary rounded-4">Entrar</button>
+              <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
             </div>
           </form>
         </div>

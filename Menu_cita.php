@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['numero_documento'])) {
+    header("location:inicio.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -92,8 +98,23 @@
           </ul>
         </li>
         <li class="nav-item">
-          <span class="mb-0">Digna Maria Romero Urbina</span>
+          <span class="mb-0 text-capitalize fs-5">
+          <?=
+            $_SESSION['primer_nombre']
+           ?>
+          <?= 
+          $_SESSION['segundo_nombre']
+          ?>
+          <?=
+           $_SESSION['primer_apellido']
+          ?>
+          <?=
+           $_SESSION['segundo_apellido']
+          ?>
+            
+        </span>
           <button type="button" class="btn bg-transparent position-relative">
+          
             <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               5
