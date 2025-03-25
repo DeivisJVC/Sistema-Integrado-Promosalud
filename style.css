@@ -132,3 +132,21 @@ header {
   font-weight: bold;
   color: #0f3b6f;
 }
+.profileModal {
+  background: linear-gradient(to right, #0f3b6f, #1d72d4);
+}
+.editar_button:hover {
+  font-size: 19px;
+  border: 1px solid #f0f4f4;
+}
+.sin-triangulo {
+  appearance: none; /* Quita el estilo predeterminado del botón */
+  background: none; /* Elimina cualquier fondo que pueda incluir Bootstrap */
+  border: none; /* Remueve bordes si existen */
+  padding-right: 0; /* Ajusta el espaciado */
+  color: inherit; /* Hereda el color del texto */
+}
+
+.sin-triangulo::after {
+  display: none; /* Oculta el ícono de triángulo invertido */
+}

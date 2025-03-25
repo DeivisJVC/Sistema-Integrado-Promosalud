@@ -46,17 +46,6 @@
         </li>
       </ul>
       <ul class="nav container-fluid justify-content-end gap-5">
-        <li class="nav-item">
-          <div class="position-relative">
-            <input type="search" placeholder="Buscar..." class="form-control ps-4 pe-5" />
-            <svg class="position-absolute end-0 top-50 translate-middle-y text-muted me-2" width="20" height="20"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </div>
-        </li>
         <li class="nav-item align-content-center">
           <ul class="navbar-nav mb-2 mb-lg-0">
             <li class="nav-item dropdown w-25" data-bs-theme="light">
@@ -122,15 +111,22 @@
             </span>
           </button>
         </li>
-        <li class="nav-item">
-          <button id="menuBtn" class="btn text-white" data-bs-toggle="modal" data-bs-target="#profileModal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+       <li class="nav-item me-5">
+          <div class="dropdown">
+            <a class="btn dropdown-toggle sin-triangulo" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
               stroke-linecap="round" stroke-linejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          </button>
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </a>
+
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/edit-profile.html">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="/logout.php">Cerrar sesión</a></li>
+            </ul>
+          </div>
         </li>
       </ul>
     </nav>
@@ -139,7 +135,7 @@
   <!-- Profile Modal -->
   <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-right modal-full-height">
-      <div class="modal-content bg-primary text-white">
+      <div class="modal-content text-white profileModal">
         <div class="modal-header">
           <h2 class="fs-4 modal-title" id="profileModalLabel">Perfil</h2>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -156,7 +152,8 @@
                 <p>Teléfono: 123-456-7890</p>
                 <p>Dirección: Street 123</p>
               </div>
-              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3">Editar</a>
+              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3 text-white editar_button">Editar Perfil</a>
+              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3 text-white editar_button">Cerrar sesión</a>
             </div>
           </div>
         </div>
