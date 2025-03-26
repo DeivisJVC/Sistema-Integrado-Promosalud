@@ -1,4 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['numero_documento'])) {
+    header("location:Menu_cita.php");
+}
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 <!-- data-bs-theme="dark" -->

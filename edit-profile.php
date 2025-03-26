@@ -1,5 +1,6 @@
 <?php
 include 'mostrar-profile.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -24,8 +25,11 @@ include 'mostrar-profile.php';
   <main class="container my-5">
     <div class="bg-white p-5 rounded shadow">
       <h1 class="mb-4">Editar Perfil</h1>
+      <?php if (isset($_GET['success'])): ?>
+         <div class="alert alert-success">Perfil actualizado correctamente.</div>
+      <?php endif; ?>
 
-      <form id="profileForm" action="/edit-profile-modify.php" method="POST">
+      <form id="profileForm" action="edit-profile-modify.php" method="POST">
         <div class="row mb-4">
           <!-- Profile Picture -->
           <div class="col-md-3 text-center mb-3 mb-md-0">
@@ -50,10 +54,16 @@ include 'mostrar-profile.php';
           </div>
         </div>
 
-        <div class="mb-3">
+        <!-- <div class="mb-3">
+          agregar mostrar empresa
           <label for="empresa" class="form-label">Empresa</label>
           <input type="text" class="form-control" id="empresa" name="empresa" value="<?php echo $_SESSION['empresa']; ?>">
+        </div> -->
+         <div class="mb-3">
+          <input type="text" class="form-control" id="numero_documento" name="numero_documento" hidden value="<?php echo $_SESSION['numero_documento']; ?>">
         </div>
+
+        
 
         <div class="mb-3">
           <label for="ocupacion" class="form-label">Ocupacion</label>
