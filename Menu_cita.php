@@ -132,36 +132,6 @@
     </nav>
   </header>
 
-  <!-- Profile Modal -->
-  <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-right modal-full-height">
-      <div class="modal-content text-white profileModal">
-        <div class="modal-header">
-          <h2 class="fs-4 modal-title" id="profileModalLabel">Perfil</h2>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body modal_profile">
-          <div class="d-flex flex-column align-items-center gap-3">
-            <div class="text-center w-100">
-
-              <h3 class="fw-semibold">Nombre: John Doe</h3>
-              <div class="mt-4">
-                <p>Apellidos: Smith</p>
-                <p>Empresa: Health Corp</p>
-                <p>Cargo: Patient</p>
-                <p>Teléfono: 123-456-7890</p>
-                <p>Dirección: Street 123</p>
-              </div>
-              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3 text-white editar_button">Editar Perfil</a>
-              <a href="/edit-profile.html" class="btn btn-dark w-50 mt-3 text-white editar_button">Cerrar sesión</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <!-- Navigation Menu -->
 
   <!-- Main Content -->
