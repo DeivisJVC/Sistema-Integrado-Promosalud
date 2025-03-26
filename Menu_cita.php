@@ -123,7 +123,7 @@
             </a>
 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/edit-profile.html">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="/edit-profile.php">Editar Perfil</a></li>
               <li><a class="dropdown-item" href="/logout.php">Cerrar sesión</a></li>
             </ul>
           </div>
