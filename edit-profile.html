@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil - Sistema Integrado Promosalud</title>
+  <link rel="stylesheet" href="/scss/custom.css" />
+</head>
+
+<body class="min-vh-100 bg-light">
+  <!-- Header -->
+  <header class="bg-primary py-3">
+    <div class="container d-flex justify-content-between align-items-center">
+      <a href="index.html" class="text-white text-decoration-none fs-3 fw-bold">Sistema Integrado Promosalud</a>
+      <a href="index.html" class="btn btn-outline-light">Volver</a>
+    </div>
+  </header>
+
+  <!-- Edit Form -->
+  <main class="container my-5">
+    <div class="bg-white p-5 rounded shadow">
+      <h1 class="mb-4">Editar Perfil</h1>
+
+      <form id="profileForm">
+        <div class="row mb-4">
+          <!-- Profile Picture -->
+          <div class="col-md-3 text-center mb-3 mb-md-0">
+            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center mx-auto"
+              style="width: 128px; height: 128px;">
+              U
+            </div>
+            <button type="button" class="btn btn-link mt-2">Cambiar foto</button>
+          </div>
+
+          <!-- Personal Info -->
+          <div class="col-md-9">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" name="nombre" value="John">
+            </div>
+            <div class="mb-3">
+              <label for="apellidos" class="form-label">Apellidos</label>
+              <input type="text" class="form-control" id="apellidos" name="apellidos" value="Smith">
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Empresa</label>
+          <input type="text" class="form-control" id="empresa" name="empresa" value="Health Corp">
+        </div>
+
+        <div class="mb-3">
+          <label for="cargo" class="form-label">Cargo</label>
+          <input type="text" class="form-control" id="cargo" name="cargo" value="Patient">
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="telefono" name="telefono" value="123-456-7890">
+        </div>
+
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <textarea class="form-control" id="direccion" name="direccion" rows="2">Street 123</textarea>
+        </div>
+
+        <div class="d-flex justify-content-between pt-3">
+          <button type="submit" class="btn btn-primary flex-grow-1 me-2">Guardar Cambios</button>
+          <a href="Menu_cita.html" class="btn btn-secondary flex-grow-1 ms-2">Cancelar</a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById("profileForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = {
+        nombre: document.getElementById("nombre").value,
+        apellidos: document.getElementById("apellidos").value,
+        empresa: document.getElementById("empresa").value,
+        cargo: document.getElementById("cargo").value,
+        telefono: document.getElementById("telefono").value,
+        direccion: document.getElementById("direccion").value,
+      };
+
+      console.log("Datos enviados:", formData);
+
+      // Aquí podrías hacer una solicitud HTTP para enviar los datos al servidor.
+      // Por ejemplo, usando fetch:
+      /*
+      fetch('/api/update-profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        alert('Cambios guardados exitosamente');
+        window.location.href = 'index.html';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+      */
+
+      // Simulación de éxito
+      alert("Cambios guardados exitosamente");
+      window.location.href = "index.html";
+    });
+  </script>
+
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/js/darkmode.js"></script>
+  <script src="/js/year.js"></script>
+
+</html>
