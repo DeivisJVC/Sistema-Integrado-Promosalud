@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 
 // Recuperar los datos del usuario desde la base de datos
 $numero_documento = $_SESSION['numero_documento'];
-$sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, ocupacion, telefono, ciudad, direccion, correo 
+$sql = "SELECT primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, ocupacion, telefono, ciudad, direccion, correo, img
         FROM paciente 
         WHERE numero_documento = '$numero_documento'";
 
@@ -33,6 +33,7 @@ if (!$result) {
 
 if ($result->num_rows > 0) {
     $fila = $result->fetch_assoc();
+    $_SESSION['foto'] = $fila['img'];
     $_SESSION['primer_nombre'] = $fila['primer_nombre'];
     $_SESSION['segundo_nombre'] = $fila['segundo_nombre'];
     $_SESSION['primer_apellido'] = $fila['primer_apellido'];
