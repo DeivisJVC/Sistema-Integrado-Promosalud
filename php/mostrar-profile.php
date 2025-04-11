@@ -3,7 +3,7 @@ session_start();
 
 // Verifica si el usuario está logueado
 if (!isset($_SESSION['numero_documento'])) {
-    header("Location: login.php"); // Redirige al login si no está logueado
+    header("Location: php/login.php"); // Redirige al login si no está logueado
     exit();
 }
 

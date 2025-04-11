@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 // Validación de sesión
 if (!isset($_SESSION['numero_documento'])) {
-    header("Location: login.php");
+    header("Location: php/login.php");
     exit();
 }
 
@@ -44,7 +44,7 @@ if (isset($_POST['quitar_foto']) && $_POST['quitar_foto'] == '1') {
     if (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) {
         unlink($_SESSION['foto']); // Elimina la imagen del servidor
     }
-    $fotoRuta = 'img/img_users/default.svg'; // Ruta por defecto
+    $fotoRuta = 'assets/assets/img/img_users/default.svg'; // Ruta por defecto
 }
 
 // Procesar imagen
@@ -55,7 +55,7 @@ if (isset($_FILES['img']) && $_FILES['img']['error'] === 0) {
 
     if (in_array($ext, $allowed) && $file['size'] <= 2097152) {
         $newName = uniqid('img_', true) . '.' . $ext;
-        $dir = "img/img_users/";
+        $dir = "assets/assets/img/img_users/";
 
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);
