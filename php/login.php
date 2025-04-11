@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
     $_SESSION['segundo_nombre'] = $fila['segundo_nombre'];
     $_SESSION['primer_apellido'] = $fila['primer_apellido'];
     $_SESSION['segundo_apellido'] = $fila['segundo_apellido'];
-    header("location:Menu_cita.php");
+    header("location:views/Menu_cita.php");
 } else {
     echo "Usuario no logueado";
 } 

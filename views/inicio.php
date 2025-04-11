@@ -1,3 +1,10 @@
+<?php 
+session_start();
+if (isset($_SESSION['numero_documento'])) {
+    header("location:Menu_cita.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <!-- data-bs-theme="dark" -->
@@ -6,8 +13,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema Integrado Promosalud</title>
-  <link rel="stylesheet" href="/scss/custom.css" />
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/assets/scss/custom.css" />
+  <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -35,19 +42,19 @@
         <li class="nav-item">
           <!--Separar los iconos de las letras-->
           <a href="Menu_cita.html" class="nav-link text-white" aria-current="page">
-            <img class="me-2" src="/icon/icon _book.svg" alt="agendamiento de citas" width="40" height="40" />
+            <img class="me-2" src="/assets/icon/icon _book.svg" alt="agendamiento de citas" width="40" height="40" />
             Agendamiento de citas
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white active" aria-current="page" href="control_agenda.html">
-            <img class="me-2" src="/icon/icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
+            <img class="me-2" src="/assets/icon/icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
             agenda
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white active" aria-current="page" href="informes.html">
-            <img class="me-2" src="/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
+            <img class="me-2" src="/assets/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
           </a>
         </li>
         <li class="nav-item align-content-center">
@@ -59,7 +66,7 @@
         <li class="dropdown">
           <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
             aria-expanded="false">
-            <img src="/icon/menu.svg" alt="menu" width="50" height="50" />
+            <img src="/assets/icon/menu.svg" alt="menu" width="50" height="50" />
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Configuración</a></li>
@@ -112,7 +119,7 @@
   </header>
   <main class="m-5">
     <section class="navbar navbar-expand-lg py-3 mt-4">
-      <img src="/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
+      <img src="/assets/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
       <ul id="segundo_header" class="nav container-fluid justify-content-xxl-evenly">
         <li>
           <a id="segundo_header" class="nav-link active fs-5 " aria-current="page" href="inicio.html">Inicio</a>
@@ -129,30 +136,30 @@
         </li>
         <li class="nav-item">
           <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
-            <img src="/icon/facebook.svg" alt="facebook" width="50" height="50" />
+            <img src="/assets/icon/facebook.svg" alt="facebook" width="50" height="50" />
           </a>
         </li>
         <li>
           <a id="segundo_header" href="">
             <!-- Enlace a la pagina de Instagram -->
-            <img src="/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
+            <img src="/assets/icon/instagram 1.svg" alt="instagram" width="50" height="50" />
           </a>
         </li>
         <li>
           <!-- Enlace a la pagina de Twitter -->
-          <a id="segundo_header" href=""><img src="/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
+          <a id="segundo_header" href=""><img src="/assets/icon/twitter.svg" alt="twitter" width="60" height="50" /></a>
         </li>
       </ul>
     </section>
     <section class="d-flex justify-content-center align-items-center mt-5  flex-wrap" style="gap: 200px;">
-      <img src="/icon/pacienteatendido.svg" alt="Paciente Atendido" class="img-fluid d-none d-md-block">
+      <img src="/assets/icon/pacienteatendido.svg" alt="Paciente Atendido" class="img-fluid d-none d-md-block">
       <section id="formulario-inicio"
         class="container col-12 col-md-8 col-lg-6 row justify-content-center bg-tertiary rounded-5">
         <div class="col-12">
-          <form class="p-5 p-md-5  rounded-3  text-capitalize">
+          <form class="p-5 p-md-5  rounded-3  text-capitalize" action="php/login.php" novalidate method="POST" id="login">
             <div class="form-group mb-3">
-              <label for="documentType" class="form-label">Tipo de documento</label>
-              <select class="form-control" id="documentType">
+              <label for="tipo_documento" class="form-label">Tipo de documento</label>
+              <select class="form-control" id="tipo_documento" name="tipo_documento">
                 <option value="cc">Cédula de ciudadanía</option>
                 <option value="ce">Cédula extranjera</option>
                 <option value="ptt">Permiso temporal de trabajo</option>
@@ -165,19 +172,19 @@
               </select>
             </div>
             <div class="form-group mb-3">
-              <label for="documentNumber" class="form-label">Número de documento</label>
-              <input type="text" class="form-control" id="documentNumber" placeholder="Ingresa el Documento">
+              <label for="numero_documento" class="form-label">Número de documento</label>
+              <input type="text" class="form-control" id="numero_documento" placeholder="Ingresa el Documento" name="numero_documento">
             </div>
             <div class="form-group mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id="password" placeholder="Ingresa la Contraseña">
+              <label for="contraseña" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
             <div class="form-group mb-4 d-flex justify-content-between">
               <a href="recuperar_contraseña.html" class="text-white">¿Olvidaste la contraseña?</a>
-              <a href="registrate.html" class="text-white">Registrate</a>
+              <a href="registrate.php" class="text-white">Registrate</a>
             </div>
             <div class="d-grid">
-              <button type="submit" class="btn btn-primary rounded-4">Entrar</button>
+              <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
             </div>
           </form>
         </div>
@@ -188,7 +195,7 @@
     <h2 class="text-center p-4">Servicios</h2>
     <div class="row text-center m-4">
       <section class="d-grid col-12 col-md-6 col-lg-4  mb-4">
-        <img src="/icon/estetoscopio.svg" alt="estetoscopio" class="" />
+        <img src="/assets/icon/estetoscopio.svg" alt="estetoscopio" class="" />
         <h3 class="">Medicina laboral y del trabajo</h3>
         <p class="">
           Ofrecemos evaluación de riesgos laborales, exámenes médicos
@@ -197,7 +204,7 @@
         </p>
       </section>
       <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
-        <img src="/icon/seguridad-en-el-trabajo 1.svg" class="mb-3" />
+        <img src="/assets/icon/seguridad-en-el-trabajo 1.svg" class="mb-3" />
         <h3>Sistema de gestión ST-SST</h3>
         <p>
           Brindamos asesoría en la implementación y mantenimiento del Sistema de
@@ -207,7 +214,7 @@
         </p>
       </section>
       <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
-        <img src="/icon/pensando 1.svg" alt="pensamiento" class="mb-3" />
+        <img src="/assets/icon/pensando 1.svg" alt="pensamiento" class="mb-3" />
         <h3>Psicología y Psicometría</h3>
         <p>
           Evaluación psicológica, intervención en casos de estrés laboral, apoyo
@@ -216,7 +223,7 @@
         </p>
       </section>
       <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
-        <img src="/icon/examenes-de-salud 1.svg" alt="examenes" class="mb-3" />
+        <img src="/assets/icon/examenes-de-salud 1.svg" alt="examenes" class="mb-3" />
         <h3>Exámenes paraclínicos</h3>
         <p>
           Ofrecemos una amplia gama de exámenes paraclínicos especializados para
@@ -224,7 +231,7 @@
         </p>
       </section>
       <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
-        <img src="/icon/telemedicina 1.svg" alt="telemedicina" class="mb-3" />
+        <img src="/assets/icon/telemedicina 1.svg" alt="telemedicina" class="mb-3" />
         <h3>Telemedicina</h3>
         <p>
           Nuestros servicios de telemedicina incluyen consulta médica virtual,
@@ -232,7 +239,7 @@
         </p>
       </section>
       <section class="d-grid col-12 col-md-6 col-lg-4 text-center mb-4">
-        <img src="/icon/microscopio 1.svg" class="mb-3" />
+        <img src="/assets/icon/microscopio 1.svg" class="mb-3" />
         <h3>Laboratorio</h3>
         <p>
           Nuestro laboratorio clínico ofrece una amplia gama de pruebas para
@@ -246,26 +253,26 @@
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">
           <section class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
-            <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
+            <img src="/assets/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
             <p class="mb-4">
               Somos líderes en el Magdalena, y contamos con una red de prestadores
               de servicios a nivel regional y nacional
             </p>
             <p class="mb-4">
-              <img src="/icon/Direccion_footer.svg" alt="Direccion_footer" />
+              <img src="/assets/icon/Direccion_footer.svg" alt="Direccion_footer" />
               Cra. 11 #18-90 Barrio Territorial, Centro Médico Pablo Garcia
               InfanteSanta Marta, Magdalena, Colombia
             </p>
             <p class="mb-4">
-              <img src="/icon/Correo_footer1.svg" alt="Correo_footer" />
+              <img src="/assets/icon/Correo_footer1.svg" alt="Correo_footer" />
               Pomosalud@promosalud.org
             </p>
             <p class="mb-4">
-              <img src="/icon/Telefono_footer.svg" alt="Telefono_footer" />
+              <img src="/assets/icon/Telefono_footer.svg" alt="Telefono_footer" />
               4233421 - 4214882 - 4309810 - 4202158
             </p>
             <p class="mb-4 text-start ">
-              <img src="/icon/calendario_footer.svg" width="40px" alt="calendario" />
+              <img src="/assets/icon/calendario_footer.svg" width="40px" alt="calendario" />
               4233421 - 4214882 - 4309810 - 4202158
               Citas: 304 219 5411
             </p>
@@ -277,38 +284,38 @@
               <ul class="nav container-fluid">
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Medicina Laboral y del trabajo
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Sistema de gestion SG-SST
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Psicologia y psicometria
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Laboratorio
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Examenes Paraclinicos
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" target="_blank"
                     class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Telemedicina
                   </a>
                 </li>
@@ -325,16 +332,16 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="/img/carrusel1.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel1.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel2.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel2.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel3.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel3.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel4.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel4.png" class="d-block w-100" alt="...">
                 </div>
               </div>
             </div>
@@ -372,8 +379,8 @@
     </article>
   </footer>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/js/darkmode.js"></script>
-  <script src="/js/year.js"></script>
+  <script src="/assets/js/darkmode.js"></script>
+  <script src="/assets/js/year.js"></script>
 </body>
 
 </html>

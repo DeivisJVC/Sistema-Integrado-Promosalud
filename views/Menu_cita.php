@@ -11,8 +11,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sistema Integrado Promosalud</title>
-  <link rel="stylesheet" href="/scss/custom.css" />
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/assets/scss/custom.css" />
+  <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -41,7 +41,7 @@
       <ul class="nav container-fluid justify-content-start">
         <li class="nav-item">
           <a href="/inicio.html" class="nav-link">
-            <img src="/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
+            <img src="/assets/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
           </a>
         </li>
       </ul>
@@ -104,7 +104,7 @@
         </span>
           <button type="button" class="btn bg-transparent position-relative">
           
-            <img src="/icon/notificacion.svg" alt="notificacion" class="h-6" />
+            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               5
               <span class="visually-hidden">Notificaciones</span>
@@ -124,7 +124,7 @@
 
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="/edit-profile.php">Editar Perfil</a></li>
-              <li><a class="dropdown-item" href="/logout.php">Cerrar sesión</a></li>
+              <li><a class="dropdown-item" href="/php/logout.php">Cerrar sesión</a></li>
             </ul>
           </div>
         </li>
@@ -139,7 +139,7 @@
     <section class="container">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6">
-          <img src="/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
+          <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
         </div>
         <div class="col-12 col-md-6 container_letras_main ">
           <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...
@@ -171,7 +171,7 @@
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/img/medico_revisando.png" class="card-img-top" alt="Ortopedia">
+          <img src="/assets/img/medico_revisando.png" class="card-img-top" alt="Ortopedia">
           <div class="card-body">
             <h5 class="card-title">Ortopedia</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -181,7 +181,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/img/rayosx.png" class="card-img-top" alt="Rayos X">
+          <img src="/assets/img/rayosx.png" class="card-img-top" alt="Rayos X">
           <div class="card-body">
             <h5 class="card-title">Rayos X</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -191,7 +191,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/img/toma_presion.png" class="card-img-top" alt="Presión">
+          <img src="/assets/img/toma_presion.png" class="card-img-top" alt="Presión">
           <div class="card-body">
             <h5 class="card-title">Presión</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -201,7 +201,7 @@
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="card">
-          <img src="/img/examen_vista.png" class="card-img-top" alt="Examen de vista">
+          <img src="/assets/img/examen_vista.png" class="card-img-top" alt="Examen de vista">
           <div class="card-body">
             <h5 class="card-title">Examen de vista</h5>
             <p class="card-text">Atiéndete con los mejores</p>
@@ -218,26 +218,26 @@
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">
           <section class="col-md-4 col-lg-4 col-xl-3 mx-auto mb-4">
-            <img src="/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
+            <img src="/assets/icon/logo_blanco_promosalud.svg " alt="Logo_promsoalud" />
             <p class="mb-4">
               Somos líderes en el Magdalena, y contamos con una red de prestadores
               de servicios a nivel regional y nacional
             </p>
             <p class="mb-4">
-              <img src="/icon/Direccion_footer.svg" alt="Direccion_footer" />
+              <img src="/assets/icon/Direccion_footer.svg" alt="Direccion_footer" />
               Cra. 11 #18-90 Barrio Territorial, Centro Médico Pablo Garcia
               InfanteSanta Marta, Magdalena, Colombia
             </p>
             <p class="mb-4">
-              <img src="/icon/Correo_footer1.svg" alt="Correo_footer" />
+              <img src="/assets/icon/Correo_footer1.svg" alt="Correo_footer" />
               Pomosalud@promosalud.org
             </p>
             <p class="mb-4">
-              <img src="/icon/Telefono_footer.svg" alt="Telefono_footer" />
+              <img src="/assets/icon/Telefono_footer.svg" alt="Telefono_footer" />
               4233421 - 4214882 - 4309810 - 4202158
             </p>
             <p class="mb-4 text-start ">
-              <img src="/icon/calendario_footer.svg" width="40px" alt="calendario" />
+              <img src="/assets/icon/calendario_footer.svg" width="40px" alt="calendario" />
               4233421 - 4214882 - 4309810 - 4202158
               Citas: 304 219 5411
             </p>
@@ -249,37 +249,37 @@
               <ul class="nav container-fluid">
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Medicina Laboral y del trabajo
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Sistema de gestion SG-SST
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Psicologia y psicometria
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Laboratorio
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Examenes Paraclinicos
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="http://promosalud.org/#/servicios" target="_blank" class="text-white nav-link">
-                    <img src="/icon/Vector.svg" alt="vector-icon">
+                    <img src="/assets/icon/Vector.svg" alt="vector-icon">
                     Telemedicina
                   </a>
                 </li>
@@ -296,16 +296,16 @@
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <img src="/img/carrusel1.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel1.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel2.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel2.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel3.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel3.png" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
-                  <img src="/img/carrusel4.png" class="d-block w-100" alt="...">
+                  <img src="/assets/img/carrusel4.png" class="d-block w-100" alt="...">
                 </div>
               </div>
             </div>
@@ -343,9 +343,9 @@
     </article>
   </footer>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/js/darkmode.js"></script>
-  <script src="/js/year.js"></script>
-  <script src="/js/edit_user.js"></script>
+  <script src="/assets/js/darkmode.js"></script>
+  <script src="/assets/js/year.js"></script>
+  <script src="/assets/js/edit_user.js"></script>
 </body>
 
 </html>

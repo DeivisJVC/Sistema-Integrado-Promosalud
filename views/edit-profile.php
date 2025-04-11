@@ -1,6 +1,6 @@
 <?php
-require_once 'mostrar-profile.php';
-$foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSION['foto'] : 'img/img_users/default.svg';
+require_once 'php/mostrar-profile.php';
+$foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSION['foto'] : 'assets/assets/img/img_users/default.svg';
 ?>
 
 
@@ -11,7 +11,7 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Editar Perfil - Sistema Integrado Promosalud</title>
-  <link rel="stylesheet" href="/scss/custom.css" />
+  <link rel="stylesheet" href="/assets/scss/custom.css" />
 </head>
 
 <body class="min-vh-100 bg-light">
@@ -32,7 +32,7 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
       <?php endif; ?>
 
 
-      <form id="profileForm" action="edit-data-user.php" method="POST" enctype="multipart/form-data" >
+      <form id="profileForm" action="php/edit-data-user.php" method="POST" enctype="multipart/form-data" >
         <div class="row mb-4">
           <!-- Profile Picture -->
           <div class="col-md-3 text-center mb-3 mb-md-0">
@@ -101,8 +101,8 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
 
 
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/js/darkmode.js"></script>
-  <script src="/js/year.js"></script>
+  <script src="/assets/js/darkmode.js"></script>
+  <script src="/assets/js/year.js"></script>
       <script>
     document.getElementById('img').addEventListener('change', function (e) {
       const [file] = this.files;
