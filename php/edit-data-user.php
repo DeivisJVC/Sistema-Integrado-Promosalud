@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 
 // Validación de sesión
 if (!isset($_SESSION['numero_documento'])) {
-    header("Location: php/login.php");
+    header("Location: ../views/inicio.php");
     exit();
 }
 
@@ -44,18 +44,18 @@ if (isset($_POST['quitar_foto']) && $_POST['quitar_foto'] == '1') {
     if (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) {
         unlink($_SESSION['foto']); // Elimina la imagen del servidor
     }
-    $fotoRuta = 'assets/assets/img/img_users/default.svg'; // Ruta por defecto
+      $fotoRuta = '../assets/img/img_users/default.svg'; // Ruta por defecto
 }
 
 // Procesar imagen
 if (isset($_FILES['img']) && $_FILES['img']['error'] === 0) {
     $file = $_FILES['img'];
     $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-    $allowed = ['jpg', 'jpeg', 'png'];
+    $allowed = ['jpg', 'jpeg', 'png','webp'];
 
     if (in_array($ext, $allowed) && $file['size'] <= 2097152) {
         $newName = uniqid('img_', true) . '.' . $ext;
-        $dir = "assets/assets/img/img_users/";
+       $dir = "../assets/img/img_users/";
 
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);
@@ -97,7 +97,7 @@ if ($stmt->execute()) {
     $_SESSION['correo'] = $correo;
     $_SESSION['foto'] = $fotoRuta;
 
-    header("Location: edit-profile.php?success=1");
+    header("Location: ../views/edit-profile.php?success=1");
     exit();
 } else {
     echo "Error al actualizar: " . $stmt->error;

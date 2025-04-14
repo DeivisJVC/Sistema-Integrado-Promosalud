@@ -1,7 +1,7 @@
 <?php
   session_start();
   if (!isset($_SESSION['numero_documento'])) {
-    header("location:inicio.php");
+    header("location:/views/inicio.php");
   }
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@
     <nav class="nav navbar-expand-lg align-items-center ">
       <ul class="nav container-fluid justify-content-start">
         <li class="nav-item">
-          <a href="/inicio.html" class="nav-link">
+          <a href="/views/inicio.php" class="nav-link">
             <img src="/assets/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
           </a>
         </li>
@@ -123,7 +123,7 @@
             </a>
 
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/edit-profile.php">Editar Perfil</a></li>
+              <li><a class="dropdown-item" href="/views/edit-profile.php">Editar Perfil</a></li>
               <li><a class="dropdown-item" href="/php/logout.php">Cerrar sesión</a></li>
             </ul>
           </div>
@@ -149,14 +149,14 @@
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
               <li class="nav-item">
-                <a class="btn_link    fs-5" href="/agendamiendo_citas.html" aria-current="page">Agendar Cita</a>
+                <a class="btn_link    fs-5" href="../views/Agendamiendo_citas.php" aria-current="page">Agendar Cita</a>
               </li>
               <li class="nav-item">
-                <a class="btn_link    fs-5" aria-current="page" href="/control_agenda.html">Consultar
+                <a class="btn_link    fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
                   Citas</a>
               </li>
               <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="/contactanos.html">Contáctanos</a>
+                <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
               </li>
             </ul>
           </nav>

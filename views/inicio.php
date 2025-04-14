@@ -41,7 +41,7 @@ if (isset($_SESSION['numero_documento'])) {
       <ul class="nav container-fluid justify-content-xxl-evenly">
         <li class="nav-item">
           <!--Separar los iconos de las letras-->
-          <a href="Menu_cita.html" class="nav-link text-white" aria-current="page">
+          <a href="/views/Menu_cita.php" class="nav-link text-white" aria-current="page">
             <img class="me-2" src="/assets/icon/icon _book.svg" alt="agendamiento de citas" width="40" height="40" />
             Agendamiento de citas
           </a>
@@ -156,7 +156,7 @@ if (isset($_SESSION['numero_documento'])) {
       <section id="formulario-inicio"
         class="container col-12 col-md-8 col-lg-6 row justify-content-center bg-tertiary rounded-5">
         <div class="col-12">
-          <form class="p-5 p-md-5  rounded-3  text-capitalize" action="php/login.php" novalidate method="POST" id="login">
+          <form class="p-5 p-md-5  rounded-3  text-capitalize" action="../php/login.php" novalidate method="POST" id="login">
             <div class="form-group mb-3">
               <label for="tipo_documento" class="form-label">Tipo de documento</label>
               <select class="form-control" id="tipo_documento" name="tipo_documento">

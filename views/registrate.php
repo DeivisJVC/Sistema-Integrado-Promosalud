@@ -61,7 +61,7 @@
             </p>
           </section>
       <section>
-        <form action="php/register.php" id="multiStepForm" class="needs-validation" novalidate method="POST">
+        <form action="../php/register.php" id="multiStepForm" class="needs-validation" novalidate method="POST">
           <!-- Paso 1: Información Personal -->
           <div class="step active justify-content-center align-content-center">
             <div class="row g-4 justify-content-center">
@@ -160,7 +160,7 @@
                 <label for="empresa_name" class="form-label">Empresa<span style="color: red;">*</span></label>
                 <select class="form-control" id="empresa_name" name="nombre_empresa">
                   <select name="empresa_name" id="empresa_name" disabled="disabled">
-                    <?php include 'php/consult_company.php'; ?>
+                    <?php include '../php/consult_company.php'; ?>
                   </select>
                 </select>
                 <div class="valid-feedback">Excelente!</div>

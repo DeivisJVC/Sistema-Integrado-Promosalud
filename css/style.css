@@ -150,3 +150,6 @@ header {
 .sin-triangulo::after {
   display: none; /* Oculta el ícono de triángulo invertido */
 }
+.ul-second {
+  margin-left: -200px;
+}
