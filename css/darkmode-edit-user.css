@@ -1,0 +1,54 @@
+.main-container-edit-user {
+  margin-top: 120px !important; /* Espacio superior para el contenedor principal */
+}
+
+/* Cambiar el fondo del formulario y el texto en modo oscuro */
+[data-bs-theme="dark"] .bg-white {
+  background-color: #2c2c2c !important; /* Fondo oscuro */
+  color: #f8f9fa !important; /* Texto claro */
+  border: 1px solid #444 !important; /* Borde más oscuro */
+}
+.editar-perfil-titulo {
+  margin-top: 20px !important; /* Espacio superior para el título */
+  margin-bottom: 50px !important; /* Espacio inferior para el título */
+}
+/* Cambiar el fondo de los inputs en modo oscuro */
+[data-bs-theme="dark"] .form-control {
+  background-color: #3a3a3a !important; /* Fondo oscuro para inputs */
+  color: #f8f9fa !important; /* Texto claro */
+  border: 1px solid #555 !important; /* Borde más oscuro */
+}
+
+/* Cambiar el fondo de los inputs al enfocarlos */
+[data-bs-theme="dark"] .form-control:focus {
+  background-color: #444 !important; /* Fondo más claro al enfocar */
+  border-color: #1d72d4 !important; /* Borde azul al enfocar */
+  color: #f8f9fa !important;
+}
+
+/* Cambiar el color de los botones en modo oscuro */
+[data-bs-theme="dark"] .btn-primary {
+  background-color: #1d72d4 !important; /* Botón azul */
+  border-color: #1d72d4 !important;
+}
+
+[data-bs-theme="dark"] .btn-secondary {
+  background-color: #444 !important; /* Botón gris oscuro */
+  border-color: #444 !important;
+}
+
+/* Cambiar el fondo del cuerpo en modo oscuro */
+[data-bs-theme="dark"] body {
+  background-color: #121212 !important; /* Fondo oscuro para todo el cuerpo */
+  color: #f8f9fa !important; /* Texto claro */
+}
+/* Cambiar el color del texto de los botones en modo oscuro */
+[data-bs-theme="dark"] .btn-ouline-primary {
+  color: #ffffff !important; /* Texto blanco */
+  border-bottom: 1px solid #ffffff !important; /* Borde blanco */
+}
+
+[data-bs-theme="dark"] .btn-outline-secondary {
+  color: #ffffff !important; /* Texto blanco */
+  border-bottom: 1px solid #ffffff !important; /* Borde blanco */
+}
