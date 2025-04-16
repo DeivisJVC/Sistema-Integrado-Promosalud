@@ -30,90 +30,76 @@
       </symbol>
     </svg>
     <header id="header_registro" class="rounded fixed-top">
-      <nav class="navbar navbar-expand-lg">
-        <ul
-          id="segundo_header"
-          class="nav container-fluid justify-content-xxl-evenly"
-        >
-          <li class="nav-item">
-            <a href="inicio.html" class="nav-link">
-              <img
-                src="/assets/icon/logo_blanco_promosalud.svg"
-                alt="logo_blanco_promosalud"
-                width="280px"
-              />
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              id="segundo_header"
-              class="nav-link active fs-5"
-              aria-current="page"
-              href="inicio.html"
-              >Inicio</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              id="segundo_header"
-              class="nav-link active fs-5"
-              href="sobre_nosotros.html"
-            >
-              <img src="/assets/icon/" alt="" />
-              Sobre nosotros
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              id="segundo_header"
-              class="nav-link active fs-5 text-capitalize"
-              href="donde_estamos.html"
-              >Donde estamos</a
-            >
-          </li>
-          <li class="nav-item">
-            <a
-              id="segundo_header"
-              class="nav-link active fs-5"
-              href="contactanos.html"
-              >Contactanos</a
-            >
-          </li>
-          <li class="nav-item redes-sociales">
-            <a id="segundo_header" href=""
-              ><!-- Enlace a la pagina de Facebook -->
-              <img
-                src="/assets/icon/facebook.svg"
-                alt="facebook"
-                width="50"
-                height="50"
-              />
-            </a>
-          </li>
-          <li class="nav-item redes-sociales">
-            <a id="segundo_header" href="">
-              <!-- Enlace a la pagina de Instagram -->
-              <img
-                src="/assets/icon/instagram 1.svg"
-                alt="instagram"
-                width="50"
-                height="50"
-              />
-            </a>
-          </li>
-          <li class="nav-item redes-sociales">
-            <!-- Enlace a la pagina de Twitter -->
-            <a id="segundo_header" href=""
-              ><img
-                src="/assets/icon/twitter.svg"
-                alt="twitter"
-                width="60"
-                height="50"
-            /></a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <nav class="navbar navbar-expand-lg">
+      <ul
+        id="segundo_header"
+        class="nav container-fluid justify-content-xxl-evenly">
+        <li class="nav-item">
+          <a href="inicio.html" class="nav-link">
+            <img
+              src="/assets/icon/logo_blanco_promosalud.svg"
+              alt="logo_blanco_promosalud"
+              width="280px" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            id="segundo_header"
+            class="nav-link active fs-5"
+            aria-current="page"
+            href="../views/inicio.php">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a
+            id="segundo_header"
+            class="nav-link active fs-5"
+            href="../views/sobre_nosotros.php">
+            <img src="/assets/icon/" alt="" />
+            Sobre nosotros
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            id="segundo_header"
+            class="nav-link active fs-5 text-capitalize"
+            href="../views/donde_estamos.php">Donde estamos</a>
+        </li>
+        <li class="nav-item">
+          <a
+            id="segundo_header"
+            class="nav-link active fs-5"
+            href="../views/contactanos.php">Contactanos</a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
+            <img
+              src="/assets/icon/facebook.svg"
+              alt="facebook"
+              width="50"
+              height="50" />
+          </a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <a id="segundo_header" href="">
+            <!-- Enlace a la pagina de Instagram -->
+            <img
+              src="/assets/icon/instagram 1.svg"
+              alt="instagram"
+              width="50"
+              height="50" />
+          </a>
+        </li>
+        <li class="nav-item redes-sociales">
+          <!-- Enlace a la pagina de Twitter -->
+          <a id="segundo_header" href=""><img
+              src="/assets/icon/twitter.svg"
+              alt="twitter"
+              width="60"
+              height="50" /></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
     <main
       class="container-fluid main-donde-estamos text-center justify-content-center align-items-center"
     >

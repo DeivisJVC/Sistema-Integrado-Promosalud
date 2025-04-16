@@ -1,12 +1,10 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contactanos</title>
+  <title>Sobre Nosotros</title>
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css" />
 </head>
@@ -83,77 +81,61 @@
       </ul>
     </nav>
   </header>
-  <main class="container-fluid main-contactanos mb-5">
-    <div class="container main-container-edit-user">
-      <div class="p-5 rounded shadow">
-        <h1 class="mb-4 editar-perfil-titulo text-center">Formulario de Contacto</h1>
-        <form id="contact-form" action="" method="POST" class="needs-validation" novalidate>
-          <div class="row mb-4 ">
-            <div class="col-md-6">
-              <label for="nombre" class="form-label">Nombre Completo</label>
-              <input
-                type="text"
-                class="form-control"
-                id="nombre"
-                placeholder="Tu nombre completo"
-                required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su nombre completo</div>
-            </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label">Correo Electrónico</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="tu@dominio.com"
-                required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese un correo electrónico válido</div>
-            </div>
+  <main class="container-fluid main-sobre-nosotros">
+    <section class="main-sobre-nosotros">
+      <div class="container mb-5">
+        <!-- Sección: Quienes Somos -->
+        <div class="row align-items-center mb-5">
+          <div class="col-md-7">
+            <h2 class="text-capitalize title_sobre_nosotros">Quienes Somos</h2>
+            <p>
+              Somos un equipo de profesionales especializados en salud ocupacional con 25 años de experiencia en diversas áreas, incluyendo medicina preventiva, medicina del trabajo, psicología, optometría, fonoaudiología, radiología, laboratorio clínico, higiene y seguridad industrial. Durante nuestra trayectoria, hemos brindado servicios tanto a empresas públicas como privadas, así como a personas naturales, instituciones educativas y otros proveedores del sector de la salud. Nuestro enfoque se centra en orientar los procesos para reintegrar a los trabajadores incapacitados, facilitar su reubicación y asegurar sus derechos en prestaciones económicas y asistenciales en riesgos profesionales. Nos comprometemos a proporcionar soluciones efectivas y personalizadas que promuevan un entorno laboral seguro y saludable para todos los involucrados. Además, nos enorgullece ser líderes en el Magdalena y contar con una red de prestadores de servicios a nivel regional y nacional, lo que nos permite ofrecer una cobertura integral y de calidad a nuestros clientes.
+            </p>
           </div>
-          <div class="row mb-4 ">
-            <div class="col-md-6">
-              <label for="telefono" class="form-label">Número de Teléfono</label>
-              <input
-                type="tel"
-                class="form-control"
-                id="telefono"
-                placeholder="Tu número de teléfono"
-                required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese un número de teléfono</div>
-            </div>
-            <div class="col-md-6">
-              <label for="asunto" class="form-label">Asunto</label>
-              <input
-                type="text"
-                class="form-control"
-                id="asunto"
-                placeholder="Motivo del contacto" 
-                required
-                />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese el asunto</div>
-            </div>
+          <div class="col-md-5">
+            <img
+              src="/assets/img/quienes_Somos.png"
+              class="img-fluid"
+              alt="quienesSomos" />
           </div>
-          <div class="row mb-4">
-            <div class="col-md-12">
-              <label for="mensaje" class="form-label">Mensaje</label>
-              <textarea
-                class="form-control"
-                id="mensaje"
-                rows="4"
-                placeholder="Escribe tu mensaje aquí"
-                required></textarea>
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su mensaje</div>
-            </div>
+        </div>
+
+        <!-- Sección: Misión -->
+        <div class="row align-items-center mb-5">
+
+          <div class="col-md-7">
+            <h2 class="text-capitalize title_sobre_nosotros">Misión</h2>
+            <p>
+              Nuestra misión es brindar servicios integrales en salud ocupacional de la más alta calidad, respaldados por 25 años de experiencia y un equipo multidisciplinario altamente calificado. Nos comprometemos a orientar y facilitar procesos que promuevan la salud, seguridad y bienestar de los trabajadores, empresas y comunidades a las que servimos.
+            </p>
           </div>
-          <button type="submit" class="btn btn-primary">Enviar</button>
-        </form>
+          <div class="col-md-5">
+            <img
+              src="/assets/img/Mision_img.png"
+              class="img-fluid"
+              alt="mision_img" />
+          </div>
+        </div>
       </div>
-    </div>
+      <div class="container mb-5">
+        <!-- Sección: Visión -->
+        <div class="row align-items-center mb-5 g-0">
+          <div class="col-md-6">
+            <img
+              src="/assets/img/Vision_img.png"
+              class="img-fluid"
+              alt="Vision_img" />
+          </div>
+          <div class="col-md-5">
+            <h2 class="text-capitalize title_sobre_nosotros">Visión</h2>
+            <p>
+              Nuestra visión es ser reconocidos por nuestra excelencia en la prestación de servicios integrales y personalizados, siendo la primera opción para empresas y personas que buscan soluciones integrales y efectivas para sus necesidades en materia de salud y seguridad laboral. Nos esforzamos por seguir innovando y mejorando continuamente nuestros servicios, adoptando las últimas tecnologías y prácticas para ofrecer un entorno laboral más seguro y saludable.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </section>
   </main>
   <footer class="container-fluid text-white footer-1">
     <article class="footer-1 container-fluid">
@@ -201,42 +183,55 @@
               <ul class="nav container-fluid">
                 <li class="nav-item">
                   <a
-                    href="Medicina_Laboral_y_Trabajo.html"
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
                     class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Medicina Laboral y del trabajo
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Sistema_Gestion.html" class="text-white nav-link">
+                  <a
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
+                    class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Sistema de gestion SG-SST
                   </a>
                 </li>
                 <li class="nav-item">
                   <a
-                    href="Psicologia_psicometria.html"
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
                     class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Psicologia y psicometria
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Laboratorio.html" class="text-white nav-link">
+                  <a
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
+                    class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Laboratorio
                   </a>
                 </li>
                 <li class="nav-item">
                   <a
-                    href="Examenes_paraclinicos.html"
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
                     class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Examenes Paraclinicos
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="Telemedicina.html" class="text-white nav-link">
+                  <a
+                    href="http://promosalud.org/#/servicios"
+                    target="_blank"
+                    target="_blank"
+                    class="text-white nav-link">
                     <img src="/assets/icon/Vector.svg" alt="vector-icon" />
                     Telemedicina
                   </a>
@@ -314,10 +309,6 @@
       </section>
     </article>
   </footer>
-  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="/assets/js/darkmode.js"></script>
-  <script src="/assets/js/year.js"></script>
-  <script src="../assets/js/ValidacionRegistroUser.js"></script>
 </body>
 
 </html>

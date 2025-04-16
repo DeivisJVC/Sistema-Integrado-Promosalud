@@ -2,8 +2,11 @@
 session_start();
 if (isset($_SESSION['numero_documento'])) {
     header("location:Menu_cita.php");
+    exit();
+} else {
+    // Mostrar un mensaje que indique que debe iniciar sesión
+    $mensaje = "Debe iniciar sesión para acceder a esta página.";
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,6 +22,21 @@ if (isset($_SESSION['numero_documento'])) {
 </head>
 
 <body>
+
+<!-- Modal para afirmar que debe iniciar sesion para acceder-->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Atención</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <?php echo $mensaje; ?>
+        </div>
+      </div>
+    </div>
+  </div>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
     <symbol id="circle-half" viewBox="0 0 16 16">
       <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
@@ -36,32 +54,27 @@ if (isset($_SESSION['numero_documento'])) {
         d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
     </symbol>
   </svg>
+  
   <header class="rounded fixed-top">
     <nav class="navbar navbar-expand-lg py-3">
       <ul class="nav container-fluid justify-content-xxl-evenly">
         <li class="nav-item">
           <!--Separar los iconos de las letras-->
-          <a href="/views/Menu_cita.php" class="nav-link text-white" aria-current="page">
+          <a href="/views/Menu_cita.php" class="nav-link text-white  modal-trigger" aria-current="page">
             <img class="me-2" src="/assets/icon/icon _book.svg" alt="agendamiento de citas" width="40" height="40" />
             Agendamiento de citas
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active" aria-current="page" href="control_agenda.html">
+          <a class="nav-link text-white active modal-trigger" aria-current="page" href="../views/control_agenda.php">
             <img class="me-2" src="/assets/icon/icon _document_.svg" alt="agenda" width="40" height="40" /> Control de
             agenda
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active" aria-current="page" href="informes.html">
+          <a class="nav-link text-white active modal-trigger" aria-current="page" href="../views/informes.php">
             <img class="me-2" src="/assets/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
           </a>
-        </li>
-        <li class="nav-item align-content-center">
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-info text-white" type="submit">Buscar</button>
-          </form>
         </li>
         <li class="dropdown">
           <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -70,11 +83,11 @@ if (isset($_SESSION['numero_documento'])) {
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Configuración</a></li>
-            <li>
-            <li><a class="dropdown-item" href="#">Perfil</a></li>
+            <li><a class="dropdown-item" href="#">Ayuda</a></li>
+    
         </li>
       </ul>
-      <li class="nav-item align-content-center">
+       <li class="nav-item align-content-center">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown w-25" data-bs-theme="light">
             <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
@@ -122,17 +135,17 @@ if (isset($_SESSION['numero_documento'])) {
       <img src="/assets/icon/logoPromosalud-removebg-preview 2.svg" alt="logo" width="253" height="142" />
       <ul id="segundo_header" class="nav container-fluid justify-content-xxl-evenly">
         <li>
-          <a id="segundo_header" class="nav-link active fs-5 " aria-current="page" href="inicio.html">Inicio</a>
+          <a id="segundo_header" class="nav-link active fs-5 " aria-current="page" href="../views/inicio.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5 " href="sobre_nosotros.html">Sobre nosotros </a>
+          <a id="segundo_header" class="nav-link active fs-5 " href="../views/sobre_nosotros.php">Sobre nosotros </a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5 text-capitalize" href="donde_estamos.html">Donde
+          <a id="segundo_header" class="nav-link active fs-5 text-capitalize" href="../views/donde_estamos.php">Donde
             estamos</a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5" href="contactanos.html">Contactanos</a>
+          <a id="segundo_header" class="nav-link active fs-5" href="../views/contactanos.php">Contactanos</a>
         </li>
         <li class="nav-item">
           <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
@@ -381,6 +394,15 @@ if (isset($_SESSION['numero_documento'])) {
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
+  <script>
+   document.querySelectorAll(".modal-trigger").forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    e.preventDefault(); // Evita la redirección
+    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+    loginModal.show();
+  });
+});
+  </script>
 </body>
 
 </html>
