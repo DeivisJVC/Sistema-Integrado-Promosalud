@@ -414,16 +414,16 @@ if (!isset($_SESSION['numero_documento'])) {
             <div class="modal-body">
               <p>
                 Estimado/a
-                <span id="modaluserName">
+                <span id="modaluserName" class="fw-bold">
 
                 </span>
               </p>
-              <p>
+              <p class="">
                 Su cita ha sido programada para el
-                <span id="modalConfirmDay">[día]</span> del
-                <span id="modalConfirmMonth">[mes]</span> del
-                <span id="modalConfirmYear">[año]</span> a las
-                <span id="modalConfirmTime">[hora]</span>
+                <span id="modalConfirmDay" class="fw-bold">[día]</span> del
+                <span id="modalConfirmMonth" class="fw-bold">[mes]</span> del
+                <span id="modalConfirmYear" class="fw-bold">[año]</span> a las
+                <span id="modalConfirmTime" class="fw-bold">[hora]</span>
               </p>
               <p>
                 Dirección: Cra 11#18-90, Barrio Territorial, Centro Médico

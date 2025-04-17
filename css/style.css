@@ -123,23 +123,7 @@ header {
 .main-sobre-nosotros {
   padding-top: 100px;
 }
-.main-sobre-nosotros .row {
-  margin-left: 0;
-  margin-right: 0;
-}
 
-.main-sobre-nosotros img {
-  max-width: 100%;
-  height: auto;
-}
-
-.main-sobre-nosotros h2 {
-  margin-bottom: 1rem;
-}
-
-.main-sobre-nosotros p {
-  margin-bottom: 0;
-}
 /* .main-sobre-nosotros .container-img {
   margin-left: 350px;
 } */

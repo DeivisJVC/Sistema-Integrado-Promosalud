@@ -6,7 +6,6 @@
   left: 100px;
 }
 .calendar-header {
-  color: indigo;
   padding: 10px;
   text-align: left;
 }
@@ -15,7 +14,6 @@
   display: flex;
   align-items: left;
   justify-content: left;
-  color: indigo;
 }
 .day-empty {
   color: #adb5bd;
@@ -53,4 +51,22 @@
 }
 #calendarDays {
   margin-bottom: -70px;
+}
+#currentMonth {
+  color: #1d72d4;
+}
+
+.col.day {
+  color: #1d72d4;
+}
+
+.btn.btn-primary {
+  background-image: linear-gradient(to right, #0f3b6f, #1d72d4);
+  box-shadow: 0 20px 30px -6px rgba(0, 26, 173, 0.5);
+  border: none;
+}
+
+.card-body {
+  background: linear-gradient(to right, #0f3b6f, #1d72d4);
+  border: none;
 }
