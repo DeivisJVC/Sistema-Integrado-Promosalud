@@ -81,60 +81,66 @@
       </ul>
     </nav>
   </header>
-  <main class="container-fluid main-sobre-nosotros">
-    <section class="main-sobre-nosotros">
-      <div class="container mb-5">
-        <!-- Sección: Quienes Somos -->
-        <div class="row align-items-center mb-5">
-          <div class="col-md-7">
-            <h2 class="text-capitalize title_sobre_nosotros">Quienes Somos</h2>
-            <p>
-              Somos un equipo de profesionales especializados en salud ocupacional con 25 años de experiencia en diversas áreas, incluyendo medicina preventiva, medicina del trabajo, psicología, optometría, fonoaudiología, radiología, laboratorio clínico, higiene y seguridad industrial. Durante nuestra trayectoria, hemos brindado servicios tanto a empresas públicas como privadas, así como a personas naturales, instituciones educativas y otros proveedores del sector de la salud. Nuestro enfoque se centra en orientar los procesos para reintegrar a los trabajadores incapacitados, facilitar su reubicación y asegurar sus derechos en prestaciones económicas y asistenciales en riesgos profesionales. Nos comprometemos a proporcionar soluciones efectivas y personalizadas que promuevan un entorno laboral seguro y saludable para todos los involucrados. Además, nos enorgullece ser líderes en el Magdalena y contar con una red de prestadores de servicios a nivel regional y nacional, lo que nos permite ofrecer una cobertura integral y de calidad a nuestros clientes.
-            </p>
-          </div>
-          <div class="col-md-5">
-            <img
-              src="/assets/img/quienes_Somos.png"
-              class="img-fluid"
-              alt="quienesSomos" />
-          </div>
-        </div>
+  <main class="align-items-center justify-content-center min-vh-100 py-5">
+    <section class="container main-sobre-nosotros">
+      <div class="mb-5">
+        <img src="/assets/img/promosalud_eslogan.svg" alt="" class=" w-100 rounded-3   ">
+      </div>
 
-        <!-- Sección: Misión -->
-        <div class="row align-items-center mb-5">
-
-          <div class="col-md-7">
-            <h2 class="text-capitalize title_sobre_nosotros">Misión</h2>
-            <p>
-              Nuestra misión es brindar servicios integrales en salud ocupacional de la más alta calidad, respaldados por 25 años de experiencia y un equipo multidisciplinario altamente calificado. Nos comprometemos a orientar y facilitar procesos que promuevan la salud, seguridad y bienestar de los trabajadores, empresas y comunidades a las que servimos.
-            </p>
-          </div>
-          <div class="col-md-5">
-            <img
-              src="/assets/img/Mision_img.png"
-              class="img-fluid"
-              alt="mision_img" />
+      <!-- Quienes Somos -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-12">
+          <div class="ps-0 mb-4">
+            <div class="row align-items-center">
+              <div class="col-md-6 text-start">
+                <img src="/assets/img/quienes_Somos.png" class="img-fluid  rounded-3" alt="quienesSomos" />
+              </div>
+              <div class="col-md-6">
+                <h2 class="text-capitalize title_sobre_nosotros text-center mb-3">Quienes Somos</h2>
+                <p class="text-justify lh-lg">
+                  Somos un equipo de profesionales especializados en salud ocupacional con 25 años de experiencia en diversas áreas, incluyendo medicina preventiva, medicina del trabajo, psicología, optometría, fonoaudiología, radiología, laboratorio clínico, higiene y seguridad industrial. Durante nuestra trayectoria, hemos brindado servicios tanto a empresas públicas como privadas, así como a personas naturales, instituciones educativas y otros proveedores del sector de la salud. Nuestro enfoque se centra en orientar los procesos para reintegrar a los trabajadores incapacitados, facilitar su reubicación y asegurar sus derechos en prestaciones económicas y asistenciales en riesgos profesionales. Nos comprometemos a proporcionar soluciones efectivas y personalizadas que promuevan un entorno laboral seguro y saludable para todos los involucrados. Además, nos enorgullece ser líderes en el Magdalena y contar con una red de prestadores de servicios a nivel regional y nacional, lo que nos permite ofrecer una cobertura integral y de calidad a nuestros clientes.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="container mb-5">
-        <!-- Sección: Visión -->
-        <div class="row align-items-center mb-5 g-0">
-          <div class="col-md-6">
-            <img
-              src="/assets/img/Vision_img.png"
-              class="img-fluid"
-              alt="Vision_img" />
-          </div>
-          <div class="col-md-5">
-            <h2 class="text-capitalize title_sobre_nosotros">Visión</h2>
-            <p>
-              Nuestra visión es ser reconocidos por nuestra excelencia en la prestación de servicios integrales y personalizados, siendo la primera opción para empresas y personas que buscan soluciones integrales y efectivas para sus necesidades en materia de salud y seguridad laboral. Nos esforzamos por seguir innovando y mejorando continuamente nuestros servicios, adoptando las últimas tecnologías y prácticas para ofrecer un entorno laboral más seguro y saludable.
-            </p>
+
+      <!-- Misión -->
+      <div class="row p-0 mb-5 align-items-center">
+        <!-- Texto a la izquierda -->
+        <div class="col-md-6  ">
+          <h2 class="text-capitalize title_sobre_nosotros mb-3">Misión</h2>
+          <p class="text-justify lh-lg">
+            Nuestra misión es brindar servicios integrales en salud ocupacional de la más alta calidad, respaldados por 25 años de experiencia y un equipo multidisciplinario altamente calificado. Nos comprometemos a orientar y facilitar procesos que promuevan la salud, seguridad y bienestar de los trabajadores, empresas y comunidades a las que servimos.
+          </p>
+        </div>
+
+        <!-- Imagen a la derecha -->
+        <div class="col-md-6  text-end">
+          <img src="/assets/img/Mision_img.png" class="img-fluid rounded-3 " alt="mision_img" />
+        </div>
+      </div>
+
+      <!-- Visión -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-12">
+          <div class="ps-0 mb-4">
+            <div class="row align-items-center">
+              <div class="col-md-6 text-start">
+                <img src="/assets/img/Vision_img.png" class="img-fluid rounded-3" alt="Vision_img" />
+              </div>
+              <div class="col-md-6 justify-content-center h-100">
+                <h2 class="text-capitalize title_sobre_nosotros text-center mb-3">Visión</h2>
+                <p class="text-justify lh-lg">
+                  Nuestra visión es ser reconocidos por nuestra excelencia en la prestación de servicios integrales y personalizados, siendo la primera opción para empresas y personas que buscan soluciones integrales y efectivas para sus necesidades en materia de salud y seguridad laboral. Nos esforzamos por seguir innovando y mejorando continuamente nuestros servicios, adoptando las últimas tecnologías y prácticas para ofrecer un entorno laboral más seguro y saludable.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
+
     </section>
   </main>
   <footer class="container-fluid text-white footer-1">
@@ -254,25 +260,25 @@
                 <div class="carousel-item active">
                   <img
                     src="/assets/img/carrusel1.png"
-                    class="d-block w-100"
+                    class="d-block "
                     alt="..." />
                 </div>
                 <div class="carousel-item">
                   <img
                     src="/assets/img/carrusel2.png"
-                    class="d-block w-100"
+                    class="d-block "
                     alt="..." />
                 </div>
                 <div class="carousel-item">
                   <img
                     src="/assets/img/carrusel3.png"
-                    class="d-block w-100"
+                    class="d-block "
                     alt="..." />
                 </div>
                 <div class="carousel-item">
                   <img
                     src="/assets/img/carrusel4.png"
-                    class="d-block w-100"
+                    class="d-block "
                     alt="..." />
                 </div>
               </div>
