@@ -255,9 +255,9 @@ if (!isset($_SESSION['numero_documento'])) {
        onsubmit="return false;">
       <!-- Paso 1: Adjuntar -->
       <div class="step active">
-        <h2>Adjuntar</h2>
+        <h2>Adjuntar Orden</h2>
         <div class="form-group mb-3">
-          <label for="orderFile">Adjuntar Orden</label>
+          <label for="orderFile"></label>
           <input type="file" class="form-control" id="orderFile" name="orderFile" />
           <div class="invalid-feedback">Por favor selecciona un archivo.</div>
         </div>
@@ -353,23 +353,12 @@ if (!isset($_SESSION['numero_documento'])) {
           <div class="col-md-3 align-content-center">
             <div class="card bg-primary">
               <div class="card-body">
-                <h2
-                  class="card-title text-white text-center"
-                  id="selectedyear">
-                  año
-                </h2>
-                <h2
-                  class="card-title text-white text-center"
-                  id="selectedmonth">
-                  mes
-                </h2>
-                <h2 class="card-text text-white text-center" id="selectedDay">
-                  dia
-                </h2>
-                <h2
-                  class="card-text text-white text-center" id="selectedTime">
-                  Hora
-                </h2>
+                <h2 class="card-title text-white text-center" id="selectedyear">año</h2>
+                <h2 class="card-title text-white text-center" id="selectedmonth">mes</h2>
+                <h2 class="card-text text-white text-center" id="selectedDay">dia</h2>
+                <div id="dayError" class="text-danger text-center"></div> <!-- Mensaje de error para el día -->
+                <h2 class="card-text text-white text-center" id="selectedTime">Hora</h2>
+                 <div id="timeError" class="text-danger text-center"></div> <!-- Mensaje de error para la hora -->
               </div>
             </div>
           </div>
@@ -385,9 +374,8 @@ if (!isset($_SESSION['numero_documento'])) {
             type="button"
             class="btn btn-primary btn-step"
             id="Elegir_Cita"
-            data-bs-toggle="modal"
-            data-bs-target="#confirmationModal"
-            onclick="Elegir_cita()">
+            onclick="Elegir_cita()"
+            >
             Aceptar
           </button>
         </div>

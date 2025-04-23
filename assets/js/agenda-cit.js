@@ -91,15 +91,45 @@ function selectDay(day, month, year) {
 function Elegir_cita() {
   const selectedYear = document.getElementById("selectedyear").textContent;
   const selectedMonth = document.getElementById("selectedmonth").textContent;
-  const selectedDay = document.getElementById("selectedDay").textContent;
-  const selectedTime = document.getElementById("selectedTime").textContent;
-  const userName = document.getElementById("userName").textContent;
+  const selectedDayText = document.getElementById("selectedDay").textContent;
+  const selectedTimeText = document.getElementById("selectedTime").textContent;
+  const userName = document.getElementById("userName").textContent.trim(); // Obtén el nombre del usuario
 
+  // Referencias a los elementos de error
+  const dayError = document.getElementById("dayError");
+  const timeError = document.getElementById("timeError");
+
+  let isValid = true;
+
+  // Validar selección de día
+  if (!selectedDayText || selectedDayText === "dia") {
+    dayError.textContent = "Debe seleccinar un día.";
+    dayError.style.color = "red";
+    isValid = false;
+  } else {
+    dayError.textContent = ""; // Limpiar el mensaje de error si ya se seleccionó
+  }
+
+  // Validar selección de hora
+  if (!selectedTimeText || selectedTimeText === "Hora") {
+    timeError.textContent = "Debe seleccionar una hora.";
+    timeError.style.color = "red";
+    isValid = false;
+  } else {
+    timeError.textContent = ""; // Limpiar el mensaje de error si ya se seleccionó
+  }
+
+  // Si no es válido, no continuar
+  if (!isValid) {
+    return;
+  }
+
+  // Mostrar en modal
   document.getElementById("modalConfirmYear").textContent = selectedYear;
   document.getElementById("modalConfirmMonth").textContent = selectedMonth;
-  document.getElementById("modalConfirmDay").textContent = selectedDay;
-  document.getElementById("modalConfirmTime").textContent = selectedTime;
-  document.getElementById("modaluserName").textContent = userName;
+  document.getElementById("modalConfirmDay").textContent = selectedDayText;
+  document.getElementById("modalConfirmTime").textContent = selectedTimeText;
+  document.getElementById("modaluserName").textContent = userName; // Asigna el nombre al modal
 
   const confirmationModal = new bootstrap.Modal(
     document.getElementById("confirmationModal")
