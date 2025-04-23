@@ -8,6 +8,16 @@ function showStep(step) {
 }
 
 function nextStep() {
+  if (currentStep === 0) {
+    const fileInput = document.getElementById("orderFile");
+    if (!fileInput.files || fileInput.files.length === 0) {
+      fileInput.classList.add("is-invalid");
+      return; // no avanza al siguiente paso
+    } else {
+      fileInput.classList.remove("is-invalid");
+    }
+  }
+
   if (currentStep < 2) {
     currentStep++;
     showStep(currentStep);
