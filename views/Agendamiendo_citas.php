@@ -166,16 +166,11 @@ if (!isset($_SESSION['numero_documento'])) {
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5 " id="userName">
             <?=
-            $_SESSION['primer_nombre']
+            $_SESSION['nombres']
+
             ?>
             <?=
-            $_SESSION['segundo_nombre']
-            ?>
-            <?=
-            $_SESSION['primer_apellido']
-            ?>
-            <?=
-            $_SESSION['segundo_apellido']
+            $_SESSION['apellidos']
             ?>
 
           </span>
@@ -252,14 +247,19 @@ if (!isset($_SESSION['numero_documento'])) {
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-       onsubmit="return false;">
-      <!-- Paso 1: Adjuntar -->
+      onsubmit="return false;">
+      <!-- Paso 2: selecionar tipo de examen -->
       <div class="step active">
-        <h2>Adjuntar Orden</h2>
-        <div class="form-group mb-3">
-          <label for="orderFile"></label>
-          <input type="file" class="form-control" id="orderFile" name="orderFile" />
-          <div class="invalid-feedback">Por favor selecciona un archivo.</div>
+        <h2>Seleccionar Tipo de Examen</h2>
+        <div class="form-group mb-4 mt-4">
+          <label for="input_examen">Tipo de Examen</label>
+          <select class="form-control" id="input_examen" name="input_examen" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="retiro">Retiro</option>
+            <option value="ingreso">Ingreso</option>
+            <option value="periodicos">Periódicos</option>
+          </select>
+          <div class="invalid-feedback">Por favor selecciona un tipo de examen.</div>
         </div>
         <div class="btn-container">
           <button
@@ -274,6 +274,22 @@ if (!isset($_SESSION['numero_documento'])) {
             onclick="nextStep()">
             Siguiente
           </button>
+        </div>
+      </div>
+
+
+      
+      <!-- Paso 2: Adjuntar Orden -->
+      <div class="step">
+        <h2>Paso 2: Adjuntar Orden</h2>
+        <div class="form-group mb-3">
+          <label for="orderFile">Adjuntar Orden</label>
+          <input type="file" class="form-control" id="orderFile" name="orderFile" required />
+          <div class="invalid-feedback">Por favor selecciona un archivo.</div>
+        </div>
+        <div class="btn-container">
+          <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
+          <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
         </div>
       </div>
 
@@ -317,33 +333,33 @@ if (!isset($_SESSION['numero_documento'])) {
             <div class="col-md-5 align-content-center">
               <div class="row my-5" id="selec">
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     7:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     7:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     8:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     8:30 AM
                   </button>
                 </div>
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     9:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     9:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     10:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     10:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     11:00 AM
                   </button>
                 </div>
@@ -358,7 +374,7 @@ if (!isset($_SESSION['numero_documento'])) {
                 <h2 class="card-text text-white text-center" id="selectedDay">dia</h2>
                 <div id="dayError" class="text-danger text-center"></div> <!-- Mensaje de error para el día -->
                 <h2 class="card-text text-white text-center" id="selectedTime">Hora</h2>
-                 <div id="timeError" class="text-danger text-center"></div> <!-- Mensaje de error para la hora -->
+                <div id="timeError" class="text-danger text-center"></div> <!-- Mensaje de error para la hora -->
               </div>
             </div>
           </div>
@@ -374,8 +390,7 @@ if (!isset($_SESSION['numero_documento'])) {
             type="button"
             class="btn btn-primary btn-step"
             id="Elegir_Cita"
-            onclick="Elegir_cita()"
-            >
+            onclick="Elegir_cita()">
             Aceptar
           </button>
         </div>

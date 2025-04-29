@@ -169,7 +169,7 @@ if (isset($_SESSION['numero_documento'])) {
       <section id="formulario-inicio"
         class="container col-12 col-md-8 col-lg-6 row justify-content-center bg-tertiary rounded-5">
         <div class="col-12">
-          <form class="p-5 p-md-5  rounded-3  text-capitalize" action="../php/login.php" novalidate method="POST" id="login">
+          <form class="p-5 p-md-5  rounded-3  text-capitalize" action="../php/login-2.php" novalidate method="POST" id="login">
             <div class="form-group mb-3">
               <label for="tipo_documento" class="form-label">Tipo de documento</label>
               <select class="form-control" id="tipo_documento" name="tipo_documento">
@@ -192,9 +192,9 @@ if (isset($_SESSION['numero_documento'])) {
               <label for="contraseña" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
-            <div class="form-group mb-4 d-flex justify-content-between">
-              <a href="recuperar_contraseña.html" class="text-white">¿Olvidaste la contraseña?</a>
-              <a href="registrate.php" class="text-white">Registrate</a>
+            <div class="form-group d-flex mb-4 justify-content-between">
+              <a href="recuperar_contraseña.html" class="text-white me-4">¿Olvidaste la contraseña?</a>
+              <a href="registrate.php" class="text-white mt-2">Registrate</a>
             </div>
             <div class="d-grid">
               <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
