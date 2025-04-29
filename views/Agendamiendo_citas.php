@@ -252,7 +252,7 @@ if (!isset($_SESSION['numero_documento'])) {
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-       onsubmit="return false;">
+      onsubmit="return false;">
       <!-- Paso 1: Adjuntar -->
       <div class="step active">
         <h2>Adjuntar Orden</h2>
@@ -317,33 +317,33 @@ if (!isset($_SESSION['numero_documento'])) {
             <div class="col-md-5 align-content-center">
               <div class="row my-5" id="selec">
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     7:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     7:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     8:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     8:30 AM
                   </button>
                 </div>
                 <div class="col-6 mb-3">
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     9:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     9:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     10:00 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     10:30 AM
                   </button>
-                  <button class="btn btn-primary w-100 mb-2 time-btn"  type="button">
+                  <button class="btn btn-primary w-100 mb-2 time-btn" type="button">
                     11:00 AM
                   </button>
                 </div>
@@ -358,7 +358,7 @@ if (!isset($_SESSION['numero_documento'])) {
                 <h2 class="card-text text-white text-center" id="selectedDay">dia</h2>
                 <div id="dayError" class="text-danger text-center"></div> <!-- Mensaje de error para el día -->
                 <h2 class="card-text text-white text-center" id="selectedTime">Hora</h2>
-                 <div id="timeError" class="text-danger text-center"></div> <!-- Mensaje de error para la hora -->
+                <div id="timeError" class="text-danger text-center"></div> <!-- Mensaje de error para la hora -->
               </div>
             </div>
           </div>
@@ -374,12 +374,45 @@ if (!isset($_SESSION['numero_documento'])) {
             type="button"
             class="btn btn-primary btn-step"
             id="Elegir_Cita"
-            onclick="Elegir_cita()"
-            >
+            onclick="Elegir_cita()">
             Aceptar
           </button>
         </div>
       </div>
+      <!-- Modal de Error -->
+      <div
+  class="modal fade"
+  id="errorModal"
+  tabindex="-1"
+  aria-labelledby="errorModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content error-modal"> <!-- Clase personalizada -->
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body" id="errorModalBody">
+        <!-- Aquí se insertarán los mensajes de error dinámicamente -->
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- Modal de Confirmación -->
       <div
         class="modal fade"
