@@ -166,16 +166,11 @@ if (!isset($_SESSION['numero_documento'])) {
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5 " id="userName">
             <?=
-            $_SESSION['primer_nombre']
+            $_SESSION['nombres']
+
             ?>
             <?=
-            $_SESSION['segundo_nombre']
-            ?>
-            <?=
-            $_SESSION['primer_apellido']
-            ?>
-            <?=
-            $_SESSION['segundo_apellido']
+            $_SESSION['apellidos']
             ?>
 
           </span>
@@ -252,14 +247,19 @@ if (!isset($_SESSION['numero_documento'])) {
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-      onsubmit="return false;">
+       onsubmit="return false;">
       <!-- Paso 1: Adjuntar -->
       <div class="step active">
-        <h2>Adjuntar Orden</h2>
-        <div class="form-group mb-3">
-          <label for="orderFile"></label>
-          <input type="file" class="form-control" id="orderFile" name="orderFile" />
-          <div class="invalid-feedback">Por favor selecciona un archivo.</div>
+        <h2>Seleccionar Tipo de Examen</h2>
+        <div class="form-group mb-4 mt-4">
+          <label for="input_examen">Tipo de Examen</label>
+          <select class="form-control" id="input_examen" name="input_examen" required>
+            <option value="" disabled selected>Seleccione una opción</option>
+            <option value="retiro">Retiro</option>
+            <option value="ingreso">Ingreso</option>
+            <option value="periodicos">Periódicos</option>
+          </select>
+          <div class="invalid-feedback">Por favor selecciona un tipo de examen.</div>
         </div>
         <div class="btn-container">
           <button
@@ -274,6 +274,22 @@ if (!isset($_SESSION['numero_documento'])) {
             onclick="nextStep()">
             Siguiente
           </button>
+        </div>
+      </div>
+
+
+      
+      <!-- Paso 2: Adjuntar Orden -->
+      <div class="step">
+        <h2>Paso 2: Adjuntar Orden</h2>
+        <div class="form-group mb-3">
+          <label for="orderFile">Adjuntar Orden</label>
+          <input type="file" class="form-control" id="orderFile" name="orderFile" required />
+          <div class="invalid-feedback">Por favor selecciona un archivo.</div>
+        </div>
+        <div class="btn-container">
+          <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
+          <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
         </div>
       </div>
 

@@ -7,6 +7,19 @@
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css" />
   <link rel="stylesheet" href="/css/style_registro.css">
+  <style>
+    .formulario {
+      display: none;
+    }
+
+    .step {
+      display: none;
+    }
+
+    .step.active {
+      display: block;
+    }
+  </style>
 </head>
 
 <body id="body_registro">
@@ -52,44 +65,73 @@
       </ul>
     </nav>
   </header>
-    <main class="container-sm main-registration mb-5">
-          <section class="text-center mb-5 ">
-            <h1 class="text-center">Registro de usuario</h1>
-            <p class="text-center mt-3">
-              Ingresa tus datos. Los campos marcados con asterisco son
-              obligatorios.
-            </p>
-          </section>
-      <section>
-        <form action="../php/register.php" id="multiStepForm" class="needs-validation" novalidate method="POST">
+  <main class="container-sm main-registration mb-5">
+    <section class="text-center mb-5 mt-3">
+      <h1 class="text-center">Registro</h1>
+      <h6 class="text-center mt-3">
+        Ingresa tus datos. Los campos marcados con asterisco son
+        obligatorios.
+      </h6>
+    </section>
+    <div class="container mt-5">
+      <!-- Contenedor del selector que luego se ocultará -->
+      <div id="tipoContainer">
+        <h3 class="text-center mb-4">Selecciona tu tipo de usuario</h3>
+        <div class="mb-4 mt-4 w-50 mx-auto">
+          <select id="tipoUsuario" class="form-select" onchange="seleccionarTipo()">
+            <option value="">Seleccione una opción</option>
+            <option value="paciente">Paciente</option>
+            <option value="empresa">Empresa</option>
+            <option value="administrador">Administrador</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Formulario de Paciente -->
+      <div id="formPaciente" class="formulario bg-white p-4 rounded shadow-sm">
+        <h4 class="text-center"><b>Formulario de Paciente</b></h4>
+        <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
           <!-- Paso 1: Información Personal -->
-          <div class="step active justify-content-center align-content-center">
+          <div class="step active">
+            <h5>Información Personal</h5>
             <div class="row g-4 justify-content-center">
               <div class="col-md-6">
-                <label for="primer_nombre" class="form-label">Primer Nombre<span style="color: red;">*</span></label>
-                <input type="text" id="primer_nombre" name="primer_nombre" class="form-control" placeholder="Primer nombre" required />
+                <input type="hidden" name="form_type" value="paciente" />
+                <label for="nombres" class="form-label">Nombres<span style="color: red;">*</span></label>
+                <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres" required />
                 <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su primer nombre.</div>
+                <div class="invalid-feedback">Por favor, ingrese sus nombres.</div>
               </div>
               <div class="col-md-6">
-                <label for="segundo_nombre" class="form-label">Segundo Nombre</label>
-                <input type="text" id="segundo_nombre" name="segundo_nombre" class="form-control" placeholder="Segundo nombre" />
+                <label for="apellidos" class="form-label">Apellidos<span style="color: red;">*</span></label>
+                <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Apellidos" required />
                 <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese sus apellidos.</div>
               </div>
               <div class="col-md-6">
-                <label for="primer_apellido" class="form-label">Primer Apellido<span style="color: red;">*</span></label>
-                <input type="text" id="primer_apellido" name="primer_apellido" class="form-control" placeholder="Primer apellido" required />
+                <label for="id_empresa" class="form-label">Seleccione su empresa<span style="color: red;">*</span></label>
+                <select class="form-control " id="id_empresa" name="id_empresa"  required>
+                  <option value="">Seleccione una empresa</option>
+                  <?php include '../php/consult_company.php'; ?>
+                </select>
                 <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su primer apellido.</div>
+                <div class="invalid-feedback">Por favor, seleccione una empresa.</div>
               </div>
               <div class="col-md-6">
-                <label for="segundo_apellido" class="form-label">Segundo Apellido</label>
-                <input type="text" id="segundo_apellido" name="segundo_apellido" class="form-control" placeholder="Segundo apellido" />
+                <label for="fecha_nacimiento" class="form-label">Fehca de Nacimiento<span style="color: red;">*</span></label>
+                <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required />
                 <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su fecha de nacimiento.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
+                <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ocupación" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su ocupación.</div>
               </div>
               <div class="col-md-6">
                 <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
-                <select class="form-control" id="documentType" name="tipo_documento" required>
+                <select class="form-control" id="tipo_documento" name="tipo_documento" required>
                   <option value="">Seleccione su tipo de documento</option>
                   <option value="cc">Cédula de ciudadanía</option>
                   <option value="ce">Cédula extranjera</option>
@@ -97,27 +139,28 @@
                   <option value="nit">NIT</option>
                   <option value="ti">Tarjeta de identidad</option>
                   <option value="passport">Pasaporte</option>
-                  <option value="rc">Registro civil</option>
-                  <option value="cd">Carné diplomático</option>
-                  <option value="cnv">Certificado nacido vivo</option>
                 </select>
                 <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su tipo de documento.</div>
+                <div class="invalid-feedback">Por favor, seleccione su tipo de documento.</div>
               </div>
               <div class="col-md-6">
                 <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
                 <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
+                <input type="hidden" name="rol" value="paciente" />
                 <div class="valid-feedback">Excelente!</div>
                 <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
               </div>
+    
+              </div>
             </div>
-            <div class="btn-container">
-              <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
+            <div class="btn-container mt-3">
+              <button type="button" class="btn btn-primary btn-step" onclick="nextStep(this)">Siguiente</button>
             </div>
           </div>
 
           <!-- Paso 2: Información de Contacto -->
           <div class="step">
+            <h5>Información de Contacto</h5>
             <div class="row g-4 justify-content-center">
               <div class="col-md-6">
                 <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
@@ -132,71 +175,151 @@
                 <div class="invalid-feedback">Por favor, ingrese su correo electrónico.</div>
               </div>
               <div class="col-md-6">
-                <label for="edad" class="form-label">Edad<span style="color: red;">*</span></label>
-                <input type="text" id="edad" name="edad" class="form-control" placeholder="Edad" required />
-                <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su edad.</div>
-              </div>
-              <div class="col-md-6">
                 <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
                 <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" required />
                 <div class="valid-feedback">Excelente!</div>
                 <div class="invalid-feedback">Por favor, ingrese su ciudad.</div>
               </div>
               <div class="col-md-6">
-                <label for="direccion" class="form-label">Direccion<span style="color: red;">*</span></label>
-                <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Direccion" required />
+                <label for="direccion" class="form-label">Dirección<span style="color: red;">*</span></label>
+                <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" required />
                 <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su direccion.</div>
-              </div>
-              <div class="col-md-6">
-                <label for="ocupacion" class="form-label">Ocupación<span style="color: red;">*</span></label>
-                <input type="text" id="ocupacion" name="ocupacion" class="form-control" placeholder="Ocupación" required />
-                <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su ocupación.</div>
+                <div class="invalid-feedback">Por favor, ingrese su dirección.</div>
               </div>
             </div>
-            <div class="col-md-6">
-                <label for="empresa_name" class="form-label">Empresa<span style="color: red;">*</span></label>
-                <select class="form-control" id="empresa_name" name="nombre_empresa">
-                  <select name="empresa_name" id="empresa_name" disabled="disabled">
-                    <?php include '../php/consult_company.php'; ?>
-                  </select>
-                </select>
-                <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese la empresa en la que labora.</div>
-              </div>
-            <div class="btn-container">
-              <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
-              <button type="button" class="btn btn-primary btn-step" onclick="nextStep()">Siguiente</button>
+            <div class="btn-container mt-3">
+              <button type="button" class="btn btn-secondary btn-step" onclick="prevStep(this)">Anterior</button>
+              <button type="button" class="btn btn-primary btn-step" onclick="nextStep(this)">Siguiente</button>
             </div>
           </div>
-          <!-- Paso 4: Crear Contraseña -->
-          <div class="step ">
 
-               <h4 class="text-center">Crear contraseña, <b>su usuario es su numero de documento</b></h4>
+          <!-- Paso 3: Crear Contraseña -->
+          <div class="step">
+            <h5>Crear Contraseña</h5>
             <div class="row justify-content-center">
-              <div class="col-md-4 mb-3">
+              <div class="col-md-6">
                 <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
                 <div class="valid-feedback">Excelente!</div>
                 <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
               </div>
-              <div class="col-md-4 mb-3 ">
+              <div class="col-md-6">
                 <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
                 <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
                 <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">las constraseñas no coninciden </div>
-                <!-- verificar que ambas contraseñas sean iguales -->
+                <div class="invalid-feedback">Las contraseñas no coinciden.</div>
               </div>
             </div>
-            <div class="btn-container">
-              <button type="button" class="btn btn-secondary btn-step" onclick="prevStep()">Anterior</button>
-              <button class="btn btn-primary" type="submit" name="submit">Registrarse</button>
+            <div class="btn-container mt-3">
+              <button type="button" class="btn btn-secondary btn-step" onclick="prevStep(this)">Anterior</button>
+              <button type="submit" class="btn btn-primary">Registrarse</button>
             </div>
           </div>
         </form>
-      </section>
+      </div>
+
+      <!-- Formulario de Empresa -->
+      <div id="formEmpresa" class="formulario bg-white p-4 rounded shadow-sm">
+        <h4 class="text-center"><b>Formulario de Empresa</b></h4>
+        <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+              <input type="hidden" name="form_type" value="empresa" />
+              <label for="rut" class="form-label">RUT<span style="color: red;">*</span></label>
+              <input type="text" id="rut" name="rut" class="form-control" placeholder="RUT" required />
+              <input type="text" id="rol" name="rol" class="form-control d-none" value="empresa" />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el RUT.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre de la Empresa<span style="color: red;">*</span></label>
+              <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre de la empresa" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el nombre de la empresa.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
+              <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el teléfono.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="direccion" class="form-label">Dirección<span style="color: red;">*</span></label>
+              <input type="text" id="direccion" name="direccion" class="form-control" placeholder="Dirección" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese la dirección.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="ciudad" class="form-label">Ciudad<span style="color: red;">*</span></label>
+              <input type="text" id="ciudad" name="ciudad" class="form-control" placeholder="Ciudad" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese la ciudad.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="sector" class="form-label">Sector al que se dedican<span style="color: red;">*</span></label>
+              <input type="text" id="sector" name="sector" class="form-control" placeholder="Sector al que se dedican" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el sector al que se dedican.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+              <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
+            </div>
+            <!-- Campo oculto para el estado -->
+            <input type="hidden" id="estado" name="estado" value="true" />
+          </div>
+          <div class="btn-container mt-4">
+            <button type="submit" class="btn btn-primary w-100">Registrar Empresa</button>
+          </div>
+        </form>
+      </div>
+      <!-- Formulario de Administrador -->
+      <div id="formAdministrador" class="formulario bg-white p-4 rounded shadow-sm">
+        <h4 class="text-center"><b>Formulario de Administrador</b></h4>
+        <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
+          <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+              <input type="hidden" name="form_type" value="administrador" />
+              <label for="nombre_administrador" class="form-label">Nombre del Administrador<span style="color: red;">*</span></label>
+              <input type="text" id="nombre_administrador" name="nombre_administrador" class="form-control" placeholder="Nombre del administrador" required />
+              <input type="hidden" name="rol" value="administrador" />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el nombre del administrador.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="correo_administrador" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+              <input type="email" id="correo_administrador" name="correo_administrador" class="form-control" placeholder="Correo electrónico" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="telefono_administrador" class="form-label">Teléfono<span style="color: red;">*</span></label>
+              <input type="text" id="telefono_administrador" name="telefono_administrador" class="form-control" placeholder="Teléfono" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese el teléfono.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="cargo" class="form-label">Seleccione su cargo en la empresa<span style="color: red;">*</span></label>
+              <select class="form-control" id="cargo" name="cargo" required>
+                <option value="">Seleccione su cargo</option>
+                <option value="gerente">Gerente</option>
+                <option value="enfermero">Enfermero</option>
+                <option value="medico">Medico</option>
+                <option value="psicologo">Psicólogo</option>
+              </select>
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, seleccione su cargo.</div>
+            </div>
+          </div>
+          <div class="btn-container mt-4">
+            <button type="submit" class="btn btn-primary w-100">Registrar Administrador</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
   </main>
   <footer class="container-fluid text-white footer-1">
     <article class="container-fluid footer-1">
@@ -331,8 +454,8 @@
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/ValidacionRegistroUser.js"></script>
   <script src="/assets/js/validacionregistro_primera_vez.js"></script>
+  <script src="/assets/js/form_registro.js"></script>
 
-  
   </script>
 </body>
 

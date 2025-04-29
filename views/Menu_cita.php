@@ -89,16 +89,11 @@
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
           <?=
-            $_SESSION['primer_nombre']
-           ?>
-          <?= 
-          $_SESSION['segundo_nombre']
+            $_SESSION['nombres']
+
           ?>
           <?=
-           $_SESSION['primer_apellido']
-          ?>
-          <?=
-           $_SESSION['segundo_apellido']
+            $_SESSION['apellidos']
           ?>
             
         </span>
