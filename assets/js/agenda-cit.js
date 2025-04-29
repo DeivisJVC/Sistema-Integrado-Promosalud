@@ -95,36 +95,34 @@ function Elegir_cita() {
   const selectedTimeText = document.getElementById("selectedTime").textContent;
   const userName = document.getElementById("userName").textContent.trim(); // Obtén el nombre del usuario
 
-  // Referencias a los elementos de error
-  const dayError = document.getElementById("dayError");
-  const timeError = document.getElementById("timeError");
-
   let isValid = true;
+  let errorMessage = "";
 
   // Validar selección de día
   if (!selectedDayText || selectedDayText === "dia") {
-    dayError.textContent = "Debe seleccinar un día.";
-    dayError.style.color = "red";
+    errorMessage += "Debe seleccionar un día";
     isValid = false;
-  } else {
-    dayError.textContent = ""; // Limpiar el mensaje de error si ya se seleccionó
   }
 
   // Validar selección de hora
   if (!selectedTimeText || selectedTimeText === "Hora") {
-    timeError.textContent = "Debe seleccionar una hora.";
-    timeError.style.color = "red";
+    errorMessage += " y una hora.";
     isValid = false;
-  } else {
-    timeError.textContent = ""; // Limpiar el mensaje de error si ya se seleccionó
   }
 
-  // Si no es válido, no continuar
+  // Si no es válido, mostrar el modal de error
   if (!isValid) {
+    const errorModalBody = document.getElementById("errorModalBody");
+    errorModalBody.innerHTML = errorMessage;
+
+    const errorModal = new bootstrap.Modal(
+      document.getElementById("errorModal")
+    );
+    errorModal.show();
     return;
   }
 
-  // Mostrar en modal
+  // Mostrar en modal de confirmación
   document.getElementById("modalConfirmYear").textContent = selectedYear;
   document.getElementById("modalConfirmMonth").textContent = selectedMonth;
   document.getElementById("modalConfirmDay").textContent = selectedDayText;

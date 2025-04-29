@@ -70,3 +70,13 @@
   background: linear-gradient(to right, #0f3b6f, #1d72d4);
   border: none;
 }
+
+/* Personalizar el borde del modal */
+.modal-content.error-modal {
+  border: 2px solid red; /* Borde rojo */
+}
+
+/* Personalizar el texto del modal */
+.modal-content.error-modal .modal-body {
+  color: red; /* Texto en rojo */
+}
