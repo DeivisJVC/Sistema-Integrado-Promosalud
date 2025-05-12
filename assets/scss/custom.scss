@@ -1,8 +1,6 @@
-// Create your own map
-
 $primary: #0f3b6f;
 $danger: #ff0000;
-$tertiary: #5694dc;
+$tertiary: #9cc8fb;
 $success: #027500;
 
 $theme-colors: (
@@ -12,4 +10,4 @@ $theme-colors: (
   "success": $success,
 );
 
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/bootstrap.scss";

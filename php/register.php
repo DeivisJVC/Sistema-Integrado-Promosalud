@@ -1,4 +1,6 @@
 <?php
+session_start(); // Iniciar la sesión
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -29,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
     $rol = $_POST['rol']; // Campo oculto
 
+    // Guardar el rol en la sesión
+    $_SESSION['rol'] = $rol;
+
     // Consulta SQL para insertar datos en la tabla paciente
     $sql = "INSERT INTO paciente (nombres, apellidos, fecha_nacimiento, telefono, correo, tipo_documento, numero_documento, ciudad, direccion, ocupacion, id_empresa,contraseña_confirmacion, rol) 
             VALUES ('$nombres', '$apellidos', '$fecha_nacimiento', '$telefono', '$correo', '$tipo_documento', '$numero_documento', '$ciudad', '$direccion', '$ocupacion','$id_empresa', '$contraseña_confirmacion', '$rol')";
@@ -49,6 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $correo = $_POST['correo'];
     $estado = 0; // Activo por defecto
     $rol = $_POST['rol']; // Campo oculto
+
+    // Guardar el rol en la sesión
+    $_SESSION['rol'] = $rol;
 
     // Consulta SQL para insertar datos en la tabla empresa
     $sql = "INSERT INTO empresa (rut, nombre, telefono, direccion, ciudad, sector, correo, estado, rol) 

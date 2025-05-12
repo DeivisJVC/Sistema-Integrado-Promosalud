@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $_SESSION['rol'];
   if (!isset($_SESSION['numero_documento'])) {
     header("location:/views/inicio.php");
   }
@@ -14,7 +13,7 @@
   <title>Sistema Integrado Promosalud</title>
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css">
-
+  
 </head>
 
 <body>
@@ -46,6 +45,7 @@
           </a>
         </li>
       </ul>
+      
       <ul class="nav container-fluid justify-content-end gap-5">
         <li class="nav-item align-content-center">
           <ul class="navbar-nav mb-2 mb-lg-0">
@@ -90,13 +90,18 @@
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
           <?=
-            $_SESSION['nombres']
-
+            $_SESSION['primer_nombre']
+           ?>
+          <?= 
+          $_SESSION['segundo_nombre']
           ?>
           <?=
-            $_SESSION['apellidos']
+           $_SESSION['primer_apellido']
           ?>
-        </li>
+          <?=
+           $_SESSION['segundo_apellido']
+          ?>
+            
         </span>
           <button type="button" class="btn bg-transparent position-relative">
           
@@ -134,25 +139,25 @@
   <main class="container my-5">
     <section class="container">
       <div class="row" id="card-container">
-        <div class="col-12 col-md-6">
-          <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
+        <div class="col-12 col-md-6 align-content-lg-center">
+          <img src="/assets/img/asistente_en_linea.jpg" class="mt-4 rounded-2" alt="asistente_en_linea" width="500px"   />
         </div>
         <div class="col-12 col-md-6 container_letras_main ">
-          <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...
-          </h2>
-          <p class="text-muted mb-4">Para trabajadores de empresas, podrás realizarte una serie de exámenes...</p>
+          <h4 class="fw-semibold mb-3"> Ser administrador de agenda es mucho más que organizar citas y coordinar horarios; es ser el guardián del tiempo, el arquitecto invisible que sostiene el ritmo de toda una organización o de una vida profesional.
+          </h4>
+          <p class="text-muted mb-4"> Cada llamada agendada, cada reunión acomodada con precisión, cada espacio de respiro planeado con intención, es una obra de arte silenciosa que permite que los grandes proyectos se materialicen. Con pasión y atención al detalle, un administrador de agenda no solo organiza el presente, sino que también construye el futuro, asegurando que cada minuto cuente y que cada oportunidad encuentre su momento perfecto.</p>
           <!-- Navigation Menu -->
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
-              <li class="nav-item" id="agendar_cita">
-                <a class="btn_link    fs-5" href="../views/Agendamiendo_citas.php" aria-current="page">Agendar Cita</a>
-              </li>
-              <li class="nav-item" id="consultar_cita">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
-                  Citas</a>
-              </li>
+             
               <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
+                <a class="btn_link    fs-5" aria-current="page" href="../views/control_agenda.php">Control de agenda
+            </a>
+              </li>
+            
+               <li class="nav-item">
+                <a class="btn_link    fs-5" aria-current="page" href="../views/informes.php">Informes
+            </a>
               </li>
             </ul>
           </nav>
@@ -324,8 +329,6 @@
               <a href="inicio.html" class="text-white nav-link text-white ">Inicio</a>
             </li>
             <li>
-                      ?>
-                        
               <a href="sobre_nosotros.html" class="text-white nav-link ">Sobre Nosotros
               </a>
             </li>
@@ -344,11 +347,6 @@
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
-  <script>
-   const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
-  </script>
-<script src="/assets/js/validar_tipo_usuario.js"></script>
-
 </body>
 
 </html>

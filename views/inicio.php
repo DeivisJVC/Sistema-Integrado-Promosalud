@@ -1,12 +1,15 @@
-<?php 
+<?php
 session_start();
 if (isset($_SESSION['numero_documento'])) {
-    header("location:Menu_cita.php");
-    exit();
+  header("location:Menu_cita.php");
+  exit();
 } else {
-    // Mostrar un mensaje que indique que debe iniciar sesión
-    $mensaje = "Debe iniciar sesión para acceder a esta página.";
+  // Mostrar un mensaje que indique que debe iniciar sesión
+  $mensaje = "Debe iniciar sesión para acceder a esta página.";
 }
+?>
+<?php
+$error = isset($_GET['error']) ? $_GET['error'] : null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,7 +26,7 @@ if (isset($_SESSION['numero_documento'])) {
 
 <body>
 
-<!-- Modal para afirmar que debe iniciar sesion para acceder-->
+  <!-- Modal para afirmar que debe iniciar sesion para acceder-->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -54,7 +57,7 @@ if (isset($_SESSION['numero_documento'])) {
         d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
     </symbol>
   </svg>
-  
+
   <header class="rounded fixed-top">
     <nav class="navbar navbar-expand-lg py-3">
       <ul class="nav container-fluid justify-content-xxl-evenly">
@@ -84,10 +87,10 @@ if (isset($_SESSION['numero_documento'])) {
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <li><a class="dropdown-item" href="#">Configuración</a></li>
             <li><a class="dropdown-item" href="#">Ayuda</a></li>
-    
+
         </li>
       </ul>
-       <li class="nav-item align-content-center">
+      <li class="nav-item align-content-center">
         <ul class="navbar-nav mb-2 mb-lg-0">
           <li class="nav-item dropdown w-25" data-bs-theme="light">
             <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
@@ -176,7 +179,7 @@ if (isset($_SESSION['numero_documento'])) {
                 <option value="cc">Cédula de ciudadanía</option>
                 <option value="ce">Cédula extranjera</option>
                 <option value="ptt">Permiso temporal de trabajo</option>
-                <option value="nit">NIT</option>
+                <option value="rut">NIT</option>
                 <option value="ti">Tarjeta de identidad</option>
                 <option value="passport">Pasaporte</option>
                 <option value="rc">Registro civil</option>
@@ -186,15 +189,21 @@ if (isset($_SESSION['numero_documento'])) {
             </div>
             <div class="form-group mb-3">
               <label for="numero_documento" class="form-label">Número de documento</label>
-              <input type="text" class="form-control" id="numero_documento" placeholder="Ingresa el Documento" name="numero_documento">
+              <input type="number" class="form-control" id="numero_documento" placeholder="Ingresa el Documento" name="numero_documento">
             </div>
             <div class="form-group mb-3">
               <label for="contraseña" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
+            <?php if ($error === "1"): ?>
+              <p class="text-danger  mb-3">
+                Las credenciales ingresadas son  <b>incorrectas.</b> Por favor, inténtelo de nuevo.
+              </p>
+            <?php endif; ?>
+
             <div class="form-group d-flex mb-4 justify-content-between">
-              <a href="recuperar_contraseña.html" class="text-white me-4">¿Olvidaste la contraseña?</a>
-              <a href="registrate.php" class="text-white mt-2">Registrate</a>
+              <a href="recuperar_contraseña.html" class=" me-4">¿Olvidaste la contraseña?</a>
+              <a href="registrate.php" class="mt-2">Registrate</a>
             </div>
             <div class="d-grid">
               <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
@@ -202,6 +211,11 @@ if (isset($_SESSION['numero_documento'])) {
           </form>
         </div>
       </section>
+    </section>
+    <section>
+      <?php
+      $error = isset($_GET['error']) ? $_GET['error'] : null;
+      ?>
     </section>
   </main>
   <article id="servicios" class="custom-opacity container-xxl text-black mt-5  rounded-5 mb-5">
@@ -395,13 +409,22 @@ if (isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script>
-   document.querySelectorAll(".modal-trigger").forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault(); // Evita la redirección
-    const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
-    loginModal.show();
-  });
-});
+    document.querySelectorAll(".modal-trigger").forEach((icon) => {
+      icon.addEventListener("click", (e) => {
+        e.preventDefault(); // Evita la redirección
+        const loginModal = new bootstrap.Modal(document.getElementById("loginModal"));
+        loginModal.show();
+      });
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const error = "<?php echo $error; ?>";
+      if (error === "1") {
+        const errorModal = new bootstrap.Modal(document.getElementById("errorModal"));
+        errorModal.show();
+      }
+    });
   </script>
 </body>
 

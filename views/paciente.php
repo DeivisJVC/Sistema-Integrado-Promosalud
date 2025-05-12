@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $_SESSION['rol'];
   if (!isset($_SESSION['numero_documento'])) {
     header("location:/views/inicio.php");
   }
@@ -90,13 +89,18 @@
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
           <?=
-            $_SESSION['nombres']
-
+            $_SESSION['primer_nombre']
+           ?>
+          <?= 
+          $_SESSION['segundo_nombre']
           ?>
           <?=
-            $_SESSION['apellidos']
+           $_SESSION['primer_apellido']
           ?>
-        </li>
+          <?=
+           $_SESSION['segundo_apellido']
+          ?>
+            
         </span>
           <button type="button" class="btn bg-transparent position-relative">
           
@@ -144,13 +148,10 @@
           <!-- Navigation Menu -->
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
-              <li class="nav-item" id="agendar_cita">
+              <li class="nav-item">
                 <a class="btn_link    fs-5" href="../views/Agendamiendo_citas.php" aria-current="page">Agendar Cita</a>
               </li>
-              <li class="nav-item" id="consultar_cita">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
-                  Citas</a>
-              </li>
+             
               <li class="nav-item">
                 <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
               </li>
@@ -324,8 +325,6 @@
               <a href="inicio.html" class="text-white nav-link text-white ">Inicio</a>
             </li>
             <li>
-                      ?>
-                        
               <a href="sobre_nosotros.html" class="text-white nav-link ">Sobre Nosotros
               </a>
             </li>
@@ -344,11 +343,6 @@
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
-  <script>
-   const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
-  </script>
-<script src="/assets/js/validar_tipo_usuario.js"></script>
-
 </body>
 
 </html>

@@ -16,7 +16,7 @@ if ($conn->connect_error) {
 }
 
 // Modificar la consulta para incluir nombres y segundo_nombre
-$sql = "SELECT nombres,apellidos FROM paciente WHERE tipo_documento = '$tipo_documento' AND numero_documento = '$numero_documento' AND contraseña_confirmacion = '$contraseña'";
+$sql = "SELECT nombres,apellidos,rol FROM paciente WHERE tipo_documento = '$tipo_documento' AND numero_documento = '$numero_documento' AND contraseña_confirmacion = '$contraseña'";
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
@@ -24,12 +24,15 @@ if ($result->num_rows > 0) {
     $_SESSION['numero_documento'] = $numero_documento;
     $_SESSION['nombres'] = $fila['nombres'];
     $_SESSION['apellidos'] = $fila['apellidos'];
+    $_SESSION['rol'] = $fila['rol']; // Guardar el rol en la sesión
    
     header("location:../views/Menu_cita.php");
-
+    exit();
     
 } else {
-    echo "Usuario no logueado";
+     // Credenciales incorrectas
+        header("Location:../views/inicio.php?error=1"); 
+        exit();
 } 
 
 $conn->close();

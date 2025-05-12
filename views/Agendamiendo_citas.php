@@ -396,39 +396,39 @@ if (!isset($_SESSION['numero_documento'])) {
         </div>
       </div>
       <!-- Modal de Error -->
-      <div
-  class="modal fade"
-  id="errorModal"
-  tabindex="-1"
-  aria-labelledby="errorModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content error-modal"> <!-- Clase personalizada -->
-      <div class="modal-header">
-        <h5 class="modal-title" id="errorModalLabel">Error</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body" id="errorModalBody">
-        <!-- Aquí se insertarán los mensajes de error dinámicamente -->
-      </div>
-      <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          data-bs-dismiss="modal"
+              <div
+          class="modal fade"
+          id="errorModal"
+          tabindex="-1"
+          aria-labelledby="errorModalLabel"
+          aria-hidden="true"
         >
-          Cerrar
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content error-modal"> <!-- Clase personalizada -->
+              <div class="modal-header">
+                <h5 class="modal-title" id="errorModalLabel">Error</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="errorModalBody">
+                <!-- Aquí se insertarán los mensajes de error dinámicamente -->
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Cerrar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       <!-- Modal de Confirmación -->
       <div
         class="modal fade"

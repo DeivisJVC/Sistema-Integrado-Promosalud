@@ -30,7 +30,30 @@ if ($result->num_rows > 0) {
 
     
 } else {
-    echo "Usuario no logueado";
+    echo "<div class='modal fade' id='loginErrorModal' tabindex='-1' role='dialog' aria-labelledby='loginErrorModalLabel' aria-hidden='true'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title' id='loginErrorModalLabel'>Error de Inicio de Sesión</h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              Usuario no logueado. Regístrese.
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              <a href='../views/registrate.php' class='btn btn-primary'>Registrarse</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        $(document).ready(function() {
+          $('#loginErrorModal').modal('show');
+        });
+      </script>";
 } 
 
 $conn->close();

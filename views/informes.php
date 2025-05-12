@@ -168,17 +168,13 @@ if (!isset($_SESSION['numero_documento'])) {
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5 " id="userName">
             <?=
-            $_SESSION['primer_nombre']
-            ?>
-            <?=
-            $_SESSION['segundo_nombre']
-            ?>
-            <?=
-            $_SESSION['primer_apellido']
-            ?>
-            <?=
-            $_SESSION['segundo_apellido']
-            ?>
+            $_SESSION['nombres']
+
+          ?>
+          <?=
+            $_SESSION['apellidos']
+          ?>
+            
 
           </span>
           <button type="button" class="btn bg-transparent position-relative">

@@ -150,8 +150,6 @@
                 <div class="valid-feedback">Excelente!</div>
                 <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
               </div>
-    
-              </div>
             </div>
             <div class="btn-container mt-3">
               <button type="button" class="btn btn-primary btn-step" onclick="nextStep(this)">Siguiente</button>
@@ -267,6 +265,18 @@
               <div class="valid-feedback">Excelente!</div>
               <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
             </div>
+              <div class="col-md-6">
+                <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
+                <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
+                <div class="valid-feedback">Excelente!</div>
+                <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+              </div>
             <!-- Campo oculto para el estado -->
             <input type="hidden" id="estado" name="estado" value="true" />
           </div>
@@ -455,6 +465,7 @@
   <script src="/assets/js/ValidacionRegistroUser.js"></script>
   <script src="/assets/js/validacionregistro_primera_vez.js"></script>
   <script src="/assets/js/form_registro.js"></script>
+  <script src="/assets/js/validar_contrasena.js"></script>
 
   </script>
 </body>
