@@ -89,17 +89,13 @@
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
           <?=
-            $_SESSION['primer_nombre']
-           ?>
-          <?= 
-          $_SESSION['segundo_nombre']
+            $_SESSION['nombres']
+
           ?>
           <?=
-           $_SESSION['primer_apellido']
+            $_SESSION['apellidos']
           ?>
-          <?=
-           $_SESSION['segundo_apellido']
-          ?>
+        </li>
             
         </span>
           <button type="button" class="btn bg-transparent position-relative">

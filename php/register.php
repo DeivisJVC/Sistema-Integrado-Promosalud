@@ -67,8 +67,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     }
-  }
+  }else if($form_type=='administrador'){
+    //Datos del formulario de administrador
+    $tipo_documento = $_POST['tipo_documento'];
+    $numero_documento = $_POST['numero_documento'];
+    $nombres = $_POST['nombres'];
+    $correo = $_POST['correo'];
+    $telefono = $_POST['telefono'];
+    $cargo = $_POST['cargo'];
+    $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
 
+    $_SESSION['rol'] = $rol;
+
+    // Consulta SQL para insertar datos en la tabla administrador
+    $sql = "INSERT INTO usuarios_administrativos (tipo_documento, numero_documento, nombres, correo, telefono, cargo, contraseña_confirmacion) 
+            VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$correo', '$telefono', '$cargo', '$contraseña_confirmacion')"; 
+    if (mysqli_query($conexion, $sql)) {
+      echo "Administrador registrado correctamente.";
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
+    }
+  }
   // Cerrar la conexión a la base de datos
   mysqli_close($conexion);
 }

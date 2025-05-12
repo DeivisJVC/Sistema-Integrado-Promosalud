@@ -90,17 +90,13 @@
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
           <?=
-            $_SESSION['primer_nombre']
-           ?>
-          <?= 
-          $_SESSION['segundo_nombre']
+            $_SESSION['nombres']
+
           ?>
           <?=
-           $_SESSION['primer_apellido']
+            $_SESSION['apellidos']
           ?>
-          <?=
-           $_SESSION['segundo_apellido']
-          ?>
+        </li>
             
         </span>
           <button type="button" class="btn bg-transparent position-relative">
@@ -136,11 +132,11 @@
   <!-- Navigation Menu -->
 
   <!-- Main Content -->
-  <main class="container my-5">
-    <section class="container">
+  <main class="container my-5 main-admin" >
+    <section class="container d-none " id="main-content-administrador">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6 align-content-lg-center">
-          <img src="/assets/img/asistente_en_linea.jpg" class="mt-4 rounded-2" alt="asistente_en_linea" width="500px"   />
+          <img src="/assets/img/asistente-linea.svg" class="mt-4 rounded-2" alt="asistente_en_linea" width="500px"   />
         </div>
         <div class="col-12 col-md-6 container_letras_main ">
           <h4 class="fw-semibold mb-3"> Ser administrador de agenda es mucho más que organizar citas y coordinar horarios; es ser el guardián del tiempo, el arquitecto invisible que sostiene el ritmo de toda una organización o de una vida profesional.

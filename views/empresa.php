@@ -1,8 +1,8 @@
 <?php
-  session_start();
-  if (!isset($_SESSION['numero_documento'])) {
-    header("location:/views/inicio.php");
-  }
+session_start();
+if (!isset($_SESSION['numero_documento'])) {
+  header("location:/views/inicio.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -13,32 +13,38 @@
   <title>Sistema Integrado Promosalud</title>
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css">
-<style>
+  <style>
+    .saludo {
+      font-family: 'Poppins', sans-serif;
+      /* Puedes cambiarla por otra fuente */
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      /* Color del texto */
+    }
 
-  .saludo {
-    font-family: 'Poppins', sans-serif; /* Puedes cambiarla por otra fuente */
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: white; /* Color del texto */
-  }
-  
-  .mano {
-    animation: wave 1s infinite alternate;
-    font-size: 24px;
-  }
+    .mano {
+      animation: wave 1s infinite alternate;
+      font-size: 24px;
+    }
 
-  @keyframes wave {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(20deg); }
-  }
-</style>
+    @keyframes wave {
+      0% {
+        transform: rotate(0deg);
+      }
 
-<div class="saludo">
-  <span>Bienvenido empresa</span>
-  <span class="mano">👋</span>
-</div>
+      100% {
+        transform: rotate(20deg);
+      }
+    }
+  </style>
+
+  <div class="saludo-empresa">
+    <span>Bienvenido empresa</span>
+    <span class="mano">👋</span>
+  </div>
 
 </head>
 
@@ -72,10 +78,10 @@
         </li>
       </ul>
 
-   <div class="saludo">
-  <span>Hola empresa</span>
-  <span class="mano">👋</span>
-</div>
+      <div class="saludo">
+        <span>Hola empresa</span>
+        <span class="mano">👋</span>
+      </div>
 
 
       <ul class="nav container-fluid justify-content-end gap-5">
@@ -121,34 +127,30 @@
         </li>
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
-          <?=
-            $_SESSION['primer_nombre']
-           ?>
-          <?= 
-          $_SESSION['segundo_nombre']
-          ?>
-          <?=
-           $_SESSION['primer_apellido']
-          ?>
-          <?=
-           $_SESSION['segundo_apellido']
-          ?>
-            
-        </span>
-          <button type="button" class="btn bg-transparent position-relative">
-          
-            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
-              <span class="visually-hidden">Notificaciones</span>
-            </span>
-          </button>
+            <?=
+            $_SESSION['nombres']
+
+            ?>
+            <?=
+            $_SESSION['apellidos']
+            ?>
         </li>
-       <li class="nav-item me-5">
+
+        </span>
+        <button type="button" class="btn bg-transparent position-relative">
+
+          <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            5
+            <span class="visually-hidden">Notificaciones</span>
+          </span>
+        </button>
+        </li>
+        <li class="nav-item me-5">
           <div class="dropdown">
             <a class="btn dropdown-toggle sin-triangulo" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -168,8 +170,8 @@
   <!-- Navigation Menu -->
 
   <!-- Main Content -->
-  <main class="container my-5">
-    <section class="container">
+  <main class="container my-5 ">
+    <section class="container d-none " id="main-content-empresa">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6">
           <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
@@ -182,7 +184,7 @@
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
               <li class="nav-item">
-                
+
               </li>
               <li class="nav-item">
                 <a class="btn_link    fs-5" aria-current="page" href="../views/PPPPPP.php">Consultar
@@ -192,8 +194,8 @@
                 <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
               </li>
 
-        
-                <li class="nav-item">
+
+              <li class="nav-item">
                 <a class="btn_link   fs-5" aria-current="page" href="../views/informes.php">informes de salud</a>
               </li>
 
