@@ -1,6 +1,5 @@
 <?php
   session_start();
-  $_SESSION['rol'];
   if (!isset($_SESSION['numero_documento'])) {
     header("location:/views/inicio.php");
   }
@@ -97,6 +96,7 @@
             $_SESSION['apellidos']
           ?>
         </li>
+            
         </span>
           <button type="button" class="btn bg-transparent position-relative">
           
@@ -132,8 +132,7 @@
 
   <!-- Main Content -->
   <main class="container my-5">
-     <!-- Main Content  de paciente-->
-    <section class="container d-none" id="main-content-paciente">
+    <section class="container">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6">
           <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
@@ -148,74 +147,9 @@
               <li class="nav-item">
                 <a class="btn_link    fs-5" href="../views/Agendamiendo_citas.php" aria-current="page">Agendar Cita</a>
               </li>
-              <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
-                  Citas</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </section>
-    <!-- Main Content  de empresa-->
-    <section class="container d-none " id="main-content-empresa">
-      <div class="row" id="card-container">
-        <div class="col-12 col-md-6">
-          <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />
-        </div>
-        <div class="col-12 col-md-6 container_letras_main ">
-          <h2 class="fw-semibold mb-3">Contamos con los servicios médicos requeridos para trabajadores de empresas...
-          </h2>
-          <p class="text-muted mb-4">Para trabajadores de empresas, podrás realizarte una serie de exámenes...</p>
-          <!-- Navigation Menu -->
-          <nav class=" mx-auto my-5">
-            <ul class="nav d-flex align-content-center gap-4">
-              <li class="nav-item">
-
-              </li>
-              <li class="nav-item">
-                <a class="btn_link    fs-5" aria-current="page" href="../views/PPPPPP.php">Consultar
-                  Pacientes</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
-              </li>
-
-
-              <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/informes.php">informes de salud</a>
-              </li>
-
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </section>
-    <!-- Main Content  de administrador-->
-    <section class="container d-none " id="main-content-administrador">
-      <div class="row" id="card-container">
-        <div class="col-12 col-md-6 align-content-lg-center">
-          <img src="/assets/img/asistente-linea.svg" class="mt-4 rounded-2" alt="asistente_en_linea" width="500px"   />
-        </div>
-        <div class="col-12 col-md-6 container_letras_main ">
-          <h4 class="fw-semibold mb-3"> Ser administrador de agenda es mucho más que organizar citas y coordinar horarios; es ser el guardián del tiempo, el arquitecto invisible que sostiene el ritmo de toda una organización o de una vida profesional.
-          </h4>
-          <p class="text-muted mb-4"> Cada llamada agendada, cada reunión acomodada con precisión, cada espacio de respiro planeado con intención, es una obra de arte silenciosa que permite que los grandes proyectos se materialicen. Con pasión y atención al detalle, un administrador de agenda no solo organiza el presente, sino que también construye el futuro, asegurando que cada minuto cuente y que cada oportunidad encuentre su momento perfecto.</p>
-          <!-- Navigation Menu -->
-          <nav class=" mx-auto my-5">
-            <ul class="nav d-flex align-content-center gap-4">
              
               <li class="nav-item">
-                <a class="btn_link    fs-5" aria-current="page" href="../views/control_agenda.php">Control de agenda
-            </a>
-              </li>
-            
-               <li class="nav-item">
-                <a class="btn_link    fs-5" aria-current="page" href="../views/informes.php">Informes
-            </a>
+                <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
               </li>
             </ul>
           </nav>
@@ -387,8 +321,6 @@
               <a href="inicio.html" class="text-white nav-link text-white ">Inicio</a>
             </li>
             <li>
-                      ?>
-                        
               <a href="sobre_nosotros.html" class="text-white nav-link ">Sobre Nosotros
               </a>
             </li>
@@ -407,11 +339,6 @@
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
-  <script>
-   const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
-  </script>
-<script src="/assets/js/validar_tipo_usuario.js"></script>
-
 </body>
 
 </html>

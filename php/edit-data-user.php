@@ -10,7 +10,7 @@ if (!isset($_SESSION['numero_documento'])) {
 }
 
 // Conexión
-$conn = new mysqli("localhost", "root", "", "sistema_integrado_promosalud");
+$conn = new mysqli("localhost", "root", "", "sistema_integrado_promosalud2");
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
@@ -26,14 +26,8 @@ $ciudad    = trim($_POST['ciudad'] ?? '');
 $direccion = trim($_POST['direccion'] ?? '');
 $correo    = trim($_POST['correo'] ?? '');
 
-// Separar nombres
-$nombresArray = explode(" ", $nombres);
-$primer_nombre = $nombresArray[0] ?? "";
-$segundo_nombre = $nombresArray[1] ?? "";
 
-$apellidosArray = explode(" ", $apellidos);
-$primer_apellido = $apellidosArray[0] ?? "";
-$segundo_apellido = $apellidosArray[1] ?? "";
+
 
 // Imagen por defecto
 $fotoRuta = $_SESSION['foto'] ?? "";
@@ -70,8 +64,7 @@ if (isset($_FILES['img']) && $_FILES['img']['error'] === 0) {
 
 // Actualizar datos
 $sql = "UPDATE paciente SET 
-            primer_nombre = ?, segundo_nombre = ?, 
-            primer_apellido = ?, segundo_apellido = ?, 
+            nombres = ?,apellidos = ?,  
             ocupacion = ?, telefono = ?, ciudad = ?, 
             direccion = ?, correo = ?, img = ?
         WHERE numero_documento = ?";
@@ -82,14 +75,23 @@ if (!$stmt) {
     die("Error al preparar la consulta SQL: " . $conn->error);
 }
 
-$stmt->bind_param("sssssssssss", $primer_nombre, $segundo_nombre, $primer_apellido, $segundo_apellido, $ocupacion, $telefono, $ciudad, $direccion, $correo, $fotoRuta, $numero_documento);
+$stmt->bind_param(
+    "sssssssss", // Tipos de datos: 9 parámetros (todos cadenas en este caso)
+    $nombres,
+    $apellidos,
+    $ocupacion,
+    $telefono,
+    $ciudad,
+    $direccion,
+    $correo,
+    $fotoRuta,
+    $numero_documento
+);
 
 
 if ($stmt->execute()) {
-    $_SESSION['primer_nombre'] = $primer_nombre;
-    $_SESSION['segundo_nombre'] = $segundo_nombre;
-    $_SESSION['primer_apellido'] = $primer_apellido;
-    $_SESSION['segundo_apellido'] = $segundo_apellido;
+    $_SESSION['nombres'] = $primer_nombre;
+    $_SESSION['apellidos'] = $apellidos;
     $_SESSION['ocupacion'] = $ocupacion;
     $_SESSION['telefono'] = $telefono;
     $_SESSION['ciudad'] = $ciudad;
