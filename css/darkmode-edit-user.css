@@ -52,3 +52,17 @@
   color: #ffffff !important; /* Texto blanco */
   border-bottom: 1px solid #ffffff !important; /* Borde blanco */
 }
+/* Texto en modo claro */
+[data-bs-theme="light"] .modal-content {
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000000; /* Texto negro */
+}
+
+/* Texto en modo oscuro */
+[data-bs-theme="dark"] .modal-content {
+  background-color: #2c2c2c; /* Fondo oscuro */
+  color: #ffffff; /* Texto blanco */
+}
+[data-bs-theme="dark"] .editar-perfil-titulo{
+  color: #f8f9fa;
+}

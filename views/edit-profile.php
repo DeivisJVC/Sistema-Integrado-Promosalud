@@ -14,14 +14,14 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/darkmode-edit-user.css"/>
+  <link rel="stylesheet" href="/css/darkmode-edit-user.css" />
 
 </head>
 
-<body class="min-vh-100 bg-light"  data-bs-theme="light">
+<body class="min-vh-100 bg-light" data-bs-theme="light">
   <!-- Header -->
 
-   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
     <symbol id="circle-half" viewBox="0 0 16 16">
       <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
     </symbol>
@@ -38,7 +38,7 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
         d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
     </symbol>
   </svg>
-   <header class="text-white py-3  fixed-top mb-5 header-edit-user">
+  <header class="text-white py-3  fixed-top mb-5 header-edit-user">
     <nav class="nav navbar-expand-lg align-items-center ">
       <ul class="nav container-fluid justify-content-start">
         <li class="nav-item">
@@ -90,22 +90,17 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
         </li>
         <li class="nav-item">
           <span class="mb-0 text-capitalize fs-5">
-          <?=
-            $_SESSION['primer_nombre']
-           ?>
-          <?= 
-          $_SESSION['segundo_nombre']
-          ?>
-          <?=
-           $_SESSION['primer_apellido']
-          ?>
-          <?=
-           $_SESSION['segundo_apellido']
-          ?>
-            
-        </span>
+            <?=
+            $_SESSION['nombres']
+
+            ?>
+            <?=
+            $_SESSION['apellidos']
+            ?>
+
+          </span>
           <button type="button" class="btn bg-transparent position-relative">
-          
+
             <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               5
@@ -113,11 +108,11 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
             </span>
           </button>
         </li>
-       <li class="nav-item me-5">
+        <li class="nav-item me-5">
           <div class="dropdown">
             <a class="btn dropdown-toggle sin-triangulo" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
+                stroke-linecap="round" stroke-linejoin="round">
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
                 <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -145,7 +140,7 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
       <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <div class="modal-header  text-white" style="background: linear-gradient(to right, #0f3b6f, #1d72d4);">
+            <div class="modal-header text-white" style="background: linear-gradient(to right, #0f3b6f, #1d72d4);">
               <h5 class="modal-title" id="successModalLabel">¡Éxito!</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
@@ -169,8 +164,8 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
             </div>
             <input type="file" class="form-control mt-2 d-none" id="img" name="img" accept="image/*">
 
-            <button type="button" class="btn btn-ouline-primary mt-4 ms-3 cambiar-foto " onclick="document.getElementById('img').click()" >Cambiar foto</button>
-            <button type="submit" name="quitar_foto" value="1" class="btn btn-outline-secondary mt-4 ms-3 quitar-foto" >Quitar foto</button>
+            <button type="button" class="btn btn-ouline-primary mt-4 ms-3 cambiar-foto " onclick="document.getElementById('img').click()">Cambiar foto</button>
+            <button type="submit" name="quitar_foto" value="1" class="btn btn-outline-secondary mt-4 ms-3 quitar-foto">Quitar foto</button>
 
           </div>
 
@@ -179,14 +174,14 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
             <div class="mb-3">
               <label for="nombres" class="form-label">Nombres</label>
               <input type="text" class="form-control" id="nombres" name="nombres"
-                value="<?php echo $_SESSION['primer_nombre'] . ' ' . $_SESSION['segundo_nombre']; ?>">
+                value="<?php echo $_SESSION['nombres'] = $fila['nombres']; ?>">
               <div class="valid-feedback">Excelente!</div>
               <div class="invalid-feedback">Por favor, ingrese sus nombre</div>
             </div>
             <div class="mb-3">
               <label for="apellidos" class="form-label">Apellidos</label>
               <input type="text" class="form-control" id="apellidos" name="apellidos"
-                value="<?php echo $_SESSION['primer_apellido'] . ' ' . $_SESSION['segundo_apellido']; ?>">
+                value="<?php echo $_SESSION['apellidos'] = $fila['apellidos'] ?>">
             </div>
             <div class="valid-feedback">Excelente!</div>
             <div class="invalid-feedback">Por favor, ingrese sus apellidos</div>
