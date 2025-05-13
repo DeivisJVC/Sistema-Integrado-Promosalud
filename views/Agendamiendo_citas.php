@@ -247,7 +247,8 @@ if (!isset($_SESSION['numero_documento'])) {
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-       onsubmit="return false;">
+      action="../php/creacion_citas.php"
+       >
       <!-- Paso 1: Adjuntar -->
       <div class="step active">
         <h2>Seleccionar Tipo de Examen</h2>
