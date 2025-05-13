@@ -161,7 +161,7 @@
       </div>
     </section>
     <!-- Main Content  de empresa-->
-    <section class="container d-none " id="">
+    <section class="container d-none " id="main-content-empresa">
       <div class="row" id="card-container">
         <div class="col-12 col-md-6">
           <img src="/assets/img/medico_paciente.png" class="img-fluid mt-5 pt-4" alt="Medico_atendiendo" />

@@ -176,10 +176,11 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
             <div class="form-group mb-3">
               <label for="tipo_documento" class="form-label">Tipo de documento</label>
               <select class="form-control" id="tipo_documento" name="tipo_documento">
+                <option value="" disabled selected>Selecciona el tipo de documento</option>
                 <option value="cc">Cédula de ciudadanía</option>
                 <option value="ce">Cédula extranjera</option>
                 <option value="ptt">Permiso temporal de trabajo</option>
-                <option value="rut">NIT</option>
+                <option value="rut">RUT</option>
                 <option value="ti">Tarjeta de identidad</option>
                 <option value="passport">Pasaporte</option>
                 <option value="rc">Registro civil</option>

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ciudad = $_POST['ciudad'];
     $direccion = $_POST['direccion'];
     $ocupacion = $_POST['ocupacion'];
-    $id_empresa = $_POST['id_empresa']; 
+    $id_empresa = $_POST['id_empresa'];
     $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
     $rol = $_POST['rol']; // Campo oculto
 
@@ -52,22 +52,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $ciudad = $_POST['ciudad'];
     $sector = $_POST['sector'];
     $correo = $_POST['correo'];
-    $estado = 0; // Activo por defecto
+    $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
+    $estado = "activo"; // Activo por defecto
     $rol = $_POST['rol']; // Campo oculto
 
     // Guardar el rol en la sesión
     $_SESSION['rol'] = $rol;
 
     // Consulta SQL para insertar datos en la tabla empresa
-    $sql = "INSERT INTO empresa (rut, nombre, telefono, direccion, ciudad, sector, correo, estado, rol) 
-            VALUES ('$rut', '$nombre', '$telefono', '$direccion', '$ciudad', '$sector', '$correo', '$estado', '$rol')";
+    $sql = "INSERT INTO empresa (rut, nombre, telefono, direccion, ciudad, sector, correo, contraseña_confirmacion ,estado, rol) 
+            VALUES ('$rut', '$nombre', '$telefono', '$direccion', '$ciudad', '$sector', '$correo', '$$contraseña_confirmacion','$estado', '$rol')";
 
     if (mysqli_query($conexion, $sql)) {
       echo "Empresa registrada correctamente.";
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     }
-  }else if($form_type=='administrador'){
+  } else if ($form_type == 'administrador') {
     //Datos del formulario de administrador
     $tipo_documento = $_POST['tipo_documento'];
     $numero_documento = $_POST['numero_documento'];
@@ -81,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Consulta SQL para insertar datos en la tabla administrador
     $sql = "INSERT INTO usuarios_administrativos (tipo_documento, numero_documento, nombres, correo, telefono, cargo, contraseña_confirmacion) 
-            VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$correo', '$telefono', '$cargo', '$contraseña_confirmacion')"; 
+            VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$correo', '$telefono', '$cargo', '$contraseña_confirmacion')";
     if (mysqli_query($conexion, $sql)) {
       echo "Administrador registrado correctamente.";
     } else {
@@ -91,4 +92,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Cerrar la conexión a la base de datos
   mysqli_close($conexion);
 }
-?>

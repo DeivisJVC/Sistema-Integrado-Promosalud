@@ -45,9 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Construir la consulta SQL según la tabla
     if ($tabla === 'paciente') {
         $sql = "SELECT nombres, apellidos, rol, contraseña_confirmacion FROM $tabla WHERE tipo_documento = ? AND numero_documento = ?";
-    } else {
+    } else if ($tabla === 'empresa') {
         // Para empresas y usuarios administrativos no se requiere apellidos
+        $sql = "SELECT nombre, rol, contraseña_confirmacion, rut FROM $tabla WHERE rut = ? AND contraseña_confirmacion = ?";
+    }else if ($tabla === 'usuarios_administrativos') {
         $sql = "SELECT nombres, rol, contraseña_confirmacion FROM $tabla WHERE tipo_documento = ? AND numero_documento = ?";
+    } else {
+        header("Location: ../views/inicio.php?error=2"); // Error: Tipo de documento no válido
+        exit();
     }
 
     // Preparar y ejecutar la consulta
