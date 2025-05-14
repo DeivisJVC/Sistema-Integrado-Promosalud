@@ -24,72 +24,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Determinar la tabla según el tipo de documento
     $tabla = '';
-    switch ($tipo_documento) {
-        case 'cc': // Cédula de ciudadanía
-        case 'ce': // Cédula extranjera
-        case 'ti': // Tarjeta de identidad
-        case 'passport': // Pasaporte
-            $tabla = 'paciente';
-            break;
-        case 'rut': // NIT
-            $tabla = 'empresa';
-            break;
-        case 'ptt': // Permiso temporal de trabajo
-            $tabla = 'usuarios_administrativos';
-            break;
-        default:
-            header("Location: ../views/inicio.php?error=2"); // Error: Tipo de documento no válido
-            exit();
-    }
+    if ($tipo_documento === 'cc' || $tipo_documento === 'ce' || $tipo_documento === 'ti' || $tipo_documento === 'passport') {
+        // Verificar primero en la tabla usuarios_administrativos
+        $sql_check = "SELECT nombres, rol, contraseña_confirmacion FROM usuarios_administrativos WHERE tipo_documento = ? AND numero_documento = ?";
+        $stmt_check = $conn->prepare($sql_check);
+        $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
+        $stmt_check->execute();
+        $result_check = $stmt_check->get_result();
 
-    // Construir la consulta SQL según la tabla
-    if ($tabla === 'paciente') {
-        $sql = "SELECT nombres, apellidos, rol, contraseña_confirmacion FROM $tabla WHERE tipo_documento = ? AND numero_documento = ?";
-    } else if ($tabla === 'empresa') {
-        // Para empresas y usuarios administrativos no se requiere apellidos
-        $sql = "SELECT nombre, rol, contraseña_confirmacion, rut FROM $tabla WHERE rut = ? AND contraseña_confirmacion = ?";
-    }else if ($tabla === 'usuarios_administrativos') {
-        $sql = "SELECT nombres, rol, contraseña_confirmacion FROM $tabla WHERE tipo_documento = ? AND numero_documento = ?";
+        if ($result_check->num_rows > 0) {
+            // Si el usuario existe en usuarios_administrativos
+            $tabla = 'usuarios_administrativos';
+            $fila = $result_check->fetch_assoc();
+        } else {
+            // Si no existe en usuarios_administrativos, buscar en paciente
+            $sql_check = "SELECT nombres, apellidos, rol, contraseña_confirmacion FROM paciente WHERE tipo_documento = ? AND numero_documento = ?";
+            $stmt_check = $conn->prepare($sql_check);
+            $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
+            $stmt_check->execute();
+            $result_check = $stmt_check->get_result();
+
+            if ($result_check->num_rows > 0) {
+                $tabla = 'paciente';
+                $fila = $result_check->fetch_assoc();
+            } else {
+                // Usuario no encontrado en ninguna tabla
+                header("Location: ../views/inicio.php?error=4");
+                 // Error: Usuario no encontrado
+                exit();
+            }
+        }
+        $stmt_check->close();
+    } else if ($tipo_documento === 'rut') {
+        // Manejar el caso de empresas
+        $tabla = 'empresa';
+        $sql = "SELECT nombre, rol, contraseña_confirmacion FROM $tabla WHERE rut = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $numero_documento);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($result->num_rows > 0) {
+            $fila = $result->fetch_assoc();
+        } else {
+            header("Location: ../views/inicio.php?error=4"); // Error: Usuario no encontrado
+            exit();
+        }
     } else {
         header("Location: ../views/inicio.php?error=2"); // Error: Tipo de documento no válido
         exit();
     }
 
-    // Preparar y ejecutar la consulta
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        die("Error en la preparación de la consulta: " . $conn->error);
-    }
-    $stmt->bind_param("ss", $tipo_documento, $numero_documento);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Verificar la contraseña (comparación directa)
+    if ($contraseña === $fila['contraseña_confirmacion']) {
+        // Guardar datos en la sesión
+        $_SESSION['numero_documento'] = $numero_documento;
+        $_SESSION['nombres'] = isset($fila['nombres']) ? $fila['nombres'] : ''; // Solo para pacientes y administradores
+        $_SESSION['apellidos'] = isset($fila['apellidos']) ? $fila['apellidos'] : ''; // Solo para pacientes
+        $_SESSION['rol'] = $fila['rol'];
+        $_SESSION['nombre'] = isset($fila['nombre']) ? $fila['nombre'] : ''; // Solo para empresas
 
-    if ($result->num_rows > 0) {
-        $fila = $result->fetch_assoc();
 
-        // Verificar la contraseña (comparación directa)
-        if ($contraseña === $fila['contraseña_confirmacion']) {
-            // Guardar datos en la sesión
-            $_SESSION['numero_documento'] = $numero_documento;
-            $_SESSION['nombres'] = $fila['nombres'];
-            $_SESSION['apellidos'] = isset($fila['apellidos']) ? $fila['apellidos'] : ''; // Solo para pacientes
-            $_SESSION['rol'] = $fila['rol'];
-
-            // Redirigir al menú principal
-            header("Location: ../views/Menu_cita.php");
-            exit();
-        } else {
-            // Contraseña incorrecta
-            header("Location: ../views/inicio.php?error=3"); // Error: Contraseña incorrecta
-            exit();
-        }
+        // Redirigir al menú principal
+        header("Location: ../views/Menu_cita.php");
+        exit();
     } else {
-        // Usuario no encontrado
-        header("Location: ../views/inicio.php?error=4"); // Error: Usuario no encontrado
+        // Contraseña incorrecta
+        header("Location: ../views/inicio.php?error=3"); // Error: Contraseña incorrecta
         exit();
     }
-
-    $stmt->close();
-    $conn->close();
 }
 ?>
