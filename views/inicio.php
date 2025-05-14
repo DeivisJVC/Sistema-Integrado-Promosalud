@@ -196,9 +196,25 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
               <label for="contraseña" class="form-label">Contraseña</label>
               <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
-            <?php if ($error === "1"): ?>
+            <!-- validar errores -->
+            <?php if ($error === "1" ): ?>
               <p class="text-danger  mb-3">
-                Las credenciales ingresadas son  <b>incorrectas.</b> Por favor, inténtelo de nuevo.
+                Los campos están vacíos. Por favor, complete todos los campos antes de continuar.
+              </p>
+            <?php endif; ?>
+            <?php if ($error === "2" ): ?>
+              <p class="text-danger  mb-3">
+               Tipo de documento no valido<b> Por favor, inténtelo de nuevo.</b>
+              </p>
+            <?php endif; ?>
+            <?php if ($error === "3" ): ?>
+              <p class="text-danger  mb-3">
+               Contraseña incorrecta<b> Por favor, inténtelo de nuevo.</b>
+              </p>
+            <?php endif; ?>
+            <?php if ($error === "4" ): ?>
+              <p class="text-danger  mb-3">
+               Usuario no encontrado, lo invitamos a <b>registrarse</b>
               </p>
             <?php endif; ?>
 

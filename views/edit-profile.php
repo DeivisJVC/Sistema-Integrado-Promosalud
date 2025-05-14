@@ -154,7 +154,7 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
         </div>
       </div>
 
-      <form id="profileForm" action="../php/edit-data-user.php" method="POST" enctype="multipart/form-data" id="multiStepForm" class="needs-validation" novalidate>
+      <form id="profileForm" action="../php/edit-data-user.php" method="POST" enctype="multipart/form-data" id="multiStepForm" class="needs-validation form_type_paciente d-none" novalidate>
         <div class="row mb-4">
           <!-- Profile Picture -->
           <div class="col-md-3 text-center mt-3 mb-md-0">
@@ -171,14 +171,14 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
 
           <!-- Personal Info -->
           <div class="col-md-9">
-            <div class="mb-3">
+            <div class="mb-3 nombres">
               <label for="nombres" class="form-label">Nombres</label>
               <input type="text" class="form-control" id="nombres" name="nombres"
                 value="<?php echo $_SESSION['nombres'] = $fila['nombres']; ?>">
               <div class="valid-feedback">Excelente!</div>
               <div class="invalid-feedback">Por favor, ingrese sus nombre</div>
             </div>
-            <div class="mb-3">
+            <div class="mb-3 apellidos">
               <label for="apellidos" class="form-label">Apellidos</label>
               <input type="text" class="form-control" id="apellidos" name="apellidos"
                 value="<?php echo $_SESSION['apellidos'] = $fila['apellidos'] ?>">
@@ -189,6 +189,80 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
         </div>
         <!-- input oculta para el número de documento -->
         <input type="hidden" name="numero_documento" value="<?php echo $_SESSION['numero_documento']; ?>">
+
+
+
+        <div class="mb-3">
+          <label for="ocupacion" class="form-label">Ocupación</label>
+          <input type="text" class="form-control" id="ocupacion" name="ocupacion" value="<?php echo $_SESSION['ocupacion']; ?> " required>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su ocupación</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono</label>
+          <input type="tel" class="form-control" id="telefono" name="telefono" value="<?php echo $_SESSION['telefono']; ?>" required>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su número de teléfono</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="ciudad" class="form-label">Ciudad</label>
+          <input class="form-control" id="ciudad" name="ciudad" type="text" value="<?php echo $_SESSION['ciudad']; ?>" required>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su ciudad</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input class="form-control" id="direccion" name="direccion" type="text" value="<?php echo $_SESSION['direccion']; ?>" required>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su dirección</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico</label>
+          <input class="form-control" id="correo" name="correo" type="email" value="<?php echo htmlspecialchars($_SESSION['correo']); ?>" required>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su correo electrónico</div>
+        </div>
+
+        <div class="d-flex justify-content-between pt-3">
+          <button type="submit" class="btn btn-primary flex-grow-1 me-2">Guardar Cambios</button>
+          <a href="Menu_cita.php" class="btn btn-secondary flex-grow-1 ms-2">Cancelar</a>
+        </div>
+      </form>
+
+
+      <form id="profileForm" action="../php/edit-data-user.php" method="POST" enctype="multipart/form-data" id="multiStepForm" class="needs-validation form_type_empresa" novalidate>
+        <div class="row mb-4">
+          <!-- Profile Picture -->
+          <div class="col-md-3 text-center mt-3 mb-md-0">
+            <div class="bg-secondary text-white rounded-circle d-flex justify-content-center align-items-center mx-auto mb-5 mt-3 "
+              style="width: 128px; height: 128px;">
+              <img src="<?php echo $foto; ?>" class="rounded-circle border" width="250" height="210" alt="Foto de perfil">
+            </div>
+            <input type="file" class="form-control mt-2 d-none" id="img" name="img" accept="image/*">
+
+            <button type="button" class="btn btn-ouline-primary mt-4 ms-3 cambiar-foto " onclick="document.getElementById('img').click()">Cambiar foto</button>
+            <button type="submit" name="quitar_foto" value="1" class="btn btn-outline-secondary mt-4 ms-3 quitar-foto">Quitar foto</button>
+
+          </div>
+
+          <!-- Personal Info -->
+          <div class="col-md-9">
+            <div class="mb-3 nombres">
+              <label for="nombre" class="form-label">Nombres</label>
+              <input type="text" class="form-control" id="nombre" name="nombre"
+                value="<?php echo $_SESSION['nombre'] = $fila['nombre']; ?>">
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese sus nombre</div>
+            </div>
+        </div>
+        <!-- input oculta para el número de documento -->
+        <input type="hidden" name="numero_documento" value="<?php echo $_SESSION['numero_documento']; ?>">
+
+
 
         <div class="mb-3">
           <label for="ocupacion" class="form-label">Ocupación</label>
@@ -242,6 +316,19 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
   <script src="../assets/js/ValidacionRegistroUser.js"></script>
   <script src="../assets/js/mostrar-img-actualizacion.js"></script>
   <script src="../assets/js/validacion-actualizacion-data-user.js"></script>
+
+  <script>
+    // Asignar el valor de PHP a una variable de JavaScript
+    const rolUsuario = "<?php echo $_SESSION['rol']; ?>";
+    console.log("Rol del usuario:", rolUsuario);
+
+    if(rolUsuario=="empresa"){
+
+    }else if(rolUsuario=="usuario_administrativo"){
+
+    }
+  </script>
+
   </script>
 
 </body>
