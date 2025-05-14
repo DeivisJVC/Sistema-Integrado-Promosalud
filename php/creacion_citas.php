@@ -8,8 +8,11 @@ $password = "";
 $dbname = "sistema_integrado_promosalud2";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
+
+// Depuración: Verificar conexión a la base de datos
 if ($conn->connect_error) {
-    die("No se pudo conectar a la base de datos: " . $conn->connect_error);
+    error_log('Error de conexión a la base de datos: ' . $conn->connect_error);
+    die('No se pudo conectar a la base de datos: ' . $conn->connect_error);
 }
 
 // Verificar si se envió el formulario
@@ -19,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $fecha_cita = $_POST['fecha_cita'];
 
     // Validación básica
-    if (empty($tipo_examen) || empty($fecha_cita) || !isset($_FILES['orden_pdf'])) {
+    if (empty($tipo_examen) || empty($fecha_cita) || !isset($_FILES['orderFile'])) {
         echo "Faltan datos necesarios.";
         exit();
     }
@@ -39,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_paciente = $result_paciente->fetch_assoc()['id'];
 
     // Guardar archivo PDF
-    $archivo = $_FILES['orden_pdf'];
+    $archivo = $_FILES['orderFile'];
     $nombreArchivo = $archivo['name'];
     $rutaTemporal = $archivo['tmp_name'];
-    $rutaFinal = "ordenes_citas/" . uniqid() . "_" . basename($nombreArchivo);
+    $rutaFinal = "../assets/ordenes/" . uniqid() . "_" . basename($nombreArchivo);
 
     if (!move_uploaded_file($rutaTemporal, $rutaFinal)) {
         echo "Error al subir el archivo.";
@@ -63,7 +66,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt_agenda->close();
-    $stmt_paciente->close();
-    $conn->close();
 }
+
+$stmt_paciente->close();
+$conn->close();
+
+// Depuración: Verificar datos recibidos
+error_log('Datos recibidos: ' . print_r($_POST, true));
+error_log('Archivos recibidos: ' . print_r($_FILES, true));
 ?>

@@ -12,13 +12,12 @@ function nextStep() {
 
   if (currentStep === 0) {
     const examenSelect = document.getElementById("input_examen");
-    if(!examenSelect || examenSelect.value === "") {
+    if (!examenSelect || examenSelect.value === "") {
       examenSelect.classList.add("is-invalid");
       return; // No avanza al siguiente paso
     }
     examenSelect.classList.remove("is-invalid");
   }
-
 
   // Validación específica para el paso 2 (adjuntar archivo)
   if (currentStep === 1) {
