@@ -244,11 +244,12 @@ if (!isset($_SESSION['numero_documento'])) {
     </section>
     <form
       id="multiStepForm"
+      action="../php/creacion_citas.php"
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-      onsubmit="return false;">
-      <!-- Paso 2: selecionar tipo de examen -->
+       onsubmit="combineDateTime()">
+      <!-- Paso 1: Adjuntar -->
       <div class="step active">
         <h2>Seleccionar Tipo de Examen</h2>
         <div class="form-group mb-4 mt-4">
@@ -492,11 +493,12 @@ if (!isset($_SESSION['numero_documento'])) {
               </div>
             </div>
             <div class="modal-footer">
+            <input type="hidden" name="fecha_cita" id="fecha_cita">
               <button
                 type="button"
                 class="btn btn-secondary"
                 data-bs-dismiss="modal">
-                <a href="Menu_cita.html" class="btn btn-primary">Confirmar</a>
+                <a href="Menu_cita.php" class="btn btn-primary">Confirmar</a>
               </button>
             </div>
           </div>
@@ -669,6 +671,8 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/agenda-cit.js"></script>
   <script src="/assets/js/formulario_partes.js"></script>
+  <script src="/assets/js/fecha_datos.js"></script>
+
 </body>
 
 </html>
