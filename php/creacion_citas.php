@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -17,12 +18,12 @@ if ($conn->connect_error) {
 
 // Verificar si se envió el formulario
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $numero_documento = $_SESSION['numero_documento'];
-    $tipo_examen = $_POST['input_examen'];
-    $fecha_cita = $_POST['fecha_cita'];
+    $numero_documento = isset($_SESSION['numero_documento']) ? $_SESSION['numero_documento'] : '';
+    $tipo_examen = isset($_POST['input_examen']) ? $_POST['input_examen'] : '';
+    $fecha_cita = isset($_POST['fecha_cita']) ? $_POST['fecha_cita'] : '';
 
     // Validación básica
-    if (empty($tipo_examen) || empty($fecha_cita) || !isset($_FILES['orderFile'])) {
+    if (empty($numero_documento) || empty($tipo_examen) || empty($fecha_cita) || !isset($_FILES['orderFile']) || $_FILES['orderFile']['error'] !== UPLOAD_ERR_OK) {
         echo "Faltan datos necesarios.";
         exit();
     }
@@ -36,42 +37,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result_paciente->num_rows === 0) {
         echo "No se encontró el paciente.";
+        $stmt_paciente->close();
+        $conn->close();
         exit();
     }
 
     $id_paciente = $result_paciente->fetch_assoc()['id'];
+    //$stmt_paciente->close();
 
     // Guardar archivo PDF
     $archivo = $_FILES['orderFile'];
-    $nombreArchivo = $archivo['name'];
+    $nombreArchivo = basename($archivo['name']);
     $rutaTemporal = $archivo['tmp_name'];
-    $rutaFinal = "../assets/ordenes/" . uniqid() . "_" . basename($nombreArchivo);
+    $rutaFinal = "../assets/ordenes/" . uniqid() . "_" . $nombreArchivo;
 
     if (!move_uploaded_file($rutaTemporal, $rutaFinal)) {
         echo "Error al subir el archivo.";
+        $conn->close();
         exit();
     }
 
     // Insertar en tabla `agenda`
     $sql_agenda = "INSERT INTO agenda (id_paciente, tipo_examen, fecha_cita, orden_cita, estado)
-                   VALUES (?, ?, ?, 'Pendiente')";
+                   VALUES (?, ?, ?, ?, 'Pendiente')";
     $stmt_agenda = $conn->prepare($sql_agenda);
     $stmt_agenda->bind_param("isss", $id_paciente, $tipo_examen, $fecha_cita, $rutaFinal);
 
     if ($stmt_agenda->execute()) {
-        echo "Cita agendada correctamente.";
+        $stmt_agenda->close();
+        $conn->close();
         header("Location: ../views/Menu_cita.php"); // Redirigir a la página de inicio
+        exit();
     } else {
         echo "Error al guardar la cita: " . $stmt_agenda->error;
+        $stmt_agenda->close();
+        $conn->close();
+        exit();
     }
-
-    $stmt_agenda->close();
 }
 
-$stmt_paciente->close();
 $conn->close();
 
 // Depuración: Verificar datos recibidos
 error_log('Datos recibidos: ' . print_r($_POST, true));
 error_log('Archivos recibidos: ' . print_r($_FILES, true));
+error_log('Fecha recibida: ' . $_POST['fecha_cita']);
 ?>

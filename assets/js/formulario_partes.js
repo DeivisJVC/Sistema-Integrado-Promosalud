@@ -58,9 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function selectDay(day, dateText) {
   document.getElementById("selectedDay").innerText = day;
-  document.getElementById("selectedDate").innerText = dateText;
+  //document.getElementById("selectedDate").innerText = dateText;
 }
-
 // Ejemplo de función para seleccionar una hora
 function selectTime(time) {
   document.getElementById("selectedTime").innerText = time;
