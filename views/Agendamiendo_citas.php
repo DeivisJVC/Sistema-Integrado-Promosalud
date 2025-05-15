@@ -248,7 +248,7 @@ if (!isset($_SESSION['numero_documento'])) {
       class="container-fluid mt-5 border border-primary rounded shadow p-3"
       method="post"
       enctype="multipart/form-data"
-       onsubmit="combineDateTime()">
+      onsubmit="return combineDateTime()">
       <!-- Paso 1: Adjuntar -->
       <div class="step active">
         <h2>Seleccionar Tipo de Examen</h2>
@@ -279,13 +279,13 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
 
 
-      
+
       <!-- Paso 2: Adjuntar Orden -->
       <div class="step">
         <h2>Paso 2: Adjuntar Orden</h2>
         <div class="form-group mb-3">
           <label for="orderFile">Adjuntar Orden</label>
-          <input type="file" class="form-control" id="orderFile" name="orderFile" required />
+          <input type="file"      class="form-control" id="orderFile" name="orderFile" required />
           <div class="invalid-feedback">Por favor selecciona un archivo.</div>
         </div>
         <div class="btn-container">
@@ -306,13 +306,13 @@ if (!isset($_SESSION['numero_documento'])) {
                 style="max-width: 500px; z-index: 1; position: relative">
                 <div class="calendar-header">
                   <div class="d-flex justify-content-between">
-                    <button id="prevMonth" class="btn btn-light btn-sm">
+                    <button id="prevMonth" type="button" class="btn btn-light btn-sm">
                       &lt;
                     </button>
                     <h5 id="currentMonth" class="m-0" id="year_month">
                       Noviembre 2024
                     </h5>
-                    <button id="nextMonth" class="btn btn-light btn-sm">
+                    <button id="nextMonth" type="button" class="btn btn-light btn-sm">
                       &gt;
                     </button>
                   </div>
@@ -397,39 +397,36 @@ if (!isset($_SESSION['numero_documento'])) {
         </div>
       </div>
       <!-- Modal de Error -->
-              <div
-          class="modal fade"
-          id="errorModal"
-          tabindex="-1"
-          aria-labelledby="errorModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content error-modal"> <!-- Clase personalizada -->
-              <div class="modal-header">
-                <h5 class="modal-title" id="errorModalLabel">Error</h5>
-                <button
-                  type="button"
-                  class="btn-close"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                ></button>
-              </div>
-              <div class="modal-body" id="errorModalBody">
-                <!-- Aquí se insertarán los mensajes de error dinámicamente -->
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  data-bs-dismiss="modal"
-                >
-                  Cerrar
-                </button>
-              </div>
+      <div
+        class="modal fade"
+        id="errorModal"
+        tabindex="-1"
+        aria-labelledby="errorModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content error-modal"> <!-- Clase personalizada -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="errorModalLabel">Error</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="errorModalBody">
+              <!-- Aquí se insertarán los mensajes de error dinámicamente -->
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal">
+                Cerrar
+              </button>
             </div>
           </div>
         </div>
+      </div>
       <!-- Modal de Confirmación -->
       <div
         class="modal fade"
@@ -493,12 +490,12 @@ if (!isset($_SESSION['numero_documento'])) {
               </div>
             </div>
             <div class="modal-footer">
-            <input type="hidden" name="fecha_cita" id="fecha_cita">
+              <input type="hidden" name="fecha_cita" id="fecha_cita">
               <button
-                type="button"
-                class="btn btn-secondary"
+                type="submit"
+                class="btn btn-primary"
                 data-bs-dismiss="modal">
-                <a href="Menu_cita.php" class="btn btn-primary">Confirmar</a>
+                  Confirmar
               </button>
             </div>
           </div>
