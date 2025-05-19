@@ -10,8 +10,7 @@ if (!isset($_SESSION['numero_documento'])) {
 // Recuperar el rol del usuario desde la sesión
 $rol = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'No definido';
 
-// Mostrar el rol
-echo "Rol del usuario: " . $rol;
+
 
 // Conexión a la base de datos
 $servername = "localhost";
@@ -36,7 +35,15 @@ if ($rol == "paciente") {
   $sql = "SELECT rut, nombre, telefono, direccion, ciudad, sector, correo, estado, img
             FROM empresa 
             WHERE rut = ?";
-} else {
+} else if ($rol == "administrador") {
+  // Recuperar los datos del usuario desde la base de datos
+  $numero_documento = $_SESSION['numero_documento'];
+  $sql = "SELECT nombres, telefono,cargo, correo, img
+            FROM usuarios_administrativos 
+            WHERE numero_documento = ?";
+}
+
+else {
   echo "Rol no válido.";
   exit();
 }
@@ -68,6 +75,8 @@ if ($result->num_rows > 0 && $rol == "paciente") {
   $_SESSION['nombre'] = $fila['nombre'];
   $_SESSION['telefono'] = $fila['telefono'];
   $_SESSION['direccion'] = $fila['direccion'];
+  $_SESSION['rut'] = $fila['rut'];
+  $_SESSION['estado'] = $fila['estado'];
   $_SESSION['ciudad'] = $fila['ciudad'];
   $_SESSION['sector'] = $fila['sector'];
   $_SESSION['correo'] = $fila['correo'];
@@ -76,7 +85,6 @@ if ($result->num_rows > 0 && $rol == "paciente") {
   $_SESSION['foto'] = $fila['img'];
   $_SESSION['nombres'] = isset($fila['nombres']) ? $fila['nombres'] : '';
   $_SESSION['telefono'] = $fila['telefono'];
-  $_SESSION['direccion'] = $fila['direccion'];
   $_SESSION['cargo'] = $fila['cargo'];
   $_SESSION['correo'] = $fila['correo'];
 }else {
