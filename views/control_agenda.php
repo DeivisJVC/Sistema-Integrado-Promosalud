@@ -353,7 +353,9 @@ if (!isset($_SESSION['numero_documento'])) {
                 <td class="d-none">Cédula de ciudadanía</td>
                 <td class="d-none">123456</td>
                 <!-- Valor de la cédula -->
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                <a    href="../assets/ordenes/682658e582a3b_Diagrama de sistemas. Relación del individuo con el entorno.pdf" class="btn btn-sm btn-info " target="_blank">PDF</a>
+                </td>
                 <td>
                   <input
                     id="checkboxdescargar"
