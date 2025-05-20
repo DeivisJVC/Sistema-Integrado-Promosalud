@@ -411,10 +411,11 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
-  <script>
-    const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+  <script type="module" src="/assets/js/validar_tipo_usuario.js"></script>
+  <script >
+      const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+      
   </script>
-  <script src="/assets/js/validar_tipo_usuario.js"></script>
 
 </body>
 

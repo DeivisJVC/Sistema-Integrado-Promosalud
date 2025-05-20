@@ -344,7 +344,84 @@ if (!isset($_SESSION['numero_documento'])) {
                 <th>Seleccionar</th>
               </tr>
             </thead>
-            <tbody><?php include '../php/renderizar_agenda.php'; ?></tbody>
+            <tbody>
+              <tr>
+                <td>2024-11-15</td>
+                <td>10:00 AM</td>
+                <td>Juan Pérez</td>
+                <td>Dra. Gómez</td>
+                <td class="d-none">Cédula de ciudadanía</td>
+                <td class="d-none">123456</td>
+                <!-- Valor de la cédula -->
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                  <input
+                    id="checkboxdescargar"
+                    type="checkbox"
+                    class="form-check-input select-patient p-2" />
+                </td>
+              </tr>
+              <tr>
+                <td>2024-11-15</td>
+                <td>11:00 AM</td>
+                <td>María López</td>
+                <td>Dr. Martínez</td>
+                <td class="d-none">Cédula extranjera</td>
+                <td class="d-none">789012</td>
+                <!-- Valor del tipo de documento -->
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="form-check-input select-patient p-2" />
+                </td>
+              </tr>
+
+              <tr>
+                <td>2024-11-16</td>
+                <td>09:00 AM</td>
+                <td>Carlos Ruiz</td>
+                <td>Dra. Gómez</td>
+                <td class="d-none">Permiso temporal de trabajo</td>
+                <td class="d-none">1082998</td>
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="form-check-input select-patient p-2" />
+                </td>
+              </tr>
+              <tr>
+                <td>2024-11-16</td>
+                <td>09:00 AM</td>
+                <td>Carlos Ruiz</td>
+                <td>Dra. Gómez</td>
+                <td class="d-none">Cédula de ciudadanía</td>
+                <td class="d-none">123456789</td>
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="form-check-input select-patient p-2" />
+                </td>
+              </tr>
+              <tr>
+                <td>2024-11-16</td>
+                <td>10:00 AM</td>
+                <td>Lucía Fernández</td>
+                <td>Dr. Pérez</td>
+                <td class="d-none">Pasaporte</td>
+                <td class="d-none">123456</td>
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
+                <td>
+                  <input
+                    type="checkbox"
+                    class="form-check-input select-patient p-2" />
+                </td>
+
+                <!-- agregar mas datos segun la base de datos -->
+              </tr>
+            </tbody>
           </table>
         </div>
       </section>
