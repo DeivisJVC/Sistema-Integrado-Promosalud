@@ -276,9 +276,9 @@ if (!isset($_SESSION['numero_documento'])) {
               placeholder="Filtrar Paciente" />
             <input
               type="text"
-              id="filter_doctor"
+              id="filter_tipoexamen"
               class="form-control me-2"
-              placeholder="Filtrar por doctor" />
+              placeholder="Filtrar por tipo de examen" />
             <label for="documentType" class="form-label me-2">Seleccionar Documento</label>
             <select class="form-select me-2" id="documentType">
               <option selected class="form-select-option is-invalid">
@@ -336,7 +336,7 @@ if (!isset($_SESSION['numero_documento'])) {
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Nombre del Paciente</th>
-                <th>Doctor</th>
+                <th>Tipo de examen</th>
                 <th class="d-none">Tipo de Documento</th>
                 <!-- Agregar clase d-none para ocultar -->
                 <th class="d-none">Número de Documento</th>
@@ -353,9 +353,7 @@ if (!isset($_SESSION['numero_documento'])) {
                 <td class="d-none">Cédula de ciudadanía</td>
                 <td class="d-none">123456</td>
                 <!-- Valor de la cédula -->
-                <td>
-                <a    href="../assets/ordenes/682658e582a3b_Diagrama de sistemas. Relación del individuo con el entorno.pdf" class="btn btn-sm btn-info " target="_blank">PDF</a>
-                </td>
+                <td><button class="btn btn-sm btn-info">Ver</button></td>
                 <td>
                   <input
                     id="checkboxdescargar"
