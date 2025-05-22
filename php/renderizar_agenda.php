@@ -1,4 +1,7 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Conexión a la base de datos
 $servername = "localhost";
@@ -10,6 +13,7 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
+// Consulta para obtener los datos de la agenda y el paciente
 $sql = "SELECT a.fecha_cita, 
                TIME_FORMAT(a.fecha_cita, '%H:%i') as hora_cita,
                p.nombres, p.apellidos, p.tipo_documento, p.numero_documento,
@@ -31,6 +35,7 @@ if ($result && $result->num_rows > 0) {
         echo "<td><a class='btn btn-sm btn-info' href='" . $row['orden_cita'] . "' target='_blank'>Ver</a></td>";
         echo "<td><input type='checkbox' class='form-check-input select-patient p-2' /></td>";
         echo "</tr>";
+        
     }
 } else {
     echo "<tr><td colspan='8'>No hay citas agendadas.</td></tr>";
