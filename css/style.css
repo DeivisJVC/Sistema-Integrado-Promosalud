@@ -132,6 +132,11 @@ header {
   font-weight: bold;
   color: #0f3b6f;
 }
+[data-bs-theme="dark"] .title_sobre_nosotros {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
 .profileModal {
   background: linear-gradient(to right, #0f3b6f, #1d72d4);
 }
@@ -157,9 +162,26 @@ header {
   margin-top: 180px;
   margin-bottom: 80px;
 }
+
+
 .editar-perfil-titulo {
   font-size: 2.5rem;
   font-weight: bold;
   color: #0f3b6f;
   margin-bottom: 20px;
+}
+
+
+[data-bs-theme="dark"] .editar-perfil-titulo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+
+.link-login .link-olvidaste, .link-login .link-registrate,#formulario-inicio label{
+  color: rgb(2, 40, 84);
+  text-decoration: none;
+  
 }

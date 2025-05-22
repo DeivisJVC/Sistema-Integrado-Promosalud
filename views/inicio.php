@@ -218,9 +218,9 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
               </p>
             <?php endif; ?>
 
-            <div class="form-group d-flex mb-4 justify-content-between">
-              <a href="recuperar_contraseña.html" class=" me-4">¿Olvidaste la contraseña?</a>
-              <a href="registrate.php" class="mt-2">Registrate</a>
+            <div class="form-group d-flex mb-4 justify-content-between link-login">
+              <a href="recuperar_contraseña.html" class="me-4 link-olvidaste">¿Olvidaste la contraseña?</a>
+              <a href="registrate.php" class="mt-2 link-registrate">Registrate</a>
             </div>
             <div class="d-grid">
               <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
