@@ -35,7 +35,6 @@
             id="segundo_header"
             class="nav-link active fs-5"
             href="../views/sobre_nosotros.php">
-            <img src="/assets/icon/" alt="" />
             Sobre nosotros
           </a>
         </li>
@@ -315,6 +314,10 @@
       </section>
     </article>
   </footer>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+  <script src="/assets/js/darkmode.js"></script>
+  <script src="/assets/js/year.js"></script>
+  <script src="../assets/js/ValidacionRegistroUser.js"></script>
 </body>
 
 </html>
