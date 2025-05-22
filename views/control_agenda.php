@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['rol'];
 if (!isset($_SESSION['numero_documento'])) {
   header("location:/views/inicio.php");
 }
@@ -15,6 +16,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <title>Control de Agenda</title>
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css" />
+  <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
 </head>
 
 <body>
@@ -48,47 +50,53 @@ if (!isset($_SESSION['numero_documento'])) {
       </ul>
       <ul
         class="nav container-fluid justify-content-between align-items-center ul-second">
-        <li class="nav-item">
+        <li class="nav-item  d-none" id="agendamiento">
           <!--Separar los iconos de las letras-->
           <a
             href="/views/Agendamiendo_citas.php"
-            class="nav-link text-white"
-            aria-current="page">
+            class="nav-link text-white  "
+            aria-current="page"
+            >
             <img
               class="me-1"
               src="/assets/icon/icon _book.svg"
               alt="agendamiento de citas"
               width="40"
               height="40" />
-            Agendamiento de citas
+            <p class="d-inline">Agendamiento de Citas
+            </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  d-none me-4" id="control_agenda" >
           <a
-            class="nav-link text-white active"
+            class="nav-link text-white active "
             aria-current="page"
-            href="/views/control_agenda.php">
+            href="/views/control_agenda.php"
+            >
             <img
               class="me-1"
               src="/assets/icon/icon _document_.svg"
               alt="agenda"
               width="40"
               height="40" />
+            <p class="d-inline">
             Control de agenda
+            </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  d-none"  id="informes">
           <a
-            class="nav-link text-white active"
+            class="nav-link text-white active "
             aria-current="page"
-            href="/views/informes.php">
+            href="/views/informes.php"
+          >
             <img
               class="me-1"
               src="/assets/icon/icon _file_.svg"
               alt="informes"
               width="40"
               height="40" />
-            Informes
+             <p class="d-inline">Informes </p>
           </a>
         </li>
       </ul>
@@ -170,11 +178,10 @@ if (!isset($_SESSION['numero_documento'])) {
             <?=
             $_SESSION['nombres']
 
-          ?>
-          <?=
+            ?>
+            <?=
             $_SESSION['apellidos']
-          ?>
-            
+            ?>
 
           </span>
           <button type="button" class="btn bg-transparent position-relative">
@@ -207,7 +214,6 @@ if (!isset($_SESSION['numero_documento'])) {
       </ul>
     </nav>
   </header>
-
   <!-- Profile Modal -->
   <div
     class="modal fade"
@@ -245,7 +251,7 @@ if (!isset($_SESSION['numero_documento'])) {
   </div>
   <main>
     <article class="container mt-5 pt-5">
-      <h1 class="text-center mb-4">Administrador de Agenda de Pacientes</h1>
+      <h1 class="text-center mb-4" id="titulo_agenda">Administrador de Agenda de Pacientes</h1>
 
       <!-- Panel de Control -->
       <section class="card mb-4">
@@ -262,7 +268,7 @@ if (!isset($_SESSION['numero_documento'])) {
       <!-- Tabla de Agenda -->
       <section class="card">
         <div class="card-header">
-          <h3>Agenda de Pacientes</h3>
+          <h3 id="agenda-h3">Agenda de Pacientes</h3>
           <div class="d-flex">
             <input
               type="date"
@@ -274,43 +280,54 @@ if (!isset($_SESSION['numero_documento'])) {
               id="filter_name"
               class="form-control me-2"
               placeholder="Filtrar Paciente" />
-            <input
-              type="text"
-              id="filter_tipoexamen"
-              class="form-control me-2"
-              placeholder="Filtrar por tipo de examen" />
-            <label for="documentType" class="form-label me-2">Seleccionar Documento</label>
-            <select class="form-select me-2" id="documentType">
-              <option selected class="form-select-option is-invalid">
+
+            <label for="filter_tipoexamen">Seleccionar tipo de examen</label>
+            <select name="filter_tipoexamen" id="filter_tipoexamen" class="form-control me-2">
+              <option  value="" selected class="form-select-option is-invalid">
                 Seleccione...
               </option>
-              <option class="form-select-option" value="Cédula de ciudadanía">
+              <option value="retiro" class="form-select-option">
+                retiro
+              </option>
+              <option value="ingreso" class="form-select-option">
+                ingreso
+              </option>
+              <option value="periodicos" class="form-select-option">
+                periodicos
+              </option>
+            </select>
+            <label for="documentType" class="form-label me-2">Seleccionar Documento</label>
+            <select class="form-select me-2" id="documentType">
+              <option   value=""   selected class="form-select-option is-invalid">
+                Seleccione...
+              </option>
+              <option class="form-select-option" value="cc">
                 Cédula de ciudadanía
               </option>
-              <option class="form-select-option" value="Cédula extranjera">
+              <option class="form-select-option" value="ce">
                 Cédula extranjera
               </option>
               <option
                 class="form-select-option"
-                value="Permiso temporal de trabajo">
+                value="ptt">
                 Permiso temporal de trabajo
               </option>
-              <option class="form-select-option" value="NIT">NIT</option>
-              <option class="form-select-option" value="Tarjeta de identidad">
+              <option class="form-select-option" value="rut">RUT</option>
+              <option class="form-select-option" value="ti">
                 Tarjeta de identidad
               </option>
-              <option class="form-select-option" value="Pasaporte">
+              <option class="form-select-option" value="passport">
                 Pasaporte
               </option>
-              <option class="form-select-option" value="Registro civil">
+              <option class="form-select-option" value="rc">
                 Registro civil
               </option>
-              <option class="form-select-option" value="Carné diplomático">
+              <option class="form-select-option" value="cd">
                 Carné diplomático
               </option>
               <option
                 class="form-select-option"
-                value="Certificado nacido vivo">
+                value="cnv">
                 Certificado nacido vivo
               </option>
             </select>
@@ -344,90 +361,17 @@ if (!isset($_SESSION['numero_documento'])) {
                 <th>Seleccionar</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>2024-11-15</td>
-                <td>10:00 AM</td>
-                <td>Juan Pérez</td>
-                <td>Dra. Gómez</td>
-                <td class="d-none">Cédula de ciudadanía</td>
-                <td class="d-none">123456</td>
-                <!-- Valor de la cédula -->
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
-                <td>
-                  <input
-                    id="checkboxdescargar"
-                    type="checkbox"
-                    class="form-check-input select-patient p-2" />
-                </td>
-              </tr>
-              <tr>
-                <td>2024-11-15</td>
-                <td>11:00 AM</td>
-                <td>María López</td>
-                <td>Dr. Martínez</td>
-                <td class="d-none">Cédula extranjera</td>
-                <td class="d-none">789012</td>
-                <!-- Valor del tipo de documento -->
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
-                <td>
-                  <input
-                    type="checkbox"
-                    class="form-check-input select-patient p-2" />
-                </td>
-              </tr>
-
-              <tr>
-                <td>2024-11-16</td>
-                <td>09:00 AM</td>
-                <td>Carlos Ruiz</td>
-                <td>Dra. Gómez</td>
-                <td class="d-none">Permiso temporal de trabajo</td>
-                <td class="d-none">1082998</td>
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
-                <td>
-                  <input
-                    type="checkbox"
-                    class="form-check-input select-patient p-2" />
-                </td>
-              </tr>
-              <tr>
-                <td>2024-11-16</td>
-                <td>09:00 AM</td>
-                <td>Carlos Ruiz</td>
-                <td>Dra. Gómez</td>
-                <td class="d-none">Cédula de ciudadanía</td>
-                <td class="d-none">123456789</td>
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
-                <td>
-                  <input
-                    type="checkbox"
-                    class="form-check-input select-patient p-2" />
-                </td>
-              </tr>
-              <tr>
-                <td>2024-11-16</td>
-                <td>10:00 AM</td>
-                <td>Lucía Fernández</td>
-                <td>Dr. Pérez</td>
-                <td class="d-none">Pasaporte</td>
-                <td class="d-none">123456</td>
-                <td><button class="btn btn-sm btn-info">Ver</button></td>
-                <td>
-                  <input
-                    type="checkbox"
-                    class="form-check-input select-patient p-2" />
-                </td>
-
-                <!-- agregar mas datos segun la base de datos -->
-              </tr>
+            <tbody id="patient_table_body">
+              <?php
+              include_once '../php/renderizar_agenda.php';
+              ?>
             </tbody>
           </table>
         </div>
       </section>
     </article>
   </main>
-
+  </script>
   <footer class="container-fluid text-white footer-1 mt-5">
     <article class="footer-1 container-fluid">
       <article class="container-sm text-center text-md-start mt-4">
@@ -589,10 +533,14 @@ if (!isset($_SESSION['numero_documento'])) {
   </footer>
   <!--Script de js-->
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-  <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/Filtrar_agenda.js"></script>
+  <script type="module"  src="/assets/js/validar-header.js"></script>
+  <script>
+    const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+  </script>
+
 </body>
 
 </html>

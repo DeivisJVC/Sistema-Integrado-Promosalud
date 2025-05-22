@@ -100,7 +100,7 @@ if (!isset($_SESSION['numero_documento'])) {
             echo("Bienvenido ");
           }
 
-          
+
           ?>
         </li>
         </span>
@@ -156,7 +156,7 @@ if (!isset($_SESSION['numero_documento'])) {
               </li>
               <li class="nav-item">
                 <a class="btn_link   fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
-                  Citas</a>
+                  mis citas</a>
               </li>
               <li class="nav-item">
                 <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
@@ -180,21 +180,15 @@ if (!isset($_SESSION['numero_documento'])) {
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
               <li class="nav-item">
-
+                <a class="btn_link    fs-5" aria-current="page" href="../views/control_agenda.php">Consultar
+                  Trabajadores</a>
               </li>
               <li class="nav-item">
-                <a class="btn_link    fs-5" aria-current="page" href="../views/PPPPPP.php">Consultar
-                  Pacientes</a>
+                <a class="btn_link   fs-5" aria-current="page" href="../views/informes.php">Informes de salud</a>
               </li>
               <li class="nav-item">
                 <a class="btn_link   fs-5" aria-current="page" href="../views/contactanos.php">Contáctanos</a>
               </li>
-
-
-              <li class="nav-item">
-                <a class="btn_link   fs-5" aria-current="page" href="../views/informes.php">Informes de salud</a>
-              </li>
-
             </ul>
           </nav>
         </div>
@@ -412,9 +406,8 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
   <script type="module" src="/assets/js/validar_tipo_usuario.js"></script>
-  <script >
+  <script>
       const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
-      
   </script>
 
 </body>

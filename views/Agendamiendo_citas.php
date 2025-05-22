@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['rol'];
 if (!isset($_SESSION['numero_documento'])) {
   header("location:/views/inicio.php");
 }
@@ -46,47 +47,53 @@ if (!isset($_SESSION['numero_documento'])) {
       </ul>
       <ul
         class="nav container-fluid justify-content-between align-items-center ul-second">
-        <li class="nav-item">
+        <li class="nav-item  d-none" id="agendamiento">
           <!--Separar los iconos de las letras-->
           <a
             href="/views/Agendamiendo_citas.php"
-            class="nav-link text-white"
-            aria-current="page">
+            class="nav-link text-white  "
+            aria-current="page"
+            >
             <img
               class="me-1"
               src="/assets/icon/icon _book.svg"
               alt="agendamiento de citas"
               width="40"
               height="40" />
-            Agendamiento de citas
+            <p class="d-inline">Agendamiento de Citas
+            </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  d-none me-4" id="control_agenda" >
           <a
-            class="nav-link text-white active"
+            class="nav-link text-white active "
             aria-current="page"
-            href="/views/control_agenda.php">
+            href="/views/control_agenda.php"
+            >
             <img
               class="me-1"
               src="/assets/icon/icon _document_.svg"
               alt="agenda"
               width="40"
               height="40" />
+            <p class="d-inline">
             Control de agenda
+            </p>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item  d-none"  id="informes">
           <a
-            class="nav-link text-white active"
+            class="nav-link text-white active "
             aria-current="page"
-            href="/views/informes.php">
+            href="/views/informes.php"
+          >
             <img
               class="me-1"
               src="/assets/icon/icon _file_.svg"
               alt="informes"
               width="40"
               height="40" />
-            Informes
+             <p class="d-inline">Informes </p>
           </a>
         </li>
       </ul>
@@ -669,6 +676,10 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/agenda-cit.js"></script>
   <script src="/assets/js/formulario_partes.js"></script>
   <script src="/assets/js/fecha_datos.js"></script>
+  <script type="module"  src="/assets/js/validar-header.js"></script>
+  <script>
+      const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+  </script>
 
 </body>
 

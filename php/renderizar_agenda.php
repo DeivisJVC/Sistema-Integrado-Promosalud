@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Consulta para obtener los datos de la agenda y el paciente
 $sql = "SELECT a.fecha_cita, 
                TIME_FORMAT(a.fecha_cita, '%H:%i') as hora_cita,
                p.nombres, p.apellidos, p.tipo_documento, p.numero_documento,
