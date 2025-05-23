@@ -35,9 +35,8 @@ if ($rol === 'paciente' && isset($_SESSION['numero_documento'])) {
                    a.tipo_examen, a.orden_cita, a.estado
             FROM agenda a
             JOIN paciente p ON a.id_paciente = p.id
-            WHERE p.id_empresa = '$id_empresa'";
-    // Debug: mostrar el valor de la sesión y la consulta
-    // echo "<tr><td colspan='8' style='color:red;'>id_empresa: $id_empresa | SQL: $sql</td></tr>";
+            WHERE p.id_empresa = '$id_empresa'";  // el id de la empresa en la tabla paciente y el id de la empresa en la tabla
+
 } else {
     // Administrador u otro: todas las citas
     $sql = "SELECT a.fecha_cita, 
@@ -62,7 +61,6 @@ if ($result && $result->num_rows > 0) {
         echo "<td><a class='btn btn-sm btn-info' href='" . $row['orden_cita'] . "' target='_blank'>Ver</a></td>";
         echo "<td><input type='checkbox' class='form-check-input select-patient p-2' /></td>";
         echo "</tr>";
-        
     }
 } else {
     echo "<tr><td colspan='8'>No hay citas agendadas.</td></tr>";

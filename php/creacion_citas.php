@@ -62,6 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                    VALUES (?, ?, ?, ?, 'Pendiente')";
     $stmt_agenda = $conn->prepare($sql_agenda);
     $stmt_agenda->bind_param("isss", $id_paciente, $tipo_examen, $fecha_cita, $rutaFinal);
+    //falta agregar la tabla examenes_realizar el id del paciente y medico
+      
 
     if ($stmt_agenda->execute()) {
         $stmt_agenda->close();

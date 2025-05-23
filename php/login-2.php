@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fila = $result_check->fetch_assoc();
         } else {
             // Si no existe en usuarios_administrativos, buscar en paciente
-            $sql_check = "SELECT nombres, apellidos, rol, contraseña_confirmacion FROM paciente WHERE tipo_documento = ? AND numero_documento = ?";
+            $sql_check = "SELECT nombres, apellidos, rol,id_empresa,contraseña_confirmacion FROM paciente WHERE tipo_documento = ? AND numero_documento = ?";
             $stmt_check = $conn->prepare($sql_check);
             $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
             $stmt_check->execute();
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else if ($tipo_documento === 'rut') {
         // Manejar el caso de empresas
         $tabla = 'empresa';
-        $sql = "SELECT nombre, rol, contraseña_confirmacion FROM $tabla WHERE rut = ?";
+        $sql = "SELECT nombre, rol, contraseña_confirmacion, id FROM $tabla WHERE rut = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("s", $numero_documento);
         $stmt->execute();
@@ -80,7 +80,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['numero_documento'] = $numero_documento;
         $_SESSION['nombres'] = isset($fila['nombres']) ? $fila['nombres'] : ''; // Solo para pacientes y administradores
         $_SESSION['apellidos'] = isset($fila['apellidos']) ? $fila['apellidos'] : ''; // Solo para pacientes
+
+        //Es necesario guardar el rol en la sesion para poder filtrar las citas
         $_SESSION['rol'] = $fila['rol'];
+        if ($tabla === 'empresa') {
+          $_SESSION['id_empresa'] = $fila['id']; // Solo para empresas
+          $_SESSION['nombre'] = isset($fila['nombre']) ? $fila['nombre'] : ''; // Solo para empresas
+        }
         $_SESSION['nombre'] = isset($fila['nombre']) ? $fila['nombre'] : ''; // Solo para empresas
 
 
