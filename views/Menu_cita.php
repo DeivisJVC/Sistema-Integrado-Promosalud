@@ -95,7 +95,11 @@ if (!isset($_SESSION['numero_documento'])) {
           }else if($_SESSION['rol'] == 'empresa'){
             echo("Bienvenido " . $_SESSION['nombre']);
           }else if($_SESSION['rol'] == 'administrador'){
-            echo("Bienvenido " . $_SESSION['nombres']);
+            if(empty($_SESSION['especialidad'])){
+              echo("Bienvenido " . $_SESSION['nombres']);
+            }else{
+              echo("Especialidad".$_SESSION['especialidad']);
+            }
           }else{
             echo("Bienvenido ");
           }
