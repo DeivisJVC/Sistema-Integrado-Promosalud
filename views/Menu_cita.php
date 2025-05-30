@@ -205,6 +205,9 @@ if (!isset($_SESSION['numero_documento'])) {
           </h4>
           <p class="text-muted mb-4"> Cada llamada agendada, cada reunión acomodada con precisión, cada espacio de respiro planeado con intención, es una obra de arte silenciosa que permite que los grandes proyectos se materialicen. Con pasión y atención al detalle, un administrador de agenda no solo organiza el presente, sino que también construye el futuro, asegurando que cada minuto cuente y que cada oportunidad encuentre su momento perfecto.</p>
           <!-- Navigation Menu -->
+           <?php
+           echo "<p>".$_SESSION['especialidad']."</p>"
+           ?>
           <nav class=" mx-auto my-5">
             <ul class="nav d-flex align-content-center gap-4">
 
