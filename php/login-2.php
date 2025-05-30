@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tabla = '';
     if ($tipo_documento === 'cc' || $tipo_documento === 'ce' || $tipo_documento === 'ti' || $tipo_documento === 'passport') {
         // Verificar primero en la tabla usuarios_administrativos
-        $sql_check = "SELECT nombres, rol, contraseña_confirmacion,especialidad FROM usuarios_administrativos WHERE tipo_documento = ? AND numero_documento = ?";
+        $sql_check = "SELECT nombres, rol, contraseña_confirmacion,cargo FROM usuarios_administrativos WHERE tipo_documento = ? AND numero_documento = ?";
         $stmt_check = $conn->prepare($sql_check);
         $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
         $stmt_check->execute();
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['numero_documento'] = $numero_documento;
         $_SESSION['nombres'] = isset($fila['nombres']) ? $fila['nombres'] : ''; // Solo para pacientes y administradores
         $_SESSION['apellidos'] = isset($fila['apellidos']) ? $fila['apellidos'] : ''; // Solo para pacientes
-        $_SESSION['especialidad']=isset($fila['especialidad']) ? $fila['especialidad'] : ''; 
+        $_SESSION['cargo']=isset($fila['cargo']) ? $fila['cargo'] : ''; 
 
         //Es necesario guardar el rol en la sesion para poder filtrar las citas
         $_SESSION['rol'] = $fila['rol'];
