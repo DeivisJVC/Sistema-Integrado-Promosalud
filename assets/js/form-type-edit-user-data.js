@@ -108,11 +108,11 @@ fetch("/php/getUserData.php")
 
               <div class="col-md-9">
                 <div class="mb-3 nombres">
-                  <label for="nombre" class="form-label">Nombres</label>
-                  <input type="text" class="form-control" id="nombre" name="nombre"
+                  <label for="nombres" class="form-label">Nombres</label>
+                  <input type="text" class="form-control" id="nombres" name="nombres"
                     value="${data.nombres || ""}" required>
                   <div class="valid-feedback">Excelente!</div>
-                  <div class="invalid-feedback">Por favor, ingrese sus nombre</div>
+                  <div class="invalid-feedback">Por favor, ingrese sus nombres</div>
                 </div>
                 <div class="mb-3">
                   <label for="cargo" class="form-label">Cargo</label>
@@ -173,7 +173,7 @@ fetch("/php/getUserData.php")
                     <input type="text" class="form-control" id="nombres" name="nombres"
                       value="${data.nombres || ""}" required>
                     <div class="valid-feedback">Excelente!</div>
-                    <div class="invalid-feedback">Por favor, ingrese sus nombre</div>
+                    <div class="invalid-feedback">Por favor, ingrese sus nombres</div>
                   </div>
                   <div class="mb-3 apellidos">
                     <label for="apellidos" class="form-label">Apellidos</label>

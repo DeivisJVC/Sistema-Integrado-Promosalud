@@ -254,7 +254,7 @@ if (!isset($_SESSION['numero_documento'])) {
       <h1 class="text-center mb-4" id="titulo_agenda">Administrador de Agenda de Pacientes</h1>
 
       <!-- Panel de Control -->
-      <section class="card mb-4">
+      <section class="card mb-4" id="panel_control">
         <div class="card-header">
           <h3>Panel de Control</h3>
         </div>
@@ -269,7 +269,7 @@ if (!isset($_SESSION['numero_documento'])) {
       <section class="card">
         <div class="card-header">
           <h3 id="agenda-h3">Agenda de Pacientes</h3>
-          <div class="d-flex">
+          <div class="d-flex" id="filtros_agenda">
             <input
               type="date"
               id="filter_date"
@@ -363,7 +363,7 @@ if (!isset($_SESSION['numero_documento'])) {
             </thead>
             <tbody id="patient_table_body">
               <?php
-              include_once '../php/renderizar_agenda.php';
+              include '../php/renderizar_agenda.php';
               ?>
             </tbody>
           </table>

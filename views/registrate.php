@@ -322,6 +322,12 @@
           <div class="valid-feedback">Excelente!</div>
           <div class="invalid-feedback">Por favor, seleccione su cargo.</div>
         </div>
+        <div class="col-md-6 d-none" id="container-especialidad">
+          <label for="especialidad" class="form-label">Especialidad<span style="color: red;">*</span></label>
+          <input type="text" id="especialidad" name="especialidad" class="form-control" placeholder="Especialidad"/>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su especialidad</div>
+        </div>
         <div class="col-md-6">
           <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
           <select class="form-control" id="tipo_documento" name="tipo_documento" required>
@@ -500,6 +506,7 @@
   <script src="/assets/js/validacionregistro_primera_vez.js"></script>
   <script src="/assets/js/form_registro.js"></script>
   <script src="/assets/js/validar-contraseñas-iguales.js"></script>
+  <script src="/assets/js/validarFormTipoAdmin.js"></script>
 
 
   </script>
