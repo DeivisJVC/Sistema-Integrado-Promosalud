@@ -25,7 +25,6 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
 </head>
 
 <body>
-
   <!-- Modal para afirmar que debe iniciar sesion para acceder-->
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -405,17 +404,17 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
         <nav class="navbar navbar-expand-lg py-3 justify-content-center">
           <ul class="nav ">
             <li class="nav-item">
-              <a href="inicio.html" class="text-white nav-link text-white ">Inicio</a>
+              <a href="/views/inicio.php" class="text-white nav-link text-white ">Inicio</a>
             </li>
             <li>
-              <a href="sobre_nosotros.html" class="text-white nav-link ">Sobre Nosotros
+              <a href="/views/sobre_nosotros.php" class="text-white nav-link ">Sobre Nosotros
               </a>
             </li>
             <li>
-              <a href="donde_estamos.html" class="text-white nav-link ">Donde Estamos</a>
+              <a href="/views/donde_estamos.php" class="text-white nav-link ">Donde Estamos</a>
             </li>
             <li>
-              <a href="contactanos.html" class="text-white nav-link ">Contactanos</a>
+              <a href="/views/contactanos.php" class="text-white nav-link ">Contactanos</a>
             </li>
           </ul>
         </nav>

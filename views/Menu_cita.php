@@ -223,7 +223,6 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
     </section>
   </main>
-
   <!-- Novedades Services Grid -->
   <section id="Novedades" class="container my-5">
     <h2 class="fs-3 fw-semibold mb-4">Novedades</h2>
@@ -384,7 +383,7 @@ if (!isset($_SESSION['numero_documento'])) {
         <nav class="navbar navbar-expand-lg py-3 justify-content-center">
           <ul class="nav ">
             <li class="nav-item">
-              <a href="inicio.html" class="text-white nav-link text-white ">Inicio</a>
+              <a href="/views/inicio.php" class="text-white nav-link text-white ">Inicio</a>
             </li>
             <li>
               <a href="/views//sobre_nosotros.php" class="text-white nav-link ">Sobre Nosotros
@@ -406,9 +405,12 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/edit_user.js"></script>
   <script type="module" src="/assets/js/validar_tipo_usuario.js"></script>
+  <script type="module" src="/assets/js/validar-cargo.js"></script>
   <script>
       const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+      const cargo = "<?php echo isset($_SESSION['cargo']) ? $_SESSION['cargo'] : ''; ?>";
   </script>
+
 
 </body>
 
