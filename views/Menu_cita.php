@@ -217,6 +217,11 @@ if (!isset($_SESSION['numero_documento'])) {
                 <a class="btn_link    fs-5" aria-current="page" href="../views/informes.php">Informes
                 </a>
               </li>
+
+              <li class="nav-item">
+                <a class="btn_link    fs-5" aria-current="page" href="../views/resultados.php">Resultados
+                </a>
+              </li>
             </ul>
           </nav>
         </div>
