@@ -73,16 +73,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $tipo_documento = $_POST['tipo_documento'];
     $numero_documento = $_POST['numero_documento'];
     $nombres = $_POST['nombres'];
+    $apellidos = $_POST['apellidos'];
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
     $cargo = $_POST['cargo'];
     $rol = $_POST['rol']; // Campo oculto
     $contraseña_confirmacion = $_POST['contraseña_confirmacion'];
     $_SESSION['rol'] = $rol;
+    $_SESSION['cargo'] = $cargo; // Guardar el cargo en la sesión
 
     // Consulta SQL para insertar datos en la tabla administrador
-    $sql = "INSERT INTO usuarios_administrativos (tipo_documento, numero_documento, nombres, correo, telefono, cargo,rol ,contraseña_confirmacion) 
-            VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$correo', '$telefono', '$cargo','$rol','$contraseña_confirmacion')";
+    $sql = "INSERT INTO usuarios_administrativos (tipo_documento, numero_documento, nombres,apellidos ,correo, telefono, cargo,rol ,contraseña_confirmacion) 
+            VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$apellidos','$correo', '$telefono', '$cargo', '$rol','$contraseña_confirmacion')";
+      
+
     if (mysqli_query($conexion, $sql)) {
       echo "Administrador registrado correctamente.";
     } else {

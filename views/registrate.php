@@ -27,25 +27,25 @@
     <nav class="navbar navbar-expand-lg">
       <ul id="segundo_header" class="container-fluid nav justify-content-xxl-evenly">
         <li class="nav-item">
-          <a href="inicio.html" class="nav-link">
+          <a href="/views/inicio.php" class="nav-link">
             <img src="/assets/icon/logo_blanco_promosalud.svg" alt="logo_blanco_promosalud" width="280px" />
           </a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5" aria-current="page" href="inicio.html">Inicio</a>
+          <a id="segundo_header" class="nav-link active fs-5" aria-current="page" href="/views/inicio.php">Inicio</a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5" href="sobre_nosotros.html">
+          <a id="segundo_header" class="nav-link active fs-5" href="/views/sobre_nosotros.php">
             <img src="/assets/icon/" alt="">
             Sobre nosotros
           </a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link text-capitalize active fs-5" href="donde_estamos.html">Donde
+          <a id="segundo_header" class="nav-link text-capitalize active fs-5" href="/views/donde_estamos.php">Donde
             estamos</a>
         </li>
         <li class="nav-item">
-          <a id="segundo_header" class="nav-link active fs-5" href="contactanos.html">Contactanos</a>
+          <a id="segundo_header" class="nav-link active fs-5" href="/views/contactanos.php">Contactanos</a>
         </li>
         <li class="nav-item redes-sociales">
           <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
@@ -290,71 +290,79 @@
         <h4 class="text-center"><b>Formulario de Administrador</b></h4>
         <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
           <div class="row g-4 justify-content-center">
-            <div class="col-md-6">
-              <input type="hidden" name="form_type" value="administrador" />
-              <label for="nombres" class="form-label">Nombre del Administrador<span style="color: red;">*</span></label>
-              <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombre del administrador" required />
-              <input type="hidden" name="rol" value="administrador" />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese el nombre del administrador.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
-              <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
-              <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese el teléfono.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="cargo" class="form-label">Seleccione su cargo en la empresa<span style="color: red;">*</span></label>
-              <select class="form-control" id="cargo" name="cargo" required>
-                <option value="">Seleccione su cargo</option>
-                <option value="gerente">Gerente</option>
-                <option value="enfermero">Enfermero</option>
-                <option value="medico">Medicina Ocupacional</option>
-                <option value="psicologo">Psicólogo</option>
-                <option value="Bacteriologia">Bacteriología</option>
-              </select>
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, seleccione su cargo.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
-              <select class="form-control" id="tipo_documento" name="tipo_documento" required>
-                <option value="">Seleccione su tipo de documento</option>
-                <option value="cc">Cédula de ciudadanía</option>
-                <option value="ce">Cédula extranjera</option>
-                <option value="ptt">Permiso temporal de trabajo</option>
-                <option value="nit">NIT</option>
-                <option value="ti">Tarjeta de identidad</option>
-                <option value="passport">Pasaporte</option>
-              </select>
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, seleccione su tipo de documento.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
-              <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
-              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
-            </div>
-            <div class="col-md-6">
-              <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
-              <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
-              <div class="valid-feedback">Excelente!</div>
-              <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-            </div>
+        <div class="col-md-6">
+          <input type="hidden" name="form_type" value="administrador" />
+          <label for="nombres" class="form-label">Nombre del Administrador<span style="color: red;">*</span></label>
+          <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombre del administrador" required />
+          <input type="hidden" name="rol" value="administrador" />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese el nombre del administrador.</div>
+        </div>
+        <div class="col-md-6">
+          <input type="hidden" name="form_type" value="administrador" />
+          <label for="apellidos" class="form-label">Apellidos del Administrador<span style="color: red;">*</span></label>
+          <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Nombre del administrador" required />
+          <input type="hidden" name="rol" value="administrador" />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese el apellidos del administrador.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="correo" class="form-label">Correo Electrónico<span style="color: red;">*</span></label>
+          <input type="email" id="correo" name="correo" class="form-control" placeholder="Correo electrónico" required />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="telefono" class="form-label">Teléfono<span style="color: red;">*</span></label>
+          <input type="text" id="telefono" name="telefono" class="form-control" placeholder="Teléfono" required />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese el teléfono.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="cargo" class="form-label">Seleccione su cargo en la empresa<span style="color: red;">*</span></label>
+          <select class="form-control" id="cargo" name="cargo" required>
+            <option value="">Seleccione su cargo</option>
+            <option value="gerente">Gerente</option>
+            <option value="enfermero">Enfermero</option>
+            <option value="medico">Medico</option>
+            <option value="psicologo">Psicólogo</option>
+            <option value="bacteriologo">Bacteriologo</option>
+            <option value="audiologo">Audiólogo</option>
+            <option value="optometra">Optómetra</option>
+          </select>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, seleccione su cargo.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
+          <select class="form-control" id="tipo_documento" name="tipo_documento" required>
+            <option value="">Seleccione su tipo de documento</option>
+            <option value="cc">Cédula de ciudadanía</option>
+            <option value="ce">Cédula extranjera</option>
+            <option value="ptt">Permiso temporal de trabajo</option>
+            <option value="passport">Pasaporte</option>
+          </select>
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, seleccione su tipo de documento.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="numero_documento" class="form-label">Número de Documento<span style="color: red;">*</span></label>
+          <input type="text" id="numero_documento" name="numero_documento" class="form-control" placeholder="Número de documento" required />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su número de documento.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
+          <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
+          <div class="valid-feedback">Excelente!</div>
+          <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+         </div>
           </div>
           <div class="btn-container mt-4">
             <button type="submit" class="btn btn-primary w-100">Registrar Administrador</button>
@@ -476,17 +484,17 @@
         <nav class="navbar navbar-expand-lg justify-content-center py-3">
           <ul class="nav">
             <li class="nav-item">
-              <a href="inicio.html" class="nav-link text-white">Inicio</a>
+              <a href="/views/inicio.php" class="nav-link text-white">Inicio</a>
             </li>
             <li>
-              <a href="sobre_nosotros.html" class="nav-link text-white">Sobre Nosotros
+              <a href="/views/sobre_nosotros.php" class="nav-link text-white">Sobre Nosotros
               </a>
             </li>
             <li>
-              <a href="donde_estamos.html" class="nav-link text-white">Donde Estamos</a>
+              <a href="/views/donde_estamos.php" class="nav-link text-white">Donde Estamos</a>
             </li>
             <li>
-              <a href="contactanos.html" class="nav-link text-white">Contactanos</a>
+              <a href="/views/contactanos.php" class="nav-link text-white">Contactanos</a>
             </li>
           </ul>
         </nav>
