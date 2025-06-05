@@ -86,6 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO usuarios_administrativos (tipo_documento, numero_documento, nombres,apellidos ,correo, telefono, cargo,rol ,contraseña_confirmacion) 
             VALUES ('$tipo_documento', '$numero_documento', '$nombres', '$apellidos','$correo', '$telefono', '$cargo', '$rol','$contraseña_confirmacion')";
       
+
     if (mysqli_query($conexion, $sql)) {
       echo "Administrador registrado correctamente.";
     } else {

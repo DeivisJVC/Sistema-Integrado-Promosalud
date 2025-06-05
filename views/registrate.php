@@ -110,7 +110,7 @@
               </div>
               <div class="col-md-6">
                 <label for="id_empresa" class="form-label">Seleccione su empresa<span style="color: red;">*</span></label>
-                <select class="form-control " id="id_empresa" name="id_empresa"  required>
+                <select class="form-control " id="id_empresa" name="id_empresa" required>
                   <option value="">Seleccione una empresa</option>
                   <?php include '../php/consult_company.php'; ?>
                 </select>
@@ -265,18 +265,18 @@
               <div class="valid-feedback">Excelente!</div>
               <div class="invalid-feedback">Por favor, ingrese el correo electrónico.</div>
             </div>
-              <div class="col-md-6">
-                <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
-                <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
-              </div>
-              <div class="col-md-6">
-                <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
-                <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
-                <div class="valid-feedback">Excelente!</div>
-                <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-              </div>
+            <div class="col-md-6">
+              <label for="password" class="form-label">Contraseña<span style="color: red;">*</span></label>
+              <input type="password" id="password" name="password" class="form-control" placeholder="Contraseña" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Por favor, ingrese su contraseña.</div>
+            </div>
+            <div class="col-md-6">
+              <label for="contraseña_confirmacion" class="form-label">Confirmar Contraseña<span style="color: red;">*</span></label>
+              <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
+              <div class="valid-feedback">Excelente!</div>
+              <div class="invalid-feedback">Las contraseñas no coinciden.</div>
+            </div>
             <!-- Campo oculto para el estado -->
             <input type="hidden" id="estado" name="estado" value="true" />
           </div>
@@ -333,12 +333,6 @@
           <div class="valid-feedback">Excelente!</div>
           <div class="invalid-feedback">Por favor, seleccione su cargo.</div>
         </div>
-        <div class="col-md-6 d-none" id="container-especialidad">
-          <label for="especialidad" class="form-label">Especialidad<span style="color: red;">*</span></label>
-          <input type="text" id="especialidad" name="especialidad" class="form-control" placeholder="Especialidad"/>
-          <div class="valid-feedback">Excelente!</div>
-          <div class="invalid-feedback">Por favor, ingrese su especialidad</div>
-        </div>
         <div class="col-md-6">
           <label for="tipo_documento" class="form-label">Tipo de documento<span style="color: red;">*</span></label>
           <select class="form-control" id="tipo_documento" name="tipo_documento" required>
@@ -368,15 +362,15 @@
           <input type="password" id="contraseña_confirmacion" name="contraseña_confirmacion" class="form-control" placeholder="Confirmar contraseña" required />
           <div class="valid-feedback">Excelente!</div>
           <div class="invalid-feedback">Las contraseñas no coinciden.</div>
-        </div>
+         </div>
           </div>
           <div class="btn-container mt-4">
-        <button type="submit" class="btn btn-primary w-100">Registrar Administrador</button>
+            <button type="submit" class="btn btn-primary w-100">Registrar Administrador</button>
           </div>
         </form>
       </div>
-        </form>
-      </div>
+      </form>
+    </div>
     </div>
     </div>
   </main>
@@ -515,8 +509,6 @@
   <script src="/assets/js/validacionregistro_primera_vez.js"></script>
   <script src="/assets/js/form_registro.js"></script>
   <script src="/assets/js/validar-contraseñas-iguales.js"></script>
-  <script src="/assets/js/validarFormTipoAdmin.js"></script>
-
 
   </script>
 </body>

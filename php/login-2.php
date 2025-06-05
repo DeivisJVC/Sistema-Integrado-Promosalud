@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['numero_documento'] = $numero_documento;
         $_SESSION['nombres'] = isset($fila['nombres']) ? $fila['nombres'] : ''; // Solo para pacientes y administradores
         $_SESSION['apellidos'] = isset($fila['apellidos']) ? $fila['apellidos'] : ''; // Solo para pacientes
-        $_SESSION['especialidad']=isset($fila['especialidad']) ? $fila['especialidad'] : ''; 
+        $_SESSION['cargo']=isset($fila['cargo']) ? $fila['cargo'] : ''; 
 
         //Es necesario guardar el rol en la sesion para poder filtrar las citas
         $_SESSION['rol'] = $fila['rol'];
