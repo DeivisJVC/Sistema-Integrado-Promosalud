@@ -210,61 +210,14 @@ if (!isset($_SESSION['numero_documento'])) {
                   <th>Nombre del Paciente</th>
                   <th>Apellido del paciente</th>
                   <th>Tipo de examen</th>
+                  <th>Estado</th>
                   <th>Seleccionar</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Juan </td>
-                  <td>Pérez</td>
-                  <td>Retiro</td>
-                  <td>
-                    <input
-                      id="checkboxdescargar"
-                      type="checkbox"
-                      class="form-check-input select-patient p-2" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>María Fernanda</td>
-                  <td>Lopez</td>
-                  <td>ingreso</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      class="form-check-input select-patient p-2" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Carlos</td>
-                  <td>Ruiz</td>
-                  <td>periodicos</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      class="form-check-input select-patient p-2" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Mariana</td>
-                  <td>Gómez</td>
-                  <td>ingreso</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      class="form-check-input select-patient p-2" />
-                  </td>
-                </tr>
-                <tr>
-                  <td>Lucía sofia</td>
-                  <td>Martínez</td>
-                  <td>retiro</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      class="form-check-input select-patient p-2" />
-                  </td>
-                </tr>
+                <?php
+                include_once '../php/renderizar_examenes.php'; 
+                ?>
               </tbody>
             </table>
           </div>
@@ -273,10 +226,12 @@ if (!isset($_SESSION['numero_documento'])) {
             <table class="table table-striped table-responsive p-2">
               <thead>
                 <tr>
-                  <th>Nombre del Paciente</th>
-                  <th>Apellido del paciente</th>
+                  <th>Nombres</th>
+                  <th>Apellidos</th>
+                  <th>Tipo de Documento</th>
+                  <th>Numero de Documento</th>
                   <th>Tipo de examen</th>
-                  <!--<th>Acción</th>-->
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody id="selected-patients">
@@ -301,7 +256,6 @@ if (!isset($_SESSION['numero_documento'])) {
                       <input type="file" class="form-control form-control-sm" id="orderFile" name="orderFile" required />
                       <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
                       <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-2" />
-
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">

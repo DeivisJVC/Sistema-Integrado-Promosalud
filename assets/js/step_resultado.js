@@ -19,6 +19,9 @@ function showStep(step) {
             nombre: cells[0].innerText,
             apellido: cells[1].innerText,
             tipo: cells[2].innerText,
+            numero: cells[3].innerText,
+            examen: cells[4].innerText,
+            estado: cells[5].innerText,
           });
         }
       });
@@ -30,7 +33,12 @@ function showStep(step) {
     } else {
       selected.forEach(function (p) {
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${p.nombre}</td><td>${p.apellido}</td><td>${p.tipo}</td>`;
+        tr.innerHTML = `<td>${p.nombre}</td>
+                <td>${p.apellido}</td>
+                <td>${p.tipo}</td>
+                <td>${p.numero}</td>
+                <td>${p.examen}</td>
+                <td>${p.estado}</td>`;
         tbody.appendChild(tr);
       });
     }
