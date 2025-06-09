@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
   // --- Referencias a elementos del DOM ---
   const resultTableBody = document.querySelector("#result_table tbody");
