@@ -60,6 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Insertar en tabla `agenda`
     $sql_agenda = "INSERT INTO agenda (id_paciente, tipo_examen, fecha_cita, orden_cita, estado)
                    VALUES (?, ?, ?, ?, 'Pendiente')";
+
+    $_SESSION['tipo_examen'] = $tipo_examen; // Guardar tipo de examen en la sesión
     $stmt_agenda = $conn->prepare($sql_agenda);
     $stmt_agenda->bind_param("isss", $id_paciente, $tipo_examen, $fecha_cita, $rutaFinal);
     //falta agregar la tabla examenes_realizar el id del paciente y medico
