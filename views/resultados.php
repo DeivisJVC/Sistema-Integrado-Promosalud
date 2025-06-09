@@ -195,21 +195,27 @@ if (!isset($_SESSION['numero_documento'])) {
                 id="filter_tipoexamen"
                 class="form-control me-2"
                 placeholder="Filtrar por tipo de examen" />
-              <button class="btn btn-primary me-2" onclick="filterAgenda()">
+              <input
+                type="text"
+                id="filter_id"
+                class="form-control me-2"
+                placeholder="Numero de Documento" />
+              <button class="btn btn-primary me-2" onclick="filterResultados()">
                 Filtrar
               </button>
-              <button class="btn btn-secondary" onclick="clearFilterAgenda()">
+              <button class="btn btn-secondary" onclick="clearFilterResultados()">
                 Limpiar
               </button>
             </div>
             <table
-              id="patient_table"
+              id="result_table"
               class="table table-striped table-responsive">
               <thead>
                 <tr>
                   <th>Nombre del Paciente</th>
                   <th>Apellido del paciente</th>
                   <th>Tipo de examen</th>
+                  <th class="d-none">Numero de documento</th>
                   <th>Seleccionar</th>
                 </tr>
               </thead>
@@ -217,7 +223,8 @@ if (!isset($_SESSION['numero_documento'])) {
                 <tr>
                   <td>Juan </td>
                   <td>Pérez</td>
-                  <td>Retiro</td>
+                  <td>retiro</td>
+                  <td class="d-none">123456789</td>
                   <td>
                     <input
                       id="checkboxdescargar"
@@ -229,6 +236,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <td>María Fernanda</td>
                   <td>Lopez</td>
                   <td>ingreso</td>
+                  <td class="d-none">987654321</td>
                   <td>
                     <input
                       type="checkbox"
@@ -239,6 +247,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <td>Carlos</td>
                   <td>Ruiz</td>
                   <td>periodicos</td>
+                  <td class="d-none">678912345</td>
                   <td>
                     <input
                       type="checkbox"
@@ -249,6 +258,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <td>Mariana</td>
                   <td>Gómez</td>
                   <td>ingreso</td>
+                  <td class="d-none">543216789</td>
                   <td>
                     <input
                       type="checkbox"
@@ -259,6 +269,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <td>Lucía sofia</td>
                   <td>Martínez</td>
                   <td>retiro</td>
+                  <td class="d-none">921436587</td>
                   <td>
                     <input
                       type="checkbox"
@@ -276,6 +287,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <th>Nombre del Paciente</th>
                   <th>Apellido del paciente</th>
                   <th>Tipo de examen</th>
+                  <th class="d-none">Numero de documento</th>
                   <!--<th>Acción</th>-->
                 </tr>
               </thead>
@@ -536,6 +548,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/step_resultado.js"></script>
+  <script src="/assets/js/filtrar_resultados.js"></script>
 
 </body>
 
