@@ -195,12 +195,6 @@ if (!isset($_SESSION['numero_documento'])) {
                 id="filter_tipoexamen"
                 class="form-control me-2"
                 placeholder="Filtrar por tipo de examen" />
-
-              <input
-                type="text"
-                id="filter_id"
-                class="form-control me-2"
-                placeholder="Numero de Documento" />
               <button class="btn btn-primary me-2" onclick="filterResultados()">
                 Filtrar
               </button>
