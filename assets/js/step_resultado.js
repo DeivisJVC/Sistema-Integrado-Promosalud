@@ -1,77 +1,129 @@
-function showStep(step) {
-  if (step === 1) {
-    document.getElementById("step1").style.display = "";
-    document.getElementById("step2").style.display = "none";
-    document.getElementById("prev-step").style.display = "none";
-    document.getElementById("next-step").style.display = "";
-    document.getElementById("step-title").innerText =
-      "Publicacion de resultados";
-  } else {
-    // Llenar la tabla de seleccionados
-    const selected = [];
-    document
-      .querySelectorAll("#patient_table tbody tr")
-      .forEach(function (row) {
-        const checkbox = row.querySelector('input[type="checkbox"]');
-        if (checkbox && checkbox.checked) {
-          const cells = row.querySelectorAll("td");
-          selected.push({
-            nombre: cells[0].innerText,
-            apellido: cells[1].innerText,
-            tipo: cells[2].innerText,
-            numero: cells[3].innerText,
-            examen: cells[4].innerText,
-            estado: cells[5].innerText,
-          });
-        }
-      });
-    const tbody = document.getElementById("selected-patients");
-    tbody.innerHTML = "";
-    if (selected.length === 0) {
-      tbody.innerHTML =
-        '<tr><td colspan="4" class="text-center">No hay pacientes seleccionados.</td></tr>';
-    } else {
-      selected.forEach(function (p) {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `<td>${p.nombre}</td>
-                <td>${p.apellido}</td>
-                <td>${p.tipo}</td>
-                <td>${p.numero}</td>
-                <td>${p.examen}</td>
-                <td>${p.estado}</td>`;
-        tbody.appendChild(tr);
-      });
-    }
-    document.getElementById("step1").style.display = "none";
-    document.getElementById("step2").style.display = "";
-    document.getElementById("prev-step").style.display = "";
-    document.getElementById("next-step").style.display = "none";
-    document.getElementById("step-title").innerText =
-      "Resultados seleccionados";
-  }
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Referencias a elementos del DOM ---
+  const resultTableBody = document.querySelector("#result_table tbody");
+  const selectedPatientsTbody = document.getElementById("selected-patients");
+  const step1Div = document.getElementById("step1");
+  const step2Div = document.getElementById("step2");
 
-function removeSelectedRow(btn) {
-  // Opcional: puedes desmarcar el checkbox correspondiente en la tabla 1 si lo deseas
-  const row = btn.closest("tr");
-  const nombre = row.children[0].innerText;
-  const apellido = row.children[1].innerText;
-  const tipo = row.children[2].innerText;
-  // Buscar y desmarcar en la tabla 1
-  document.querySelectorAll("#patient_table tbody tr").forEach(function (r) {
+
+  // Función para añadir un paciente a la tabla de seleccionados (step2)
+  function addPatientToSelectedTable(row) {
+    const nombre = row.cells[0].textContent;
+    const apellido = row.cells[1].textContent;
+    const tipoDocumento = row.cells[2].textContent;
+    const numeroDocumento = row.cells[3].textContent;
+    const tipoExamen = row.cells[4].textContent;
+    const estado = row.cells[5].textContent;
+
     if (
-      r.children[0].innerText === nombre &&
-      r.children[1].innerText === apellido &&
-      r.children[2].innerText === tipo
+      selectedPatientsTbody.querySelector(
+        `tr[data-documento="${numeroDocumento}"]`
+      )
     ) {
-      const checkbox = r.querySelector('input[type="checkbox"]');
-      if (checkbox) checkbox.checked = false;
+      return;
+    }
+
+    const newRow = document.createElement("tr");
+    newRow.setAttribute("data-documento", numeroDocumento);
+
+    newRow.innerHTML = `
+          <td>${nombre}</td>
+          <td>${apellido}</td>
+          <td>${tipoDocumento}</td>
+          <td>${numeroDocumento}</td>
+          <td>${tipoExamen}</td>
+          <td>${estado}</td>
+      `;
+    selectedPatientsTbody.appendChild(newRow);
+  }
+
+  // Función para remover un paciente de la tabla de seleccionados (step2)
+  function removePatientFromSelectedTable(numeroDocumento) {
+    const rowToRemove = selectedPatientsTbody.querySelector(
+      `tr[data-documento="${numeroDocumento}"]`
+    );
+    if (rowToRemove) {
+      selectedPatientsTbody.removeChild(rowToRemove);
+    }
+  }
+
+  // Event Listener principal para manejar la selección/deselección de pacientes
+  resultTableBody.addEventListener("change", (event) => {
+    if (event.target.classList.contains("select-patient-checkbox")) {
+      const checkbox = event.target;
+      const row = checkbox.closest("tr");
+      const numeroDocumento = row.cells[3].textContent;
+
+      if (checkbox.checked) {
+        addPatientToSelectedTable(row);
+      } else {
+        removePatientFromSelectedTable(numeroDocumento);
+      }
     }
   });
-  row.remove();
-  // Si ya no hay filas, mostrar mensaje
-  if (document.querySelectorAll("#selected-patients tr").length === 0) {
-    document.getElementById("selected-patients").innerHTML =
-      '<tr><td colspan="4" class="text-center">No hay pacientes seleccionados.</td></tr>';
+
+  // --- FUNCION showStep (Anteriormente toggleStepVisibility) ---
+  // Esta función se llama desde los botones onclick en tu HTML
+  window.showStep = function (stepToShow) {
+    // Hacemos la función global
+    const prevStepButton = document.getElementById("prev-step");
+    const nextStepButton = document.getElementById("next-step");
+    const stepTitle = document.getElementById("step-title");
+
+    if (stepToShow === 1) {
+      step1Div.style.display = "";
+      step2Div.style.display = "none";
+      prevStepButton.style.display = "none"; // Oculta el botón Anterior
+      nextStepButton.style.display = ""; // Muestra el botón Siguiente
+      stepTitle.innerText = "Publicacion de resultados";
+    } else {
+      // stepToShow === 2
+      // Lógica de verificación antes de avanzar a Step 2
+      if (selectedPatientsTbody.children.length === 0) {
+        alert("Por favor, selecciona al menos un paciente para continuar.");
+        return; // Detiene la función y no cambia de paso
+      }
+
+      step1Div.style.display = "none";
+      step2Div.style.display = "";
+      prevStepButton.style.display = ""; // Muestra el botón Anterior
+      nextStepButton.style.display = "none"; // Oculta el botón Siguiente
+      stepTitle.innerText = "Resultados seleccionados";
+
+      // Asegurarse de que el mensaje "No hay pacientes seleccionados"
+      // no aparezca si sí hay pacientes, o si es la única fila
+      if (selectedPatientsTbody.children.length === 0) {
+        // Este caso solo debería ocurrir si no hay pacientes y la verificación anterior falla
+        selectedPatientsTbody.innerHTML =
+          '<tr><td colspan="6" class="text-center">No hay pacientes seleccionados.</td></tr>';
+      }
+    }
+  };
+
+  // --- Funciones para la Lógica de Filtrado de la Tabla 1 ---
+  // (Mantén tus funciones filterResultados y clearFilterResultados aquí)
+  function filterResultados() {
+    /* ... tu código de filtrado ... */
   }
-}
+  function clearFilterResultados() {
+    /* ... tu código de limpieza ... */
+  }
+
+  // --- Asignación de Event Listeners para Filtrado ---
+  document
+    .getElementById("filter_name")
+    .addEventListener("keyup", filterResultados);
+  document
+    .getElementById("filter_apellido")
+    .addEventListener("keyup", filterResultados);
+  document
+    .getElementById("filter_tipoexamen")
+    .addEventListener("keyup", filterResultados);
+
+  // Hazlas accesibles globalmente si se llaman desde onclick en HTML (ya lo estaban)
+  window.filterResultados = filterResultados;
+  window.clearFilterResultados = clearFilterResultados;
+
+  // --- Inicialización al cargar la página ---
+  window.showStep(1); // Muestra el paso 1 al cargar la página
+});

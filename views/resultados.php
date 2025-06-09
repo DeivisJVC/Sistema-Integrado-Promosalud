@@ -195,28 +195,30 @@ if (!isset($_SESSION['numero_documento'])) {
                 id="filter_tipoexamen"
                 class="form-control me-2"
                 placeholder="Filtrar por tipo de examen" />
-              <button class="btn btn-primary me-2" onclick="filterAgenda()">
+              <button class="btn btn-primary me-2" onclick="filterResultados()">
                 Filtrar
               </button>
-              <button class="btn btn-secondary" onclick="clearFilterAgenda()">
+              <button class="btn btn-secondary" onclick="clearFilterResultados()">
                 Limpiar
               </button>
             </div>
             <table
-              id="patient_table"
+              id="result_table"
               class="table table-striped table-responsive">
               <thead>
                 <tr>
-                  <th>Nombre del Paciente</th>
-                  <th>Apellido del paciente</th>
-                  <th>Tipo de examen</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th class="d-none">Tipo Documento</th>
+                  <th class="d-none">Número Documento</th>
+                  <th>Tipo Examen</th>
                   <th>Estado</th>
                   <th>Seleccionar</th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                include_once '../php/renderizar_examenes.php'; 
+                include_once '../php/renderizar_examenes.php';
                 ?>
               </tbody>
             </table>
@@ -490,6 +492,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="node_modules/@popperjs/core/dist/umd/popper.min.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/step_resultado.js"></script>
+  <script src="/assets/js/filtrar_resultados.js"></script>
 
 </body>
 

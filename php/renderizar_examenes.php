@@ -41,7 +41,7 @@ if ($result && $result->num_rows > 0) {
     echo "<td class='d-none'>" . htmlspecialchars($row['numero_documento']) . "</td>";
     echo "<td>" . htmlspecialchars($row['tipo_examen']) . "</td>";
     echo "<td>" . htmlspecialchars($row['estado']) . "</td>";
-    echo "<td><input type='checkbox' class='form-check-input select-patient p-2' /></td>";
+    echo "<td><input type='checkbox' class='form-check-input select-patient-checkbox p-2' /></td>";
     echo "</tr>";
   }
 } else {
