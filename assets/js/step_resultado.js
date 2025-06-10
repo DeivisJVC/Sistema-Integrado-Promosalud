@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const tipoExamen = row.cells[4].textContent;
     const estado = row.cells[5].textContent;
 
+    const mensaje = selectedPatientsTbody.querySelector(".text-center");
+    if (mensaje) {
+      mensaje.parentElement.remove();
+    }
+
     if (
       selectedPatientsTbody.querySelector(
         `tr[data-documento="${numeroDocumento}"]`
@@ -25,13 +30,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const newRow = document.createElement("tr");
     newRow.setAttribute("data-documento", numeroDocumento);
-
+    newRow.setAttribute("data-tipo-examen", tipoExamen);
     newRow.innerHTML = `
           <td>${nombre}</td>
           <td>${apellido}</td>
           <td>${tipoDocumento}</td>
           <td>${numeroDocumento}</td>
-          <td>${tipoExamen}</td>
+          <td id="tipo_examen">${tipoExamen}</td>
           <td>${estado}</td>
       `;
     selectedPatientsTbody.appendChild(newRow);
@@ -76,37 +81,68 @@ document.addEventListener("DOMContentLoaded", () => {
       prevStepButton.style.display = "none"; // Oculta el botón Anterior
       nextStepButton.style.display = ""; // Muestra el botón Siguiente
       stepTitle.innerText = "Publicacion de resultados";
-    } else {
-      // stepToShow === 2
-      // Lógica de verificación antes de avanzar a Step 2
-      if (selectedPatientsTbody.children.length === 0) {
-        alert("Por favor, selecciona al menos un paciente para continuar.");
-        return; // Detiene la función y no cambia de paso
-      }
 
-      step1Div.style.display = "none";
-      step2Div.style.display = "";
-      prevStepButton.style.display = ""; // Muestra el botón Anterior
-      nextStepButton.style.display = "none"; // Oculta el botón Siguiente
-      stepTitle.innerText = "Resultados seleccionados";
+      selectedPatientsTbody.innerHTML =
+        '<tr><td colspan="6" class="text-center">No hay pacientes seleccionados.</td></tr>';
+      
+      document.querySelectorAll(".select-patient-checkbox").forEach(cb => cb.checked = false);//limpiar checkboxes para que no se marquen los pacientes seleccionados en el paso 1
+      
 
-      // Asegurarse de que el mensaje "No hay pacientes seleccionados"
-      // no aparezca si sí hay pacientes, o si es la única fila
-      if (selectedPatientsTbody.children.length === 0) {
-        // Este caso solo debería ocurrir si no hay pacientes y la verificación anterior falla
-        selectedPatientsTbody.innerHTML =
-          '<tr><td colspan="6" class="text-center">No hay pacientes seleccionados.</td></tr>';
+    } else if (stepToShow === 2) {
+      const selectpacient = selectedPatientsTbody.querySelector("tr");
+      if (selectpacient) {
+        const tipoExamen = selectpacient.getAttribute("data-tipo-examen");
+        console.log("tipo de exmamen:", tipoExamen);
+        //pon un continue para que siga el codigo normalmente
+        if (selectedPatientsTbody.children.length === 0) {
+          return; // Detiene la función y no cambia de paso
+        }
+
+        step1Div.style.display = "none";
+        step2Div.style.display = "";
+        prevStepButton.style.display = ""; // Muestra el botón Anterior
+        nextStepButton.style.display = "none"; // Oculta el botón Siguiente
+        stepTitle.innerText = "Resultados seleccionados";
+
+        // Asegurarse de que el mensaje "No hay pacientes seleccionados"
+        // no aparezca si sí hay pacientes, o si es la única fila
+        if (selectedPatientsTbody.children.length === 0) {
+          // Este caso solo debería ocurrir si no hay pacientes y la verificación anterior falla
+          selectedPatientsTbody.innerHTML =
+            '<tr><td colspan="6" class="text-center">No hay pacientes seleccionados.</td></tr>';
+        }
       }
+    }else {
+      console.error("Paso no reconocido:", stepToShow);
     }
   };
 
   // --- Funciones para la Lógica de Filtrado de la Tabla 1 ---
   // (Mantén tus funciones filterResultados y clearFilterResultados aquí)
   function filterResultados() {
-    /* ... tu código de filtrado ... */
+    //filtrado proximo...
   }
   function clearFilterResultados() {
-    /* ... tu código de limpieza ... */
+    console.log("Limpiando filtros...");
+    document.getElementById("filter_name").value = "";
+    document.getElementById("filter_apellido").value = "";
+    document.getElementById("filter_tipoexamen").value = "";
+
+    // Desmarca todos los checkboxes de la tabla de resultados
+    document
+      .querySelectorAll(".select-patient-checkbox")
+      .forEach((cb) => (cb.checked = false));
+
+    // Muestra todas las filas de la tabla
+    document.querySelectorAll("#result_table tbody tr").forEach((row) => {
+      row.style.display = "";
+    });
+
+    // (Opcional) Limpia la tabla de seleccionados
+    if (typeof selectedPatientsTbody !== "undefined") {
+      selectedPatientsTbody.innerHTML =
+        '<tr><td colspan="6" class="text-center">No hay pacientes seleccionados.</td></tr>';
+    }
   }
 
   // --- Asignación de Event Listeners para Filtrado ---
@@ -120,10 +156,10 @@ document.addEventListener("DOMContentLoaded", () => {
     .getElementById("filter_tipoexamen")
     .addEventListener("keyup", filterResultados);
 
-  // Hazlas accesibles globalmente si se llaman desde onclick en HTML (ya lo estaban)
+
   window.filterResultados = filterResultados;
   window.clearFilterResultados = clearFilterResultados;
 
-  // --- Inicialización al cargar la página ---
-  window.showStep(1); // Muestra el paso 1 al cargar la página
+  
+  window.showStep(1); 
 });
