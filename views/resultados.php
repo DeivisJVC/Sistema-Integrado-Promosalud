@@ -13,6 +13,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <title>Resultados medicos</title>
   <link rel="stylesheet" href="/assets/scss/custom.css" />
   <link rel="stylesheet" href="/css/style.css" />
+
 </head>
 
 <body>
@@ -256,12 +257,30 @@ if (!isset($_SESSION['numero_documento'])) {
                   <div class="accordion-body">
                     Valora la capacidad biopsicosocial del trabajador para el puesto.Este examen evalúa el estado de salud del trabajador y determina su aptitud para ocupar un puesto laboral. Los exámenes de aptitud para el trabajo son realizados por médicos con experiencia en seguridad y salud ocupacional.
                   </div>
-                  <div style="max-width: 250px; " class="m-3 mb-3">
-                    <h6>Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2 ">
-                      <input type="file" class="form-control form-control-sm" id="orderFile" name="orderFile" required />
+                  <div style="max-width: 600px; " class="m-3 mb-3">
+                    <h6 style=" max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                    <div class="d-flex align-items-center gap-1 ">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="filesaludfisica">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de salud fisica
+                        </label>
+                        <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningún archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-4">
+                        <label class="upload-btn text-white" for="filesaludmental">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de salud mental
+                        </label>
+                        <input type="file" id="filesaludmental" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningún archivo seleccionado</div>
+                      </div>
                       <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
                       <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-2" />
+
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -279,15 +298,31 @@ if (!isset($_SESSION['numero_documento'])) {
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
-                    Valora la capacidad biopsicosocial del trabajador para el puesto.Este examen evalúa el estado de salud del trabajador y determina su aptitud para ocupar un puesto laboral. Los exámenes de aptitud para el trabajo son realizados por médicos con experiencia en seguridad y salud ocupacional.
+                    Este examen evalúa el estado de salud del trabajador y determina su aptitud para ocupar un puesto laboral.
                   </div>
-                  <div style="max-width: 250px; " class="m-3 mb-3">
-                    <h6>Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2">
-                      <input type="file" class="form-control form-control-sm" id="orderFile" name="orderFile" required />
+                  <div style="max-width: 600px; " class="m-3 mb-3">
+                    <h6 style=" max-width:300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="filebiopsicosocial">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen biopsicosocial
+                        </label>
+                        <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningún archivo seleccionado</div>
+                      </div>
                       <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-2" />
-
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-4">
+                        <label class="upload-btn text-white" for="fileanamnesis">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de Anamnesis
+                        </label>
+                        <input type="file" id="fileanamnesis" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningún archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -308,12 +343,272 @@ if (!isset($_SESSION['numero_documento'])) {
                   <div class="accordion-body">
                     Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
                   </div>
-                  <div style="max-width: 250px; " class="m-3 mb-3">
-                    <h6>Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                  <div style="max-width: 800px; " class="m-3 mb-3">
+                    <h6 style="max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
                     <div class="d-flex align-items-center gap-2">
-                      <input type="file" class="form-control form-control-sm" id="orderFile" name="orderFile" required />
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="fileespirometria">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen Espirometría
+                        </label>
+                        <input type="file" id="fileespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
                       <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="fileelectrocardiograma">
+                          <i class="fas fa-file-pdf"></i>
+                          Electrocardiograma
+                        </label>
+                        <input type="file" id="fileelectrocardiograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="fileradiografias">
+                          <i class="fas fa-file-pdf"></i>
+                          Radiografias
+                        </label>
+                        <input type="file" id="fileradiografias" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="filetoxicologia">
+                          <i class="fas fa-file-pdf"></i>
+                          Pruebas toxicologia
+                        </label>
+                        <input type="file" id="filetoxicologia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
+                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                    <button class="btn btn-primary" type="button">
+                      Guardar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="p-2">Examenes periodicos</h4>
+            <div class="accordion p-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Evaluación médica ocupacional
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Las evaluaciones médicas ocupacionales constituyen un instrumento importante en la elaboración de los diagnósticos de las condiciones de salud de los trabajadores, al facilitar el diseño de programas de prevención de enfermedades, cuyo objetivo es el mejoramiento en la calidad de vida.
+                  </div>
+                  <div style="max-width: 800px; " class="m-3 mb-3">
+                    <h6 style="max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="fileexamensangre">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de sangre
+                        </label>
+                        <input type="file" id="fileexamnesangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="filevision">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de visión
+                        </label>
+                        <input type="file" id="filevision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="fileaudiometria">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de audiometría
+                        </label>
+                        <input type="file" id="fileaudiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                    </div>
+                    <div class="d-flex align-items-center gap-2 mt-3">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="filehemograma">
+                          <i class="fas fa-file-pdf"></i>
+                          Hemograma
+                        </label>
+                        <input type="file" id="filehemograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="fileglicemia">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de glicemia
+                        </label>
+                        <input type="file" id="fileglicemia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
+                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                    <button class="btn btn-primary" type="button">
+                      Guardar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Pruebas paraclínicas
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
+                  </div>
+                  <div style="max-width: 800px;" class="m-3 mb-3">
+                    <h6 style="max-width: 300px;">
+                      Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)
+                    </h6>
+                    <div class="d-flex flex-wrap gap-3 mt-3">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="examenSangre">
+                          <i class="fas fa-file-pdf"></i> Examen de sangre
+                        </label>
+                        <input type="file" id="examenSangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="examenVision">
+                          <i class="fas fa-file-pdf"></i> Examen de visión
+                        </label>
+                        <input type="file" id="examenVision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
+
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="examenAudio">
+                          <i class="fas fa-file-pdf"></i> Examen de audiometría
+                        </label>
+                        <input type="file" id="examenAudio" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
+                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                    <button class="btn btn-primary" type="button">
+                      Guardar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <h4 class="p-2">Examenes de retiro</h4>
+            <div class="accordion p-3" id="accordionExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Evaluación médica ocupacional de retiro
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Valora la capacidad biopsicosocial del trabajador para el puesto.Este examen evalúa el estado de salud del trabajador y determina su aptitud para ocupar un puesto laboral. Los exámenes de aptitud para el trabajo son realizados por médicos con experiencia en seguridad y salud ocupacional.
+                  </div>
+                  <div style="max-width: 800px; " class="m-3 mb-3">
+                    <h6 style="max-width: 300px; ">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                    <div class="d-flex align-items-center gap-2 ">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="examenespirometria">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen Espirometría
+                        </label>
+                        <input type="file" id="examenespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="examenaudiometria">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de Audiometria
+                        </label>
+                        <input type="file" id="examenaudiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
+                    <button type="button" class="btn btn-outline-primary">Cancelar</button>
+                    <button class="btn btn-primary" type="button">
+                      Guardar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Pruebas paraclínicas
+                  </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
+                  </div>
+                  <div style="max-width: 800px; " class="m-3 mb-3">
+                    <h6 style="max-width: 350px; ">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+                    <div class="d-flex align-items-center gap-2">
+                      <div class="upload-wrapper">
+                        <label class="upload-btn text-white" for="fileexamensangre">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de sangre
+                        </label>
+                        <input type="file" id="fileexamensangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
+                      <div class="upload-wrapper ms-3">
+                        <label class="upload-btn text-white" for="fileexamenorina">
+                          <i class="fas fa-file-pdf"></i>
+                          Examen de orina
+                        </label>
+                        <input type="file" id="fileexamenorina" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <div class="file-name">Ningun archivo seleccionado</div>
+                      </div>
+                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
+                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
 
                     </div>
                   </div>
@@ -499,8 +794,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/step_resultado.js"></script>
   <script src="/assets/js/filtrar_resultados.js"></script>
-  <!-- <script src="/assets/js/validar_accordion.js"></script> -->
-  
+
 </body>
 
 </html>
