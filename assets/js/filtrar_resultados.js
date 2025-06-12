@@ -69,6 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = checkbox.closest("tr");
       const numeroDocumento = row.cells[3].textContent;
 
+      //validar los datos del paciente
+      const idPaciente = row.dataset.idPaciente;
+      const tipoDocumento=row.dataset.tipoDocumento;
+
+
+
+
       if (checkbox.checked) {
         // Verifica si ya hay otro seleccionado
         const checkedBoxes = resultTableBody.querySelectorAll(

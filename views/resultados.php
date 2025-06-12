@@ -218,6 +218,8 @@ if (!isset($_SESSION['numero_documento'])) {
                 </tr>
               </thead>
               <tbody>
+
+
                 <?php
                 include_once '../php/renderizar_examenes.php';
                 ?>
@@ -486,6 +488,9 @@ if (!isset($_SESSION['numero_documento'])) {
           </ul>
         </nav>
       </section>
+      <?php
+      echo $_SESSION['id_paciente'] ?? '';
+      ?>
     </article>
   </footer>
   <!--Script de js-->
@@ -495,6 +500,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/step_resultado.js"></script>
   <script src="/assets/js/filtrar_resultados.js"></script>
   <!-- <script src="/assets/js/validar_accordion.js"></script> -->
+  
 </body>
 
 </html>
