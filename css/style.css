@@ -163,14 +163,12 @@ header {
   margin-bottom: 80px;
 }
 
-
 .editar-perfil-titulo {
   font-size: 2.5rem;
   font-weight: bold;
   color: #0f3b6f;
   margin-bottom: 20px;
 }
-
 
 [data-bs-theme="dark"] .editar-perfil-titulo {
   font-size: 2.5rem;
@@ -179,9 +177,50 @@ header {
   margin-bottom: 20px;
 }
 
-
-.link-login .link-olvidaste, .link-login .link-registrate,#formulario-inicio label{
+.link-login .link-olvidaste,
+.link-login .link-registrate,
+#formulario-inicio label {
   color: rgb(2, 40, 84);
   text-decoration: none;
-  
+}
+
+.upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.upload-btn {
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to right, #358ef3, #4c94e8);
+  border: 2px #ccc;
+  padding: 10px 15px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.upload-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.upload-btn i {
+  font-size: 20px;
+  margin-right: 10px;
+  color: #fff;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-name {
+  font-size: 14px;
+  font-style: italic;
+  color: #333;
+  background-color: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 5px;
 }
