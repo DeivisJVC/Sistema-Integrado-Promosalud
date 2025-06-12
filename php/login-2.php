@@ -27,11 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($tipo_documento === 'cc' || $tipo_documento === 'ce' || $tipo_documento === 'ti' || $tipo_documento === 'passport') {
         // Verificar primero en la tabla usuarios_administrativos
         $sql_check = "SELECT nombres, rol, contraseña_confirmacion,cargo FROM usuarios_administrativos WHERE tipo_documento = ? AND numero_documento = ?";
+       // Asignar rol de administrador por defecto
         $stmt_check = $conn->prepare($sql_check);
         $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
         $stmt_check->execute();
         $result_check = $stmt_check->get_result();
-
+        $_SESSION['rol'] = 'administrador'; // Asignar rol de administrador por defecto
         if ($result_check->num_rows > 0) {
             // Si el usuario existe en usuarios_administrativos
             $tabla = 'usuarios_administrativos';
@@ -43,7 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt_check->bind_param("ss", $tipo_documento, $numero_documento);
             $stmt_check->execute();
             $result_check = $stmt_check->get_result();
-
             if ($result_check->num_rows > 0) {
                 $tabla = 'paciente';
                 $fila = $result_check->fetch_assoc();
