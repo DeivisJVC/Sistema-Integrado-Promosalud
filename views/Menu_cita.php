@@ -88,31 +88,65 @@ if (!isset($_SESSION['numero_documento'])) {
           </ul>
         </li>
         <li class="nav-item">
-          <span class=" text-capitalize fs-5 mt-5" id="nombre de usuario" >
-          <?php
-          if($_SESSION['rol'] == 'paciente'){
-            echo("Bienvenido " . $_SESSION['nombres'] . " " . $_SESSION['apellidos']);
-          }else if($_SESSION['rol'] == 'empresa'){
-            echo("Bienvenido " . $_SESSION['nombre']);
-          }else if($_SESSION['rol'] == 'administrador'){
-              echo("Bienvenido " . $_SESSION['nombres']);
-          }else{
-            echo("Bienvenido ");
-          }
-
-
-          ?>
+          <span class=" text-capitalize fs-5 mt-5" id="nombre de usuario">
+            <?php
+            if ($_SESSION['rol'] == 'paciente') {
+              echo ("Bienvenido " . $_SESSION['nombres'] . " " . $_SESSION['apellidos']);
+            } else if ($_SESSION['rol'] == 'empresa') {
+              echo ("Bienvenido " . $_SESSION['nombre']);
+            } else if ($_SESSION['rol'] == 'administrador') {
+              echo ("Bienvenido " . $_SESSION['nombres']);
+            } else {
+              echo ("Bienvenido ");
+            }
+            ?>
         </li>
         </span>
-        <button type="button" class="btn bg-transparent position-relative">
+        <!-- Lógica PHP para traer citas -->
+        <?php require_once '../php/renderizado_campanita.php'; ?>
 
-          <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-            5
-            <span class="visually-hidden">Notificaciones</span>
-          </span>
-        </button>
-        </li>
+        <!-- Campanita de notificaciones -->
+        <div class="dropdown">
+          <button class="btn position-relative" type="button" id="dropdownCitas" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Ícono de campana -->
+            <img src="/assets/icon/notificacion.svg" alt="notificacion" width="30px" height="30px">
+
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <span id="contadorNotificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?= $citas->num_rows ?>
+              </span>
+            <?php endif; ?>
+          </button>
+
+          <!-- Lista de notificaciones -->
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 300px; max-height: 400px; overflow-y: auto;">
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <?php while ($cita = $citas->fetch_assoc()): ?>
+                <li class="notification-item position-relative border-bottom mb-2 pb-2" data-id="<?= $cita['id'] ?>">
+                    <div>
+                      <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
+                      <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
+                      <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
+                    </div>
+                    <!-- Botón con clase necesaria -->
+                    <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
+                      aria-label="Cerrar"
+                      data-bs-toggle="tooltip" data-bs-placement="left"
+                      title="Cerrar notificación"
+                      onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
+
+
+                    </button>
+                </li>
+              <?php endwhile; ?>
+            <?php else: ?>
+              <li><span class="dropdown-item text-muted">Todas las notificaciones fueron leidas</span></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+
+
         <li class="nav-item me-5">
           <div class="dropdown">
             <a class="btn dropdown-toggle sin-triangulo" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -406,15 +440,18 @@ if (!isset($_SESSION['numero_documento'])) {
     </article>
   </footer>
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
+
   <script src="/assets/js/edit_user.js"></script>
   <script type="module" src="/assets/js/validar_tipo_usuario.js"></script>
   <script type="module" src="/assets/js/validar-cargo.js"></script>
   <script>
-      const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
-      const cargo = "<?php echo isset($_SESSION['cargo']) ? $_SESSION['cargo'] : ''; ?>";
+    const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+    const cargo = "<?php echo isset($_SESSION['cargo']) ? $_SESSION['cargo'] : ''; ?>";
   </script>
+  <script src="/assets/js/contador_cita_paciente_agenda.js"></script>
 
 
 </body>

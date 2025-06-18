@@ -88,7 +88,7 @@
       </div>
 
       <!-- Formulario de Paciente -->
-      <div id="formPaciente" class="formulario bg-white p-4 rounded shadow-sm">
+      <div id="formPaciente" class="formulario  p-4 rounded shadow-sm">
         <h4 class="text-center"><b>Formulario de Paciente</b></h4>
         <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
           <!-- Paso 1: Información Personal -->
@@ -217,7 +217,7 @@
       </div>
 
       <!-- Formulario de Empresa -->
-      <div id="formEmpresa" class="formulario bg-white p-4 rounded shadow-sm">
+      <div id="formEmpresa" class="formulario  p-4 rounded shadow-sm">
         <h4 class="text-center"><b>Formulario de Empresa</b></h4>
         <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
           <div class="row g-4 justify-content-center">
@@ -286,7 +286,7 @@
         </form>
       </div>
       <!-- Formulario de Administrador -->
-      <div id="formAdministrador" class="formulario bg-white p-4 rounded shadow-sm">
+      <div id="formAdministrador" class="formulario  p-4 rounded shadow-sm">
         <h4 class="text-center"><b>Formulario de Administrador</b></h4>
         <form action="../php/register.php" method="POST" class="needs-validation" novalidate>
           <div class="row g-4 justify-content-center">
@@ -501,7 +501,6 @@
       </section>
     </article>
   </footer>
-
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
@@ -509,8 +508,6 @@
   <script src="/assets/js/validacionregistro_primera_vez.js"></script>
   <script src="/assets/js/form_registro.js"></script>
   <script src="/assets/js/validar-contraseñas-iguales.js"></script>
-
-  </script>
 </body>
 
 </html>

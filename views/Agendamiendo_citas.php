@@ -52,8 +52,7 @@ if (!isset($_SESSION['numero_documento'])) {
           <a
             href="/views/Agendamiendo_citas.php"
             class="nav-link text-white  "
-            aria-current="page"
-            >
+            aria-current="page">
             <img
               class="me-1"
               src="/assets/icon/icon _book.svg"
@@ -64,12 +63,11 @@ if (!isset($_SESSION['numero_documento'])) {
             </p>
           </a>
         </li>
-        <li class="nav-item  d-none me-4" id="control_agenda" >
+        <li class="nav-item  d-none me-4" id="control_agenda">
           <a
             class="nav-link text-white active "
             aria-current="page"
-            href="/views/control_agenda.php"
-            >
+            href="/views/control_agenda.php">
             <img
               class="me-1"
               src="/assets/icon/icon _document_.svg"
@@ -77,23 +75,22 @@ if (!isset($_SESSION['numero_documento'])) {
               width="40"
               height="40" />
             <p class="d-inline">
-            Control de agenda
+              Control de agenda
             </p>
           </a>
         </li>
-        <li class="nav-item  d-none"  id="informes">
+        <li class="nav-item  d-none" id="informes">
           <a
             class="nav-link text-white active "
             aria-current="page"
-            href="/views/informes.php"
-          >
+            href="/views/informes.php">
             <img
               class="me-1"
               src="/assets/icon/icon _file_.svg"
               alt="informes"
               width="40"
               height="40" />
-             <p class="d-inline">Informes </p>
+            <p class="d-inline">Informes </p>
           </a>
         </li>
       </ul>
@@ -171,24 +168,64 @@ if (!isset($_SESSION['numero_documento'])) {
           </ul>
         </li>
         <li class="nav-item">
-          <span class="mb-0 text-capitalize fs-5 " id="userName">
-            <?=
-            $_SESSION['nombres']
-
+          <span class=" text-capitalize fs-5 mt-5" id="userName">
+            <?php
+            if ($_SESSION['rol'] == 'paciente') {
+              echo ($_SESSION['nombres'] . " " . $_SESSION['apellidos']);
+            } else if ($_SESSION['rol'] == 'empresa') {
+              echo ($_SESSION['nombre']);
+            } else if ($_SESSION['rol'] == 'administrador') {
+              echo ($_SESSION['nombres']);
+            } else {
+              echo ("Bienvenido ");
+            }
             ?>
-            <?=
-            $_SESSION['apellidos']
-            ?>
+        </li>
+        </span>
+        <!-- Lógica PHP para traer citas -->
+        <?php require_once '../php/renderizado_campanita.php'; ?>
 
-          </span>
-          <button type="button" class="btn bg-transparent position-relative">
+        <!-- Campanita de notificaciones -->
+        <div class="dropdown">
+          <button class="btn position-relative" type="button" id="dropdownCitas" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Ícono de campana -->
+            <img src="/assets/icon/notificacion.svg" alt="notificacion" width="30px" height="30px">
 
-            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
-              <span class="visually-hidden">Notificaciones</span>
-            </span>
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <span id="contadorNotificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?= $citas->num_rows ?>
+              </span>
+            <?php endif; ?>
           </button>
+
+          <!-- Lista de notificaciones -->
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 300px; max-height: 400px; overflow-y: auto;">
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <?php while ($cita = $citas->fetch_assoc()): ?>
+                <li class="notification-item position-relative border-bottom mb-2 pb-2" data-id="<?= $cita['id'] ?>">
+                  <div>
+                    <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
+                    <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
+                    <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
+                  </div>
+                  <!-- Botón con clase necesaria -->
+                  <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
+                    aria-label="Cerrar"
+                    data-bs-toggle="tooltip" data-bs-placement="left"
+                    title="Cerrar notificación"
+                    onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
+
+
+                  </button>
+                </li>
+              <?php endwhile; ?>
+            <?php else: ?>
+              <li><span class="dropdown-item text-muted">Todas las notificaciones fueron leidas</span></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+
 
         </li>
         <li class="nav-item me-5">
@@ -292,7 +329,7 @@ if (!isset($_SESSION['numero_documento'])) {
         <h2>Paso 2: Adjuntar Orden</h2>
         <div class="form-group mb-3">
           <label for="orderFile">Adjuntar Orden</label>
-          <input type="file"      class="form-control" id="orderFile" name="orderFile" required />
+          <input type="file" class="form-control" id="orderFile" name="orderFile" required />
           <div class="invalid-feedback">Por favor selecciona un archivo.</div>
         </div>
         <div class="btn-container">
@@ -502,7 +539,7 @@ if (!isset($_SESSION['numero_documento'])) {
                 type="submit"
                 class="btn btn-primary"
                 data-bs-dismiss="modal">
-                  Confirmar
+                Confirmar
               </button>
             </div>
           </div>
@@ -510,6 +547,7 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
     </form>
   </main>
+
 
   <footer class="container-fluid text-white footer-1 mt-5 mt-auto">
     <article class="footer-1 container-fluid">
@@ -673,14 +711,13 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
-  <script src="/assets/js/agenda-cit.js"></script>
   <script src="/assets/js/formulario_partes.js"></script>
   <script src="/assets/js/fecha_datos.js"></script>
-  <script type="module"  src="/assets/js/validar-header.js"></script>
+  <script type="module" src="/assets/js/validar-header.js"></script>
   <script>
-      const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+    const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
   </script>
-
+  <script src="/assets/js/agenda-cit.js"></script>
 </body>
 
 </html>

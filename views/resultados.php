@@ -123,25 +123,63 @@ if (!isset($_SESSION['numero_documento'])) {
           </ul>
         </li>
         <li class="nav-item">
-          <span class="mb-0 text-capitalize fs-5 " id="userName">
-            <?=
-            $_SESSION['nombres']
-
+          <span class=" text-capitalize fs-5 mt-5" id="nombre de usuario">
+            <?php
+            if ($_SESSION['rol'] == 'paciente') {
+              echo ($_SESSION['nombres'] . " " . $_SESSION['apellidos']);
+            } else if ($_SESSION['rol'] == 'empresa') {
+              echo ( $_SESSION['nombre']);
+            } else if ($_SESSION['rol'] == 'administrador') {
+              echo ( $_SESSION['nombres']);
+            } else {
+              echo ("Bienvenido ");
+            }
             ?>
-            <?=
-            $_SESSION['apellidos']
-            ?>
+        </li>
+        </span>
+        <!-- Lógica PHP para traer citas -->
+        <?php require_once '../php/renderizado_campanita.php'; ?>
 
+        <!-- Campanita de notificaciones -->
+        <div class="dropdown">
+          <button class="btn position-relative" type="button" id="dropdownCitas" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Ícono de campana -->
+            <img src="/assets/icon/notificacion.svg" alt="notificacion" width="30px" height="30px">
 
-          </span>
-          <button type="button" class="btn bg-transparent position-relative">
-
-            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
-              <span class="visually-hidden">Notificaciones</span>
-            </span>
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <span id="contadorNotificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?= $citas->num_rows ?>
+              </span>
+            <?php endif; ?>
           </button>
+
+          <!-- Lista de notificaciones -->
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 300px; max-height: 400px; overflow-y: auto;">
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <?php while ($cita = $citas->fetch_assoc()): ?>
+                <li class="notification-item position-relative border-bottom mb-2 pb-2" data-id="<?= $cita['id'] ?>">
+                  <div>
+                    <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
+                    <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
+                    <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
+                  </div>
+                  <!-- Botón con clase necesaria -->
+                  <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
+                    aria-label="Cerrar"
+                    data-bs-toggle="tooltip" data-bs-placement="left"
+                    title="Cerrar notificación"
+                    onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
+
+
+                  </button>
+                </li>
+              <?php endwhile; ?>
+            <?php else: ?>
+              <li><span class="dropdown-item text-muted">No tiene notificaciones</span></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
 
         </li>
         <li class="nav-item me-5">
@@ -219,8 +257,6 @@ if (!isset($_SESSION['numero_documento'])) {
                 </tr>
               </thead>
               <tbody>
-
-
                 <?php
                 include_once '../php/renderizar_examenes.php';
                 ?>
@@ -259,28 +295,37 @@ if (!isset($_SESSION['numero_documento'])) {
                   </div>
                   <div style="max-width: 600px; " class="m-3 mb-3">
                     <h6 style=" max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-1 ">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="filesaludfisica">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de salud fisica
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2 border-2 rounded-3 p-2" for="filesaludfisica">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de salud fisica
+                          </span>
                         </label>
-                        <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningún archivo seleccionado</div>
+                        <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-4">
-                        <label class="upload-btn text-white" for="filesaludmental">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de salud mental
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2 text-white border-2 rounded-3 p-2" for="filesaludmental">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de salud mental
+                          </span>
                         </label>
-                        <input type="file" id="filesaludmental" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningún archivo seleccionado</div>
+                        <input type="file" id="filesaludmental" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name  mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-2" />
-
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -302,27 +347,37 @@ if (!isset($_SESSION['numero_documento'])) {
                   </div>
                   <div style="max-width: 600px; " class="m-3 mb-3">
                     <h6 style=" max-width:300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2 mt-3">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="filebiopsicosocial">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen biopsicosocial
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2 border-2 rounded-3 p-2" for="filebiopsicosocial">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen biopsicosocial
+                          </span>
                         </label>
-                        <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningún archivo seleccionado</div>
+                        <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-4">
-                        <label class="upload-btn text-white" for="fileanamnesis">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de Anamnesis
+                      <div class=" upload-wrapper d-inline justify-content-around mt-2 d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2 text-white border-2 rounded-3 p-2" for="fileanamnesis">
+                          <span class="fas fa-file-pdf">
+                            Examen de Anamnesis
+                          </span>
                         </label>
                         <input type="file" id="fileanamnesis" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningún archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -345,49 +400,69 @@ if (!isset($_SESSION['numero_documento'])) {
                   </div>
                   <div style="max-width: 800px; " class="m-3 mb-3">
                     <h6 style="max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="fileespirometria">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen Espirometría
+                    <div class="d-flex align-items-center justify-content-between">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileespirometria">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen Espirometría
+                          </span>
                         </label>
-                        <input type="file" id="fileespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="fileelectrocardiograma">
-                          <i class="fas fa-file-pdf"></i>
-                          Electrocardiograma
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileelectrocardiograma">
+                          <span class="fas fa-file-pdf text-center">
+                            Electrocardiograma
+                          </span>
                         </label>
-                        <input type="file" id="fileelectrocardiograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="fileradiografias">
-                          <i class="fas fa-file-pdf"></i>
-                          Radiografias
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileradiografias">
+                          <span class="fas fa-file-pdf text-center">
+                            Radiografias
+                          </span>
                         </label>
-                        <input type="file" id="fileradiografias" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="radiografia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
-                    <div class="d-flex align-items-center gap-2 mt-3">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="filetoxicologia">
-                          <i class="fas fa-file-pdf"></i>
-                          Pruebas toxicologia
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="filetoxicologia">
+                          <span class="fas fa-file-pdf text-center">
+                            Pruebas toxicologia
+                          </span>
                         </label>
-                        <input type="file" id="filetoxicologia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="pruebas_toxicologia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -403,69 +478,94 @@ if (!isset($_SESSION['numero_documento'])) {
             <div class="accordion p-3" id="accordionExample">
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
                     Evaluación médica ocupacional
                   </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     Las evaluaciones médicas ocupacionales constituyen un instrumento importante en la elaboración de los diagnósticos de las condiciones de salud de los trabajadores, al facilitar el diseño de programas de prevención de enfermedades, cuyo objetivo es el mejoramiento en la calidad de vida.
                   </div>
                   <div style="max-width: 800px; " class="m-3 mb-3">
                     <h6 style="max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2 mt-3">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="fileexamensangre">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de sangre
+                    <div class="d-flex align-items-center justify-content-between mt-3">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileexamensangre">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de sangre
+                          </span>
                         </label>
-                        <input type="file" id="fileexamnesangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_sangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="filevision">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de visión
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 ms-3">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="filevision">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de visión
+                          </span>
                         </label>
-                        <input type="file" id="filevision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_vision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="fileaudiometria">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de audiometría
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 ms-3">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileaudiometria">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de audiometría
+                          </span>
                         </label>
-                        <input type="file" id="fileaudiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_audiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
-                    <div class="d-flex align-items-center gap-2 mt-3">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="filehemograma">
-                          <i class="fas fa-file-pdf"></i>
-                          Hemograma
+                    <div class="d-flex align-items-center  mt-3">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 me-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="filehemograma">
+                          <span class="fas fa-file-pdf text-center">
+                            Hemograma
+                          </span>
                         </label>
-                        <input type="file" id="filehemograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_hemograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="fileglicemia">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de glicemia
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 ms-5">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileglicemia">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de glicemia
+                          </span>
                         </label>
-                        <input type="file" id="fileglicemia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_glicemia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-2" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-1" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -478,11 +578,11 @@ if (!isset($_SESSION['numero_documento'])) {
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                     Pruebas paraclínicas
                   </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
                   </div>
@@ -491,37 +591,53 @@ if (!isset($_SESSION['numero_documento'])) {
                       Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)
                     </h6>
                     <div class="d-flex flex-wrap gap-3 mt-3">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="examenSangre">
-                          <i class="fas fa-file-pdf"></i> Examen de sangre
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="examenSangre">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de sangre
+                          </span>
                         </label>
-                        <input type="file" id="examenSangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <input type="file" id="examen_sangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="examenVision">
-                          <i class="fas fa-file-pdf"></i> Examen de visión
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="examenVision">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de visión
+                          </span>
                         </label>
                         <input type="file" id="examenVision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
-
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="examenAudio">
-                          <i class="fas fa-file-pdf"></i> Examen de audiometría
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="examenAudio">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de audiometría
+                          </span>
                         </label>
                         <input type="file" id="examenAudio" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="info" width="20" height="20" class="ms-1">
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20" height="20" class="ms-0">
                     </div>
                   </div>
-
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
                     <button type="button" class="btn btn-outline-primary">Cancelar</button>
                     <button class="btn btn-primary" type="button">
@@ -535,37 +651,47 @@ if (!isset($_SESSION['numero_documento'])) {
             <div class="accordion p-3" id="accordionExample">
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
                     Evaluación médica ocupacional de retiro
                   </button>
                 </h2>
-                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div id="collapseSix" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     Valora la capacidad biopsicosocial del trabajador para el puesto.Este examen evalúa el estado de salud del trabajador y determina su aptitud para ocupar un puesto laboral. Los exámenes de aptitud para el trabajo son realizados por médicos con experiencia en seguridad y salud ocupacional.
                   </div>
                   <div style="max-width: 800px; " class="m-3 mb-3">
                     <h6 style="max-width: 300px; ">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2 ">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="examenespirometria">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen Espirometría
+                    <div class="d-flex align-items-center">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="examenespirometria">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen Espirometría
+                          </span>
                         </label>
                         <input type="file" id="examenespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="examenaudiometria">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de Audiometria
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 ms-5">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="examenaudiometria">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de Audiometria
+                          </span>
                         </label>
                         <input type="file" id="examenaudiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
@@ -578,38 +704,47 @@ if (!isset($_SESSION['numero_documento'])) {
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
                     Pruebas paraclínicas
                   </button>
                 </h2>
-                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div id="collapseSeven" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                   <div class="accordion-body">
                     Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
                   </div>
                   <div style="max-width: 800px; " class="m-3 mb-3">
                     <h6 style="max-width: 350px; ">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
-                    <div class="d-flex align-items-center gap-2">
-                      <div class="upload-wrapper">
-                        <label class="upload-btn text-white" for="fileexamensangre">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de sangre
+                    <div class="d-flex align-items-center">
+                      <div class="upload-wrapper d-inline justify-content-around mt-2">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileexamensangre">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de sangre
+                          </span>
                         </label>
                         <input type="file" id="fileexamensangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
-                      <div class="upload-wrapper ms-3">
-                        <label class="upload-btn text-white" for="fileexamenorina">
-                          <i class="fas fa-file-pdf"></i>
-                          Examen de orina
+                      <div class="upload-wrapper d-inline justify-content-around mt-2 ms-5">
+                        <label class="upload-btn text-white border-2 rounded-3 p-2" for="fileexamenorina">
+                          <span class="fas fa-file-pdf text-center">
+                            Examen de orina
+                          </span>
                         </label>
                         <input type="file" id="fileexamenorina" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <div class="file-name">Ningun archivo seleccionado</div>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        </button>
+                        <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                        </button>
+                        <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
-                      <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" class="ms-1" />
-                      <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" class="ms-0" />
-
                     </div>
                   </div>
                   <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">

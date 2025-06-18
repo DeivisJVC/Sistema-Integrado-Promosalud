@@ -154,6 +154,5 @@ document.getElementById("nextMonth").addEventListener("click", () => {
   renderCalendar();
 });
 
-console.log("Hora seleccionada para el modal:", selectedTime);
 // Llamar a la función para renderizar el calendario
 renderCalendar();

@@ -35,14 +35,14 @@ $result = $conn->query($sql);
 
 if ($result && $result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
-    echo "<tr 
-      data-tipo-documento='" . htmlspecialchars($row['tipo_documento']) . "' 
-      data-numero-documento='" . htmlspecialchars($row['numero_documento']) . "' 
-      data-id-paciente='" . htmlspecialchars($row['id_paciente']) . "'>";
+    echo "<tr>";
     echo "<td>" . htmlspecialchars($row['nombres']) . "</td>";
     echo "<td>" . htmlspecialchars($row['apellidos']) . "</td>";
+    echo "<td class='d-none'>" . htmlspecialchars($row['tipo_documento']) . "</td>";
+    echo "<td class='d-none'>" . htmlspecialchars($row['numero_documento']) . "</td>";
     echo "<td>" . htmlspecialchars($row['tipo_examen']) . "</td>";
     echo "<td>" . htmlspecialchars($row['estado']) . "</td>";
+    echo "<td class='d-none'>" . htmlspecialchars($row['id_paciente']) . "</td>";//validar el id del paciente.
     echo "<td><input type='checkbox' class='form-check-input select-patient-checkbox p-2' /></td>";
     echo "</tr>";
   }
