@@ -123,20 +123,20 @@ if (!isset($_SESSION['numero_documento'])) {
             <?php if ($citas && $citas->num_rows > 0): ?>
               <?php while ($cita = $citas->fetch_assoc()): ?>
                 <li class="notification-item position-relative border-bottom mb-2 pb-2" data-id="<?= $cita['id'] ?>">
-                    <div>
-                      <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
-                      <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
-                      <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
-                    </div>
-                    <!-- Botón con clase necesaria -->
-                    <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
-                      aria-label="Cerrar"
-                      data-bs-toggle="tooltip" data-bs-placement="left"
-                      title="Cerrar notificación"
-                      onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
+                  <div>
+                    <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
+                    <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
+                    <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
+                  </div>
+                  <!-- Botón con clase necesaria -->
+                  <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
+                    aria-label="Cerrar"
+                    data-bs-toggle="tooltip" data-bs-placement="left"
+                    title="Cerrar notificación"
+                    onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
 
 
-                    </button>
+                  </button>
                 </li>
               <?php endwhile; ?>
             <?php else: ?>
@@ -310,7 +310,7 @@ if (!isset($_SESSION['numero_documento'])) {
   </section>
 
   <!-- Footer -->
-  <footer class="container-fluid text-white footer-1">
+  <footer class="container-fluid text-white footer-1 mt-auto">
     <article class="footer-1 container-fluid ">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">

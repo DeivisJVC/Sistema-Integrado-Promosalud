@@ -284,7 +284,7 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
     </div>
   </div>
-  <main>
+  <main class="mb-5 pb-4">
     <article class="container mt-5 pt-5">
       <h1 class="text-center mb-4" id="titulo_agenda">Administrador de Agenda de Pacientes</h1>
 
@@ -407,7 +407,7 @@ if (!isset($_SESSION['numero_documento'])) {
     </article>
   </main>
   </script>
-  <footer class="container-fluid text-white footer-1 mt-5">
+  <footer class="container-fluid text-white footer-1  mt-auto">
     <article class="footer-1 container-fluid">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">
@@ -574,6 +574,29 @@ if (!isset($_SESSION['numero_documento'])) {
   <script type="module" src="/assets/js/validar-header.js"></script>
   <script>
     const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script>
+    function downloadAgenda() {
+      const table = document.getElementById('patient_table');
+      if (!table) {
+        alert('No se encontró la tabla de pacientes.');
+        return;
+      }
+      const tableClone = table.cloneNode(true);
+
+      for (let i = 0; i < tableClone.rows.length; i++) {
+        if (tableClone.rows[i].cells.length > 7) {
+          tableClone.rows[i].deleteCell(7); // Eliminar la columna de selección
+        }
+      }
+
+      const workbook = XLSX.utils.table_to_book(tableClone, {
+        sheet: "Agenda"
+      });
+      XLSX.writeFile(workbook, 'agenda.xlsx');
+    }
   </script>
 
 </body>

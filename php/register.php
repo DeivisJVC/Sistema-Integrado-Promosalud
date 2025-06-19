@@ -88,7 +88,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       
 
     if (mysqli_query($conexion, $sql)) {
-      echo "Administrador registrado correctamente.";
+      header("Location:../views/inicio.php");// Redirigir al inicio después del registro
+      exit();
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
     }

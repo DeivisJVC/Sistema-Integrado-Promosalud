@@ -453,7 +453,7 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
     </section>
   </main>
-  <footer class="container-fluid text-white footer-1 mt-5">
+  <footer class="container-fluid text-white footer-1 mt-auto mt-5">
     <article class="footer-1 container-fluid">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">

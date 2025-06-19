@@ -99,14 +99,6 @@ $foto = (!empty($_SESSION['foto']) && file_exists($_SESSION['foto'])) ? $_SESSIO
             ?>
 
           </span>
-          <button type="button" class="btn bg-transparent position-relative">
-
-            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
-              <span class="visually-hidden">Notificaciones</span>
-            </span>
-          </button>
         </li>
         <li class="nav-item me-5">
           <div class="dropdown">
