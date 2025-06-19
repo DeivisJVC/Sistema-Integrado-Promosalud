@@ -69,15 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const row = checkbox.closest("tr");
       const numeroDocumento = row.cells[3].textContent;
 
-      //validar los datos del paciente
-      const idPaciente = row.dataset.idPaciente;
-      const tipoDocumento=row.dataset.tipoDocumento;
-
-
-
-
       if (checkbox.checked) {
-        // Verifica si ya hay otro seleccionado
         const checkedBoxes = resultTableBody.querySelectorAll(
           ".select-patient-checkbox:checked"
         );
@@ -90,8 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
           Solo se puede seleccionar un paciente a la vez.
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         `;
-
-          // Inserta el alert en el contenedor superior
           const alertContainer = document.getElementById("alert-container");
           alertContainer.appendChild(alertDiv);
 
@@ -106,8 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-
-
 
   function filterResultados() {
     const filterName = document

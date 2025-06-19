@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -30,13 +28,13 @@
             id="segundo_header"
             class="nav-link active fs-5"
             aria-current="page"
-            href="../views/inicio.php">Inicio</a>
+            href="/views/inicio.php">Inicio</a>
         </li>
         <li class="nav-item">
           <a
             id="segundo_header"
             class="nav-link active fs-5"
-            href="../views/sobre_nosotros.php">
+            href="/views/sobre_nosotros.php">
             <img src="/assets/icon/" alt="" />
             Sobre nosotros
           </a>
@@ -45,13 +43,13 @@
           <a
             id="segundo_header"
             class="nav-link active fs-5 text-capitalize"
-            href="../views/donde_estamos.php">Donde estamos</a>
+            href="/views/donde_estamos.php">Donde estamos</a>
         </li>
         <li class="nav-item">
           <a
             id="segundo_header"
             class="nav-link active fs-5"
-            href="../views/contactanos.php">Contactanos</a>
+            href="/views/contactanos.php">Contactanos</a>
         </li>
         <li class="nav-item redes-sociales">
           <a id="segundo_header" href=""><!-- Enlace a la pagina de Facebook -->
@@ -130,9 +128,8 @@
                 type="text"
                 class="form-control"
                 id="asunto"
-                placeholder="Motivo del contacto" 
-                required
-                />
+                placeholder="Motivo del contacto"
+                required />
               <div class="valid-feedback">Excelente!</div>
               <div class="invalid-feedback">Por favor, ingrese el asunto</div>
             </div>
@@ -155,7 +152,7 @@
       </div>
     </div>
   </main>
-  <footer class="container-fluid text-white footer-1">
+  <footer class="container-fluid text-white footer-1 mt-auto">
     <article class="footer-1 container-fluid">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">

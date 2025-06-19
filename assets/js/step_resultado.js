@@ -91,8 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else if (stepToShow === 2) {
       const selectpacient = selectedPatientsTbody.querySelector("tr");
       if (selectpacient) {
-        const tipoExamen = selectpacient.getAttribute("data-tipo-examen");
-        console.log("tipo de exmamen:", tipoExamen);
+        
         //pon un continue para que siga el codigo normalmente
         if (selectedPatientsTbody.children.length === 0) {
           return; // Detiene la función y no cambia de paso

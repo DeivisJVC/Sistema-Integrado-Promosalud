@@ -36,43 +36,53 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Mi Marca</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavFixed"
-          aria-controls="navbarNavFixed" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavFixed">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Acerca de</a></li>
-          </ul>
+  <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+      Valora la capacidad biopsicosocial del trabajador para el puesto.Este examen evalúa el estado de salud del
+      trabajador y determina su aptitud para ocupar un puesto laboral. Los exámenes de aptitud para el trabajo son
+      realizados por médicos con experiencia en seguridad y salud ocupacional.
+    </div>
+    <div style="max-width: 600px; " class="m-3 mb-3">
+      <h6 style=" max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="upload-wrapper d-inline justify-content-around mt-2">
+          <label class="upload-btn text-white border-2 rounded-3 p-2" for="filesaludfisica">
+            <span class="fas fa-file-pdf text-center">
+              Examen de salud fisica
+            </span>
+          </label>
+          <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+          <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+            <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+          </button>
+          <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+            <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+          </button>
+          <div class="file-name mt-3">Ningún archivo seleccionado</div>
+        </div>
+        <div class="upload-wrapper d-inline justify-content-around mt-2">
+          <label class="upload-btn text-white text-white border-2 rounded-3 p-2" for="filesaludmental">
+            <span class="fas fa-file-pdf text-center">
+              Examen de salud mental
+            </span>
+          </label>
+          <input type="file" id="filesaludmental" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+          <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
+            <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+          </button>
+          <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
+            <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+          </button>
+          <div class="file-name  mt-3">Ningún archivo seleccionado</div>
         </div>
       </div>
-    </nav>
-  </header>
-
-  <div class="container mt-4">
-    <h1>Contenido de la Página</h1>
-    <p>Scroll hacia abajo para ver cómo el header se mantiene fijo.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-    </p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Velit, quae. Nostrum, quos. Velit, quae.
-    </p>
+    </div>
+    <div class="d-flex justify-content-end align-items-center me-3 mb-3 gap-2">
+      <button type="button" class="btn btn-outline-primary">Cancelar</button> <button class="btn btn-primary"
+        type="submit">
+        Guardar
+      </button>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

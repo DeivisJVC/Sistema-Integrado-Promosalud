@@ -184,6 +184,8 @@ header {
   text-decoration: none;
 }
 
+
+
 .upload-wrapper {
   display: flex;
   flex-direction: column;
@@ -192,18 +194,14 @@ header {
 }
 
 .upload-btn {
-  display: flex;
-  align-items: center;
-  background-image: linear-gradient(to right, #358ef3, #4c94e8);
-  border: 2px #ccc;
-  padding: 10px 15px;
-  border-radius: 10px;
+  background-color: #007bff;
+  padding: 5px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .upload-btn:hover {
-  background-color: #e0e0e0;
+  background-color: #0056b3;
 }
 
 .upload-btn i {
@@ -223,4 +221,36 @@ input[type="file"] {
   background-color: #f0f0f0;
   padding: 2px 6px;
   border-radius: 5px;
+}
+.notification-menu {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 0;
+  background: rgb(255, 255, 255);
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.notification-menu ul {
+  list-style: none;
+  padding: 0;
+}
+.notification-menu ul li {
+  color: #000000;
+}
+
+.notification-menu li {
+  padding: 5px;
+  border-bottom: 1px solid #ffffff;
+}
+
+.notification-menu li:last-child {
+  border-bottom: none;
+}
+
+.hidden {
+  display: none;
 }

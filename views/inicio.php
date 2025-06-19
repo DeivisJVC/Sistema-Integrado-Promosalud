@@ -78,57 +78,46 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
             <img class="me-2" src="/assets/icon/icon _file_.svg" alt="informes" width="40" height="40" /> Informes
           </a>
         </li>
-        <li class="dropdown">
-          <button class="btn btn-secondary" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <img src="/assets/icon/menu.svg" alt="menu" width="50" height="50" />
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><a class="dropdown-item" href="#">Configuración</a></li>
-            <li><a class="dropdown-item" href="#">Ayuda</a></li>
+        <li class="nav-item">
+          <ul class="navbar-nav mb-2 mb-lg-0 ">
+            <li class="nav-item dropdown w-25" data-bs-theme="light">
+              <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
+                id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
+                <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
+                  <use href="#circle-half"></use>
+                </svg>
+                <span class="d-lg-none ms-2">Toggle theme</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme">
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#sun-fill"></use>
+                    </svg>
+                    Light
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#moon-stars-fill"></use>
+                    </svg>
+                    Dark
+                  </button>
+                </li>
+                <li>
+                  <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
+                    <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
+                      <use href="#circle-half"></use>
+                    </svg>
+                    Auto
+                  </button>
+                </li>
+              </ul>
+            </li>
+          </ul>
 
         </li>
-      </ul>
-      <li class="nav-item align-content-center">
-        <ul class="navbar-nav mb-2 mb-lg-0">
-          <li class="nav-item dropdown w-25" data-bs-theme="light">
-            <button class="btn btn-link nav-link py-1 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-              id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static">
-              <svg class="bi my-1 theme-icon-active" width="16" height="16" fill="currentColor">
-                <use href="#circle-half"></use>
-              </svg>
-              <span class="d-lg-none ms-2">Toggle theme</span>
-            </button>
-            <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme">
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#sun-fill"></use>
-                  </svg>
-                  Light
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#moon-stars-fill"></use>
-                  </svg>
-                  Dark
-                </button>
-              </li>
-              <li>
-                <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto">
-                  <svg class="bi me-2 opacity-50 theme-icon" width="16" height="16" fill="currentColor">
-                    <use href="#circle-half"></use>
-                  </svg>
-                  Auto
-                </button>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </li>
-      </li>
       </ul>
     </nav>
   </header>
@@ -196,30 +185,30 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
               <input type="password" class="form-control" id="contraseña" placeholder="Ingresa la Contraseña" name="contraseña">
             </div>
             <!-- validar errores -->
-            <?php if ($error === "1" ): ?>
+            <?php if ($error === "1"): ?>
               <p class="text-danger  mb-3">
                 Los campos están vacíos. Por favor, complete todos los campos antes de continuar.
               </p>
             <?php endif; ?>
-            <?php if ($error === "2" ): ?>
+            <?php if ($error === "2"): ?>
               <p class="text-danger  mb-3">
-               Tipo de documento no valido<b> Por favor, inténtelo de nuevo.</b>
+                Tipo de documento no valido<b> Por favor, inténtelo de nuevo.</b>
               </p>
             <?php endif; ?>
-            <?php if ($error === "3" ): ?>
+            <?php if ($error === "3"): ?>
               <p class="text-danger  mb-3">
-               Contraseña incorrecta<b> Por favor, inténtelo de nuevo.</b>
+                Contraseña incorrecta<b> Por favor, inténtelo de nuevo.</b>
               </p>
             <?php endif; ?>
-            <?php if ($error === "4" ): ?>
+            <?php if ($error === "4"): ?>
               <p class="text-danger  mb-3">
-               Usuario no encontrado, lo invitamos a <b>registrarse</b>
+                Usuario no encontrado, lo invitamos a <b>registrarse</b>
               </p>
             <?php endif; ?>
 
             <div class="form-group d-flex mb-4 justify-content-between link-login">
-              <a href="recuperar_contraseña.html" class="me-4 link-olvidaste">¿Olvidaste la contraseña?</a>
-              <a href="registrate.php" class="mt-2 link-registrate">Registrate</a>
+              <a href="/views/recuperar_contraseña.php" class="me-4 link-olvidaste">¿Olvidaste la contraseña?</a>
+              <a href="/views/registrate.php" class="mt-2 link-registrate">Registrate</a>
             </div>
             <div class="d-grid">
               <button type="submit_login" class="btn btn-primary rounded-4">Entrar</button>
@@ -291,7 +280,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : null;
       </section>
     </div>
   </article>
-  <footer class="container-fluid text-white footer-1">
+  <footer class="container-fluid text-white footer-1 mt-auto">
     <article class="footer-1 container-fluid ">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">

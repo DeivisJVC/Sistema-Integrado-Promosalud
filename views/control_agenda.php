@@ -55,8 +55,7 @@ if (!isset($_SESSION['numero_documento'])) {
           <a
             href="/views/Agendamiendo_citas.php"
             class="nav-link text-white  "
-            aria-current="page"
-            >
+            aria-current="page">
             <img
               class="me-1"
               src="/assets/icon/icon _book.svg"
@@ -67,12 +66,11 @@ if (!isset($_SESSION['numero_documento'])) {
             </p>
           </a>
         </li>
-        <li class="nav-item  d-none me-4" id="control_agenda" >
+        <li class="nav-item  d-none me-4" id="control_agenda">
           <a
             class="nav-link text-white active "
             aria-current="page"
-            href="/views/control_agenda.php"
-            >
+            href="/views/control_agenda.php">
             <img
               class="me-1"
               src="/assets/icon/icon _document_.svg"
@@ -80,23 +78,22 @@ if (!isset($_SESSION['numero_documento'])) {
               width="40"
               height="40" />
             <p class="d-inline">
-            Control de agenda
+              Control de agenda
             </p>
           </a>
         </li>
-        <li class="nav-item  d-none"  id="informes">
+        <li class="nav-item  d-none" id="informes">
           <a
             class="nav-link text-white active "
             aria-current="page"
-            href="/views/informes.php"
-          >
+            href="/views/informes.php">
             <img
               class="me-1"
               src="/assets/icon/icon _file_.svg"
               alt="informes"
               width="40"
               height="40" />
-             <p class="d-inline">Informes </p>
+            <p class="d-inline">Informes </p>
           </a>
         </li>
       </ul>
@@ -174,26 +171,64 @@ if (!isset($_SESSION['numero_documento'])) {
           </ul>
         </li>
         <li class="nav-item">
-          <span class="mb-0 text-capitalize fs-5 " id="userName">
-            <?=
-            $_SESSION['nombres']
-
+          <span class=" text-capitalize fs-5 mt-5" id="nombre de usuario">
+            <?php
+            if ($_SESSION['rol'] == 'paciente') {
+              echo ($_SESSION['nombres'] . " " . $_SESSION['apellidos']);
+            } else if ($_SESSION['rol'] == 'empresa') {
+              echo ($_SESSION['nombre']);
+            } else if ($_SESSION['rol'] == 'administrador') {
+              echo ($_SESSION['nombres']);
+            } else {
+              echo ("Bienvenido ");
+            }
             ?>
-            <?=
-            $_SESSION['apellidos']
-            ?>
+        </li>
+        </span>
+        <!-- Lógica PHP para traer citas -->
+        <?php require_once '../php/renderizado_campanita.php'; ?>
 
-          </span>
-          <button type="button" class="btn bg-transparent position-relative">
+        <!-- Campanita de notificaciones -->
+        <div class="dropdown">
+          <button class="btn position-relative" type="button" id="dropdownCitas" data-bs-toggle="dropdown" aria-expanded="false">
+            <!-- Ícono de campana -->
+            <img src="/assets/icon/notificacion.svg" alt="notificacion" width="30px" height="30px">
 
-            <img src="/assets/icon/notificacion.svg" alt="notificacion" class="h-6" />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              5
-              <span class="visually-hidden">Notificaciones</span>
-            </span>
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <span id="contadorNotificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <?= $citas->num_rows ?>
+              </span>
+            <?php endif; ?>
           </button>
 
-        </li>
+          <!-- Lista de notificaciones -->
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width: 300px; max-height: 400px; overflow-y: auto;">
+            <?php if ($citas && $citas->num_rows > 0): ?>
+              <?php while ($cita = $citas->fetch_assoc()): ?>
+                <li class="notification-item position-relative border-bottom mb-2 pb-2" data-id="<?= $cita['id'] ?>">
+                  <div>
+                    <strong>📅 Fecha:</strong> <?= $cita['fecha_cita'] ?><br>
+                    <strong>🧪 Examen:</strong> <?= $cita['tipo_examen'] ?><br>
+                    <strong>📌 Estado:</strong> <?= $cita['estado'] ?>
+                  </div>
+                  <!-- Botón con clase necesaria -->
+                  <button type="button" class="btn-close position-absolute top-0 end-0 cerrar-notificacion"
+                    aria-label="Cerrar"
+                    data-bs-toggle="tooltip" data-bs-placement="left"
+                    title="Cerrar notificación"
+                    onclick="marcarComoLeida(<?= $cita['id'] ?>, this)">
+
+
+                  </button>
+                </li>
+              <?php endwhile; ?>
+            <?php else: ?>
+              <li><span class="dropdown-item text-muted">Todas las notificaciones fueron leidas</span></li>
+            <?php endif; ?>
+          </ul>
+        </div>
+
+
         <li class="nav-item me-5">
           <div class="dropdown">
             <a class="btn dropdown-toggle sin-triangulo" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -249,7 +284,7 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
     </div>
   </div>
-  <main>
+  <main class="mb-5 pb-4">
     <article class="container mt-5 pt-5">
       <h1 class="text-center mb-4" id="titulo_agenda">Administrador de Agenda de Pacientes</h1>
 
@@ -283,7 +318,7 @@ if (!isset($_SESSION['numero_documento'])) {
 
             <label for="filter_tipoexamen">Seleccionar tipo de examen</label>
             <select name="filter_tipoexamen" id="filter_tipoexamen" class="form-control me-2">
-              <option  value="" selected class="form-select-option is-invalid">
+              <option value="" selected class="form-select-option is-invalid">
                 Seleccione...
               </option>
               <option value="retiro" class="form-select-option">
@@ -298,7 +333,7 @@ if (!isset($_SESSION['numero_documento'])) {
             </select>
             <label for="documentType" class="form-label me-2">Seleccionar Documento</label>
             <select class="form-select me-2" id="documentType">
-              <option   value=""   selected class="form-select-option is-invalid">
+              <option value="" selected class="form-select-option is-invalid">
                 Seleccione...
               </option>
               <option class="form-select-option" value="cc">
@@ -372,7 +407,7 @@ if (!isset($_SESSION['numero_documento'])) {
     </article>
   </main>
   </script>
-  <footer class="container-fluid text-white footer-1 mt-5">
+  <footer class="container-fluid text-white footer-1  mt-auto">
     <article class="footer-1 container-fluid">
       <article class="container-sm text-center text-md-start mt-4">
         <div class="row">
@@ -536,9 +571,32 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/Filtrar_agenda.js"></script>
-  <script type="module"  src="/assets/js/validar-header.js"></script>
+  <script type="module" src="/assets/js/validar-header.js"></script>
   <script>
     const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <script>
+    function downloadAgenda() {
+      const table = document.getElementById('patient_table');
+      if (!table) {
+        alert('No se encontró la tabla de pacientes.');
+        return;
+      }
+      const tableClone = table.cloneNode(true);
+
+      for (let i = 0; i < tableClone.rows.length; i++) {
+        if (tableClone.rows[i].cells.length > 7) {
+          tableClone.rows[i].deleteCell(7); // Eliminar la columna de selección
+        }
+      }
+
+      const workbook = XLSX.utils.table_to_book(tableClone, {
+        sheet: "Agenda"
+      });
+      XLSX.writeFile(workbook, 'agenda.xlsx');
+    }
   </script>
 
 </body>
