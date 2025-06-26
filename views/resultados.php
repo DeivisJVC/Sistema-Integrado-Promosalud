@@ -202,9 +202,9 @@ if (!isset($_SESSION['numero_documento'])) {
       </ul>
     </nav>
   </header>
-  <main class="mb-5 pb-4">
+  <main class="mb-5 pb-5">
     <article class="container mt-5 pt-5">
-      <h1 class="text-center mb-4">Resultados de Pacientes</h1>
+      <h1 class="text-center mb-4 mt-5">Resultados de Pacientes</h1>
 
       <div id="alert-container"></div>
       <!-- Stepper de tablas -->
@@ -244,7 +244,7 @@ if (!isset($_SESSION['numero_documento'])) {
             </div>
             <table
               id="result_table"
-              class="table table-striped table-responsive">
+              class="table table-striped   table-responsive">
               <thead>
                 <tr>
                   <th>Nombre</th>
@@ -268,21 +268,22 @@ if (!isset($_SESSION['numero_documento'])) {
             <table class="table table-striped table-responsive p-2">
               <thead>
                 <tr>
-                  <th>Nombres</th>
-                  <th>Apellidos</th>
-                  <th>Tipo de Documento</th>
-                  <th>Numero de Documento</th>
-                  <th>Tipo de examen</th>
-                  <th>Estado</th>
+                  <th class="fs-5">Nombres</th>
+                  <th class="fs-5">Apellidos</th>
+                  <th class="fs-5">Tipo de Documento</th>
+                  <th class="fs-5">Numero de Documento</th>
+                  <th class="fs-5">Tipo de examen</th>
+                  <th class="fs-5">Estado</th>
                 </tr>
               </thead>
               <tbody id="selected-patients">
                 <!-- Aquí se mostrarán los seleccionados -->
               </tbody>
             </table>
-            <h4 class="p-2">Examenes de ingreso</h4>
 
-            <div class="accordion p-3" id="accordionExample">
+            <h4 class="p-2 d" id="title_examenes_ingreso">Examenes de ingreso</h4>
+
+            <div class="accordion p-3" id="examenes_ingreso">
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -303,11 +304,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de salud física -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de salud física permite valorar el estado general del paciente y detectar alteraciones que puedan afectar su desempeño laboral."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -318,11 +324,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="filesaludmental" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de salud mental -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de salud mental evalúa el estado psicológico y emocional del trabajador para garantizar su bienestar en el entorno laboral."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name  mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -355,11 +366,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen biopsicosocial -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen biopsicosocial integra la valoración física, mental y social del trabajador para determinar su aptitud laboral."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -370,11 +386,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="fileanamnesis" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de anamnesis -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="La anamnesis recopila información relevante sobre antecedentes médicos y hábitos del paciente para orientar el diagnóstico."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -407,12 +428,17 @@ if (!isset($_SESSION['numero_documento'])) {
                             Examen Espirometría
                           </span>
                         </label>
-                        <input type="file" id="filebiopsicosocial" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <input type="file" id="fileespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)" required>
+                        <!-- Examen de espirometría -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de espirometría evalúa la función pulmonar y es fundamental para detectar enfermedades respiratorias."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -422,12 +448,17 @@ if (!isset($_SESSION['numero_documento'])) {
                             Electrocardiograma
                           </span>
                         </label>
-                        <input type="file" id="filesaludfisica" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <input type="file" id="fileelectrocardiograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <!-- Electrocardiograma -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El electrocardiograma registra la actividad eléctrica del corazón y ayuda a detectar alteraciones cardíacas."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -437,12 +468,17 @@ if (!isset($_SESSION['numero_documento'])) {
                             Radiografias
                           </span>
                         </label>
-                        <input type="file" id="radiografia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <input type="file" id="fileradiografias" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <!-- Examen de radiografías -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de radiografías permite visualizar estructuras internas del cuerpo, como huesos y órganos, para detectar posibles anomalías o enfermedades."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -454,12 +490,17 @@ if (!isset($_SESSION['numero_documento'])) {
                             Pruebas toxicologia
                           </span>
                         </label>
-                        <input type="file" id="pruebas_toxicologia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <input type="file" id="filetoxicologia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
+                        <!-- Pruebas de toxicología -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="Las pruebas de toxicología detectan la presencia de sustancias tóxicas o drogas en el organismo del trabajador."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -474,8 +515,8 @@ if (!isset($_SESSION['numero_documento'])) {
                 </div>
               </div>
             </div>
-            <h4 class="p-2">Examenes periodicos</h4>
-            <div class="accordion p-3" id="accordionExample">
+            <h4 class="p-2" id="title_examenes_periodicos">Examenes periodicos</h4>
+            <div class="accordion p-3" id="examenes_periodicos">
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
@@ -486,7 +527,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <div class="accordion-body">
                     Las evaluaciones médicas ocupacionales constituyen un instrumento importante en la elaboración de los diagnósticos de las condiciones de salud de los trabajadores, al facilitar el diseño de programas de prevención de enfermedades, cuyo objetivo es el mejoramiento en la calidad de vida.
                   </div>
-                  <div style="max-width: 800px; " class="m-3 mb-3">
+                  <div style="max-width:850px; " class="m-3 mb-3">
                     <h6 style="max-width: 300px;">Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)</h6>
                     <div class="d-flex align-items-center justify-content-between mt-3">
                       <div class="upload-wrapper d-inline justify-content-around mt-2">
@@ -496,11 +537,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_sangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de sangre -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de sangre permite evaluar el estado general de salud, detectar enfermedades y monitorear condiciones médicas existentes."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -511,11 +557,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_vision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de visión -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de visión evalúa la agudeza visual y detecta posibles alteraciones oculares que puedan afectar el desempeño laboral."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -526,11 +577,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_audiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de audiometría -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de audiometría evalúa la capacidad auditiva del trabajador y ayuda a detectar posibles pérdidas de audición relacionadas con el trabajo."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -543,11 +599,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_hemograma" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Hemograma -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El hemograma es un análisis de sangre que permite evaluar los diferentes componentes sanguíneos y detectar posibles alteraciones."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -558,11 +619,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_glicemia" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de glicemia -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de glicemia mide el nivel de azúcar en la sangre y ayuda a detectar alteraciones metabólicas como la diabetes."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -586,7 +652,7 @@ if (!isset($_SESSION['numero_documento'])) {
                   <div class="accordion-body">
                     Incluyen análisis de sangre, visión y audiometría según el perfil del cargo.
                   </div>
-                  <div style="max-width: 800px;" class="m-3 mb-3">
+                  <div style="max-width: 8px;" class="m-3 mb-3">
                     <h6 style="max-width: 300px;">
                       Adjunta el resultado medico que corresponda a tu especialidad, subir en pdf (*)
                     </h6>
@@ -598,11 +664,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examen_sangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de sangre -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de sangre permite evaluar el estado general de salud, detectar enfermedades y monitorear condiciones médicas existentes."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -613,11 +684,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examenVision" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de visión -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de visión evalúa la agudeza visual y detecta posibles alteraciones oculares que puedan afectar el desempeño laboral."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -628,11 +704,16 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examenAudio" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <!-- Examen de audiometría -->
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de audiometría evalúa la capacidad auditiva del trabajador y ayuda a detectar posibles pérdidas de audición relacionadas con el trabajo."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -647,8 +728,8 @@ if (!isset($_SESSION['numero_documento'])) {
                 </div>
               </div>
             </div>
-            <h4 class="p-2">Examenes de retiro</h4>
-            <div class="accordion p-3" id="accordionExample">
+            <h4 class="p-2" id="title_examenes_retiro">Examenes de retiro</h4>
+            <div class="accordion p-3" id="examenes_retiro">
               <div class="accordion-item">
                 <h2 class="accordion-header">
                   <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="true" aria-controls="collapseSix">
@@ -669,11 +750,15 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examenespirometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de espirometría evalúa la función pulmonar y es fundamental para detectar enfermedades respiratorias."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -684,11 +769,15 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="examenaudiometria" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de audiometría evalúa la capacidad auditiva del trabajador y ayuda a detectar posibles pérdidas de audición relacionadas con el trabajo."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -722,11 +811,15 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="fileexamensangre" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de sangre permite evaluar el estado general de salud, detectar enfermedades y monitorear condiciones médicas existentes."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -737,11 +830,15 @@ if (!isset($_SESSION['numero_documento'])) {
                           </span>
                         </label>
                         <input type="file" id="fileexamenorina" accept="application/pdf" onchange="mostrarNombreArchivo(this)">
-                        <button class="btn btn-link text-decoration-none" type="button" title="Información adicional">
-                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="20px" height="20px" />
+                        <button class="btn btn-link text-decoration-none"
+                          data-bs-toggle="popover"
+                          data-bs-title="Información adicional"
+                          data-bs-content="El examen de orina ayuda a detectar alteraciones renales, infecciones y otras condiciones de salud."
+                          type="button" title="Información adicional">
+                          <img src="/assets/icon/infocircle.svg" alt="informacion" width="25px" height="25px" />
                         </button>
                         <button class="btn btn-link text-decoration-none" type="button" title="Eliminar archivo">
-                          <img src="/assets/icon/trash.svg" alt="trash" width="20px" height="20px" />
+                          <img src="/assets/icon/trash.svg" alt="trash" width="25px" height="25px" />
                         </button>
                         <div class="file-name mt-3">Ningún archivo seleccionado</div>
                       </div>
@@ -929,6 +1026,11 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/darkmode.js"></script>
   <script src="/assets/js/step_resultado.js"></script>
   <script src="/assets/js/filtrar_resultados.js"></script>
+  <script src="/assets/js//input_resultados.js"> </script>
+  <script>
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+  </script>
 
 </body>
 
