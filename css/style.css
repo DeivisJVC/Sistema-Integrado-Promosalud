@@ -208,7 +208,7 @@ header {
   color: #fff;
 }
 
-input[type="file"] {
+.file_input {
   display: none;
 }
 

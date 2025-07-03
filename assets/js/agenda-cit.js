@@ -200,6 +200,7 @@ document.querySelectorAll(".time-btn").forEach((button) => {
       .forEach((btn) => btn.classList.remove("btn-success"));
     button.classList.add("btn-success");
     console.log("Hora seleccionada:", selectedTime);
+
   });
 });
 

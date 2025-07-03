@@ -1,8 +1,7 @@
 if (rol === "paciente") {
   const link_citas = document.getElementById("agendamiento");
-  const titulo_agenda_pagina = document.getElementById("titulo_agenda");
   const link_control_agenda = document.getElementById("control_agenda");
-  const sub_titulo_agenda_pagina = document.getElementById("agenda-h3");
+  const sub_titulo_agenda_pagina= document.getElementById("agenda-h3");
   //const panel_control = document.getElementById("panel_control");
   //const filtros_agenda = document.getElementById("filtros_agenda");
 
@@ -18,18 +17,6 @@ if (rol === "paciente") {
     const p = link_control_agenda.querySelector("p");
     if (p) p.textContent = "Consultar Citas"; // O el texto que desees
   }
-
-  // if (panel_control) {
-  //   panel_control.classList.add("d-none");
-  // }
-
-  // if (filtros_agenda) {
-  //   filtros_agenda.classList.add("d-none");
-  // }
-
-  titulo_agenda_pagina.textContent = `Consultar Citas`;
-
-  sub_titulo_agenda_pagina.textContent = `Citas`;
 } else if (rol === "empresa") {
   const link_control_agenda = document.getElementById("control_agenda");
   const link_informenes = document.getElementById("informes");

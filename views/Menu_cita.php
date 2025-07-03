@@ -446,7 +446,6 @@ if (!isset($_SESSION['numero_documento'])) {
 
   <script src="/assets/js/edit_user.js"></script>
   <script type="module" src="/assets/js/validar_tipo_usuario.js"></script>
-  <script type="module" src="/assets/js/validar-cargo.js"></script>
   <script>
     const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
     const cargo = "<?php echo isset($_SESSION['cargo']) ? $_SESSION['cargo'] : ''; ?>";
