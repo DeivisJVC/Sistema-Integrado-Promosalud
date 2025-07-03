@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const step2Div = document.getElementById("step2");
 
   // Función para mostrar el menú correcto según el tipo de examen
-  
 
   // Función para añadir un paciente a la tabla de seleccionados (step2)
   function addPatientToSelectedTable(row) {
@@ -51,6 +50,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("examenes_ingreso").classList.add("d-none");
       document.getElementById("examenes_periodicos").classList.add("d-none");
       document.getElementById("examenes_retiro").classList.add("d-none");
+      // Oculta también los títulos de exámenes
+      document.getElementById("title_examenes_ingreso").classList.add("d-none");
+      document
+        .getElementById("title_examenes_periodicos")
+        .classList.add("d-none");
+      document.getElementById("title_examenes_retiro").classList.add("d-none");
     }
   }
 
@@ -106,6 +111,12 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById("examenes_ingreso").classList.add("d-none");
       document.getElementById("examenes_periodicos").classList.add("d-none");
       document.getElementById("examenes_retiro").classList.add("d-none");
+      // Oculta también los títulos de exámenes
+      document.getElementById("title_examenes_ingreso").classList.add("d-none");
+      document
+        .getElementById("title_examenes_periodicos")
+        .classList.add("d-none");
+      document.getElementById("title_examenes_retiro").classList.add("d-none");
     } else if (stepToShow === 2) {
       const selectpacient = selectedPatientsTbody.querySelector("tr");
       if (selectpacient) {
@@ -190,6 +201,12 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("examenes_ingreso").classList.add("d-none");
     document.getElementById("examenes_periodicos").classList.add("d-none");
     document.getElementById("examenes_retiro").classList.add("d-none");
+    // Oculta también los títulos de exámenes
+    document.getElementById("title_examenes_ingreso").classList.add("d-none");
+    document
+      .getElementById("title_examenes_periodicos")
+      .classList.add("d-none");
+    document.getElementById("title_examenes_retiro").classList.add("d-none");
   }
 
   function mostrarMenuExamen(tipoExamen) {
@@ -220,6 +237,9 @@ document.addEventListener("DOMContentLoaded", () => {
       document
         .getElementById("title_examenes_retiro")
         .classList.remove("d-none");
+    } else if (tipoExamen === "") {
+      // Si el tipo de examen es "ninguno", no muestra nada
+      return;
     }
   }
 

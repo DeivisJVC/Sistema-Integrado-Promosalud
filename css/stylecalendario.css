@@ -40,11 +40,15 @@
 
 .step {
   display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .step.active {
   display: block;
+  opacity: 1;
 }
+
 
 .step-completed {
   display: none;

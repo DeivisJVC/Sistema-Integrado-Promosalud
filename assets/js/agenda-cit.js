@@ -84,7 +84,6 @@ function renderCalendar() {
 function selectDay(day, month, year) {
   selectedDay = day;
   document.getElementById("selectedDay").textContent = day;
-  console.log(`Día seleccionado: ${day}/${month + 1}/${year}`);
 }
 
 // Obtener los datos seleccionados;
@@ -140,7 +139,6 @@ document.querySelectorAll(".time-btn").forEach((button) => {
   button.addEventListener("click", (e) => {
     selectedTime = e.target.textContent;
     document.getElementById("selectedTime").textContent = selectedTime;
-    console.log("Hora seleccionada:", selectedTime);
   });
 });
 

@@ -327,9 +327,10 @@ if (!isset($_SESSION['numero_documento'])) {
       <!-- Paso 2: Adjuntar Orden -->
       <div class="step">
         <h2>Paso 2: Adjuntar Orden</h2>
-        <div class="form-group mb-3">
-          <label for="orderFile">Adjuntar Orden</label>
-          <input type="file" class="form-control" id="orderFile" name="orderFile" required />
+        <div class="form-group mb-3 mt-2">
+          <label for="orderFile" class="mb-2">Adjuntar Orden</label>
+          <!-- <input type="text" name="text" id="text" class="form-control" placeholder="Adjuntar orden"> -->
+          <input class="form-control" type="file" id="orderFile" name="orderFile"  required>
           <div class="invalid-feedback">Por favor selecciona un archivo.</div>
         </div>
         <div class="btn-container">
@@ -339,7 +340,7 @@ if (!isset($_SESSION['numero_documento'])) {
       </div>
 
       <!-- Paso 2: Seleccionar Hora y Fecha -->
-      <div class="container-fluid step container_calendario">
+      <div class="step container-fluid  container_calendario">
         <h2 class="text-capitalize text-center">Seleccionar Hora y Fecha</h2>
         <div class="container container_card_datos_cita">
           <div class="row justify-content-between">
@@ -718,6 +719,7 @@ if (!isset($_SESSION['numero_documento'])) {
     const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
   </script>
   <script src="/assets/js/agenda-cit.js"></script>
+  <script src="/assets//js//contador_cita_paciente_agenda.js"></script>
 </body>
 
 </html>
