@@ -297,6 +297,50 @@ if (!isset($_SESSION['numero_documento'])) {
           <button class="btn btn-primary" onclick="downloadAgenda()">
             Descargar Agenda
           </button>
+          <?php if (isset($_SESSION['rol']) && $_SESSION['rol'] == 'paciente'): ?>
+            <button class="btn btn-danger m-2" type="button" data-bs-toggle="modal" data-bs-target="#cancelacionModal">
+              Cancelacion de Cita
+            </button>
+          <?php endif; ?>
+        </div>
+        <div
+          class="modal fade"
+          id="cancelacionModal"
+          tabindex="-1"
+          aria-labelledby="cancelacionModalLabel">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header" style="background: linear-gradient(to right, #b80b0b, #c22121);">
+                <h5 class="modal-title text-white" id="confirmationModalLabel">
+                  Cancelacion de Cita
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <p>
+                  Estimado paciente esta aplicando para cancelar su cita programada.
+                  <br />
+                  <br />
+                  Recuerde que una vez cancelada, no podrá asistir a la cita programada y deberá agendar una nueva cita. Le recomendamos verificar la disponibilidad antes de confirmar la cancelación, ya que los cupos pueden ser limitados.
+                  <br />
+
+                  Si está seguro de continuar, por favor confirme su solicitud. Gracias por su atención.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="submit"
+                  class="btn btn-danger"
+                  data-bs-dismiss="modal">
+                  Aceptar
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -572,6 +616,7 @@ if (!isset($_SESSION['numero_documento'])) {
   <script src="/assets/js/year.js"></script>
   <script src="/assets/js/Filtrar_agenda.js"></script>
   <script type="module" src="/assets/js/validar-header.js"></script>
+  <script src="/assets/js/agenda_cancelacion.js"></script>
   <script>
     const rol = "<?php echo isset($_SESSION['rol']) ? $_SESSION['rol'] : ''; ?>";
   </script>
