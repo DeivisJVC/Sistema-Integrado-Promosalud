@@ -80,3 +80,9 @@
 .modal-content.error-modal .modal-body {
   color: red; /* Texto en rojo */
 }
+
+.disabled-day {
+  color: #888 !important;
+  cursor: not-allowed;
+  border-radius: 5px;
+}
